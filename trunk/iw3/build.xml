@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE project [
+]>
+
+  <!--     TODO: set project name    -->
+  <project default="build" basedir="." name="iw3">
+
+
+  <!-- ********** properties/paths ********** -->
+    <!-- jwsdp directories -->
+    <!-- jwsdp.home is set automatically by jwsdp's ant -->
+  <property environment="env"/>
+  
+  <!-- local directories -->
+  <property name="basedir.sw4j"  value="${basedir}/../svn-google-sw4j"/>
+  <property name="build.dir"  value="${basedir}/bin"/>
+  <property name="build.dir.sw4j"  value="${basedir.sw4j}/bin"/>
+  <property name="src.dir"  value="${basedir}/src"/>
+
+    <!-- paths -->
+  	<path id="my.classpath">
+      <fileset dir="${basedir}/lib" includes="**/*.jar"/>
+      <fileset dir="${basedir.sw4j}/lib" includes="**/*.jar"/>
+  	</path>
+
+
+    <!-- targets -->
+	<target name="clean-bin" >
+		<delete dir="${build.dir}"/>
+		
+		<mkdir  dir="${build.dir}"/>
+    </target>  
+	
+  	<target name="build" depends="clean-bin">
+      <javac 
+      		srcdir="${src.dir}"
+            destdir="${build.dir}">
+        <classpath>
+          <path refid="my.classpath"/>
+          <pathelement location="${build.dir.sw4j}"/>
+        </classpath>
+      </javac>
+    </target>  
+  	
+  	<target name="tptp-combine">
+      <java classname="org.inference_web.iwapp.hypergraph.core.ToolTptp"
+          fork="true" maxmemory ="1g">
+        <classpath>
+          <path refid="my.classpath"/>
+          <pathelement location="${build.dir}"/>
+          <pathelement location="${build.dir.sw4j}"/>
+        </classpath>
+      </java>
+    </target>  
+  	<target name="tptp-stat">
+      <java classname="org.inference_web.iwapp.hypergraph.core.ToolTptpStat"
+          fork="true" maxmemory ="1g">
+        <classpath>
+          <path refid="my.classpath"/>
+          <pathelement location="${build.dir}"/>
+          <pathelement location="${build.dir.sw4j}"/>
+        </classpath>
+      </java>
+    </target>  
+   </project>
