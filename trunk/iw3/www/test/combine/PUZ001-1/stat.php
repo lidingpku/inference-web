@@ -194,6 +194,7 @@ FROM <<?php echo $url_home; ?>/g1/Ayane---1.1-answer.owl.rdf>
 </form>
 </fieldset>
 
+<!--
 <fieldset>
 <legend>step 3. create new graph</legend>
 <form Method="get" action="<?php echo URL_DEMO_HOME; ?>" >
@@ -216,7 +217,7 @@ FROM <<?php echo $url_home; ?>/g1/Ayane---1.1-answer.owl.rdf>
 </form>
 </fieldset>
 
-
+-->
 
 <hr style="font-family: sans-serif;">
 
