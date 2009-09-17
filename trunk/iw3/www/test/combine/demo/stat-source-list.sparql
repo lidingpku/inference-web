@@ -1,0 +1,7 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX pmlj: <http://inference-web.org/2.0/pml-justification.owl#> 
+PREFIX pmlp: <http://inference-web.org/2.0/pml-provenance.owl#> 
+SELECT ?g ?source count(*)
+WHERE { GRAPH ?g { ?s pmlp:hasSource ?source} }
+group by ?g ?source
+order by ?g ?source
