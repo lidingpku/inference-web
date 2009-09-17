@@ -152,7 +152,7 @@ group by ?class
 </td>
 <td>
 <textarea readonly="readonly" cols ='60'  style="background:#CCC" rows='5'>
-FROM <http://tw2.tw.rpi.edu/pml/PUZ001-1/g1/Ayane---1.1-answer.owl.rdf>
+FROM <<?php echo $url_home; ?>/g1/Ayane---1.1-answer.owl.rdf>
 </textarea>
 </td>
 </tr>
