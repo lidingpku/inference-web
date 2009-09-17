@@ -1,5 +1,7 @@
 <?php
 define("URL_DEMO_HOME", "stat.php");
+$url_home="http://inference-web.org/test/combine/PUZ001-1";
+
 $params = get_params();
 $params["message"] = "welcome!";
 run_sparql($params);
@@ -168,19 +170,19 @@ FROM <http://tw2.tw.rpi.edu/pml/PUZ001-1/g1/Ayane---1.1-answer.owl.rdf>
 <form Method="get" action="<?php echo URL_DEMO_HOME; ?>" >
  <input type="hidden" name="step"  value="2" />
 <select name="query-uri"  SIZE=5>
-  <option value="http://tw2.tw.rpi.edu/pml/PUZ001-1/stat-class-count.sparql" selected >class count</option>
-  <option value="http://tw2.tw.rpi.edu/pml/PUZ001-1/stat-rule-count.sparql" >inference rule count</option>
-  <option value="http://tw2.tw.rpi.edu/pml/PUZ001-1/stat-source-list.sparql" >list of sources</option>
+  <option value="<?php echo $url_home; ?>/stat-class-count.sparql" selected >class count</option>
+  <option value="<?php echo $url_home; ?>/stat-rule-count.sparql" >inference rule count</option>
+  <option value="<?php echo $url_home; ?>/stat-source-list.sparql" >list of sources</option>
 </select>
 <select name="from-uri[]" MULTIPLE  SIZE=5>
-  <option value="http://tw2.tw.rpi.edu/pml/PUZ001-1/g1/Ayane---1.1-answer.owl.from.named.sparql" >data-Ayane---1.1</option>
-  <option value="http://tw2.tw.rpi.edu/pml/PUZ001-1/g1/EP---1.0-answer.owl.from.named.sparql" >data-EP---1.0</option>
-  <option value="http://tw2.tw.rpi.edu/pml/PUZ001-1/g1/Faust---1.0-answer.owl.from.named.sparql" >data-Faust---1.0</option>
-  <option value="http://tw2.tw.rpi.edu/pml/PUZ001-1/g1/Metis---2.2-answer.owl.from.named.sparql" >data-Metis---2.2</option>
-  <option value="http://tw2.tw.rpi.edu/pml/PUZ001-1/g1/Otter---3.3-answer.owl.from.named.sparql" >data-Otter---3.3</option>
-  <option value="http://tw2.tw.rpi.edu/pml/PUZ001-1/g1/SNARK---20080805r005-answer.owl.from.named.sparql" >data-SNARK---20080805r005</option>
-  <option value="http://tw2.tw.rpi.edu/pml/PUZ001-1/g1/SOS---2.0-answer.owl.from.named.sparql" >data-SOS---2.0</option>
-  <option value="http://tw2.tw.rpi.edu/pml/PUZ001-1/g1/Vampire---9.0-answer.owl.from.named.sparql" >data-Vampire---9.0</option>
+  <option value="<?php echo $url_home; ?>/g1/Ayane---1.1-answer.owl.from.named.sparql" >data-Ayane---1.1</option>
+  <option value="<?php echo $url_home; ?>/g1/EP---1.0-answer.owl.from.named.sparql" >data-EP---1.0</option>
+  <option value="<?php echo $url_home; ?>/g1/Faust---1.0-answer.owl.from.named.sparql" >data-Faust---1.0</option>
+  <option value="<?php echo $url_home; ?>/g1/Metis---2.2-answer.owl.from.named.sparql" >data-Metis---2.2</option>
+  <option value="<?php echo $url_home; ?>/g1/Otter---3.3-answer.owl.from.named.sparql" >data-Otter---3.3</option>
+  <option value="<?php echo $url_home; ?>/g1/SNARK---20080805r005-answer.owl.from.named.sparql" >data-SNARK---20080805r005</option>
+  <option value="<?php echo $url_home; ?>/g1/SOS---2.0-answer.owl.from.named.sparql" >data-SOS---2.0</option>
+  <option value="<?php echo $url_home; ?>/g1/Vampire---9.0-answer.owl.from.named.sparql" >data-Vampire---9.0</option>
 </select>
 <select name="output">
   <option value="html" selected >html</option>
@@ -196,17 +198,17 @@ FROM <http://tw2.tw.rpi.edu/pml/PUZ001-1/g1/Ayane---1.1-answer.owl.rdf>
 <form Method="get" action="<?php echo URL_DEMO_HOME; ?>" >
  <input type="hidden" name="step"  value="3" />
 <select name="query-uri" >
-  <option value="http://tw2.tw.rpi.edu/pml/PUZ001-1/pml2hg.sparql" selected >class count</option>
+  <option value="<?php echo $url_home; ?>/pml2hg.sparql" selected >class count</option>
 </select>
 <select name="from-uri" >
-  <option value="http://tw2.tw.rpi.edu/pml/PUZ001-1/g1/Ayane---1.1-answer.owl.from.sparql" >Ayane---1.1</option>
-  <option value="http://tw2.tw.rpi.edu/pml/PUZ001-1/g1/EP---1.0-answer.owl.from.sparql" >EP---1.0</option>
-  <option value="http://tw2.tw.rpi.edu/pml/PUZ001-1/g1/Faust---1.0-answer.owl.from.sparql" >Faust---1.0</option>
-  <option value="http://tw2.tw.rpi.edu/pml/PUZ001-1/g1/Metis---2.2-answer.owl.from.sparql" >Metis---2.2</option>
-  <option value="http://tw2.tw.rpi.edu/pml/PUZ001-1/g1/Otter---3.3-answer.owl.from.sparql" >Otter---3.3</option>
-  <option value="http://tw2.tw.rpi.edu/pml/PUZ001-1/g1/SNARK---20080805r005-answer.owl.from.sparql" >SNARK---20080805r005</option>
-  <option value="http://tw2.tw.rpi.edu/pml/PUZ001-1/g1/SOS---2.0-answer.owl.from.sparql" >SOS---2.0</option>
-  <option value="http://tw2.tw.rpi.edu/pml/PUZ001-1/g1/Vampire---9.0-answer.owl.from.sparql" >Vampire---9.0</option>
+  <option value="<?php echo $url_home; ?>/g1/Ayane---1.1-answer.owl.from.sparql" >Ayane---1.1</option>
+  <option value="<?php echo $url_home; ?>/g1/EP---1.0-answer.owl.from.sparql" >EP---1.0</option>
+  <option value="<?php echo $url_home; ?>/g1/Faust---1.0-answer.owl.from.sparql" >Faust---1.0</option>
+  <option value="<?php echo $url_home; ?>/g1/Metis---2.2-answer.owl.from.sparql" >Metis---2.2</option>
+  <option value="<?php echo $url_home; ?>/g1/Otter---3.3-answer.owl.from.sparql" >Otter---3.3</option>
+  <option value="<?php echo $url_home; ?>/g1/SNARK---20080805r005-answer.owl.from.sparql" >SNARK---20080805r005</option>
+  <option value="<?php echo $url_home; ?>/g1/SOS---2.0-answer.owl.from.sparql" >SOS---2.0</option>
+  <option value="<?php echo $url_home; ?>/g1/Vampire---9.0-answer.owl.from.sparql" >Vampire---9.0</option>
 </select>
  <input type="hidden" value="xml" selected />
  <input value="query" type="submit" /><br />
