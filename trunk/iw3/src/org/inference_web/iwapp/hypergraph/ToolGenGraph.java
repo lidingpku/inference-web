@@ -2,6 +2,7 @@ package org.inference_web.iwapp.hypergraph;
 
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Set;
 
 import sw4j.rdf.util.ToolJena;
 import sw4j.util.DataObjectGroupMap;
@@ -20,8 +21,16 @@ public class ToolGenGraph {
 	}
 	public void test(){
 //		to_dot("http://inference-web.org/test/combine/PUZ001-1/g2/Ayane---1.1-answer.owl.rdf");
-		to_dot("http://inference-web.org/test/combine/PUZ001-1/g2/EP---1.0-answer.owl.rdf");
+//		to_dot("http://inference-web.org/test/combine/PUZ001-1/g2/EP---1.0-answer.owl.rdf");
+		HashSet<String> test = new HashSet<String>();
+		test.add("http://inference-web.org/test/combine/PUZ001-1/g2/EP---1.0-answer.owl.rdf");
+		test.add("http://inference-web.org/test/combine/PUZ001-1/g2/SOS---2.0-answer.owl.rdf");
+
+	//	test.add("http://tw2.tw.rpi.edu/pml/PUZ001-1/g3/Ayane---1.1-answer.owl.rdf");
+		//test.add("http://tw2.tw.rpi.edu/pml/PUZ001-1/g3/EP---1.0-answer.owl.rdf");
 		
+//		test.add("http://tw2.tw.rpi.edu/pml/PUZ001-1/g4/combined-EP-SOS-answer.owl.rdf");
+		to_dot(test);
 	}
 	
 	public void run(){
@@ -87,7 +96,20 @@ public class ToolGenGraph {
 		System.out.println(url_input);
 		hg.addHg(url_input);
 		
-		System.out.println(hg.getHyperGraph().data_export_graphviz(null, hg.getMapNodeParams(),hg.getMapEdgeParams()));
+		System.out.println(hg.getHyperGraph().data_export_graphviz(null, hg.getMapNodeParams(),hg.getMapEdgeParams(),"/* hello */"));
+
+	}
+	
+	public static void to_dot(Set<String> urls_input){
+		//build hg
+		DataHg hg = new DataHg();
+		for(String url_input: urls_input){
+			System.out.println(url_input);
+			hg.addHg(url_input);
+		}
+		hg.addMappings("http://inference-web.org/test/combine/PUZ001-1/mapping_i_pre.rdf");
+		
+		System.out.println(hg.getHyperGraph().data_export_graphviz(null, hg.getMapNodeParams(),hg.getMapEdgeParams(),"/* hello */"));
 
 	}
 }

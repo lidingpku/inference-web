@@ -1,9 +1,12 @@
 package org.inference_web.iwapp.hypergraph;
 
+import java.awt.Color;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Properties;
+import java.util.Random;
+
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.RDFNode;
@@ -13,6 +16,7 @@ import com.hp.hpl.jena.rdf.model.StmtIterator;
 import com.hp.hpl.jena.vocabulary.OWL;
 import com.hp.hpl.jena.vocabulary.RDF;
 
+import sw4j.app.pml.PMLJ;
 import sw4j.app.pml.PMLP;
 import sw4j.app.pml.PMLR;
 import sw4j.rdf.load.AgentModelManager;
@@ -21,6 +25,7 @@ import sw4j.task.graph.DataHyperEdge;
 import sw4j.task.graph.DataHyperGraph;
 import sw4j.util.DataObjectGroupMap;
 import sw4j.util.DataPVHMap;
+import sw4j.util.DataQname;
 import sw4j.util.Sw4jException;
 import sw4j.util.ToolSafe;
 import sw4j.util.ToolString;
@@ -50,10 +55,6 @@ public class DataHg{
 			if (url.indexOf("proofs/tptp")>0)
 				continue;
 			
-			//skip ontology
-			if (url.indexOf("/2.0/")>0)
-				continue;
-
 			System.out.println("load " + url);
 			Model model =  ModelFactory.createDefaultModel();
 			model.read(url);
@@ -67,7 +68,7 @@ public class DataHg{
 		Model m =loadHg(url_input);
 		
 		// add steps
-		for (Resource is: m.listSubjectsWithProperty(RDF.type, PMLR.Step).toList())
+		for (Resource is: m.listSubjectsWithProperty(RDF.type, PMLJ.InferenceStep).toList())
 		{
 				DataHgStep step = new DataHgStep(m, is, url_input);
 				m_map_url_step.add(url_input, step);
@@ -76,12 +77,10 @@ public class DataHg{
 		
 		
 		//prepare node info
-		m_map_res_text= new HashMap<Resource,String> ();
 		for (Statement stmt: m.listStatements(null, PMLP.hasRawString, (String)null).toSet()){
 			m_map_res_text.put(stmt.getSubject(), ToolJena.getNodeString(stmt.getObject()));
 		}
 		
-		m_map_res_lang= new HashMap<Resource,String> ();
 		for (Statement stmt: m.listStatements(null, PMLP.hasLanguage, (String)null).toSet()){
 			m_map_res_lang.put(stmt.getSubject(), ((Resource)stmt.getObject()).getLocalName());
 		}		
@@ -236,15 +235,21 @@ public class DataHg{
 	}
 	
 	public HashMap<Integer,Properties> getMapNodeParams (){
+		
 		HashMap<Integer,Properties> ret = new HashMap<Integer,Properties>();
 		for (Resource res: m_map_res_vertex.keyset()){
 			String label = m_map_res_text.get(res);
 			String lang = m_map_res_lang.get(res);
 			
 			Properties prop = new Properties();
-			prop.put("label", label.replaceAll("\n", " "));
+			if (!ToolSafe.isEmpty(label))
+				prop.put("label", label.replaceAll("\n", " "));
 
 			//prop.put("URL", res.getURI());
+			
+			
+			
+			prop.put("URL", res.getURI());
 			
 			if ("TPTPCNF".equals(lang)){
 				prop.put("color", "red");
@@ -258,13 +263,30 @@ public class DataHg{
 		
 	}
 	
+
+
 	public HashMap<DataHyperEdge,Properties> getMapEdgeParams (){
+		HashMap<String,String> ns_color= new HashMap<String,String>();
+    	String [] colors={"yellow","blue","red","green","black"};
+    	int idx_color=0;
+
 		HashMap<DataHyperEdge,Properties> ret = new HashMap<DataHyperEdge,Properties>();
 		for (DataHyperEdge e: this.m_map_edge_step.keySet() ){
 			Properties prop = new Properties();
 			for (DataHgStep hge:  m_map_edge_step.getValuesAsSet(e)){
-				prop.put("URL", hge.m_url_context);
+				prop.put("URL", hge.m_is.getURI() );
+
+				String ns = DataQname.extractNamespace(hge.m_is.getURI());
+				String color = ns_color.get(ns);
+				if (null==color){
+					color=colors[idx_color];
+					idx_color ++;
+					idx_color =Math.min(idx_color, colors.length-1);
+					ns_color.put(ns,color);
+				}
+				prop.put("color", color);
 			}
+			
 			
 
 			ret.put(e, prop);

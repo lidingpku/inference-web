@@ -18,6 +18,7 @@ public class DataHgStep {
 	public String m_url_context= null;
 	public Resource m_conclusion= null;
 	public List<RDFNode> m_antecedents = new ArrayList<RDFNode>();
+	public Resource m_is =null;
 	
 	public DataHgStep(Model m, Resource is, String url_context){ 
 		/// 1. get sink and source
@@ -28,6 +29,8 @@ public class DataHgStep {
 		m_antecedents = m.listObjectsOfProperty(is, PMLR.hasInput).toList();
 				
 		m_url_context = url_context;
+		
+		m_is =is;
 	}
 	
 	
