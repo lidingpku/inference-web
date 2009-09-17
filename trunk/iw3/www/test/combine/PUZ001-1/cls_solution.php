@@ -128,12 +128,12 @@ class ProcessSolution{
 			file_put_contents($filename, $content);
 			
 			$content = "FROM <$url_target_rdf>";
-			$content .= "FROM <$url_pml_plus>";
+			$content .= "\nFROM <$url_pml_plus>";
 			$filename = $file_target_sparql;
 			file_put_contents($filename, $content);	
 
 			$content = "FROM NAMED <$url_target_rdf>";
-			$content .= "FROM NAMED <$url_pml_plus>";
+			$content .= "\nFROM NAMED <$url_pml_plus>";
 			$filename = $file_target_sparql_named;
 			file_put_contents($filename, $content);	
 		}
