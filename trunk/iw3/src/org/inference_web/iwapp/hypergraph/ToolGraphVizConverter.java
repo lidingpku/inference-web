@@ -2,6 +2,10 @@ package org.inference_web.iwapp.hypergraph;
 
 import java.io.PrintStream;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 import org.junit.Test;
 
@@ -29,7 +33,10 @@ public class ToolGraphVizConverter {
 	
 	public static HashMap<Resource, String> m_is_localis= new HashMap<Resource, String>();
 	public static HashMap<Resource, String> m_info_localinfo= new HashMap<Resource, String>();
-	public static DataPVHMap<String, Resource> m_localinfo_sources= new DataPVHMap<String, Resource>();
+	public static DataPVHMap<String, String> m_localinfo_localis= new DataPVHMap<String, String>();
+	public static DataPVHMap<String, String> m_localis_inlocalinfo= new DataPVHMap<String, String>();
+	public static HashMap<String, String> m_localis_outlocalinfo= new HashMap<String,String>();
+	public static HashSet<String> localinfoleaf= new HashSet<String>();
 	
 	
 	public  void RDF2GraphViz(Model m){
@@ -63,6 +70,7 @@ public class ToolGraphVizConverter {
 				info_count++;
 			}
 			
+			m_localis_inlocalinfo.add(localsub,localobj);
 			out.println("\"" + localsub + "\" [shape=diamond];\n");
 			out.println("\"" + localsub + "\" [URL=\"" + sub + "\"]; \n");
 			out.println("\"" + localsub + "\" -> \"" + localobj + "\"; \n");
@@ -97,19 +105,57 @@ public class ToolGraphVizConverter {
 				info_count++;
 			}
 			
+			m_localis_outlocalinfo.put(localsub,localobj);
+			m_localinfo_localis.add(localobj, localsub);
+			
 			out.println("\"" + localsub + "\" [shape=diamond];\n");
 			out.println("\"" + localsub + "\" [URL=\"" + sub + "\"]; \n");
 			out.println("\"" + localobj + "\" -> \"" + localsub + "\"; \n");
 			out.println("\"" + localobj + "\" [URL=\"" + obj + "\"]; \n");
 		}
+		
+		setOrNode();
+		setLeafNode();
+		setLeafNodeRank();
 		out.println("}");
 	}
 
-	public static void getOrNode(Model m){
-		
-		
+	public static void setOrNode(){
+	
+		Iterator<Map.Entry<String,Set<String>>> iter = m_localinfo_localis.entrySet().iterator();
+		while (iter.hasNext()){
+			Map.Entry<String,Set<String>> entry = iter.next();
+
+			if (entry.getValue().size()>1){
+				out.println("\"" + entry.getKey() + "\" [color=yellow,style=filled]; \n");
+			}
+		}
 		
 	}
+	
+	public static void setLeafNode(){
+		Iterator<Map.Entry<String,String>> iter = m_localis_outlocalinfo.entrySet().iterator();
+		while (iter.hasNext()){
+			Map.Entry<String,String> entry = iter.next();
+			if (!m_localis_inlocalinfo.keySet().contains(entry.getKey())){	
+				out.println("\"" + entry.getValue() + "\" [color=red,style=filled]; \n");
+				localinfoleaf.add(entry.getValue());
+			}
+		}
+		
+	}
+	
+	private static void setLeafNodeRank(){
+		Iterator<String> leaf_iter= localinfoleaf.iterator();
+		String rankStr= "{rank = same; ";
+		while (leaf_iter.hasNext()) {
+			String leaf= leaf_iter.next();
+			rankStr+= "\"" + leaf + "\"; ";
+		}
+		out.println(rankStr);
+		
+	}
+	
 	
 	@Test
 	public static void main(String[] args){
