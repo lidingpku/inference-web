@@ -106,7 +106,7 @@ class ProcessSolution{
 			$pos1 = strrpos($url_pml_plus, "/")+1;
 			$pos2 = strrpos($url_pml_plus, ".");
 			$target_base = substr($url_pml_plus,$pos1,$pos2-$pos1);
-			$url_input_from_sparql  =  substr($url_pml_plus,0,$pos2).".from.sparql";
+			$url_input_from_sparql  =  substr($url_pml_plus,0,$pos2).".from.named.sparql";
 
 			$file_target_rdf  = $dir_root."/".$target_base.".rdf";
 			$url_target_rdf  = $url_root."/".$target_base.".rdf";
