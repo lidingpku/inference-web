@@ -173,14 +173,14 @@ FROM <http://tw2.tw.rpi.edu/pml/PUZ001-1/g1/Ayane---1.1-answer.owl.rdf>
   <option value="http://tw2.tw.rpi.edu/pml/PUZ001-1/stat-source-list.sparql" >list of sources</option>
 </select>
 <select name="from-uri[]" MULTIPLE  SIZE=5>
-  <option value="http://tw2.tw.rpi.edu/pml/PUZ001-1/g1/Ayane---1.1-answer.owl.from.sparql" >data-Ayane---1.1</option>
-  <option value="http://tw2.tw.rpi.edu/pml/PUZ001-1/g1/EP---1.0-answer.owl.from.sparql" >data-EP---1.0</option>
-  <option value="http://tw2.tw.rpi.edu/pml/PUZ001-1/g1/Faust---1.0-answer.owl.from.sparql" >data-Faust---1.0</option>
-  <option value="http://tw2.tw.rpi.edu/pml/PUZ001-1/g1/Metis---2.2-answer.owl.from.sparql" >data-Metis---2.2</option>
-  <option value="http://tw2.tw.rpi.edu/pml/PUZ001-1/g1/Otter---3.3-answer.owl.from.sparql" >data-Otter---3.3</option>
-  <option value="http://tw2.tw.rpi.edu/pml/PUZ001-1/g1/SNARK---20080805r005-answer.owl.from.sparql" >data-SNARK---20080805r005</option>
-  <option value="http://tw2.tw.rpi.edu/pml/PUZ001-1/g1/SOS---2.0-answer.owl.from.sparql" >data-SOS---2.0</option>
-  <option value="http://tw2.tw.rpi.edu/pml/PUZ001-1/g1/Vampire---9.0-answer.owl.from.sparql" >data-Vampire---9.0</option>
+  <option value="http://tw2.tw.rpi.edu/pml/PUZ001-1/g1/Ayane---1.1-answer.owl.from.named.sparql" >data-Ayane---1.1</option>
+  <option value="http://tw2.tw.rpi.edu/pml/PUZ001-1/g1/EP---1.0-answer.owl.from.named.sparql" >data-EP---1.0</option>
+  <option value="http://tw2.tw.rpi.edu/pml/PUZ001-1/g1/Faust---1.0-answer.owl.from.named.sparql" >data-Faust---1.0</option>
+  <option value="http://tw2.tw.rpi.edu/pml/PUZ001-1/g1/Metis---2.2-answer.owl.from.named.sparql" >data-Metis---2.2</option>
+  <option value="http://tw2.tw.rpi.edu/pml/PUZ001-1/g1/Otter---3.3-answer.owl.from.named.sparql" >data-Otter---3.3</option>
+  <option value="http://tw2.tw.rpi.edu/pml/PUZ001-1/g1/SNARK---20080805r005-answer.owl.from.named.sparql" >data-SNARK---20080805r005</option>
+  <option value="http://tw2.tw.rpi.edu/pml/PUZ001-1/g1/SOS---2.0-answer.owl.from.named.sparql" >data-SOS---2.0</option>
+  <option value="http://tw2.tw.rpi.edu/pml/PUZ001-1/g1/Vampire---9.0-answer.owl.from.named.sparql" >data-Vampire---9.0</option>
 </select>
 <select name="output">
   <option value="html" selected >html</option>
