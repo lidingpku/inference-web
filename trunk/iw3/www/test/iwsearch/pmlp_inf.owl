@@ -1,0 +1,1682 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:pmlp="http://inference-web.org/2.0/pml-provenance.owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:ds="http://inference-web.org/2.0/ds.owl#" > 
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#DocumentFragmentByRowCol">
+    <rdfs:subClassOf rdf:nodeID="A0"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:nodeID="A1"/>
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#DocumentFragmentByRowCol"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Source"/>
+    <rdfs:subClassOf rdf:nodeID="A2"/>
+    <owl:equivalentClass rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#DocumentFragmentByRowCol"/>
+
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf rdf:nodeID="A3"/>
+    <owl:disjointWith rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    <rdfs:subClassOf rdf:nodeID="A4"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#DocumentFragmentByRowCol"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:label xml:lang="en">Document Fragment by Row/Column</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="A5"/>
+
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#IdentifiedThing"/>
+    <rdfs:subClassOf rdf:nodeID="A6"/>
+    <rdfs:subClassOf rdf:nodeID="A7"/>
+    <rdfs:subClassOf rdf:nodeID="A8"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#DocumentFragment"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A2">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+
+    <owl:onProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasName"/>
+    <rdfs:subClassOf rdf:nodeID="A2"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A9">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasVersion"/>
+    <rdfs:subClassOf rdf:nodeID="A9"/>
+
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#hasMember">
+    <rdfs:domain rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Organization"/>
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasMember"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <owl:inverseOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#isMemberOf"/>
+    <rdfs:range rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Agent"/>
+    <owl:equivalentProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasMember"/>
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasMember"/>
+
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:comment xml:lang="en">An organization may have member agents such as persons and other organizations.</rdfs:comment>
+    <rdfs:label xml:lang="en">member</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#hasInferenceEngineRule">
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasInferenceEngineRule"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasInferenceEngineRule"/>
+
+    <owl:equivalentProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasInferenceEngineRule"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">uses-inference-rule</rdfs:label>
+    <rdfs:comment xml:lang="en">The inference rules used by the inference engine</rdfs:comment>
+    <rdfs:domain rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#InferenceEngine"/>
+    <rdfs:range rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#InferenceRule"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A1">
+
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasToCol"/>
+    <rdfs:subClassOf rdf:nodeID="A1"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A10">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+
+    <owl:onProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasEnglishDescriptionTemplate"/>
+    <rdfs:subClassOf rdf:nodeID="A10"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A11">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasRawString"/>
+    <rdfs:subClassOf rdf:nodeID="A11"/>
+
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A12">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasShortPrettyName"/>
+    <rdfs:subClassOf rdf:nodeID="A12"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#hasAbstract">
+
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasAbstract"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasAbstract"/>
+    <owl:equivalentProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasAbstract"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">abstract</rdfs:label>
+    <rdfs:comment xml:lang="en">The abstract of a document.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Document"/>
+
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#hasVersion">
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasVersion"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasVersion"/>
+    <owl:equivalentProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasVersion"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">version</rdfs:label>
+
+    <rdfs:comment xml:lang="en">the version number.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#hasUsageDateTime">
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasUsageDateTime"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasUsageDateTime"/>
+    <owl:equivalentProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasUsageDateTime"/>
+
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">usage-datetime</rdfs:label>
+    <rdfs:comment xml:lang="en">the time stamp when the source usage occurred.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#SourceUsage"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A13">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+
+    <owl:allValuesFrom rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#AgentList"/>
+    <owl:onProperty rdf:resource="http://inference-web.org/2.0/ds.owl#rest"/>
+    <rdfs:subClassOf rdf:nodeID="A13"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#hasContent">
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasContent"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasContent"/>
+    <owl:equivalentProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasContent"/>
+
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">content</rdfs:label>
+    <rdfs:comment xml:lang="en"> This is a common concept that links to a piece of information. Currently, we focus on content of document, and inference rule.</rdfs:comment>
+    <rdfs:range rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#IdentifiedThing">
+    <rdfs:subClassOf rdf:nodeID="A0"/>
+
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf rdf:nodeID="A7"/>
+    <owl:equivalentClass rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#IdentifiedThing"/>
+    <owl:disjointWith rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    <rdfs:label xml:lang="en">Identified Thing</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="A5"/>
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#IdentifiedThing"/>
+    <rdfs:subClassOf rdf:nodeID="A2"/>
+
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#IdentifiedThing"/>
+    <rdfs:comment xml:lang="en">The abstract root of provenance related concepts. It organizes a collection of common metadata about the referenced object, and it does not have any instance. </rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#hasRawString">
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasRawString"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasRawString"/>
+    <owl:equivalentProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasRawString"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">raw-string</rdfs:label>
+    <rdfs:comment xml:lang="en">materialized version of the content of information</rdfs:comment>
+    <rdfs:domain rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#hasToLanguage">
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasToLanguage"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasToLanguage"/>
+    <owl:equivalentProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasToLanguage"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">to-language</rdfs:label>
+    <rdfs:comment xml:lang="en">language used by the target.</rdfs:comment>
+
+    <rdfs:domain rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#TranslationRule"/>
+    <rdfs:range rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Language"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#isMemberOf">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:label xml:lang="en">member of</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#isMemberOf"/>
+
+    <owl:inverseOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasMember"/>
+    <rdfs:range rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Organization"/>
+    <rdfs:comment xml:lang="en">An organization may have member agents such as persons and other organizations.</rdfs:comment>
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#isMemberOf"/>
+    <rdfs:domain rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Agent"/>
+    <owl:equivalentProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#isMemberOf"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#Website">
+
+    <rdfs:subClassOf rdf:nodeID="A5"/>
+    <rdfs:subClassOf rdf:nodeID="A9"/>
+    <rdfs:subClassOf rdf:nodeID="A0"/>
+    <rdfs:subClassOf rdf:nodeID="A14"/>
+    <owl:equivalentClass rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Website"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Software"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Agent"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Person"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Website"/>
+
+    <owl:disjointWith rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Source"/>
+    <rdfs:label xml:lang="en">Website</rdfs:label>
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Website"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#IdentifiedThing"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#InferenceEngine"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#WebService"/>
+
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf rdf:nodeID="A2"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Sensor"/>
+    <rdfs:comment xml:lang="en">Collection of files and related resources accessible through the World Wide Web and organized under a particular domain name. Typical files found at a Web site are HTML documents with their associated graphic image files (GIF, JPEG, etc.), scripted programs (in Perl, CGI, Java, etc.), and similar resources. The site's files are usually accessed through hypertext or hyperlinks embedded in other files. A Web site may consist of a single HTML file, or it may comprise hundreds or thousands of related files. A Web site's usual starting point or opening page, called a home page, usually functions as a table of contents or index, with links to other sections of the site. Web sites are hosted on one or more Web servers, which transfer files to client computers or other servers that request them using the HTTP protocol. Although the term ?ite?implies a single physical location, the files and resources of a Web site may actually be spread among several servers in different geographic locations.(adapted from Britannica Concise Encyclopedia).</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Document"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Organization"/>
+    <rdfs:subClassOf rdf:nodeID="A7"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+
+    <rdfs:subClassOf rdf:nodeID="A15"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#hasEncoding">
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasEncoding"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasEncoding"/>
+    <owl:equivalentProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasEncoding"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">encoding</rdfs:label>
+
+    <rdfs:comment xml:lang="en">The content encoding, e.g. "base64". The value of this property helps applications determine the decoder of the raw string.	</rdfs:comment>
+    <rdfs:domain rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#hasDocument">
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasDocument"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasDocument"/>
+
+    <owl:equivalentProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasDocument"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">document</rdfs:label>
+    <rdfs:comment xml:lang="en">A document fragment always depend on one source document, which is also the source.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#DocumentFragment"/>
+    <rdfs:range rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Document"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#hasPublicationDateTime">
+
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasPublicationDateTime"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasPublicationDateTime"/>
+    <owl:equivalentProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasPublicationDateTime"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">published in</rdfs:label>
+    <rdfs:comment xml:lang="en">When the publication is published.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Publication"/>
+
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#hasDataCollectionStartDateTime">
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasDataCollectionStartDateTime"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasDataCollectionStartDateTime"/>
+    <owl:equivalentProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasDataCollectionStartDateTime"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">data-collection-start-datetime</rdfs:label>
+
+    <rdfs:comment xml:lang="en">the time stamp when data collection started</rdfs:comment>
+    <rdfs:domain rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#LearnedSourceUsage"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A15">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasContent"/>
+
+    <rdfs:subClassOf rdf:nodeID="A15"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#hasAuthorList">
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasAuthorList"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasAuthorList"/>
+    <owl:equivalentProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasAuthorList"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">author(s)</rdfs:label>
+
+    <rdfs:comment xml:lang="en">A list of agents primarily responsible for making the artifact, for example, a person, an organization, or a software service. The AgentList enables an ordered list of agents; however, domain applications may optionally choose to ignore the order. We should be able to derive that each agent is the dc:creator of the artifact.</rdfs:comment>
+    <rdfs:range rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#AgentList"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A16">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasDataCollectionEndDateTime"/>
+    <rdfs:subClassOf rdf:nodeID="A16"/>
+
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A4">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasFromCol"/>
+    <rdfs:subClassOf rdf:nodeID="A4"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#hasPrettyNameMappingList">
+
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasPrettyNameMappingList"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasPrettyNameMappingList"/>
+    <owl:equivalentProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasPrettyNameMappingList"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">pretty name mapping</rdfs:label>
+    <rdfs:comment xml:lang="en">The rendering instruction. UI tools may feed the PrettyNameMapping in sequence to string replace operation to get a pretty rendering of the conclusion of a NodeSet. It only applies to the conclusion of the node set.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+
+    <rdfs:range rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#PrettyNameMappingList"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A17">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasPrettyString"/>
+    <rdfs:subClassOf rdf:nodeID="A17"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#hasEnglishDescriptionTemplate">
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasEnglishDescriptionTemplate"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasEnglishDescriptionTemplate"/>
+    <owl:equivalentProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasEnglishDescriptionTemplate"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">english-description-template</rdfs:label>
+    <rdfs:comment xml:lang="en">it is sub-property of rdfs:comment. It is also a simplified template for adding rule description template in English rather than using hasDescription.</rdfs:comment>
+
+    <rdfs:domain rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#InferenceRule"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#hasURL">
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasURL"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasURL"/>
+    <owl:equivalentProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasURL"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+
+    <rdfs:label xml:lang="en">url</rdfs:label>
+    <rdfs:comment xml:lang="en">The URL of a relevant web page.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A18">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+
+    <owl:onProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasFromLanguage"/>
+    <rdfs:subClassOf rdf:nodeID="A18"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#Person">
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Person"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Ontology"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Publication"/>
+    <owl:equivalentClass rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Person"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Source"/>
+
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:nodeID="A7"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Dataset"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Website"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Agent"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#IdentifiedThing"/>
+    <rdfs:subClassOf rdf:nodeID="A0"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Person"/>
+
+    <rdfs:comment xml:lang="en">A person</rdfs:comment>
+    <owl:disjointWith rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    <rdfs:label xml:lang="en">Person</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf rdf:nodeID="A5"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Document"/>
+    <rdfs:subClassOf rdf:nodeID="A2"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:nodeID="A19">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasToOffset"/>
+    <rdfs:subClassOf rdf:nodeID="A19"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/ds.owl#List">
+    <owl:disjointWith rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+
+    <owl:equivalentClass rdf:resource="http://inference-web.org/2.0/ds.owl#List"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/ds.owl#List"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#hasShortPrettyName">
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasShortPrettyName"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasPrettyName"/>
+
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasShortPrettyName"/>
+    <owl:equivalentProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasShortPrettyName"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">short pretty name</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#WebService">
+    <rdfs:label xml:lang="en">Web Service</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="A7"/>
+
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#WebService"/>
+    <rdfs:subClassOf rdf:nodeID="A5"/>
+    <owl:equivalentClass rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#WebService"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Dataset"/>
+    <rdfs:subClassOf rdf:nodeID="A20"/>
+    <rdfs:subClassOf rdf:nodeID="A0"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Source"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Document"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Agent"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Publication"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#IdentifiedThing"/>
+    <rdfs:comment xml:lang="en">services implemented by software and available on the Web</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Software"/>
+    <owl:disjointWith rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Ontology"/>
+
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Website"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf rdf:nodeID="A2"/>
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#WebService"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#hasPrettyString">
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasPrettyString"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasPrettyString"/>
+
+    <owl:equivalentProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasPrettyString"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">pretty-string</rdfs:label>
+    <rdfs:comment xml:lang="en">the human friendly presentation of the information. Its format is text and it is usually written in English.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A21">
+
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasDataCollectionStartDateTime"/>
+    <rdfs:subClassOf rdf:nodeID="A21"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A22">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+
+    <owl:onProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasURL"/>
+    <rdfs:subClassOf rdf:nodeID="A22"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#hasLongPrettyName">
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasLongPrettyName"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasPrettyName"/>
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasLongPrettyName"/>
+    <owl:equivalentProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasLongPrettyName"/>
+
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">long pretty name</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#Organization">
+    <rdfs:label xml:lang="en">Organization</rdfs:label>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Dataset"/>
+    <rdfs:subClassOf rdf:nodeID="A5"/>
+    <rdfs:subClassOf rdf:nodeID="A0"/>
+
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Organization"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#IdentifiedThing"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Document"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Organization"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Website"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Ontology"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <owl:disjointWith rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+
+    <rdfs:comment xml:lang="en">A group of agents organized for a particular purpose, e.g., KSL, stanford.</rdfs:comment>
+    <owl:equivalentClass rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Organization"/>
+    <rdfs:subClassOf rdf:nodeID="A7"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Publication"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Agent"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Source"/>
+    <rdfs:subClassOf rdf:nodeID="A2"/>
+
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#hasFromLanguage">
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasFromLanguage"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasFromLanguage"/>
+    <owl:equivalentProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasFromLanguage"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">from-language</rdfs:label>
+
+    <rdfs:comment xml:lang="en">language used by the source.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#TranslationRule"/>
+    <rdfs:range rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Language"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/ds.owl#rest">
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/ds.owl#rest"/>
+    <owl:equivalentProperty rdf:resource="http://inference-web.org/2.0/ds.owl#rest"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A14">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasAbstract"/>
+    <rdfs:subClassOf rdf:nodeID="A14"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#hasFromCol">
+
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasFromCol"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasFromCol"/>
+    <owl:equivalentProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasFromCol"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">from-column</rdfs:label>
+    <rdfs:comment xml:lang="en">The from column of the fragment (inclusive, index based on 1)</rdfs:comment>
+    <rdfs:domain rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#DocumentFragmentByRowCol"/>
+
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#hasPrettyName">
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasPrettyName"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasPrettyName"/>
+    <owl:equivalentProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasPrettyName"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">pretty name</rdfs:label>
+
+    <rdfs:domain rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#PrettyNameMapping"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A23">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasToLanguage"/>
+    <rdfs:subClassOf rdf:nodeID="A23"/>
+
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#MethodRule">
+    <rdfs:subClassOf rdf:nodeID="A10"/>
+    <owl:disjointWith rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    <rdfs:label xml:lang="en">Method Rule</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="A2"/>
+    <rdfs:subClassOf rdf:nodeID="A5"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#MethodRule"/>
+
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#IdentifiedThing"/>
+    <rdfs:subClassOf rdf:nodeID="A7"/>
+    <owl:equivalentClass rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#MethodRule"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#InferenceRule"/>
+    <rdfs:comment xml:lang="en">A method inference rule, uses patterns for premises and its conclusions, and additionally contains a method that must be applied.  In addition, 
+the conclusion needs to be a valid output of the method, using the premises.  For example, procedural attachment is a common encoding form for method rules.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#MethodRule"/>
+
+    <rdfs:subClassOf rdf:nodeID="A0"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf rdf:nodeID="A24"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A6">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasToRow"/>
+
+    <rdfs:subClassOf rdf:nodeID="A6"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#hasLanguage">
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasLanguage"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasLanguage"/>
+    <owl:equivalentProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasLanguage"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">language</rdfs:label>
+
+    <rdfs:comment xml:lang="en">it specifies the language used to encode information, e.g. "Tony's specialty is shellfish" is encoded in English. This property may also link to a registered formal language such as KIF.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+    <rdfs:range rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Language"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#PrettyNameMappingList">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf rdf:nodeID="A25"/>
+    <rdfs:label xml:lang="en"> List of PrettyNameMappings</rdfs:label>
+
+    <rdfs:subClassOf rdf:nodeID="A26"/>
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#PrettyNameMappingList"/>
+    <owl:equivalentClass rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#PrettyNameMappingList"/>
+    <owl:disjointWith rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#PrettyNameMappingList"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/ds.owl#List"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#Ontology">
+    <owl:equivalentClass rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Ontology"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Software"/>
+    <rdfs:subClassOf rdf:nodeID="A0"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf rdf:nodeID="A5"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#InferenceEngine"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Agent"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Source"/>
+
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Ontology"/>
+    <rdfs:subClassOf rdf:nodeID="A15"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Document"/>
+    <rdfs:subClassOf rdf:nodeID="A7"/>
+    <rdfs:subClassOf rdf:nodeID="A2"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Organization"/>
+    <rdfs:label xml:lang="en">Ontology</rdfs:label>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#WebService"/>
+
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#IdentifiedThing"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Person"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Ontology"/>
+    <owl:disjointWith rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    <rdfs:comment xml:lang="en">An Ontology is a document that describes a vocabulary of terms and their correlations.</rdfs:comment>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Sensor"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+
+    <rdfs:subClassOf rdf:nodeID="A14"/>
+    <rdfs:subClassOf rdf:nodeID="A9"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#hasFormat">
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasFormat"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasFormat"/>
+    <owl:equivalentProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasFormat"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+
+    <rdfs:label xml:lang="en">format</rdfs:label>
+    <rdfs:comment xml:lang="en">it specifies the format of information, e.g. "pdf", "ppt" (Power Point). It is mainly used to determine the appropriate application for process/display purpose.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+    <rdfs:range rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Format"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#LearnedSourceUsage">
+    <rdfs:label xml:lang="en">Learned Source Usage</rdfs:label>
+
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#LearnedSourceUsage"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf rdf:nodeID="A7"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#SourceUsage"/>
+    <rdfs:subClassOf rdf:nodeID="A16"/>
+    <rdfs:subClassOf rdf:nodeID="A27"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#IdentifiedThing"/>
+    <rdfs:subClassOf rdf:nodeID="A28"/>
+    <owl:equivalentClass rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#LearnedSourceUsage"/>
+
+    <rdfs:subClassOf rdf:nodeID="A5"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:nodeID="A2"/>
+    <owl:disjointWith rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf rdf:nodeID="A29"/>
+    <rdfs:comment xml:lang="en">A special type of source usage. It records the modification of sources - the question that initiates the learning process, the duration of learning, the original source and current source used by learning.</rdfs:comment>
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#LearnedSourceUsage"/>
+
+    <rdfs:subClassOf rdf:nodeID="A21"/>
+    <rdfs:subClassOf rdf:nodeID="A0"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#hasSource">
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasSource"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasSource"/>
+    <owl:equivalentProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasSource"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+
+    <rdfs:label xml:lang="en">source</rdfs:label>
+    <rdfs:comment xml:lang="en">the source of the Source Usage, i.e. where does it come from.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#SourceUsage"/>
+    <rdfs:range rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Source"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#AgentList">
+    <rdfs:label xml:lang="en"> List of Agents</rdfs:label>
+
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#AgentList"/>
+    <owl:equivalentClass rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#AgentList"/>
+    <owl:disjointWith rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    <rdfs:subClassOf rdf:nodeID="A30"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/ds.owl#List"/>
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#AgentList"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+
+    <rdfs:subClassOf rdf:nodeID="A13"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#hasDataCollectionEndDateTime">
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasDataCollectionEndDateTime"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasDataCollectionEndDateTime"/>
+    <owl:equivalentProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasDataCollectionEndDateTime"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">data-collection-end-datetime</rdfs:label>
+
+    <rdfs:comment xml:lang="en">the time stamp when data collection ended</rdfs:comment>
+    <rdfs:domain rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#LearnedSourceUsage"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A28">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasUsageQueryContent"/>
+
+    <rdfs:subClassOf rdf:nodeID="A28"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A27">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasUsageDateTime"/>
+    <rdfs:subClassOf rdf:nodeID="A27"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:nodeID="A31">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasFormat"/>
+    <rdfs:subClassOf rdf:nodeID="A31"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#Document">
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Document"/>
+
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Source"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Sensor"/>
+    <rdfs:subClassOf rdf:nodeID="A2"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#WebService"/>
+    <rdfs:subClassOf rdf:nodeID="A14"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:nodeID="A5"/>
+    <rdfs:subClassOf rdf:nodeID="A15"/>
+
+    <rdfs:comment xml:lang="en">A physical information container that is not actionable. They function like database.</rdfs:comment>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Agent"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Person"/>
+    <owl:disjointWith rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Document"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf rdf:nodeID="A0"/>
+    <rdfs:subClassOf rdf:nodeID="A9"/>
+
+    <rdfs:label xml:lang="en">Document</rdfs:label>
+    <owl:equivalentClass rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Document"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Organization"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#IdentifiedThing"/>
+    <rdfs:subClassOf rdf:nodeID="A7"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#InferenceEngine"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Software"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:nodeID="A32">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasPrettyNameMappingList"/>
+    <rdfs:subClassOf rdf:nodeID="A32"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#DocumentFragmentByOffset">
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Source"/>
+
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#DocumentFragmentByOffset"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#DocumentFragmentByOffset"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf rdf:nodeID="A33"/>
+    <rdfs:comment xml:lang="en">We may treat a document a one dimensional string, so we can mark a fragment with two offsets. We don't use byte because characters in text document may be multi-bytes.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#IdentifiedThing"/>
+    <owl:disjointWith rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+
+    <rdfs:subClassOf rdf:nodeID="A5"/>
+    <owl:equivalentClass rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#DocumentFragmentByOffset"/>
+    <rdfs:subClassOf rdf:nodeID="A2"/>
+    <rdfs:subClassOf rdf:nodeID="A19"/>
+    <rdfs:subClassOf rdf:nodeID="A3"/>
+    <rdfs:subClassOf rdf:nodeID="A7"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#DocumentFragment"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf rdf:nodeID="A0"/>
+
+    <rdfs:label xml:lang="en">Document Fragment by Offset</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#EmptyInformation">
+    <owl:disjointWith rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+    <rdfs:subClassOf rdf:nodeID="A34"/>
+    <rdfs:subClassOf rdf:nodeID="A22"/>
+    <owl:equivalentClass rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#EmptyInformation"/>
+
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#EmptyInformation"/>
+    <rdfs:subClassOf rdf:nodeID="A0"/>
+    <rdfs:subClassOf rdf:nodeID="A31"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#IdentifiedThing"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf rdf:nodeID="A2"/>
+    <rdfs:subClassOf rdf:nodeID="A5"/>
+    <rdfs:subClassOf rdf:nodeID="A32"/>
+    <rdfs:subClassOf rdf:nodeID="A35"/>
+
+    <rdfs:subClassOf rdf:nodeID="A7"/>
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#EmptyInformation"/>
+    <rdfs:label xml:lang="en">Empty Information</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="A11"/>
+    <rdfs:comment xml:lang="en">An instance of information indicating no conclusion has been derived, i.e. empty set of statements. In this case, the rawstring may contain some english message indicating no answer. </rdfs:comment>
+    <rdfs:subClassOf rdf:nodeID="A17"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A34">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasLanguage"/>
+    <rdfs:subClassOf rdf:nodeID="A34"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#hasRuleExample">
+
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasRuleExample"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasRuleExample"/>
+    <owl:equivalentProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasRuleExample"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">rule example</rdfs:label>
+    <rdfs:comment xml:lang="en">it is sub-property of rdfs:comment. It is used to provide an example to help users understand the referred entity.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#InferenceRule"/>
+
+    <rdfs:range rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#PrettyNameMapping">
+    <rdfs:comment xml:lang="en">specially designed for pretty display purpose.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#PrettyNameMapping"/>
+    <rdfs:subClassOf rdf:nodeID="A36"/>
+    <owl:equivalentClass rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#PrettyNameMapping"/>
+    <rdfs:subClassOf rdf:nodeID="A12"/>
+
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Pretty Name Mapping</rdfs:label>
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#PrettyNameMapping"/>
+    <owl:disjointWith rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A37">
+
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minCardinality>
+    <owl:onProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasInferenceEngineRule"/>
+    <rdfs:subClassOf rdf:nodeID="A37"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#DocumentFragment">
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#DocumentFragment"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Source"/>
+
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:label xml:lang="en">Document Fragment</rdfs:label>
+    <rdfs:comment xml:lang="en">A fragment of document that can be used as source.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:nodeID="A7"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#DocumentFragment"/>
+    <rdfs:subClassOf rdf:nodeID="A0"/>
+
+    <rdfs:subClassOf rdf:nodeID="A2"/>
+    <rdfs:subClassOf rdf:nodeID="A5"/>
+    <owl:disjointWith rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#IdentifiedThing"/>
+    <rdfs:subClassOf rdf:nodeID="A3"/>
+    <owl:equivalentClass rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#DocumentFragment"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A3">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasDocument"/>
+    <rdfs:subClassOf rdf:nodeID="A3"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#hasCreationDateTime">
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasCreationDateTime"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasCreationDateTime"/>
+
+    <owl:equivalentProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasCreationDateTime"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">created</rdfs:label>
+    <rdfs:comment xml:lang="en">When the artifact has been first created.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#hasDescription">
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasDescription"/>
+
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasDescription"/>
+    <owl:equivalentProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasDescription"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">description</rdfs:label>
+    <rdfs:comment xml:lang="en">The detailed description of the identified thing, e.g. a web page describing KIF language. An identified thing may have zero to many descriptions that could be written in different languages, format, and etc. </rdfs:comment>
+    <rdfs:domain rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#IdentifiedThing"/>
+    <rdfs:range rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/ds.owl#first">
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/ds.owl#first"/>
+    <owl:equivalentProperty rdf:resource="http://inference-web.org/2.0/ds.owl#first"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#hasOwner">
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasOwner"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasOwner"/>
+    <owl:equivalentProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasOwner"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">owner</rdfs:label>
+    <rdfs:comment xml:lang="en">the owner of a thing.</rdfs:comment>
+    <rdfs:range rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Agent"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#hasReplacee">
+
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasReplacee"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasReplacee"/>
+    <owl:equivalentProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasReplacee"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">replacee</rdfs:label>
+    <rdfs:domain rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#PrettyNameMapping"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#Language">
+    <rdfs:subClassOf rdf:nodeID="A0"/>
+    <owl:disjointWith rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf rdf:nodeID="A2"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf rdf:nodeID="A5"/>
+
+    <rdfs:label xml:lang="en">Language</rdfs:label>
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Language"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#IdentifiedThing"/>
+    <rdfs:subClassOf rdf:nodeID="A7"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Language"/>
+    <owl:equivalentClass rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Language"/>
+    <rdfs:comment xml:lang="en">The language used to encode the raw string, e.g. English, Knowledge Interchange Format (KIF) , and N3. Languages are in general registered at the core IWRegistry.</rdfs:comment>
+  </rdf:Description>
+
+  <rdf:Description rdf:nodeID="A0">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasOwner"/>
+    <rdfs:subClassOf rdf:nodeID="A0"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#TranslationRule">
+    <owl:equivalentClass rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#TranslationRule"/>
+
+    <rdfs:subClassOf rdf:nodeID="A24"/>
+    <rdfs:subClassOf rdf:nodeID="A2"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#IdentifiedThing"/>
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#TranslationRule"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#MethodRule"/>
+    <rdfs:comment xml:lang="en">Translation rules are special kinds of inference rules which are used to translate expressions from one language to the other.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#InferenceRule"/>
+
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf rdf:nodeID="A18"/>
+    <rdfs:subClassOf rdf:nodeID="A23"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:nodeID="A5"/>
+    <rdfs:subClassOf rdf:nodeID="A7"/>
+    <rdfs:subClassOf rdf:nodeID="A10"/>
+    <owl:disjointWith rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    <rdfs:subClassOf rdf:nodeID="A0"/>
+
+    <rdfs:label xml:lang="en">Translation Rule</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#TranslationRule"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#Source">
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Source"/>
+    <owl:equivalentClass rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Source"/>
+    <rdfs:subClassOf rdf:nodeID="A2"/>
+    <rdfs:subClassOf rdf:nodeID="A7"/>
+
+    <rdfs:comment xml:lang="en">A source refers to the source of information. It is the place where we obtain information.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:label xml:lang="en">Source</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="A0"/>
+    <rdfs:subClassOf rdf:nodeID="A5"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#IdentifiedThing"/>
+
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Source"/>
+    <owl:disjointWith rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#hasConfidenceValue">
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasConfidenceValue"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasConfidenceValue"/>
+    <owl:equivalentProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasConfidenceValue"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+
+    <rdfs:label xml:lang="en">confidence</rdfs:label>
+    <rdfs:comment xml:lang="en">this is a common property and can be used to describe an agent's confidence 
+        on a piece of information or an action step.It is typically used together with an object property
+        indicating who asserted the confidence. For example, an inference engine may be one example.
+        Although we did not specified its cardinality, it is typically used only once in one individual.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <rdfs:comment xml:lang="en">The provenance part of PML2 ontology. It is a fundamental component of PML2 ontology.</rdfs:comment>
+
+    <rdfs:label xml:lang="en">PML2 provenance ontology</rdfs:label>
+    <owl:versionInfo xml:lang="en">version 2.0, Authors: Deborah L. McGuinness, Li Ding, Paulo Pinheiro da Silva, Alyssa Glass, and Cynthia Chang</owl:versionInfo>
+    <owl:imports rdf:resource="http://inference-web.org/2.0/ds.owl#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#Thing">
+    <owl:complementOf rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    <owl:disjointWith rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    <owl:equivalentClass rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A26">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#PrettyNameMapping"/>
+    <owl:onProperty rdf:resource="http://inference-web.org/2.0/ds.owl#first"/>
+    <rdfs:subClassOf rdf:nodeID="A26"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#Sensor">
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Publication"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Agent"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Dataset"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Document"/>
+    <rdfs:subClassOf rdf:nodeID="A2"/>
+    <owl:disjointWith rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:comment xml:lang="en">any device that receives a signal or stimulus (as heat or pressure or light or motion etc.) and records it. (WordNet)</rdfs:comment>
+
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#IdentifiedThing"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Ontology"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Source"/>
+    <rdfs:subClassOf rdf:nodeID="A7"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Sensor"/>
+    <rdfs:label xml:lang="en">Sensor</rdfs:label>
+
+    <rdfs:subClassOf rdf:nodeID="A5"/>
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Sensor"/>
+    <owl:equivalentClass rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Sensor"/>
+    <rdfs:subClassOf rdf:nodeID="A0"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Website"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#hasEscapeCharacterSequence">
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasEscapeCharacterSequence"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasEscapeCharacterSequence"/>
+    <owl:equivalentProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasEscapeCharacterSequence"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">escape character sequence</rdfs:label>
+    <rdfs:comment xml:lang="en">The escape character used by a (formal) language (for parse use). It is used more like a comment indicator. This is used by InferenceML to embed metalangauge for proof checking (talk to Priyendra Deshwa).</rdfs:comment>
+    <rdfs:domain rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Language"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:nodeID="A33">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasFromOffset"/>
+    <rdfs:subClassOf rdf:nodeID="A33"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#DeclarativeRule">
+    <rdfs:subClassOf rdf:nodeID="A0"/>
+
+    <rdfs:label xml:lang="en">Declarative Rule</rdfs:label>
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#DeclarativeRule"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#IdentifiedThing"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#InferenceRule"/>
+    <rdfs:subClassOf rdf:nodeID="A10"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:disjointWith rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    <rdfs:subClassOf rdf:nodeID="A5"/>
+
+    <rdfs:subClassOf rdf:nodeID="A2"/>
+    <rdfs:comment xml:lang="en">A declarative inference rule can be fully specified by patterns for premises and its conclusion.   For example, Modus Ponens, can be specified by the premise patterns ?A,  ?A -&amp;gt; ?B and the conclusion pattern ?B.</rdfs:comment>
+    <rdfs:subClassOf rdf:nodeID="A7"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#DeclarativeRule"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <owl:equivalentClass rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#DeclarativeRule"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf rdf:nodeID="A24"/>
+
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#hasModificationDateTime">
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasModificationDateTime"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasModificationDateTime"/>
+    <owl:equivalentProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasModificationDateTime"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">last modified</rdfs:label>
+
+    <rdfs:comment xml:lang="en">When the artifact has been modified.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A20">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasVersion"/>
+    <rdfs:subClassOf rdf:nodeID="A20"/>
+
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#Publication">
+    <rdfs:subClassOf rdf:nodeID="A38"/>
+    <rdfs:label xml:lang="en">Publication</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="A9"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:nodeID="A14"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Publication"/>
+
+    <rdfs:subClassOf rdf:nodeID="A7"/>
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Publication"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#IdentifiedThing"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Agent"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Organization"/>
+    <owl:disjointWith rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#InferenceEngine"/>
+
+    <rdfs:subClassOf rdf:nodeID="A5"/>
+    <rdfs:subClassOf rdf:nodeID="A2"/>
+    <rdfs:subClassOf rdf:nodeID="A39"/>
+    <rdfs:subClassOf rdf:nodeID="A15"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Sensor"/>
+    <rdfs:comment xml:lang="en">If we have two versions of the same publication, we need to create two instances of Publication. A publication may have multiple ISBNs.</rdfs:comment>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Software"/>
+    <rdfs:subClassOf rdf:nodeID="A0"/>
+
+    <owl:equivalentClass rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Publication"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Document"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Person"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#WebService"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Source"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A8">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+
+    <owl:onProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasFromRow"/>
+    <rdfs:subClassOf rdf:nodeID="A8"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A5">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasCreationDateTime"/>
+    <rdfs:subClassOf rdf:nodeID="A5"/>
+
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#hasFromOffset">
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasFromOffset"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasFromOffset"/>
+    <owl:equivalentProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasFromOffset"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">from-offset</rdfs:label>
+
+    <rdfs:comment xml:lang="en">The from offset of the fragment (inclusive, index based on 0).</rdfs:comment>
+    <rdfs:domain rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#DocumentFragmentByOffset"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#hasToCol">
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasToCol"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasToCol"/>
+
+    <owl:equivalentProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasToCol"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">to-column</rdfs:label>
+    <rdfs:comment xml:lang="en">The to column of the fragment (inclusive, index based on 1)</rdfs:comment>
+    <rdfs:domain rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#DocumentFragmentByRowCol"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#hasISBN">
+
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasISBN"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasISBN"/>
+    <owl:equivalentProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasISBN"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">isbn</rdfs:label>
+    <rdfs:comment xml:lang="en">The International Standard Book Number.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Publication"/>
+
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A25">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#PrettyNameMappingList"/>
+    <owl:onProperty rdf:resource="http://inference-web.org/2.0/ds.owl#rest"/>
+    <rdfs:subClassOf rdf:nodeID="A25"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#hasPublisher">
+
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasPublisher"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasPublisher"/>
+    <owl:equivalentProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasPublisher"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">publisher</rdfs:label>
+    <rdfs:comment xml:lang="en">An agent responsible for making the document publicly available. see also http://purl.org/dc/elements/1.1/publisher.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Document"/>
+
+    <rdfs:range rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Agent"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#Dataset">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#IdentifiedThing"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Agent"/>
+    <rdfs:subClassOf rdf:nodeID="A14"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Person"/>
+
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Sensor"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Document"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Organization"/>
+    <rdfs:subClassOf rdf:nodeID="A5"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#InferenceEngine"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <owl:disjointWith rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    <rdfs:subClassOf rdf:nodeID="A9"/>
+    <rdfs:label xml:lang="en">Dataset</rdfs:label>
+
+    <rdfs:subClassOf rdf:nodeID="A7"/>
+    <rdfs:subClassOf rdf:nodeID="A15"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Dataset"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Source"/>
+    <rdfs:comment xml:lang="en">A dataset is a collection of data document whose information is encoded in a defined structure (for example, lists, tables, and databases). see also http://purl.org/dc/dcmitype/Dataset.</rdfs:comment>
+    <owl:equivalentClass rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Dataset"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#WebService"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Software"/>
+
+    <rdfs:subClassOf rdf:nodeID="A0"/>
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Dataset"/>
+    <rdfs:subClassOf rdf:nodeID="A2"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#Nothing">
+    <owl:complementOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/ds.owl#List"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Language"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Organization"/>
+
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#IdentifiedThing"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#AgentList"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#IdentifiedThing"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Agent"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#InferenceEngine"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Organization"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Website"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Person"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Person"/>
+
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Dataset"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#AgentList"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Source"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#InferenceEngine"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#InferenceRule"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#DocumentFragment"/>
+    <owl:disjointWith rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Document"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Language"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#LearnedSourceUsage"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Source"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Ontology"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#TranslationRule"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#InferenceRule"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Document"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#DocumentFragmentByRowCol"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Publication"/>
+
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#PrettyNameMappingList"/>
+    <owl:equivalentClass rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#DocumentFragmentByRowCol"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#EmptyInformation"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Software"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Publication"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#PrettyNameMapping"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Sensor"/>
+
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#WebService"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Format"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#MethodRule"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/ds.owl#List"/>
+    <owl:disjointWith rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#EmptyInformation"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Software"/>
+
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Agent"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#SourceUsage"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#DeclarativeRule"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#MethodRule"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Format"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#DocumentFragmentByOffset"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#SourceUsage"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Website"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Dataset"/>
+
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#DeclarativeRule"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#LearnedSourceUsage"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#DocumentFragment"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#PrettyNameMappingList"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Ontology"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#WebService"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#DocumentFragmentByOffset"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#TranslationRule"/>
+
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Sensor"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#PrettyNameMapping"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A39">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasISBN"/>
+    <rdfs:subClassOf rdf:nodeID="A39"/>
+
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#Information">
+    <rdfs:subClassOf rdf:nodeID="A17"/>
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+    <rdfs:subClassOf rdf:nodeID="A34"/>
+    <rdfs:subClassOf rdf:nodeID="A22"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:nodeID="A32"/>
+    <rdfs:subClassOf rdf:nodeID="A11"/>
+
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#IdentifiedThing"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf rdf:nodeID="A35"/>
+    <rdfs:subClassOf rdf:nodeID="A2"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:comment xml:lang="en">A piece of information, e.g. a formula in logic languages, and an utterance/word/phrase/sentence/paragraph/article in natural language. It is used as a range of iw:hasContent. This class and two of its sub-classes enable users to specify four types of semantics  (i) Information Annotation - annotate just the format and language used by the content of information; (ii) Information With Content - additionally provide the content of information that is materialized as string without loading a web page; (iii) Information external - additionally provide the URL for fetching the content; and (iv) Information - with every thing including the content string and URL. The second semantics is especially useful when the content is short or mainly used locally. For example, when learning by instruction, the utterances used for learning can be stored within the PML document without being externally stored. By assigning URI reference to information, we can even use owl:sameAs to capture the equivalence of two pieces of information. </rdfs:comment>
+    <rdfs:subClassOf rdf:nodeID="A7"/>
+    <rdfs:label xml:lang="en">Information</rdfs:label>
+
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+    <owl:disjointWith rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    <owl:equivalentClass rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+    <rdfs:subClassOf rdf:nodeID="A0"/>
+    <rdfs:subClassOf rdf:nodeID="A31"/>
+    <rdfs:subClassOf rdf:nodeID="A5"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A35">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasReferenceSourceUsage"/>
+    <rdfs:subClassOf rdf:nodeID="A35"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#InferenceEngine">
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#IdentifiedThing"/>
+    <rdfs:subClassOf rdf:nodeID="A20"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Ontology"/>
+
+    <owl:disjointWith rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:nodeID="A5"/>
+    <rdfs:label xml:lang="en">Inference Engine</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf rdf:nodeID="A37"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Agent"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Source"/>
+
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#InferenceEngine"/>
+    <rdfs:subClassOf rdf:nodeID="A0"/>
+    <rdfs:subClassOf rdf:nodeID="A2"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Dataset"/>
+    <owl:equivalentClass rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#InferenceEngine"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#InferenceEngine"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Document"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Website"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Software"/>
+
+    <rdfs:subClassOf rdf:nodeID="A7"/>
+    <rdfs:comment xml:lang="en">An inference engine represents an engine that is able to produce a justification for a conclusion. Note that the phrase "inference engine" applies not only to reasoners but also to other systems like search engines which may justify their answers by direct assertion</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Publication"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#hasUsageQueryContent">
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasUsageQueryContent"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasContent"/>
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasUsageQueryContent"/>
+    <owl:equivalentProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasUsageQueryContent"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">query-content</rdfs:label>
+    <rdfs:comment xml:lang="en">The query content that leads to the source usage. e.g. the query part of a URL.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#SourceUsage"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#hasToRow">
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasToRow"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasToRow"/>
+    <owl:equivalentProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasToRow"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">to-row</rdfs:label>
+    <rdfs:comment xml:lang="en">The to row of the fragment (inclusive, index based on 1)</rdfs:comment>
+
+    <rdfs:domain rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#DocumentFragmentByRowCol"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#Agent">
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Dataset"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Ontology"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Publication"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Document"/>
+    <rdfs:label xml:lang="en">Agent</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="A0"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#IdentifiedThing"/>
+    <rdfs:comment xml:lang="en">actionalble entities.</rdfs:comment>
+    <rdfs:subClassOf rdf:nodeID="A5"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Agent"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Source"/>
+
+    <rdfs:subClassOf rdf:nodeID="A7"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Website"/>
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Agent"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:nodeID="A2"/>
+    <owl:disjointWith rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    <owl:equivalentClass rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Agent"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#hasMimetype">
+
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasMimetype"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasMimetype"/>
+    <owl:equivalentProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasMimetype"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">mime-type</rdfs:label>
+    <rdfs:comment xml:lang="en">A well-defined string indicating the mime type of information content. Internet Media Types (MIME). see also http://www.iana.org/assignments/media-types/.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A29">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasSource"/>
+    <rdfs:subClassOf rdf:nodeID="A29"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#usesInferenceEngine">
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#usesInferenceEngine"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#usesInferenceEngine"/>
+    <owl:equivalentProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#usesInferenceEngine"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">uses-inference-engine</rdfs:label>
+    <rdfs:comment xml:lang="en">The inference engine used by an agent</rdfs:comment>
+
+    <rdfs:domain rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Agent"/>
+    <rdfs:range rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#InferenceEngine"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#hasName">
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasName"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasName"/>
+    <owl:equivalentProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasName"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+
+    <rdfs:label xml:lang="en">name</rdfs:label>
+    <rdfs:comment xml:lang="en">the human readable label of the identified thing.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#IdentifiedThing"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A7">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+
+    <owl:onProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasAuthorList"/>
+    <rdfs:subClassOf rdf:nodeID="A7"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/ds.owl#">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A30">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Agent"/>
+
+    <owl:onProperty rdf:resource="http://inference-web.org/2.0/ds.owl#first"/>
+    <rdfs:subClassOf rdf:nodeID="A30"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#InferenceRule">
+    <rdfs:comment xml:lang="en">Inference rules are used to derive conclusions from premises.
+Inference Web divides inference rules into three classes: Primitive and Derived and Translation. 
+This is an abstract class without any direct instance. A primitive rule is an atomic rule with respect to an inference engine. An inference engine may support rules that it does not need to further decompose. Since a primitive rule is an inference engine dependent concept, we may find a rule is primitive to one inference engine but not to another engine. For example a `natural deduction reasoner R1 may define Modus Ponens as a primitive rule and another reasoner R2 may register Robinson's resolution rule as a primitive rule. The reasoner R2 may be able to derive a Modus Ponens rule using its primitive resolution rule. </rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#InferenceRule"/>
+    <rdfs:subClassOf rdf:nodeID="A7"/>
+
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#InferenceRule"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#IdentifiedThing"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf rdf:nodeID="A10"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:disjointWith rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    <rdfs:subClassOf rdf:nodeID="A5"/>
+    <rdfs:subClassOf rdf:nodeID="A24"/>
+    <rdfs:subClassOf rdf:nodeID="A2"/>
+
+    <rdfs:subClassOf rdf:nodeID="A0"/>
+    <rdfs:label xml:lang="en">Inference Rule</rdfs:label>
+    <owl:equivalentClass rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#InferenceRule"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#SourceUsage">
+    <rdfs:subClassOf rdf:nodeID="A29"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment xml:lang="en">A usage of the source. It records an access of a source at a certain date time.</rdfs:comment>
+
+    <rdfs:subClassOf rdf:nodeID="A28"/>
+    <rdfs:subClassOf rdf:nodeID="A2"/>
+    <rdfs:label xml:lang="en">Source Usage</rdfs:label>
+    <owl:equivalentClass rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#SourceUsage"/>
+    <owl:disjointWith rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    <rdfs:subClassOf rdf:nodeID="A5"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#IdentifiedThing"/>
+    <rdfs:subClassOf rdf:nodeID="A7"/>
+
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf rdf:nodeID="A27"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf rdf:nodeID="A0"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#SourceUsage"/>
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#SourceUsage"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#Software">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Software"/>
+    <rdfs:subClassOf rdf:nodeID="A5"/>
+    <rdfs:subClassOf rdf:nodeID="A7"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Source"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#IdentifiedThing"/>
+    <rdfs:comment xml:lang="en">written programs or procedures or rules and associated documentation pertaining to the operation of a computer system and that are stored in read/write memory.(WordNet)</rdfs:comment>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Dataset"/>
+    <owl:disjointWith rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+
+    <rdfs:label xml:lang="en">Software</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Agent"/>
+    <rdfs:subClassOf rdf:nodeID="A0"/>
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Software"/>
+    <rdfs:subClassOf rdf:nodeID="A20"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Document"/>
+    <owl:equivalentClass rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Software"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Website"/>
+
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Ontology"/>
+    <rdfs:subClassOf rdf:nodeID="A2"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <owl:disjointWith rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Publication"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A36">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+
+    <owl:onProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasReplacee"/>
+    <rdfs:subClassOf rdf:nodeID="A36"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#Format">
+    <rdfs:label xml:lang="en">Format</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:disjointWith rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    <rdfs:subClassOf rdf:nodeID="A0"/>
+
+    <owl:equivalentClass rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Format"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Format"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Format"/>
+    <rdfs:subClassOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#IdentifiedThing"/>
+    <rdfs:comment xml:lang="en">A plan for the organization and arrangement of specified information. Examples: binary, text,  pdf, etc.</rdfs:comment>
+    <rdfs:subClassOf rdf:nodeID="A5"/>
+
+    <rdfs:subClassOf rdf:nodeID="A2"/>
+    <rdfs:subClassOf rdf:nodeID="A7"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A24">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasContent"/>
+    <rdfs:subClassOf rdf:nodeID="A24"/>
+
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#hasReferenceSourceUsage">
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasReferenceSourceUsage"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasReferenceSourceUsage"/>
+    <owl:equivalentProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasReferenceSourceUsage"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">reference source usage</rdfs:label>
+
+    <rdfs:comment xml:lang="en">Explain how this information is obtained from a source: by whom, when, which source and which part of the source.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+    <rdfs:range rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#SourceUsage"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#hasToOffset">
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasToOffset"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasToOffset"/>
+
+    <owl:equivalentProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasToOffset"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">to-offset</rdfs:label>
+    <rdfs:comment xml:lang="en">The to offset of the fragment (exclusive, index based on 0)</rdfs:comment>
+    <rdfs:domain rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#DocumentFragmentByOffset"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A38">
+
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasPublicationDateTime"/>
+    <rdfs:subClassOf rdf:nodeID="A38"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/2.0/pml-provenance.owl#hasFromRow">
+    <owl:sameAs rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasFromRow"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+
+    <rdfs:subPropertyOf rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasFromRow"/>
+    <owl:equivalentProperty rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#hasFromRow"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">from-row</rdfs:label>
+    <rdfs:comment xml:lang="en">The from row of the fragment (inclusive, index based on 1)</rdfs:comment>
+    <rdfs:domain rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#DocumentFragmentByRowCol"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </rdf:Description>
+
+</rdf:RDF>
+
