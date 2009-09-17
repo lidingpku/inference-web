@@ -1,6 +1,5 @@
 <?php
 define("URL_DEMO_HOME", "stat.php");
-$url_home="http://inference-web.org/test/combine/PUZ001-1";
 
 $params = get_params();
 $params["message"] = "welcome!";
@@ -102,6 +101,8 @@ function get_param($name){
 }
 
 function show_form($params){
+$url_home="http://inference-web.org/test/combine/PUZ001-1";
+
 ?><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
