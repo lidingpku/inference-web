@@ -1,9 +1,11 @@
 <?php
+$url_base="http://inference-web.org/test/combine/PUZ001-1";
 
 $cls = new ProcessSolution();
-$cls->init(dirname(__FILE__));
+$cls->init(dirname(__FILE__), $url_base);
 $cls->run_g1();
 $cls->run_g2();
+$cls->run_mapping_i_pre();
 
 class ProcessSolution{
 	var $urls_pml = array();
@@ -14,16 +16,13 @@ class ProcessSolution{
 
 	var $url_pml_root = "http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1";
 	var $dir_my_root ;
-	var $url_my_root =  "http://tw2.tw.rpi.edu/pml/PUZ001-1";
+	var $url_my_root ;
 
-	private function get_local_name($url_pml){
-		$ret = substr($url_pml,strlen($this->url_pml_root)+1);
-		$ret = str_replace("/","-",$ret);
-		return $ret;
-	}
+
 	
-	public function init($root_dir){
+	public function init($root_dir, $url_base){
 		$this->dir_my_root= $root_dir ;
+		$this->url_my_root= $url_base;
 		$paths =array();
 		
 		$paths []= "Ayane---1.1";
@@ -41,6 +40,12 @@ class ProcessSolution{
 		}
 	}
 	
+	private function get_local_name($url_pml){
+		$ret = substr($url_pml,strlen($this->url_pml_root)+1);
+		$ret = str_replace("/","-",$ret);
+		return $ret;
+	}
+
 	private function build_ws_url($service_url,$params){
 		$ret = $service_url;
 		foreach($params as $key=>$value)
@@ -120,5 +125,33 @@ class ProcessSolution{
 		}
 	}
 
+	public function run_mapping_i_pre(){
+		$file_mapping_i_pre_from = $this->dir_my_root ."/mapping_i_pre.from.sparql";
+		$url_mapping_i_pre_from = $this->url_my_root ."/mapping_i_pre.from.sparql";
+		$url_mapping_i_pre_query = $this->url_my_root ."/mapping_i_pre.query.sparql";
+		$file_mapping_i_pre = $this->dir_my_root ."/mapping_i_pre.rdf";
+		$url_mapping_i_pre = $this->url_my_root ."/mapping_i_pre.rdf";
+		
+		$content ="";
+		foreach($this->urls_pml_plus as $url){
+			$content .= "FROM <$url>\n";
+		}
+		foreach($this->urls_pml_eq as $url){
+			$content .= "FROM <$url>\n";
+		}
+		file_put_contents($file_mapping_i_pre_from,$content);
+		
+		//get first pass
+		$params["step"] =  3;
+		$params["output"] =  "xml";
+		$params["query-uri"] =  urlencode ($url_mapping_i_pre_query);
+		$params["from-uri"] =  urlencode ( $url_mapping_i_pre_from );		
+		$url = $this->build_ws_url(	$this->url_my_root. "/stat.php?", $params );
+
+		$content = file_get_contents($url);
+		$filename = $file_mapping_i_pre;
+		file_put_contents($filename, $content);
+	
+	}
 }
 ?>
