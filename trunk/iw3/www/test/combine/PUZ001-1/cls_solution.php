@@ -69,6 +69,8 @@ class ProcessSolution{
 			$url_target_rdf  = $url_root."/".$target_base.".rdf";
 			$file_target_sparql  = $dir_root."/".$target_base.".from.sparql";
 			$url_target_sparql  = $url_root."/".$target_base.".from.sparql";
+			$file_target_sparql_named  = $dir_root."/".$target_base.".from.named.sparql";
+			$url_target_sparql_named  = $url_root."/".$target_base.".from.named.sparql";
 
 			$params["option"] = "sign,dlist";
 			$params["url"] = urlencode ( $url_pml );
@@ -78,8 +80,12 @@ class ProcessSolution{
 			$filename = $file_target_rdf;
 			file_put_contents($filename, $content);
 			
-			$content = "FROM NAMED <$url_target_rdf>";
+			$content = "FROM  <$url_target_rdf>";
 			$filename = $file_target_sparql;
+			file_put_contents($filename, $content);	
+
+			$content = "FROM NAMED <$url_target_rdf>";
+			$filename = $file_target_sparql_named;
 			file_put_contents($filename, $content);	
 
 			$this->urls_pml_plus [] = $url_target_rdf;
@@ -106,6 +112,8 @@ class ProcessSolution{
 			$url_target_rdf  = $url_root."/".$target_base.".rdf";
 			$file_target_sparql  = $dir_root."/".$target_base.".from.sparql";
 			$url_target_sparql  = $url_root."/".$target_base.".from.sparql";
+			$file_target_sparql_named  = $dir_root."/".$target_base.".from.named.sparql";
+			$url_target_sparql_named  = $url_root."/".$target_base.".from.named.sparql";
 
 			$params["step"] =  3;
 			$params["output"] =  "xml";
@@ -119,8 +127,12 @@ class ProcessSolution{
 			$filename = $file_target_rdf;
 			file_put_contents($filename, $content);
 			
-			$content = "FROM NAMED <$url_target_rdf>";
+			$content = "FROM <$url_target_rdf>";
 			$filename = $file_target_sparql;
+			file_put_contents($filename, $content);	
+
+			$content = "FROM NAMED <$url_target_rdf>";
+			$filename = $file_target_sparql_named;
 			file_put_contents($filename, $content);	
 		}
 	}
