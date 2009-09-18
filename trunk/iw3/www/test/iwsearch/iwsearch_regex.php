@@ -3,7 +3,7 @@
 
 define("OUTPUT_HTML", "html");
 
-define("URL_IWSEARCH_REGEX", "http://inference-web.org/pub/iwsearch/iwsearch_regex.php");
+define("URL_IWSEARCH_REGEX", "http://inference-web.org/test/iwsearch/iwsearch_regex.php");
 define("URL_SPARQL2JSON", "http://data-gov.tw.rpi.edu/ws/sparql2json.php");
 define("SPARQL_TDB_IWSEARCH", "http://plato.cs.rpi.edu:8080/joseki/sparql/tdb-iwsearch?");
 

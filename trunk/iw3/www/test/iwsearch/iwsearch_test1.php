@@ -1,6 +1,6 @@
 <?php
-define("URL_DEMO_HOME", "http://inference-web.org/pub/iwsearch/iwsearch_test1.php");
-define("URL_DEMO_SPARQL", "http://inference-web.org/pub/iwsearch/iwsearch_sparql_list_instance.php");
+define("URL_DEMO_HOME", "http://inference-web.org/test/iwsearch/iwsearch_test1.php");
+define("URL_DEMO_SPARQL", "http://inference-web.org/test/iwsearch/iwsearch_sparql_list_instance.php");
 define("URL_SPARQL2JSON", "http://data-gov.tw.rpi.edu/ws/sparql2json.php");
 define("SPARQL_TDB_IWSEARCH", "http://plato.cs.rpi.edu:8080/joseki/sparql/tdb-iwsearch?");
 
@@ -21,15 +21,15 @@ if (empty($uri)){
 <legend>demo 1:sample sparql queries on registry data</legend>
 <form Method="get" action="<?php echo URL_SPARQL2JSON; ?>" >
  <select name="sparql_uri">
-  <option value="http://inference-web.org/pub/iwsearch/iwsearch_count_triples.sparql">count loaded triples</option>
-  <option value="http://inference-web.org/pub/iwsearch/iwsearch_list_graph.sparql">list graph and count triples in the graph</option>
-  <option value="http://inference-web.org/pub/iwsearch/iwsearch_list_class.sparql">list classes and the number of their instances (with uri)</option>
-  <option value="http://inference-web.org/pub/iwsearch/iwsearch_list_class_all.sparql">list classes and the number of their instances (all,including blank node)</option>
-  <option value="http://inference-web.org/pub/iwsearch/iwsearch_list_person.sparql">list instance of pmlp:Person</option>
-  <option value="http://inference-web.org/pub/iwsearch/iwsearch_list_agent.sparql">list instance of pmlp:Agent (with OWL inf, including pmlp:Person, pmlp:Organization,..)</option>
-  <option value="http://inference-web.org/pub/iwsearch/iwsearch_complex_ref.sparql">list instances referencing an external instance (limit 100)</option>
-  <option value="http://inference-web.org/pub/iwsearch/iwsearch_regex_pdf.sparql">list instances related to "PDF"</option>
-  <option value="http://inference-web.org/pub/iwsearch/iwsearch_regex_smith.sparql">list instances related to "smith"</option>
+  <option value="http://inference-web.org/test/iwsearch/iwsearch_count_triples.sparql">count loaded triples</option>
+  <option value="http://inference-web.org/test/iwsearch/iwsearch_list_graph.sparql">list graph and count triples in the graph</option>
+  <option value="http://inference-web.org/test/iwsearch/iwsearch_list_class.sparql">list classes and the number of their instances (with uri)</option>
+  <option value="http://inference-web.org/test/iwsearch/iwsearch_list_class_all.sparql">list classes and the number of their instances (all,including blank node)</option>
+  <option value="http://inference-web.org/test/iwsearch/iwsearch_list_person.sparql">list instance of pmlp:Person</option>
+  <option value="http://inference-web.org/test/iwsearch/iwsearch_list_agent.sparql">list instance of pmlp:Agent (with OWL inf, including pmlp:Person, pmlp:Organization,..)</option>
+  <option value="http://inference-web.org/test/iwsearch/iwsearch_complex_ref.sparql">list instances referencing an external instance (limit 100)</option>
+  <option value="http://inference-web.org/test/iwsearch/iwsearch_regex_pdf.sparql">list instances related to "PDF"</option>
+  <option value="http://inference-web.org/test/iwsearch/iwsearch_regex_smith.sparql">list instances related to "smith"</option>
 </select>
  <input type="hidden" name="output" value="html">
  <input type="hidden" name="service_uri" value="<?php echo SPARQL_TDB_IWSEARCH; ?>">
@@ -63,12 +63,12 @@ foreach($data->results->bindings as $binding){
 
 <fieldset>
 <legend>demo 3: faceted browsing on agents</legend>
-<a href="http://inference-web.org/pub/iwsearch/iwsearch_exhibit_agent.html">http://inference-web.org/pub/iwsearch/iwsearch_exhibit_agent.html</a>
+<a href="http://inference-web.org/test/iwsearch/iwsearch_exhibit_agent.html">http://inference-web.org/test/iwsearch/iwsearch_exhibit_agent.html</a>
 </fieldset>
 
 <fieldset>
 <legend>demo 4: search for instances by keyword and source</legend>
-<a href="http://inference-web.org/pub/iwsearch/iwsearch_regex.php">http://inference-web.org/pub/iwsearch/iwsearch_regex.php</a>
+<a href="http://inference-web.org/test/iwsearch/iwsearch_regex.php">http://inference-web.org/test/iwsearch/iwsearch_regex.php</a>
 </fieldset>
 
 <hr style="font-family: sans-serif;">
