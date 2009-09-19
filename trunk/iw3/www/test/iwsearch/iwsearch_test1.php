@@ -44,7 +44,7 @@ if (empty($uri)){
 <form Method="get" action="<?php echo URL_SPARQL2JSON; ?>" >
  <select name="sparql_uri">
 <?php
-$content = file_get_contents("http://data-gov.tw.rpi.edu/ws/sparql2json.php?sparql_uri=http%3A%2F%2Finference-web.org%2Fpub%2Fiwsearch%2Fiwsearch_list_class.sparql&output=sparql&service_uri=http%3A%2F%2Fplato.cs.rpi.edu%3A8080%2Fjoseki%2Fsparql%2Ftdb-iwsearch%3F");
+$content = file_get_contents("http://data-gov.tw.rpi.edu/ws/sparql2json.php?sparql_uri=http%3A%2F%2Finference-web.org%2Ftest%2Fiwsearch%2Fiwsearch_list_class.sparql&output=sparql&service_uri=http%3A%2F%2Fplato.cs.rpi.edu%3A8080%2Fjoseki%2Fsparql%2Ftdb-iwsearch%3F");
 $data = json_decode($content);
 
 foreach($data->results->bindings as $binding){
