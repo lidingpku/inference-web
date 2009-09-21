@@ -109,7 +109,6 @@ class ProcessSolution{
 			$filename = $file_target_sparql_named;
 			file_put_contents($filename, $content);	
 
-			$this->urls_pml_plus [] = $url_target_rdf;
 		}
 	}	
 	
@@ -149,7 +148,6 @@ class ProcessSolution{
 			$filename = $file_target_sparql_named;
 			file_put_contents($filename, $content);	
 
-			$this->urls_pml_plus [] = $url_target_rdf;
 		}
 	}
 		
