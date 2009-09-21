@@ -64,6 +64,14 @@ public class DataHg{
 		return m;
 	}	
 	
+	public void addHg(DataHg hg){
+		this.m_map_res_text.putAll(hg.m_map_res_text);
+		this.m_map_res_lang.putAll(hg.m_map_res_lang);
+		this.m_map_res_vertex.add(hg.m_map_res_vertex);
+		this.m_map_url_step.add(hg.m_map_url_step);
+		this.m_steps.addAll(hg.m_steps);
+	}
+	
 	public void addHg(String url_input){
 		
 		Model m =loadHg(url_input);
@@ -159,7 +167,15 @@ public class DataHg{
 	
 	final public static int OPTION_HG_WEIGHT_LEAF= 0; 
 	final public static int OPTION_HG_WEIGHT_STEP= 1; 
-	
+	public static String getOptionString(int option){
+		switch(option){
+		case OPTION_HG_WEIGHT_LEAF:
+			return "leaf";
+		case OPTION_HG_WEIGHT_STEP:
+			default:
+			return "step";
+		}
+	}
 	
 	public DataHyperGraph getHyperGraph(String szURL, int option){
 		DataHyperGraph lg = new DataHyperGraph();

@@ -1,23 +1,16 @@
 package org.inference_web.iwapp.hypergraph;
 
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
-import sw4j.rdf.util.ToolJena;
-import sw4j.util.DataObjectGroupMap;
-import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
-import com.hp.hpl.jena.rdf.model.Statement;
-import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.vocabulary.OWL;
+import sw4j.task.graph.DataHyperGraph;
 
 
 public class ToolGenGraph {
 	
 	public static void main(String[] argv){
 		ToolGenGraph tool = new ToolGenGraph();
-		tool.test();
+		tool.run("http://inference-web.org/test/combine/PUZ/PUZ001-1/g2");
 
 	}
 	public void test(){
@@ -40,15 +33,62 @@ public class ToolGenGraph {
 		to_dot(test);
 	}
 	
-	public void run(){
-		//1 create mapping i
-		create_mapping_i(
-				"http://inference-web.org/test/combine/PUZ/PUZ001-1/mapping_i.rdf",
-				"files/tptp/mapping_i.rdf",
-				"http://inference-web.org/test/combine/PUZ/PUZ001-1/mapping_i.rdf#"
-		);		
+	public void run(String url_base){
+		// plot original graph
+		//build hg
+		DataHg hg = new DataHg();
+		for(String dir_input: get_dirs()){
+			String url_input = url_base+"/"+dir_input+"-answer.owl.rdf";
+			System.out.println("loading ..."+ url_input);
+			
+			hg.addHg(url_input);
+		}
+		hg.addMappings(url_base+"/mapping_i.rdf");
+
+
 		
-		//2 generate graph
+		//TODO: call api to display original graph
+		//data_export_graphviz(null, hg.getMapNodeParams(), hg.getMapEdgeParams(),"/* more */");
+		
+		
+		// optimize 
+		int [] options = new int[]{
+				DataHg.OPTION_HG_WEIGHT_LEAF, 
+				DataHg.OPTION_HG_WEIGHT_STEP
+		};
+		
+		for (int option: options){
+			DataHyperGraph dhg= hg.getHyperGraph(option);			
+			
+			for (int root : dhg.getRoots()){
+				ToolHypergraphTraverse hgt= new ToolHypergraphTraverse();
+				hgt.traverse(dhg,root);		
+				if (null!= hgt.getSolutions()){
+//					System.out.println("root is " + root);
+					int optimal_graph_cost = 10000;
+					DataHyperGraph optimal_graph= null;
+
+					for (DataHyperGraph graph :  hgt.getSolutions()){
+						int cost =graph.getCost();
+						if (null==optimal_graph || cost < optimal_graph_cost){
+							optimal_graph =graph;
+							optimal_graph_cost = cost;
+						}					
+					}
+					
+					System.out.println(optimal_graph.data_export());
+					//TODO: call api
+					//System.out.println("optimal graph is " + optimal_graph.data_export());
+//					System.out.println("total cost is " + optimal_graph_cost);
+//					System.out.println(optimal_graph.data_export_graphviz(null, hg.getMapNodeParams(), hg.getMapEdgeParams(),"/* more */"));
+				}
+			}
+		}
+		
+		
+	
+	
+		
 	}
 	
 	
@@ -66,36 +106,6 @@ public class ToolGenGraph {
 	}
 	
 
-	public void create_mapping_i(String url_mapping,  String filename_output, String namespace_output){
-		DataObjectGroupMap<Resource> map = new  DataObjectGroupMap<Resource>();
-
-		//load mapping data, merge group
-		{
-			Model m = ModelFactory.createDefaultModel();
-			m.read(url_mapping);
-			Iterator<Statement> iter = m.listStatements();
-			while (iter.hasNext()){
-				Statement stmt = iter.next();
-				map.addSameObjectAs(stmt.getSubject(), (Resource)(stmt.getObject())	);
-			}
-			System.out.println(m.listSubjects().toSet().size());
-		}
-		//generate new data
-		{
-			Model m = ModelFactory.createDefaultModel();
-			Iterator<Integer> iter = map.listGids();
-			while (iter.hasNext()){
-				Integer gid = iter.next();
-				Resource subject = m.createResource(namespace_output+gid);
-				Iterator<Resource> iter_res = map.getObjectsByGid(gid).iterator();
-				while (iter_res.hasNext()){
-					Resource object = iter_res.next();
-					subject.addProperty(OWL.sameAs, object);
-				}
-			}
-			ToolJena.printModelToFile(m, filename_output,"RDF/XML",false);
-		}
-	}
 
 	public static void to_dot(String url_input){
 		//build hg
@@ -104,7 +114,6 @@ public class ToolGenGraph {
 		hg.addHg(url_input);
 		
 		System.out.println(hg.getHyperGraph(DataHg.OPTION_HG_WEIGHT_LEAF).data_export_graphviz(null, hg.getMapNodeParams(),hg.getMapEdgeParams(),"/* hello */"));
-
 	}
 	
 	public static void to_dot(Set<String> urls_input){
