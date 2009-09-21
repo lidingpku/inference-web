@@ -12,7 +12,6 @@ import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.vocabulary.OWL;
 
-import sw4j.task.graph.DataHyperGraph;
 
 public class ToolGenGraph {
 	
@@ -104,7 +103,7 @@ public class ToolGenGraph {
 		System.out.println(url_input);
 		hg.addHg(url_input);
 		
-		System.out.println(hg.getHyperGraph("leaf").data_export_graphviz(null, hg.getMapNodeParams(),hg.getMapEdgeParams(),"/* hello */"));
+		System.out.println(hg.getHyperGraph(DataHg.OPTION_HG_WEIGHT_LEAF).data_export_graphviz(null, hg.getMapNodeParams(),hg.getMapEdgeParams(),"/* hello */"));
 
 	}
 	
@@ -116,37 +115,7 @@ public class ToolGenGraph {
 			hg.addHg(url_input);
 		}
 		hg.addMappings("http://inference-web.org/test/combine/PUZ001-1/mapping_i_pre.rdf");
-	
-		DataHyperGraph dhg= hg.getHyperGraph("leaf");				
-		
-		ToolHypergraphTraverse hgt= new ToolHypergraphTraverse();
-	
-		Iterator<Integer> iter= dhg.getRoots().iterator();
-		
-		DataHyperGraph optimal_graph= new DataHyperGraph();
-		Integer optimal_graph_cost= 10000;
-		
-		while(iter.hasNext()) {
-			int root= iter.next();
-			hgt.traverse(dhg,root);		
-			if (null!= hgt.m_runtime_solutions){
-				System.out.println("root is " + root);
-				Iterator<DataHyperGraph> iter_graph= hgt.m_runtime_solutions.iterator();
-				while(iter_graph.hasNext()){
-					DataHyperGraph graph= iter_graph.next();
-					if (graph.getCost() < optimal_graph_cost) {
-						optimal_graph_cost = graph.getCost();
-						optimal_graph= graph;
-					}
-				}
-			}
-			System.out.println("optimal graph is " + optimal_graph.data_export());
-			System.out.println("total cost is " + optimal_graph_cost);
-			System.out.println(optimal_graph.data_export_graphviz(null, hg.getMapNodeParams(),hg.getMapEdgeParams(),"/* more */"));
-		}
-	
-		
-//		System.out.println(hg.getHyperGraph().data_export_graphviz(null, hg.getMapNodeParams(),hg.getMapEdgeParams(),"/* hello */"));
+		System.out.println(hg.getHyperGraph(DataHg.OPTION_HG_WEIGHT_LEAF).data_export_graphviz(null, hg.getMapNodeParams(),hg.getMapEdgeParams(),"/* hello */"));
 
 	}
 }

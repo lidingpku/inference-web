@@ -6,10 +6,6 @@ import org.junit.Test;
 
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
-import com.hp.hpl.jena.rdf.model.ResIterator;
-import com.hp.hpl.jena.rdf.model.Resource;
-
-import sw4j.app.pml.PMLP;
 import sw4j.rdf.util.ToolJena;
 
 public class TestToolPmlTranslator {

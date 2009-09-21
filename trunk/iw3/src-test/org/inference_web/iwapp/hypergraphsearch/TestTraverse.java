@@ -48,7 +48,7 @@ public class TestTraverse {
 		}
 		hg.addMappings("http://inference-web.org/test/combine/PUZ001-1/mapping_i_pre.rdf");
 	
-		DataHyperGraph dhg= hg.getHyperGraph("leaf");				
+		DataHyperGraph dhg= hg.getHyperGraph(DataHg.OPTION_HG_WEIGHT_LEAF);				
 		
 		ToolHypergraphTraverse hgt= new ToolHypergraphTraverse();
 	

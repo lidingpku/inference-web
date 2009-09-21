@@ -38,7 +38,7 @@ public class ToolTptpProblemGen {
 
 		
 		
-		HashSet<String> ret = new HashSet<String>();
+//		HashSet<String> ret = new HashSet<String>();
 		set_problem = new HashSet<String>();
 		set_reasoner = new HashSet<String>();
 		

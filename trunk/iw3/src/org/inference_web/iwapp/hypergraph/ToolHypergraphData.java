@@ -8,8 +8,6 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-import org.inference_web.iwapp.hypergraph.old.DataPmlLinked;
-
 
 import sw4j.app.pml.PMLDS;
 import sw4j.app.pml.PMLR;

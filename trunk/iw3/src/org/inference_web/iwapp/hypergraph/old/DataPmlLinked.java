@@ -53,7 +53,6 @@ public class DataPmlLinked{
 		
 	}
 	
-	@SuppressWarnings("unchecked")
 	public void addPml(Model m, String szURL){
 		if (null==m)
 			return;

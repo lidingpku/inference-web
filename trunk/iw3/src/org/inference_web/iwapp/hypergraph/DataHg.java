@@ -156,8 +156,11 @@ public class DataHg{
 		this.m_vertex_fof=null;
 	}
 	
+	final public static int OPTION_HG_WEIGHT_LEAF= 0; 
+	final public static int OPTION_HG_WEIGHT_STEP= 1; 
 	
-	public DataHyperGraph getHyperGraph(String szURL, String option){
+	
+	public DataHyperGraph getHyperGraph(String szURL, int option){
 		DataHyperGraph lg = new DataHyperGraph();
 			
 		Iterator<DataHgStep> iter_step = this.m_map_url_step.getValues(szURL).iterator();
@@ -165,12 +168,16 @@ public class DataHg{
 			DataHgStep step = iter_step.next();
 			DataHyperEdge  edge = step.getHyperEdge(this.m_map_res_vertex);
 			Integer weight= 0;
-			if (option== "leaf"){
+			switch (option){
+			case OPTION_HG_WEIGHT_LEAF:
 				if (edge.isAtomic()){
 					weight= 1;
 				}				
-			} else if (option== "step"){
+				break;
+			case OPTION_HG_WEIGHT_STEP:
+			default:
 				weight= 1;
+				break;
 			}
 			
 			lg.add(edge, szURL, weight);
@@ -180,7 +187,7 @@ public class DataHg{
 		return lg;
 	}
 	
-	public DataHyperGraph getHyperGraph(String option){
+	public DataHyperGraph getHyperGraph(int option){
 		DataHyperGraph lg = new DataHyperGraph();
 		Iterator<String> iter = this.m_map_url_step.keySet().iterator();
 		while (iter.hasNext()){
@@ -275,7 +282,7 @@ public class DataHg{
 
 	public HashMap<DataHyperEdge,Properties> getMapEdgeParams (){
 		HashMap<String,String> ns_color= new HashMap<String,String>();
-    	String [] colors={"yellow","blue","brown","cyan","gray","pink","gold","red","green","black"};
+    	String [] colors={"yellow","blue","red","green","black"};
     	int idx_color=0;
 
 		HashMap<DataHyperEdge,Properties> ret = new HashMap<DataHyperEdge,Properties>();
