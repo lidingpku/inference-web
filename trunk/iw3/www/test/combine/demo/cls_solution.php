@@ -53,6 +53,7 @@ class ProcessSolution{
 	}
 	
 	public function run(){
+		$this->run_g00();
 		$this->run_g0();
 		$this->run_g1();
 		$this->run_g2();
@@ -72,6 +73,43 @@ class ProcessSolution{
 			$ret.= "$key=$value&";
 		return $ret;
 	}
+	
+	public function run_g00(){
+		$dir = "g00";
+		$dir_root = $this->dir_my_root."/".$dir;
+		$url_root = $this->url_my_root."/".$dir;
+		
+		if (!file_exists($dir_root))
+			mkdir($dir_root, 0755, true);
+		
+		$my_filename = "answer";
+
+		foreach ($this->urls_pml as $url_pml){
+			$target_base = $this->get_local_name( $url_pml );
+			$file_target_rdf  = $dir_root."/".$target_base.".rdf";
+			$url_target_rdf  = $url_root."/".$target_base.".rdf";
+			$file_target_sparql  = $dir_root."/".$target_base.".from.sparql";
+			$url_target_sparql  = $url_root."/".$target_base.".from.sparql";
+			$file_target_sparql_named  = $dir_root."/".$target_base.".from.named.sparql";
+			$url_target_sparql_named  = $url_root."/".$target_base.".from.named.sparql";
+
+
+			$content = file_get_contents($url_pml);
+			$filename = $file_target_rdf;
+			$content= str_replace($url_pml, $url_target_rdf, $content);
+			file_put_contents($filename, $content);
+			
+			$content = "FROM  <$url_target_rdf>";
+			$filename = $file_target_sparql;
+			file_put_contents($filename, $content);	
+
+			$content = "FROM NAMED <$url_target_rdf>";
+			$filename = $file_target_sparql_named;
+			file_put_contents($filename, $content);	
+
+			$this->urls_pml_plus [] = $url_target_rdf;
+		}
+	}	
 	
 	public function run_g0(){
 		$dir = "g0";
