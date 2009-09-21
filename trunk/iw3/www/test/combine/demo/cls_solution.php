@@ -192,6 +192,7 @@ class ProcessSolution{
 			$this->urls_pml_plus [$url_pml] = $url_target_rdf;
 		}
 		
+print_r($this->urls_pml_plus);
 		//copy eqNs
 		foreach ($this->urls_pml_eq as $url_pml_eq){
 			$target_base = $this->get_local_name( $url_pml_eq );
