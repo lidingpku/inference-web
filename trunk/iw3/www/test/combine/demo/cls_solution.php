@@ -50,9 +50,9 @@ class ProcessSolution{
 	}
 	
 	public function run(){
-		$cls->run_g1();
-		$cls->run_g2();
-		$cls->run_mapping_i();
+		$this->run_g1();
+		$this->run_g2();
+		$this->run_mapping_i();
 	}
 
 	
