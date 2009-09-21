@@ -16,6 +16,7 @@ class ProcessSolution{
 	var $urls_pml = array();
 	var $urls_pml_eq = array();
 	var $urls_pml_plus = array();
+	var $urls_pml_eq_plus = array();
 	var $map_g1 = array();
 	var $map_g2 = array();
 
@@ -73,6 +74,7 @@ class ProcessSolution{
 			$ret.= "$key=$value&";
 		return $ret;
 	}
+	
 	
 	public function run_g00(){
 		$dir = "g00";
@@ -187,7 +189,24 @@ class ProcessSolution{
 			$filename = $file_target_sparql_named;
 			file_put_contents($filename, $content);	
 
-			$this->urls_pml_plus [] = $url_target_rdf;
+			$this->urls_pml_plus [$url_pml] = $url_target_rdf;
+		}
+		
+		//copy eqNs
+		foreach ($this->urls_pml_eq as $url_pml_eq){
+			$target_base = $this->get_local_name( $url_pml );
+			$file_target_rdf  = $dir_root."/".$target_base.".rdf";
+			$url_target_rdf  = $url_root."/".$target_base.".rdf";
+
+			$content = file_get_contents($url_pml_eq);
+			$filename = $file_target_rdf;
+			$content= str_replace( 
+				array_keys($this->urls_pml_plus),
+				array_values($this->urls_pml_plus),
+				$content);
+			file_put_contents($filename, $content);
+			
+			$this->urls_pml_eq_plus [$url_pml_eq] = $url_target_rdf;
 		}
 	}
 	
@@ -249,7 +268,7 @@ class ProcessSolution{
 		foreach($this->urls_pml_plus as $url){
 			$content .= "FROM <$url>\n";
 		}
-		foreach($this->urls_pml_eq as $url){
+		foreach($this->urls_pml_eq_plus as $url){
 			$content .= "FROM <$url>\n";
 		}
 		file_put_contents($file_mapping_i_from,$content);
