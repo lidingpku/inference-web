@@ -1,6 +1,6 @@
 <?php
 
-include_once("cls_solution.php")
+include_once("cls_solution.php");
 
 $cls = new ProcessSolution();
 $cls->init(
