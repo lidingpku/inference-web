@@ -98,7 +98,7 @@ public class ToolHypergraphTraverse {
 	 * @param v
 	 */
 	public void traverse(DataHyperGraph G, Integer v){
-		traverse(G, v, -1, -1, 1);
+		traverse(G, v, -1, -1, -1);
 	}	
 	
 	/**

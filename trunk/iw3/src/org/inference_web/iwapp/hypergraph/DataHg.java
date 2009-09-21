@@ -14,7 +14,7 @@ import com.hp.hpl.jena.rdf.model.StmtIterator;
 import com.hp.hpl.jena.vocabulary.OWL;
 import com.hp.hpl.jena.vocabulary.RDF;
 
-import sw4j.app.pml.PMLJ;
+
 import sw4j.app.pml.PMLP;
 import sw4j.app.pml.PMLR;
 import sw4j.rdf.load.AgentModelManager;
@@ -69,7 +69,7 @@ public class DataHg{
 		Model m =loadHg(url_input);
 		
 		// add steps
-		for (Resource is: m.listSubjectsWithProperty(RDF.type, PMLJ.InferenceStep).toList())
+		for (Resource is: m.listSubjectsWithProperty(RDF.type, PMLR.Step).toList())
 		{
 				DataHgStep step = new DataHgStep(m, is, url_input);
 				m_map_url_step.add(url_input, step);
@@ -86,6 +86,7 @@ public class DataHg{
 			m_map_res_lang.put(stmt.getSubject(), ((Resource)stmt.getObject()).getLocalName());
 		}		
 		
+		// TODO: fix bug here!! 
 		//add nodes
 		HashSet<RDFNode> nodes = new HashSet<RDFNode>(); 
 		nodes.addAll(m.listObjectsOfProperty(PMLR.hasInput).toSet());
@@ -255,13 +256,15 @@ public class DataHg{
 	public HashMap<Integer,Properties> getMapNodeParams (){
 		
 		HashMap<Integer,Properties> ret = new HashMap<Integer,Properties>();
-		for (Resource res: m_map_res_vertex.keyset()){
+		for (Resource res: m_map_res_text.keySet()){
 			String label = m_map_res_text.get(res);
 			String lang = m_map_res_lang.get(res);
 			
 			Properties prop = new Properties();
 			if (!ToolSafe.isEmpty(label))
 				prop.put("label", label.replaceAll("\n", " "));
+			else
+				System.out.println("no label");
 	
 			
 //			prop.put("URL", res.getURI());
@@ -289,7 +292,7 @@ public class DataHg{
 		for (DataHyperEdge e: this.m_map_edge_step.keySet() ){
 			Properties prop = new Properties();
 			for (DataHgStep hge:  m_map_edge_step.getValuesAsSet(e)){
-//				prop.put("URL", hge.m_is.getURI() );
+				prop.put("URL", hge.m_is.getURI() );
 
 				String ns = DataQname.extractNamespace(hge.m_is.getURI());
 				String color = ns_color.get(ns);

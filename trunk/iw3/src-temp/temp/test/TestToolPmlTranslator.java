@@ -1,4 +1,4 @@
-package org.inference_web.iwapp.hypergraph;
+package temp.test;
 
 import java.util.HashSet;
 
