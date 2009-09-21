@@ -1,6 +1,6 @@
 <?php
 
-include_once("cls_solution.php");
+require_once("cls_solution.php");
 
 $cls = new ProcessSolution();
 $cls->init(
@@ -9,6 +9,6 @@ $cls->init(
 	"http://inference-web.org/proofs/tptp/Solutions/",
 	dirname(__FILE__),
 	"/PUZ/PUZ001-1" );
-$cls->run;
+$cls->run();
 
 ?>
