@@ -12,6 +12,8 @@ import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.vocabulary.OWL;
 
+import sw4j.task.graph.DataHyperGraph;
+
 public class ToolGenGraph {
 	
 	public static void main(String[] argv){
@@ -25,6 +27,12 @@ public class ToolGenGraph {
 		HashSet<String> test = new HashSet<String>();
 		test.add("http://inference-web.org/test/combine/PUZ001-1/g2/EP---1.0-answer.owl.rdf");
 		test.add("http://inference-web.org/test/combine/PUZ001-1/g2/SOS---2.0-answer.owl.rdf");
+//		test.add("http://inference-web.org/test/combine/PUZ001-1/g2/Ayane---1.1-answer.owl.rdf");
+//		test.add("http://inference-web.org/test/combine/PUZ001-1/g2/Faust---1.0-answer.owl.rdf");
+//		test.add("http://inference-web.org/test/combine/PUZ001-1/g2/Metis---2.2-answer.owl.rdf");
+//		test.add("http://inference-web.org/test/combine/PUZ001-1/g2/Otter---3.3-answer.owl.rdf");
+//		test.add("http://inference-web.org/test/combine/PUZ001-1/g2/SNARK---20080805r005-answer.owl.rdf");
+//		test.add("http://inference-web.org/test/combine/PUZ001-1/g2/Vampire---9.0-answer.owl.rdf");
 
 	//	test.add("http://tw2.tw.rpi.edu/pml/PUZ001-1/g3/Ayane---1.1-answer.owl.rdf");
 		//test.add("http://tw2.tw.rpi.edu/pml/PUZ001-1/g3/EP---1.0-answer.owl.rdf");
@@ -96,7 +104,7 @@ public class ToolGenGraph {
 		System.out.println(url_input);
 		hg.addHg(url_input);
 		
-		System.out.println(hg.getHyperGraph().data_export_graphviz(null, hg.getMapNodeParams(),hg.getMapEdgeParams(),"/* hello */"));
+		System.out.println(hg.getHyperGraph("leaf").data_export_graphviz(null, hg.getMapNodeParams(),hg.getMapEdgeParams(),"/* hello */"));
 
 	}
 	
@@ -108,8 +116,37 @@ public class ToolGenGraph {
 			hg.addHg(url_input);
 		}
 		hg.addMappings("http://inference-web.org/test/combine/PUZ001-1/mapping_i_pre.rdf");
+	
+		DataHyperGraph dhg= hg.getHyperGraph("leaf");				
 		
-		System.out.println(hg.getHyperGraph().data_export_graphviz(null, hg.getMapNodeParams(),hg.getMapEdgeParams(),"/* hello */"));
+		ToolHypergraphTraverse hgt= new ToolHypergraphTraverse();
+	
+		Iterator<Integer> iter= dhg.getRoots().iterator();
+		
+		DataHyperGraph optimal_graph= new DataHyperGraph();
+		Integer optimal_graph_cost= 10000;
+		
+		while(iter.hasNext()) {
+			int root= iter.next();
+			hgt.traverse(dhg,root);		
+			if (null!= hgt.m_runtime_solutions){
+				System.out.println("root is " + root);
+				Iterator<DataHyperGraph> iter_graph= hgt.m_runtime_solutions.iterator();
+				while(iter_graph.hasNext()){
+					DataHyperGraph graph= iter_graph.next();
+					if (graph.getCost() < optimal_graph_cost) {
+						optimal_graph_cost = graph.getCost();
+						optimal_graph= graph;
+					}
+				}
+			}
+			System.out.println("optimal graph is " + optimal_graph.data_export());
+			System.out.println("total cost is " + optimal_graph_cost);
+			System.out.println(optimal_graph.data_export_graphviz(null, hg.getMapNodeParams(),hg.getMapEdgeParams(),"/* more */"));
+		}
+	
+		
+//		System.out.println(hg.getHyperGraph().data_export_graphviz(null, hg.getMapNodeParams(),hg.getMapEdgeParams(),"/* hello */"));
 
 	}
 }

@@ -136,6 +136,7 @@ public class AgentCombine {
 						m_config.getAsString(CONFIGURE_BASE_FILE),
 						m_features.getAsString(FEATURE_PROBLEM));
 
+				
 				m_out_index = new PrintStream(ToolIO.prepareFileOutputStream(szFilename, false));
 				m_bFirstResult = true;
 				m_out_index.println( "<head><script src=\"http://tw.rpi.edu/style/sorttable.js\"></script></head>");
@@ -214,8 +215,7 @@ public class AgentCombine {
 
 				Model m2 = ToolPellet.createOntModel();
 				m2.add( this.m_mappings_string);
-
-			
+				
 				m2.remove(m1);
 				
 				if (m2.isEmpty())
@@ -294,6 +294,7 @@ public class AgentCombine {
 		if (null==this.m_urls_pml)
 			return;
 
+		
 		Iterator<String> iter = this.m_urls_pml.iterator();
 		while (iter.hasNext()){
 			String szURL = iter.next();
@@ -355,7 +356,6 @@ public class AgentCombine {
 			Iterator<DataPmlStep> iter = this.m_pml_data.m_steps.iterator();
 			while (iter.hasNext()){
 				DataPmlStep step = iter.next();
-				
 				map_info_res.add(step.m_conclusion_text, step.m_conclusion);
 			}
 		}
@@ -376,7 +376,6 @@ public class AgentCombine {
 			}
 			
 		}
-					
 		
 		do_save_string_mapping();		
 		

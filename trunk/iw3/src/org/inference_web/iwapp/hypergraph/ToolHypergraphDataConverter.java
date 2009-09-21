@@ -1,6 +1,5 @@
 package org.inference_web.iwapp.hypergraph;
 
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 
@@ -144,7 +143,7 @@ public class ToolHypergraphDataConverter {
 		
 		String[] url_rdf={
 //				"http://tw2.tw.rpi.edu/pml/PUZ001-1/g2/Ayane---1.1-answer.owl.rdf",
-				"http://tw2.tw.rpi.edu/pml/PUZ001-1/g2/EP---1.0-answer.owl.rdf",
+//				"http://tw2.tw.rpi.edu/pml/PUZ001-1/g2/EP---1.0-answer.owl.rdf",
 //				"http://tw2.tw.rpi.edu/pml/PUZ001-1/g2/Faust---1.0-answer.owl.rdf",
 //				"http://tw2.tw.rpi.edu/pml/PUZ001-1/g2/Metis---2.2-answer.owl.rdf",
 //				"http://tw2.tw.rpi.edu/pml/PUZ001-1/g2/Otter---3.3-answer.owl.rdf",
@@ -181,7 +180,7 @@ public class ToolHypergraphDataConverter {
 		ToolGraphVizConverter vc= new ToolGraphVizConverter();	
 		vc.RDF2GraphViz(m);
 		
-		ToolJena.printModelToFile(m,"files/test/g4/combined_EP_SOS-answer.rdf");
+		ToolJena.printModelToFile(m,"files/test/g3/SOS---2.0-answer.owl.rdf");
 
 	}
 	

@@ -104,6 +104,7 @@ public class ToolTptp {
 		System.out.println("processing " + szUrlTptpSolution);
 		
 		String ret = ToolLoadHttp.wget(szUrlTptpSolution);
+
 		if (ToolSafe.isEmpty(ret))
 			return;
 		

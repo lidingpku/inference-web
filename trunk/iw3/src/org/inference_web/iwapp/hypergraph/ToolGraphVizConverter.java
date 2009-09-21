@@ -152,7 +152,7 @@ public class ToolGraphVizConverter {
 			String leaf= leaf_iter.next();
 			rankStr+= "\"" + leaf + "\"; ";
 		}
-		out.println(rankStr);
+		out.println(rankStr + " }");
 		
 	}
 	
