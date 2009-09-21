@@ -34,6 +34,7 @@ public class DataHg{
 	DataPVHMap <String,DataHgStep> m_map_url_step= new DataPVHMap<String,DataHgStep>();
 //	HashMap <String,String> m_map_url_defaultRoot= new HashMap<String,String>();
 	DataPVHMap <DataHyperEdge,DataHgStep> m_map_edge_step = new DataPVHMap<DataHyperEdge,DataHgStep>();
+	HashMap<DataHyperEdge, Integer> m_map_edge_weight= new HashMap<DataHyperEdge, Integer>();
 
 	HashMap <Resource,String> m_map_res_text = new HashMap <Resource,String> ();
 	private HashMap <Resource,String> m_map_res_lang = new HashMap <Resource,String> ();
@@ -50,12 +51,14 @@ public class DataHg{
 		System.out.println(ToolString.printCollectionToString(ToolJena.listNameSpaces(m)));
 		for (String url : ToolJena.listNameSpacesData(m)){
 			//skip original proof because we already have copy
+		
 			if (url.indexOf("proofs/tptp")>0)
 				continue;
 			
 			System.out.println("load " + url);
 			Model model =  ModelFactory.createDefaultModel();
 			model.read(url);
+//			ToolJena.printModel(model);
 			m.add(model);
 		}
 		return m;
@@ -153,27 +156,37 @@ public class DataHg{
 		this.m_vertex_fof=null;
 	}
 	
-	public DataHyperGraph getHyperGraph(String szURL){
+	
+	public DataHyperGraph getHyperGraph(String szURL, String option){
 		DataHyperGraph lg = new DataHyperGraph();
 			
 		Iterator<DataHgStep> iter_step = this.m_map_url_step.getValues(szURL).iterator();
 		while (iter_step.hasNext()){
 			DataHgStep step = iter_step.next();
 			DataHyperEdge  edge = step.getHyperEdge(this.m_map_res_vertex);
-			lg.add(edge, szURL);
+			Integer weight= 0;
+			if (option== "leaf"){
+				if (edge.isAtomic()){
+					weight= 1;
+				}				
+			} else if (option== "step"){
+				weight= 1;
+			}
 			
+			lg.add(edge, szURL, weight);
 			m_map_edge_step.add(edge, step);
+			m_map_edge_weight.put(edge, weight);
 		}
 		return lg;
 	}
 	
-	public DataHyperGraph getHyperGraph(){
+	public DataHyperGraph getHyperGraph(String option){
 		DataHyperGraph lg = new DataHyperGraph();
 		Iterator<String> iter = this.m_map_url_step.keySet().iterator();
 		while (iter.hasNext()){
 			String szURL = iter.next();
 			
-			DataHyperGraph lgx = getHyperGraph(szURL);
+			DataHyperGraph lgx = getHyperGraph(szURL, option);
 			lg.add(lgx);
 		}
 		return lg;
@@ -242,12 +255,9 @@ public class DataHg{
 			Properties prop = new Properties();
 			if (!ToolSafe.isEmpty(label))
 				prop.put("label", label.replaceAll("\n", " "));
-
-			//prop.put("URL", res.getURI());
+	
 			
-			
-			
-			prop.put("URL", res.getURI());
+//			prop.put("URL", res.getURI());
 			
 			if ("TPTPCNF".equals(lang)){
 				prop.put("color", "red");
@@ -272,7 +282,7 @@ public class DataHg{
 		for (DataHyperEdge e: this.m_map_edge_step.keySet() ){
 			Properties prop = new Properties();
 			for (DataHgStep hge:  m_map_edge_step.getValuesAsSet(e)){
-				prop.put("URL", hge.m_is.getURI() );
+//				prop.put("URL", hge.m_is.getURI() );
 
 				String ns = DataQname.extractNamespace(hge.m_is.getURI());
 				String color = ns_color.get(ns);
