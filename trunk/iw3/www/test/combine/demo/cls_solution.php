@@ -20,15 +20,18 @@ class ProcessSolution{
 	var $map_g2 = array();
 
 	var $url_pml_root;
+	var $url_root;
 	var $dir_my_root ;
 	var $url_my_root ;
 	var $dir_sparql_root ;
 
 
+
 	
 	public function init($root_dir, $root_url, $root_pml, $root_sparql_dir,$path_test){
-		$this->dir_my_root= $root_dir.$path_test; ;
-		$this->url_my_root= $root_url.$path_test;;
+		$this->url_root = $root_url;
+		$this->dir_my_root= $root_dir.$path_test ;
+		$this->url_my_root= $root_url.$path_test;
 		$this->url_pml_root = $root_pml.$path_test;
 		$this->dir_sparql_root= $root_sparql_dir ;
 
@@ -138,7 +141,7 @@ class ProcessSolution{
 			$params["query-uri"] =  urlencode ($this->dir_sparql_root."/pml2hg.sparql");
 			$params["from-uri"] =  urlencode ( $url_input_from_sparql );
 
-			$url = $this->build_ws_url(	$this->url_my_root. "/stat.php?", $params );
+			$url = $this->build_ws_url(	$this->url_root. "/demo/stat.php?", $params );
 	
 
 			$content = file_get_contents($url);
@@ -178,7 +181,7 @@ class ProcessSolution{
 		$params["output"] =  "xml";
 		$params["query-uri"] =  urlencode ($url_mapping_i_query);
 		$params["from-uri"] =  urlencode ( $url_mapping_i_from );		
-		$url = $this->build_ws_url(	$this->url_my_root. "/stat.php?", $params );
+		$url = $this->build_ws_url(	$this->url_root. "/demo/stat.php?", $params );
 
 		$content = file_get_contents($url);
 		$filename = $file_mapping_i;
