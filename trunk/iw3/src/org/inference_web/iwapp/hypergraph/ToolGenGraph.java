@@ -24,8 +24,8 @@ public class ToolGenGraph {
 //		to_dot("http://inference-web.org/test/combine/PUZ001-1/g2/Ayane---1.1-answer.owl.rdf");
 //		to_dot("http://inference-web.org/test/combine/PUZ001-1/g2/EP---1.0-answer.owl.rdf");
 		HashSet<String> test = new HashSet<String>();
-		test.add("http://inference-web.org/test/combine/PUZ001-1/g2/EP---1.0-answer.owl.rdf");
-		test.add("http://inference-web.org/test/combine/PUZ001-1/g2/SOS---2.0-answer.owl.rdf");
+		test.add("http://inference-web.org/test/combine/PUZ/PUZ001-1/g2/EP---1.0-answer.owl.rdf");
+		test.add("http://inference-web.org/test/combine/PUZ/PUZ001-1/g2/SOS---2.0-answer.owl.rdf");
 //		test.add("http://inference-web.org/test/combine/PUZ001-1/g2/Ayane---1.1-answer.owl.rdf");
 //		test.add("http://inference-web.org/test/combine/PUZ001-1/g2/Faust---1.0-answer.owl.rdf");
 //		test.add("http://inference-web.org/test/combine/PUZ001-1/g2/Metis---2.2-answer.owl.rdf");
@@ -43,9 +43,9 @@ public class ToolGenGraph {
 	public void run(){
 		//1 create mapping i
 		create_mapping_i(
-				"http://inference-web.org/test/combine/PUZ001-1/mapping_i_pre.rdf",
+				"http://inference-web.org/test/combine/PUZ/PUZ001-1/mapping_i.rdf",
 				"files/tptp/mapping_i.rdf",
-				"http://inference-web.org/test/combine/PUZ001-1/mapping_i.rdf#"
+				"http://inference-web.org/test/combine/PUZ/PUZ001-1/mapping_i.rdf#"
 		);		
 		
 		//2 generate graph
@@ -114,7 +114,7 @@ public class ToolGenGraph {
 			System.out.println(url_input);
 			hg.addHg(url_input);
 		}
-		hg.addMappings("http://inference-web.org/test/combine/PUZ001-1/mapping_i_pre.rdf");
+		hg.addMappings("http://inference-web.org/test/combine/PUZ/PUZ001-1/mapping_i.rdf");
 		System.out.println(hg.getHyperGraph(DataHg.OPTION_HG_WEIGHT_LEAF).data_export_graphviz(null, hg.getMapNodeParams(),hg.getMapEdgeParams(),"/* hello */"));
 
 	}
