@@ -47,6 +47,7 @@ public class DataHg{
 	
 	public void addHg(DataHg hg){
 		this.m_map_res_text.putAll(hg.m_map_res_text);
+		this.m_map_res_URL.putAll(hg.m_map_res_URL);
 		this.m_map_res_lang.putAll(hg.m_map_res_lang);
 		this.m_map_res_vertex.add(hg.m_map_res_vertex);
 		this.m_map_url_step.add(hg.m_map_url_step);
@@ -91,6 +92,10 @@ public class DataHg{
 		for (Statement stmt: m.listStatements(null, PMLP.hasRawString, (String)null).toSet()){
 			m_map_res_text.put(stmt.getSubject(), ToolJena.getNodeString(stmt.getObject()));
 		}
+		
+//		for (Statement stmt: m.listStatments(null, ){
+//			
+//		}
 		
 		for (Statement stmt: m.listStatements(null, PMLP.hasLanguage, (String)null).toSet()){
 			m_map_res_lang.put(stmt.getSubject(), ((Resource)stmt.getObject()).getLocalName());
@@ -289,7 +294,7 @@ public class DataHg{
 				System.out.println("no label");
 	
 			
-//			prop.put("URL", res.getURI());
+			prop.put("URL", res.getURI());
 			
 			if ("TPTPCNF".equals(lang)){
 				prop.put("color", "red");
