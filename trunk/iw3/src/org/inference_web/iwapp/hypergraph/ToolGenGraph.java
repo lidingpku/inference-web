@@ -1,41 +1,35 @@
 package org.inference_web.iwapp.hypergraph;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeMap;
-
-import org.kohsuke.graphviz.Graph;
-
 import com.hp.hpl.jena.rdf.model.Model;
 import sw4j.task.graph.AgentHyperGraphOptimize;
 import sw4j.task.graph.DataHyperGraph;
 import sw4j.util.DataQname;
 import sw4j.util.Sw4jException;
 import sw4j.util.ToolIO;
+import sw4j.util.ToolSafe;
 
 
 public class ToolGenGraph {
 
 	public static void main(String[] argv){
 		ToolGenGraph tool = new ToolGenGraph();
-		tool.init("http://inference-web.org/test/combine","/PUZ/PUZ001-1/g2");
+		tool.init("http://inference-web.org/test/combine","/PUZ/PUZ001-1","/g2");
 		tool.run_original();
 		tool.run_combine_self();
 		tool.run_combine_all();
-//		tool.test_graphviz();
 	}
 
 	TreeMap<String, Model> m_map_url_model = new TreeMap<String, Model>();
 	String m_url_mappings_i = null;
 	String m_dir_output =null;
 
-	public void init(String url_base,String path){
+	public void init(String url_base,String path1, String path2){
 		for(String dir_input: get_dirs()){
 			//prepare url of pml
-			String url_input = url_base+path+"/"+dir_input+"-answer.owl.rdf";
+			String url_input = url_base+path1+path2+"/"+dir_input+"-answer.owl.rdf";
 
 			//load data
 			System.out.println("loading ..."+ url_input);
@@ -43,8 +37,8 @@ public class ToolGenGraph {
 
 			m_map_url_model.put(url_input,m);
 		}
-		m_url_mappings_i = url_base+path+"/mapping_i.rdf";
-		m_dir_output = "files/tptp/combine"+ path;
+		m_url_mappings_i = url_base+path1+"/mapping_i.rdf";
+		m_dir_output = "files/tptp/combine"+ path1+path2;
 	}
 
 
@@ -94,13 +88,19 @@ public class ToolGenGraph {
 	}
 
 
-	private void export_dot(DataHg hg, String file_output){
-		String content = hg.getHyperGraph().data_export_graphviz(null, hg.getMapNodeParams(),hg.getMapEdgeParams(),"/* hello */");
-		try {
-			ToolIO.pipeStringToFile(content, file_output, false);
-		} catch (Sw4jException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	private static void export_dot(DataHg hg, String file_output){
+		DataHyperGraph dhg = hg.getHyperGraph();
+		String content = DataHyperGraph.data_export_graphviz(dhg,null, hg.getMapNodeParams(),hg.getMapEdgeParams(),"/* hello */");
+		if (ToolSafe.isEmpty(file_output)){
+			System.out.println(content);
+		}else{
+			try {
+				ToolIO.pipeStringToFile(content, file_output, false);
+			} catch (Sw4jException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 		}
 	}
 
@@ -158,14 +158,14 @@ public class ToolGenGraph {
 
 	public HashSet<String> get_dirs(){
 		HashSet<String> dirs = new HashSet<String>();
-		dirs.add( "Ayane---1.1");
+	//	dirs.add( "Ayane---1.1");
 		dirs.add( "EP---1.0");
-		dirs.add( "Faust---1.0");
-		dirs.add( "Metis---2.2");
-		dirs.add( "Otter---3.3");
-		dirs.add( "SNARK---20080805r005");
+	//	dirs.add( "Faust---1.0");
+	//	dirs.add( "Metis---2.2");
+	//	dirs.add( "Otter---3.3");
+	//	dirs.add( "SNARK---20080805r005");
 		dirs.add( "SOS---2.0");
-		dirs.add( "Vampire---9.0");
+	//	dirs.add( "Vampire---9.0");
 		return dirs;
 	}
 
@@ -177,7 +177,7 @@ public class ToolGenGraph {
 		System.out.println(url_input);
 		hg.addHg(url_input);
 
-		System.out.println(hg.getHyperGraph(DataHg.OPTION_HG_WEIGHT_LEAF).data_export_graphviz(null, hg.getMapNodeParams(),hg.getMapEdgeParams(),"/* hello */"));
+		export_dot(hg, null);
 	}
 
 	public static void to_dot(Set<String> urls_input){
@@ -188,35 +188,7 @@ public class ToolGenGraph {
 			hg.addHg(url_input);
 		}
 		hg.addMappings("http://inference-web.org/test/combine/PUZ/PUZ001-1/mapping_i.rdf");
-		System.out.println(hg.getHyperGraph(DataHg.OPTION_HG_WEIGHT_LEAF).data_export_graphviz(null, hg.getMapNodeParams(),hg.getMapEdgeParams(),"/* hello */"));
+		export_dot(hg, null);
 	}
 
-	public void test_graphviz(){
-		HashSet<String> test = new HashSet<String>();
-		test.add("http://inference-web.org/test/combine/PUZ/PUZ001-1/g2/EP---1.0-answer.owl.rdf");
-		test.add("http://inference-web.org/test/combine/PUZ/PUZ001-1/g2/SOS---2.0-answer.owl.rdf");
-		try {
-			to_graphviz(test);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	public static void to_graphviz(Set<String> urls_input) throws IOException{
-		//build hg
-		DataHg hg = new DataHg();
-		for(String url_input: urls_input){
-			System.out.println(url_input);
-			hg.addHg(url_input);
-		}
-		hg.addMappings("http://inference-web.org/test/combine/PUZ/PUZ001-1/mapping_i.rdf");
-		Graph g1= hg.getHyperGraph(DataHg.OPTION_HG_WEIGHT_LEAF).data_export_graphvizAPI(null, hg.getMapNodeParams(),hg.getMapEdgeParams());
-		File f=new File("files/test/test.dot");
-	    FileOutputStream fop=new FileOutputStream(f);
-	    g1.writeTo(fop);
-	} 
 }
-
-
-
