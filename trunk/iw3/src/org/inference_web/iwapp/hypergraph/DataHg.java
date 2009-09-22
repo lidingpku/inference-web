@@ -47,7 +47,6 @@ public class DataHg{
 	
 	public void addHg(DataHg hg){
 		this.m_map_res_text.putAll(hg.m_map_res_text);
-		this.m_map_res_URL.putAll(hg.m_map_res_URL);
 		this.m_map_res_lang.putAll(hg.m_map_res_lang);
 		this.m_map_res_vertex.add(hg.m_map_res_vertex);
 		this.m_map_url_step.add(hg.m_map_url_step);
