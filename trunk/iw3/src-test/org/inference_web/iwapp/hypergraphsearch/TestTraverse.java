@@ -65,7 +65,7 @@ public class TestTraverse {
 				DataHyperGraph optimal_graph= null;
 
 				for (DataHyperGraph graph :  hgt.getSolutions()){
-					int cost =graph.getCost();
+					int cost =graph.getTotalWeight();
 					if (null==optimal_graph || cost < optimal_graph_cost){
 						optimal_graph =graph;
 						optimal_graph_cost = cost;

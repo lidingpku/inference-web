@@ -35,12 +35,13 @@ public class DataHg{
 	
 	//	HashMap <String,String> m_map_url_defaultRoot= new HashMap<String,String>();
 	DataPVHMap <DataHyperEdge,DataHgStep> m_map_edge_step = new DataPVHMap<DataHyperEdge,DataHgStep>();
-	HashMap<DataHyperEdge, Integer> m_map_edge_weight= new HashMap<DataHyperEdge, Integer>();
 
 	HashMap <Resource,String> m_map_res_text = new HashMap <Resource,String> ();
 	private HashMap <Resource,String> m_map_res_lang = new HashMap <Resource,String> ();
 	private HashSet<Integer> m_vertex_cnf = null;
 	private HashSet<Integer> m_vertex_fof = null;
+	
+	HashMap <String,String> m_map_reasoner_color = new HashMap <String,String>();
 	
 	
 	
@@ -198,9 +199,9 @@ public class DataHg{
 				break;
 			}
 			
-			lg.add(edge, szURL, weight);
+			edge.setWeigth(weight);
+			lg.add(edge, szURL);
 			m_map_edge_step.add(edge, step);
-			m_map_edge_weight.put(edge, weight);
 		}
 		return lg;
 	}
@@ -324,8 +325,14 @@ public class DataHg{
 					ns_color.put(ns,color);
 				}
 				prop.put("color", color);
+
+				if (!ToolSafe.isEmpty(hge.m_inference_engine))
+					prop.put("engine", hge.m_inference_engine.getLocalName());
+				
+				if (!ToolSafe.isEmpty(hge.m_inference_rule))
+					prop.put("rule", hge.m_inference_rule.getLocalName());
+
 			}
-			
 			
 
 			ret.put(e, prop);

@@ -2,7 +2,10 @@ package org.inference_web.iwapp.hypergraph;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+
+import sw4j.app.pml.PMLJ;
 import sw4j.app.pml.PMLR;
+import sw4j.rdf.util.ToolJena;
 import sw4j.task.graph.DataHyperEdge;
 import sw4j.util.DataObjectGroupMap;
 
@@ -17,11 +20,13 @@ public class DataHgStep {
 	public Resource m_conclusion= null;
 	public HashSet<Resource> m_antecedents = new HashSet<Resource>();
 	public Resource m_is =null;
+	public Resource m_inference_engine =null;
+	public Resource m_inference_rule=null;
 
 	public DataHgStep(Model m, Resource is, String url_context){ 
 		/// 1. get sink and source
 		//get conclusion
-		m_conclusion = (Resource)(m.listObjectsOfProperty(is,PMLR.hasOutput).next());
+		m_conclusion = (Resource)(ToolJena.getValueOfProperty(m, is, PMLR.hasOutput, (Resource)null));
 
 		//get antecedents
 		for (RDFNode node: m.listObjectsOfProperty(is, PMLR.hasInput).toSet()){
@@ -29,6 +34,13 @@ public class DataHgStep {
 			m_antecedents.add(res);
 		}
 
+		m_inference_engine= (Resource)(ToolJena.getValueOfProperty(m, is, PMLJ.hasInferenceEngine, (Resource)null));
+		
+		m_inference_rule = (Resource)(ToolJena.getValueOfProperty(m, is, PMLJ.hasInferenceRule, (Resource)null));
+		if (null== m_inference_rule){
+			System.out.println(is);
+		}
+		
 		m_url_context = url_context;
 
 		m_is =is;

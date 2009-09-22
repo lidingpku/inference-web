@@ -214,7 +214,7 @@ public class ToolHypergraphTraverse {
 
 			// no need to track provenance in intermediate result
 			DataHyperGraph new_gx = new DataHyperGraph(Gx);
-			new_gx.add(g, G.getContextsByEdge(g),G.getWeightByEdge(g));
+			new_gx.add(g, G.getContextsByEdge(g));
 			
 			bRet |= on_traverse(G, v, new_vx, new_gx);
 		}
