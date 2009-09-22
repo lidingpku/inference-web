@@ -139,6 +139,7 @@ public class ToolGenGraph {
 
 		for (int option: options){
 			DataHyperGraph dhg= hg.getHyperGraph(option);			
+			String szOption = DataHg.getOptionString(option);
 
 			for (int root : dhg.getRoots()){
 				AgentHyperGraphOptimize hgt= new AgentHyperGraphOptimize();
@@ -149,7 +150,7 @@ public class ToolGenGraph {
 					String url_pml=DataQname.extractNamespaceUrl(hg.m_map_res_vertex.getObjectsByGid(root).iterator().next().getURI());
 					//url_pml=url_pml.substring(0,url_pml.length()-1);
 					String localname = get_filename(url_pml);
-					export_dot(optimal_graph, hg, this.m_dir_output+"/"+localname+".all.dot");
+					export_dot(optimal_graph, hg, this.m_dir_output+"/"+localname+"."+szOption+".all.dot");
 				}
 			}
 		}
