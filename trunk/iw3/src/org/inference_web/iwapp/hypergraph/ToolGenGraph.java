@@ -21,11 +21,11 @@ public class ToolGenGraph {
 
 	public static void main(String[] argv){
 		ToolGenGraph tool = new ToolGenGraph();
-//		tool.init("http://inference-web.org/test/combine","/PUZ/PUZ001-1/g2");
-//		tool.run_original();
-//		tool.run_combine_self();
-//		tool.run_combine_all();
-		tool.test_graphviz();
+		tool.init("http://inference-web.org/test/combine","/PUZ/PUZ001-1/g2");
+		tool.run_original();
+		tool.run_combine_self();
+		tool.run_combine_all();
+//		tool.test_graphviz();
 	}
 
 	TreeMap<String, Model> m_map_url_model = new TreeMap<String, Model>();
