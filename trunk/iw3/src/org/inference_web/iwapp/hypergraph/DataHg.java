@@ -311,7 +311,7 @@ public class DataHg{
 
 	public HashMap<DataHyperEdge,Properties> getMapEdgeParams (){
 		HashMap<String,String> ns_color= new HashMap<String,String>();
-    	String [] colors={"yellow","blue","red","green","black"};
+    	String [] colors={"yellow","blue","green","brown","grey","pink","red","black"};
     	int idx_color=0;
 
 		HashMap<DataHyperEdge,Properties> ret = new HashMap<DataHyperEdge,Properties>();
