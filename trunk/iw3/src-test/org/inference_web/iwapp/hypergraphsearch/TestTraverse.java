@@ -5,7 +5,6 @@ import java.util.Iterator;
 import java.util.Set;
 
 import org.inference_web.iwapp.hypergraph.DataHg;
-import org.inference_web.iwapp.hypergraph.ToolHypergraphTraverse;
 
 import sw4j.task.graph.DataHyperGraph;
 
@@ -56,7 +55,7 @@ public class TestTraverse {
 		
 		while(iter.hasNext()) {
 			int root= iter.next();
-			ToolHypergraphTraverse hgt= new ToolHypergraphTraverse();
+			temp.test.ToolHypergraphTraverse hgt= new temp.test.ToolHypergraphTraverse();
 			hgt.traverse(dhg,root);		
 			if (null!= hgt.getSolutions()){
 				System.out.println("root is " + root);
@@ -64,7 +63,7 @@ public class TestTraverse {
 				DataHyperGraph optimal_graph= null;
 
 				for (DataHyperGraph graph :  hgt.getSolutions()){
-					int cost =graph.getCost();
+					int cost =graph.getWeight();
 					if (null==optimal_graph || cost < optimal_graph_cost){
 						optimal_graph =graph;
 						optimal_graph_cost = cost;

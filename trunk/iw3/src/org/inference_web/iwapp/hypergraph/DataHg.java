@@ -26,13 +26,14 @@ import sw4j.util.DataPVHMap;
 import sw4j.util.DataQname;
 import sw4j.util.Sw4jException;
 import sw4j.util.ToolSafe;
-import sw4j.util.ToolString;
 
 public class DataHg{
-	DataObjectGroupMap<Resource> m_map_res_vertex= new DataObjectGroupMap<Resource>();
 	HashSet <DataHgStep> m_steps= new HashSet<DataHgStep>();
 	DataPVHMap <String,DataHgStep> m_map_url_step= new DataPVHMap<String,DataHgStep>();
-//	HashMap <String,String> m_map_url_defaultRoot= new HashMap<String,String>();
+
+	DataObjectGroupMap<Resource> m_map_res_vertex= new DataObjectGroupMap<Resource>();
+	
+	//	HashMap <String,String> m_map_url_defaultRoot= new HashMap<String,String>();
 	DataPVHMap <DataHyperEdge,DataHgStep> m_map_edge_step = new DataPVHMap<DataHyperEdge,DataHgStep>();
 	HashMap<DataHyperEdge, Integer> m_map_edge_weight= new HashMap<DataHyperEdge, Integer>();
 
@@ -41,28 +42,7 @@ public class DataHg{
 	private HashSet<Integer> m_vertex_cnf = null;
 	private HashSet<Integer> m_vertex_fof = null;
 	
-
-	private Model loadHg(String url_input){
-		Model m = ModelFactory.createDefaultModel();
-		System.out.println("load " + url_input);
-		m.read(url_input);
-
-		//System.out.println(ToolString.printCollectionToString(m.listNameSpaces().toSet()));
-		System.out.println(ToolString.printCollectionToString(ToolJena.listNameSpaces(m)));
-		for (String url : ToolJena.listNameSpacesData(m)){
-			//skip original proof because we already have copy
-		
-			if (url.indexOf("proofs/tptp")>0)
-				continue;
-			
-			System.out.println("load " + url);
-			Model model =  ModelFactory.createDefaultModel();
-			model.read(url);
-//			ToolJena.printModel(model);
-			m.add(model);
-		}
-		return m;
-	}	
+	
 	
 	public void addHg(DataHg hg){
 		this.m_map_res_text.putAll(hg.m_map_res_text);
@@ -72,10 +52,31 @@ public class DataHg{
 		this.m_steps.addAll(hg.m_steps);
 	}
 	
+	public static Model load_hg_data(String url_input){
+		Model m = ModelFactory.createDefaultModel();
+		System.out.println("load " + url_input);
+		m.read(url_input);
+
+		//System.out.println(ToolString.printCollectionToString(m.listNameSpaces().toSet()));
+		//System.out.println(ToolString.printCollectionToString(ToolJena.listNameSpaces(m)));
+		for (String url : ToolJena.namespace_listByParse(m.listSubjectsWithProperty(RDF.type).toSet())){
+			//skip original proof because we already have copy
+			
+			System.out.println("load more ..." + url);
+			Model model =  ModelFactory.createDefaultModel();
+			model.read(url);
+//			ToolJena.printModel(model);
+			m.add(model);
+		}
+		return m;
+	}
+		
 	public void addHg(String url_input){
-		
-		Model m =loadHg(url_input);
-		
+		Model m =load_hg_data(url_input);
+		addHg(m,url_input);
+	}
+	
+	public void addHg(Model m,String url_input){
 		// add steps
 		for (Resource is: m.listSubjectsWithProperty(RDF.type, PMLR.Step).toList())
 		{
@@ -202,6 +203,10 @@ public class DataHg{
 			m_map_edge_weight.put(edge, weight);
 		}
 		return lg;
+	}
+	
+	public DataHyperGraph getHyperGraph(){
+		return getHyperGraph(OPTION_HG_WEIGHT_STEP);
 	}
 	
 	public DataHyperGraph getHyperGraph(int option){
