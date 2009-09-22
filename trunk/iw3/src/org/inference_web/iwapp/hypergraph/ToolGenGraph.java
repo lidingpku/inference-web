@@ -1,8 +1,14 @@
 package org.inference_web.iwapp.hypergraph;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeMap;
+
+import org.kohsuke.graphviz.Graph;
+
 import com.hp.hpl.jena.rdf.model.Model;
 import sw4j.task.graph.AgentHyperGraphOptimize;
 import sw4j.task.graph.DataHyperGraph;
@@ -15,10 +21,11 @@ public class ToolGenGraph {
 
 	public static void main(String[] argv){
 		ToolGenGraph tool = new ToolGenGraph();
-		tool.init("http://inference-web.org/test/combine","/PUZ/PUZ001-1/g2");
-		tool.run_original();
-		tool.run_combine_self();
-		tool.run_combine_all();
+//		tool.init("http://inference-web.org/test/combine","/PUZ/PUZ001-1/g2");
+//		tool.run_original();
+//		tool.run_combine_self();
+//		tool.run_combine_all();
+		tool.test_graphviz();
 	}
 
 	TreeMap<String, Model> m_map_url_model = new TreeMap<String, Model>();
@@ -182,6 +189,34 @@ public class ToolGenGraph {
 		}
 		hg.addMappings("http://inference-web.org/test/combine/PUZ/PUZ001-1/mapping_i.rdf");
 		System.out.println(hg.getHyperGraph(DataHg.OPTION_HG_WEIGHT_LEAF).data_export_graphviz(null, hg.getMapNodeParams(),hg.getMapEdgeParams(),"/* hello */"));
-
 	}
+
+	public void test_graphviz(){
+		HashSet<String> test = new HashSet<String>();
+		test.add("http://inference-web.org/test/combine/PUZ/PUZ001-1/g2/EP---1.0-answer.owl.rdf");
+		test.add("http://inference-web.org/test/combine/PUZ/PUZ001-1/g2/SOS---2.0-answer.owl.rdf");
+		try {
+			to_graphviz(test);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public static void to_graphviz(Set<String> urls_input) throws IOException{
+		//build hg
+		DataHg hg = new DataHg();
+		for(String url_input: urls_input){
+			System.out.println(url_input);
+			hg.addHg(url_input);
+		}
+		hg.addMappings("http://inference-web.org/test/combine/PUZ/PUZ001-1/mapping_i.rdf");
+		Graph g1= hg.getHyperGraph(DataHg.OPTION_HG_WEIGHT_LEAF).data_export_graphvizAPI(null, hg.getMapNodeParams(),hg.getMapEdgeParams());
+		File f=new File("files/test/test.dot");
+	    FileOutputStream fop=new FileOutputStream(f);
+	    g1.writeTo(fop);
+	} 
 }
+
+
+
