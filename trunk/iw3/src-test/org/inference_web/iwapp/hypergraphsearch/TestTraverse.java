@@ -73,7 +73,7 @@ public class TestTraverse {
 				}
 				System.out.println("optimal graph is " + optimal_graph.data_export());
 				System.out.println("total cost is " + optimal_graph_cost);
-				System.out.println(DataHyperGraph.data_export_graphviz(optimal_graph, null, hg.getMapNodeParams(), hg.getMapEdgeParams(),"/* more */"));
+				System.out.println(DataHyperGraph.data_export_graphviz(optimal_graph, null, hg.getMapNodeParams(optimal_graph), hg.getMapEdgeParams(),"/* more */"));
 			}
 		}
 	

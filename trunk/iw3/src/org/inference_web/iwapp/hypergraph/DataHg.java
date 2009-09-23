@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Properties;
+import java.util.Set;
 
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
@@ -23,7 +24,6 @@ import sw4j.task.graph.DataHyperEdge;
 import sw4j.task.graph.DataHyperGraph;
 import sw4j.util.DataObjectGroupMap;
 import sw4j.util.DataPVHMap;
-import sw4j.util.DataQname;
 import sw4j.util.Sw4jException;
 import sw4j.util.ToolSafe;
 
@@ -43,6 +43,18 @@ public class DataHg{
 	
 	HashMap <String,String> m_map_reasoner_color = new HashMap <String,String>();
 	
+	HashMap<String,Resource> m_url_root_node = new HashMap<String,Resource>();;
+	
+	public DataHg(){
+		m_map_reasoner_color.put("EP", "blue" );
+		m_map_reasoner_color.put("SOS", "green" );
+		m_map_reasoner_color.put("Ayane", "red" );
+		m_map_reasoner_color.put("Metis", "yellow" );
+		m_map_reasoner_color.put("Faust", "brown" );
+		m_map_reasoner_color.put("Otter", "grey" );
+		m_map_reasoner_color.put("SNARK", "purple" );
+		m_map_reasoner_color.put("Vampire", "cyan" );
+	}
 	
 	
 	public void addHg(DataHg hg){
@@ -103,8 +115,10 @@ public class DataHg{
 		// TODO: fix bug here!! 
 		//add nodes
 		HashSet<RDFNode> nodes = new HashSet<RDFNode>(); 
-		nodes.addAll(m.listObjectsOfProperty(PMLR.hasInput).toSet());
-		nodes.addAll(m.listObjectsOfProperty(PMLR.hasOutput).toSet());
+		Set<RDFNode> nodes_input= m.listObjectsOfProperty(PMLR.hasInput).toSet();
+		Set<RDFNode> nodes_output= m.listObjectsOfProperty(PMLR.hasOutput).toSet();
+		nodes.addAll(nodes_input);
+		nodes.addAll(nodes_output);
 		
 		for (RDFNode node : nodes){
 			Resource info = (Resource)node;
@@ -112,6 +126,14 @@ public class DataHg{
 		}
 		
 		//System.out.println(this.getHyperGraph(szURL).data_export());
+		
+		//set root node
+		nodes_output.removeAll(nodes_input);
+		if (nodes_output.size()!=1){
+			System.out.println(nodes_output);
+		}else{
+			m_url_root_node.put(url_input, (Resource) nodes_output.iterator().next());			
+		}
 		
 		resetCache();
 	}
@@ -183,6 +205,15 @@ public class DataHg{
 		}
 	}
 	
+	public Integer getRootNode(String url_pml){
+		Resource root = m_url_root_node.get(url_pml);
+		if (null==root){
+			return null;
+		}else{
+			return this.m_map_res_vertex.getGid(root);
+		}
+	}
+	
 	public DataHyperGraph getHyperGraph(String szURL, int option){
 		DataHyperGraph lg = new DataHyperGraph();
 			
@@ -225,6 +256,7 @@ public class DataHg{
 		}
 		return lg;
 	}
+
 /*
 	public Model getPmlModel(DataHyperGraph lg, String szNamespace){
 		Model tptpModel = ModelFactory.createDefaultModel();
@@ -279,7 +311,7 @@ public class DataHg{
 		return this.m_vertex_fof;
 	}
 	
-	public HashMap<Integer,Properties> getMapNodeParams (){
+	public HashMap<Integer,Properties> getMapNodeParams (DataHyperGraph dhg){
 		
 		HashMap<Integer,Properties> ret = new HashMap<Integer,Properties>();
 		for (Resource res: m_map_res_text.keySet()){
@@ -295,11 +327,19 @@ public class DataHg{
 			
 			prop.put("URL", res.getURI());
 			
-			if ("TPTPCNF".equals(lang)){
-				prop.put("color", "red");
+			if ("TPTPFOF".equals(lang)){
+				prop.put("color", "grey");
 			}
 			
 			Integer gid = m_map_res_vertex.getGid(res);
+			
+			if (null!=dhg){
+				int antecedents = dhg.getEdgesByOutput(gid).size();
+				if (antecedents>1)
+					prop.put("style", "filled");
+					prop.put("fillcolor", "red");
+			}
+			
 			ret.put(gid, prop);
 		}
 		
@@ -310,31 +350,26 @@ public class DataHg{
 
 
 	public HashMap<DataHyperEdge,Properties> getMapEdgeParams (){
-		HashMap<String,String> ns_color= new HashMap<String,String>();
-    	String [] colors={"yellow","blue","green","brown","grey","pink","red","black"};
-    	int idx_color=0;
-
 		HashMap<DataHyperEdge,Properties> ret = new HashMap<DataHyperEdge,Properties>();
 		for (DataHyperEdge e: this.m_map_edge_step.keySet() ){
 			Properties prop = new Properties();
 			for (DataHgStep hge:  m_map_edge_step.getValuesAsSet(e)){
+
+				//add link
 				prop.put("URL", hge.m_is.getURI() );
 
-				String ns = DataQname.extractNamespace(hge.m_is.getURI());
-				String color = ns_color.get(ns);
-				if (null==color){
-					color=colors[idx_color];
-					idx_color ++;
-					idx_color =Math.min(idx_color, colors.length-1);
-					ns_color.put(ns,color);
+				//set color
+				if (!ToolSafe.isEmpty(hge.m_inference_engine)){
+					String engine_name = hge.m_inference_engine.getLocalName().replaceAll("[^a-zA-Z]", "");
+					String color = this.m_map_reasoner_color.get(engine_name);
+					if (null==color)
+						color="black";
+					prop.put("color", color);					
 				}
-				prop.put("color", color);
-
-				if (!ToolSafe.isEmpty(hge.m_inference_engine))
-					prop.put("engine", hge.m_inference_engine.getLocalName());
 				
+				// set label
 				if (!ToolSafe.isEmpty(hge.m_inference_rule))
-					prop.put("rule", hge.m_inference_rule.getLocalName());
+					prop.put("label", hge.m_inference_rule.getLocalName());
 
 			}
 			
