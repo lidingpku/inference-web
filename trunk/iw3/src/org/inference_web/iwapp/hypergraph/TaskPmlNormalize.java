@@ -60,6 +60,7 @@ public class TaskPmlNormalize {
 			if (null==m)
 				continue;
 			
+			System.out.println("loading pml data: "+ sz_url_pml);
 			/////////////////////////////////////////
 			// sign blank-node and write
 			String sz_path_filename = sz_url_pml.substring(sz_url_root_original.length());
