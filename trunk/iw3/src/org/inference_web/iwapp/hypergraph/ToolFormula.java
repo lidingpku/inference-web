@@ -1,16 +1,16 @@
 package org.inference_web.iwapp.hypergraph;
 
-import java.util.HashSet;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import sw4j.util.DataPVHMap;
+import sw4j.util.DataPVTMap;
 
 
 public class ToolFormula {
 		
-	public static DataPVHMap <String,String>  map_eq_formula(HashSet<String> setStr){
-		DataPVHMap <String,String> ret = new DataPVHMap<String,String>(); 
+	public static DataPVTMap <String,String>  map_eq_formula(Set<String> setStr){
+		DataPVTMap <String,String> ret = new DataPVTMap<String,String>(); 
 		
 		for(String str:setStr){
 			ret.add(normlize_formula(str),str);

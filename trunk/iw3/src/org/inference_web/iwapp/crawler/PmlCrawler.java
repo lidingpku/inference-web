@@ -27,7 +27,7 @@ public class PmlCrawler {
 		String szFileName= "files/iwsearch/pmlp-urls.txt";
 		PmlCrawler crawler = new PmlCrawler();
 		for (int i=0; i<arySeed.length; i++){
-			crawler.crawl(arySeed[i][0],arySeed[i][0]+".*");
+			crawler.crawl(arySeed[i][0],arySeed[i][0]+".*", true);
 		}
 		String szContent =ToolString.printCollectionToString(crawler.m_results);
 		System.out.println(szContent);
@@ -50,37 +50,41 @@ public class PmlCrawler {
 	public TreeSet<String> m_results = new TreeSet<String>();
 	public TreeSet<String> m_errors = new TreeSet<String>();
 	
-	public void crawl(String szSeedUrl, String szPattern){
+	public void crawl(String sz_seed_url, String sz_pattern, boolean b_validate){
 		AgentSimpleHttpCrawler crawler = new AgentSimpleHttpCrawler();
-		crawler.m_seed_url = szSeedUrl;
-		crawler.m_allowed_url_patterns.add(szPattern);
+		crawler.m_seed_url = sz_seed_url;
+		crawler.m_allowed_url_patterns.add(sz_pattern);
 		crawler.m_max_crawl_depth=3;
 		//crawler.m_max_results =10;
 		crawler.crawl();	
 		
-		//confirm RDF and PML
-		Iterator<String> iter = crawler.m_results.iterator();
-		while (iter.hasNext()){
-			String szUrl = iter.next();
-			
-			//load rdf
-			AgentModelLoader loader = new AgentModelLoader(szUrl);
-			Model m = loader.getModelData();
-			if (null==m)
-				continue;
-			
-			if (loader.getParseRdf().getReport().hasError()){
-				m_errors.add(szUrl);
-				System.out.println(loader.getParseRdf().getReport().toString());
-				//System.out.println(szUrl);
-			}
+		if (b_validate){
+			//confirm RDF and PML
+			Iterator<String> iter = crawler.m_results.iterator();
+			while (iter.hasNext()){
+				String szUrl = iter.next();
 				
-			if (m.getNsPrefixMap().values().contains(PMLP.getURI())){
-				m_results.add(szUrl);
+				//load rdf
+				AgentModelLoader loader = new AgentModelLoader(szUrl);
+				Model m = loader.getModelData();
+				if (null==m)
+					continue;
+				
+				if (loader.getParseRdf().getReport().hasError()){
+					m_errors.add(szUrl);
+					System.out.println(loader.getParseRdf().getReport().toString());
+					//System.out.println(szUrl);
+				}
+					
+				if (m.getNsPrefixMap().values().contains(PMLP.getURI())){
+					m_results.add(szUrl);
+				}
+				if (m.getNsPrefixMap().values().contains(IW200407.getURI())){
+					m_results.add(szUrl);
+				}
 			}
-			if (m.getNsPrefixMap().values().contains(IW200407.getURI())){
-				m_results.add(szUrl);
-			}
+		}else{
+			this.m_results.addAll(crawler.m_results);
 		}
 	}
 }

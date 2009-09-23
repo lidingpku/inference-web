@@ -2,7 +2,7 @@ package org.inference_web.iwapp.hypergraph;
 
 import java.util.HashSet;
 
-import sw4j.util.DataPVHMap;
+import sw4j.util.DataPVTMap;
 import sw4j.util.ToolString;
 import static org.junit.Assert.fail;
 
@@ -27,11 +27,12 @@ public class TestToolFormula {
 		test_str.add("~ hates(agatha,A)  | hates(butler,A)");
 		
 		
-		DataPVHMap <String,String> ret = ToolFormula.map_eq_formula(test_str);
+		DataPVTMap <String,String> ret = ToolFormula.map_eq_formula(test_str);
+
+		System.out.println(ToolString.printCollectionToString(ret.entrySet()));
 		
 		if (ret.keySet().size()!=6){
 			fail();
 		}
-		System.out.println(ToolString.printCollectionToString(ret.entrySet()));
 	}
 }
