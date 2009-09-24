@@ -10,6 +10,7 @@ import org.junit.Test;
 
 
 public class TestToolFormula {
+
 	@Test
 	public void test_normalize(){
 		HashSet<String> test_str= new HashSet<String>();

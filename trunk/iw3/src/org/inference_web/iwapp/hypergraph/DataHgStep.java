@@ -12,18 +12,19 @@ import sw4j.util.DataObjectGroupMap;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.Resource;
+import com.hp.hpl.jena.vocabulary.RDF;
 
 public class DataHgStep {
 
 
-	public String m_url_context= null;
+	public String m_context= null;
 	public Resource m_conclusion= null;
 	public HashSet<Resource> m_antecedents = new HashSet<Resource>();
 	public Resource m_is =null;
 	public Resource m_inference_engine =null;
 	public Resource m_inference_rule=null;
 
-	public DataHgStep(Model m, Resource is, String url_context){ 
+	public DataHgStep(Model m, Resource is, String context){ 
 		/// 1. get sink and source
 		//get conclusion
 		m_conclusion = (Resource)(ToolJena.getValueOfProperty(m, is, PMLR.hasOutput, (Resource)null));
@@ -41,7 +42,7 @@ public class DataHgStep {
 			System.out.println(is);
 		}
 		
-		m_url_context = url_context;
+		m_context = context;
 
 		m_is =is;
 	}
@@ -62,4 +63,11 @@ public class DataHgStep {
 		}
 	}
 
+	public void appendPmlrModel(Model m){
+		m.add(this.m_is, RDF.type, PMLR.Step);
+		m.add(this.m_is, PMLR.hasOutput, this.m_conclusion);
+		for (Resource antecedent: this.m_antecedents){
+			m.add(this.m_is, PMLR.hasInput, antecedent);
+		}
+	}
 }

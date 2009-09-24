@@ -257,10 +257,20 @@ public class DataHg{
 		return lg;
 	}
 
-/*
-	public Model getPmlModel(DataHyperGraph lg, String szNamespace){
-		Model tptpModel = ModelFactory.createDefaultModel();
 
+	public Model getPmlrModel(DataHyperGraph lg){
+		Model model_ret = ModelFactory.createDefaultModel();
+
+		for(DataHyperEdge edge: lg.getEdges()){
+			if (m_map_edge_step.getValuesCount(edge)==0){
+				System.out.println("Exception");
+				continue;
+			}
+			
+			DataHgStep step = m_map_edge_step.getValues(edge).iterator().next();
+			step.appendPmlrModel(model_ret);	
+		}
+		/*
 		Iterator<Integer> iter_sink = lg.getOutputs().iterator();
 		while (iter_sink.hasNext()){
 			Integer sink = iter_sink.next();
@@ -275,14 +285,14 @@ public class DataHg{
 				}
 				
 				DataHgStep step = m_map_edge_step.getValues(edge).iterator().next();
-				step.appendPmlModel(this.m_map_res_vertex, szNamespace, index, tptpModel);
+				step.appendPmlrModel(model_ret);
 				index++;
 			}
-		}
+		}*/
 		
-		return tptpModel;
+		return model_ret;
 	}	
-*/	
+	
 	public HashSet<Integer> getVertexCnf(){
 		if (null==this.m_vertex_cnf){
 			this.m_vertex_cnf = new HashSet<Integer>();
@@ -347,32 +357,46 @@ public class DataHg{
 		
 	}
 	
+	private static String parse_engine_name(String engine_name){
+		engine_name =engine_name.replaceAll("[^a-zA-Z]+.+", "");
+		//Pattern p = Pattern.compile("\\p{Alpha}+");
+		//Matcher m = p.matcher(engine_name);
+		//if ( m.matches())
+		//	return m.group();
+		//else
+			return engine_name;
+	}
 
-
-	public HashMap<DataHyperEdge,Properties> getMapEdgeParams (){
+	public HashMap<DataHyperEdge,Properties> getMapEdgeParams (String sz_context){
 		HashMap<DataHyperEdge,Properties> ret = new HashMap<DataHyperEdge,Properties>();
 		for (DataHyperEdge e: this.m_map_edge_step.keySet() ){
 			Properties prop = new Properties();
-			for (DataHgStep hge:  m_map_edge_step.getValuesAsSet(e)){
+			//select the optimal one
+			
+			DataHgStep hge = null;
+			for (DataHgStep hgedge:  m_map_edge_step.getValuesAsSet(e)){
+				if (null==hge)
+					hge=hgedge;
+				else if (hgedge.m_context.equals(sz_context))
+					hge=hgedge;					
+			}
 
-				//add link
-				prop.put("URL", hge.m_is.getURI() );
+			//add link
+			prop.put("URL", hge.m_is.getURI() );
 
-				//set color
-				if (!ToolSafe.isEmpty(hge.m_inference_engine)){
-					String engine_name = hge.m_inference_engine.getLocalName().replaceAll("[^a-zA-Z]", "");
-					String color = this.m_map_reasoner_color.get(engine_name);
-					if (null==color)
-						color="black";
-					prop.put("color", color);					
-				}
+			//set color
+			if (!ToolSafe.isEmpty(hge.m_inference_engine)){
+				String engine_name = parse_engine_name(hge.m_inference_engine.getLocalName());
 				
-				// set label
-				if (!ToolSafe.isEmpty(hge.m_inference_rule))
-					prop.put("label", hge.m_inference_rule.getLocalName());
-
+				String color = this.m_map_reasoner_color.get(engine_name);
+				if (null==color)
+					color="black";
+				prop.put("color", color);					
 			}
 			
+			// set label
+			if (!ToolSafe.isEmpty(hge.m_inference_rule))
+				prop.put("label", hge.m_inference_rule.getLocalName());
 
 			ret.put(e, prop);
 		}

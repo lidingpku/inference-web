@@ -1,6 +1,7 @@
 package org.inference_web.iwapp.hypergraph;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,6 +18,7 @@ import sw4j.rdf.load.AgentModelLoader;
 import sw4j.rdf.load.RDFSYNTAX;
 import sw4j.rdf.util.AgentSparql;
 import sw4j.rdf.util.ToolJena;
+import sw4j.task.graph.DataHyperGraph;
 import sw4j.util.Sw4jException;
 import sw4j.util.ToolIO;
 import sw4j.util.ToolString;
@@ -45,15 +47,16 @@ public class TaskPmlNormalize {
 		//generate 
 		Set<String> set_url_pml = crawler.m_results;
 		String sz_url_root_original =  sz_url_seed;
-		File dir_root_output = new File("./files/tptp/combine/PUZ/PUZ001-1/");
+		File dir_root_output = new File("www/test/combine/PUZ/PUZ001-1/");
 		String sz_url_root_output = "http://inference-web.org/test/combine/PUZ/PUZ001-1/";
 		run(set_url_pml, sz_url_root_original, dir_root_output, sz_url_root_output);
 
 	}
-	
+
 	
 	public static void run(Set<String> set_url_pml, String sz_url_root_original, File dir_root_output, String sz_url_root_output){
 		DataPmlInfoMapping o_mapping = new DataPmlInfoMapping();
+		HashMap<String,Model> map_url_model = new HashMap<String,Model>(); 
 		for (String sz_url_pml: set_url_pml){
 			AgentModelLoader loader = new AgentModelLoader(sz_url_pml);
 			Model m = loader.getModelData();
@@ -95,13 +98,17 @@ public class TaskPmlNormalize {
 				else
 					System.out.println("Error");
 
+				
+				
+				model_norm.add((Model)ret);
+				map_url_model.put(sz_url_pml,model_norm);
+
 			} catch (Sw4jException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
 		}
-
+		
 		/////////////////////////////////////////
 		// generate mapping file
 		File f_output_mappings = new File(dir_root_output, "mappings_i.owl");
@@ -109,7 +116,44 @@ public class TaskPmlNormalize {
 		Model model_mappings = o_mapping.get_mappings();
 		ToolJena.printModelToFile(model_mappings, f_output_mappings.getAbsolutePath(), RDFSYNTAX.RDFXML, false);
 		
-		
+
+		////////////////////////////
+		//generate graphics
+		for (String sz_url_pml: map_url_model.keySet()){
+
+			String sz_path_filename = sz_url_pml.substring(sz_url_root_original.length());
+
+			int pos = sz_url_pml.lastIndexOf("/");
+			String sz_url_pml_base =sz_url_pml.substring(0,pos)+"/answer.owl";
+
+			Model model_data = map_url_model.get(sz_url_pml);
+			DataHg hg = new DataHg();
+			hg.addHg(model_data, sz_url_pml);
+
+			//plot original
+			{
+				String sz_path_filename_graph = sz_path_filename.substring(0, sz_path_filename.length()-4)+"";
+				File f_output_graph = new File(dir_root_output, sz_path_filename_graph);
+	
+				DataHyperGraph dhg= hg.getHyperGraph(sz_url_pml,DataHg.OPTION_HG_WEIGHT_STEP);	
+				ToolGraphviz.export_dot(dhg, hg, f_output_graph.getAbsolutePath(),sz_url_pml);
+			}	
+			//plot comparison if possible
+			if(!sz_url_pml.equals(sz_url_pml_base)){
+				String sz_path_filename_graph = sz_path_filename.substring(0, sz_path_filename.length()-4)+"-mapped";
+				File f_output_graph = new File(dir_root_output, sz_path_filename_graph);
+
+				Model model_base = map_url_model.get(sz_url_pml_base);			
+				hg.addHg(model_base, sz_url_pml_base);
+				hg.addMappings(model_mappings);
+				
+				DataHyperGraph dhg= hg.getHyperGraph(sz_url_pml,DataHg.OPTION_HG_WEIGHT_STEP);	
+				DataHyperGraph dhg_all= hg.getHyperGraph();	
+				ToolGraphviz.export_dot2(dhg, dhg_all, hg, f_output_graph.getAbsolutePath(),sz_url_pml_base);				
+			}
+				
+		}
 	}
 
+	
 }
