@@ -1,0 +1,175 @@
+/*
+
+#generated: 2009-09-24T04:13:38Z
+#context (total): 1 - [http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve_pmlr.rdf] 
+#hyperedges (total): 28
+#hyperedges (axioms): 10
+#hyperedges (share conclusion): 4 (e.g. [1200, 1214, 1199, 1212])
+#vertices (total): 24
+#vertices (outputs): 24
+#vertices (inputs): 23
+#vertices (roots): 1 (e.g. [1217] )
+*/digraph g { rankdir=BT; node [ shape = box];
+subgraph cluster_opt { label= "The optimal proof (24 nodes) reduced 4 nodes from original proof at http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve_pmlr.rdf"
+"x_1170";
+"x_1189";
+"x_1198";
+"x_1199";
+"x_1200";
+"x_1201";
+"x_1202";
+"x_1203";
+"x_1204";
+"x_1205";
+"x_1207";
+"x_1209";
+"x_1210";
+"x_1212";
+"x_1213";
+"x_1214";
+"x_1215";
+"x_1217";
+"x_1218";
+"x_1220";
+"x_1222";
+"x_1223";
+"x_1230";
+"x_1233";
+"1230-[]";
+"1223-[1212, 1218]";
+"1210-[]";
+"1204-[1220]";
+"1212-[]";
+"1214-[]";
+"1203-[1189]";
+"1213-[1198, 1203]";
+"1170-[]";
+"1202-[1215]";
+"1209-[1199, 1213]";
+"1199-[]";
+"1217-[1202, 1205, 1223, 1233]";
+"1200-[]";
+"1233-[1200, 1218]";
+"1215-[]";
+"1189-[]";
+"1198-[1200, 1207]";
+"1220-[]";
+"1201-[1209, 1222]";
+"1207-[1210]";
+"1222-[1170]";
+"1218-[1230]";
+"1205-[1201, 1204, 1214]";
+}
+
+ "x_1170" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-76ec" shape="box" color="grey" label="! [A,B] :    ( ~ killed(A,B)   | ~ richer(A,B) )" fillcolor="red"  ];
+  "x_1189" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-76fc" shape="box" color="grey" label="! [A,B] :    ( ~ killed(A,B)   | hates(A,B) )" fillcolor="red"  ];
+  "x_1198" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-770d" shape="box" label="~ hates(charles,agatha)" fillcolor="red"  ];
+  "x_1199" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-76f8" shape="box" label="killed(butler,agatha)  | killed(charles,agatha)" fillcolor="red" style="filled"  ];
+  "x_1200" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-773b" shape="box" color="grey" label="hates(agatha,agatha)" fillcolor="red" style="filled"  ];
+  "x_1201" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-771c" shape="box" label="~ richer(butler,agatha)" fillcolor="red"  ];
+  "x_1202" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-7737" shape="box" label="~ hates(A,agatha)  | ~ hates(A,butler)  | ~ hates(A,charles)" fillcolor="red"  ];
+  "x_1203" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-7700" shape="box" label="~ killed(A,B)  | hates(A,B)" fillcolor="red"  ];
+  "x_1204" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-76e8" shape="box" label="~ lives(A)  | richer(A,agatha)  | hates(butler,A)" fillcolor="red"  ];
+  "x_1205" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-7722" shape="box" label="hates(butler,butler)" fillcolor="red"  ];
+  "x_1207" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-7708" shape="box" label="~ hates(agatha,A)  | ~ hates(charles,A)" fillcolor="red"  ];
+  "x_1209" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-7717" shape="box" label="killed(butler,agatha)" fillcolor="red"  ];
+  "x_1210" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-7704" shape="box" color="grey" label="! [A] :    ( ~ hates(agatha,A)   | ~ hates(charles,A) )" fillcolor="red"  ];
+  "x_1212" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-772a" shape="box" label="hates(agatha,charles)" fillcolor="red" style="filled"  ];
+  "x_1213" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-7712" shape="box" label="~ killed(charles,agatha)" fillcolor="red"  ];
+  "x_1214" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-76e0" shape="box" label="lives(butler)" fillcolor="red" style="filled"  ];
+  "x_1215" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-7733" shape="box" color="grey" label="! [A] :    ( ~ hates(A,agatha)   | ~ hates(A,butler)   | ~ hates(A,charles) )" fillcolor="red"  ];
+  "x_1217" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-774b" shape="box" label="$false" fillcolor="red"  ];
+  "x_1218" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-7753" shape="box" label="~ hates(agatha,A)  | hates(butler,A)" fillcolor="red"  ];
+  "x_1220" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-76e4" shape="box" color="grey" label="! [A] :    ( ~ lives(A)   | richer(A,agatha)   | hates(butler,A) )" fillcolor="red"  ];
+  "x_1222" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-76f0" shape="box" label="~ killed(A,B)  | ~ richer(A,B)" fillcolor="red"  ];
+  "x_1223" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-772f" shape="box" label="hates(butler,charles)" fillcolor="red"  ];
+  "x_1230" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-774f" shape="box" color="grey" label="! [A] :    ( ~ hates(agatha,A)   | hates(butler,A) )" fillcolor="red"  ];
+  "x_1233" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-7744" shape="box" label="hates(butler,agatha)" fillcolor="red"  ];
+  "1230-[]" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-774d" shape="diamond" color="brown" fillcolor="lightgrey" style="filled"  ];
+  "x_1230" -> "1230-[]";
+  "1199-[1199]" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-76f6" shape="diamond" color="brown" label="Faust1.0Rewrite"  ];
+  "x_1199" -> "1199-[1199]";
+  "1199-[1199]" -> "x_1199";
+  "1223-[1212, 1218]" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-772d" shape="diamond" color="brown" label="Faust1.0Resolution"  ];
+  "x_1223" -> "1223-[1212, 1218]";
+  "1223-[1212, 1218]" -> "x_1212";
+  "1223-[1212, 1218]" -> "x_1218";
+  "1210-[]" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-7702" shape="diamond" color="brown" fillcolor="lightgrey" style="filled"  ];
+  "x_1210" -> "1210-[]";
+  "1214-[1214]" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-76de" shape="diamond" color="brown" label="Faust1.0Rewrite"  ];
+  "x_1214" -> "1214-[1214]";
+  "1214-[1214]" -> "x_1214";
+  "1204-[1220]" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-76e6" shape="diamond" color="brown" label="Faust1.0Rewrite"  ];
+  "x_1204" -> "1204-[1220]";
+  "1204-[1220]" -> "x_1220";
+  "1212-[]" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-7724" shape="diamond" color="brown" fillcolor="lightgrey" style="filled"  ];
+  "x_1212" -> "1212-[]";
+  "1212-[1212]" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-7728" shape="diamond" color="brown" label="Faust1.0Rewrite"  ];
+  "x_1212" -> "1212-[1212]";
+  "1212-[1212]" -> "x_1212";
+  "1214-[]" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-76da" shape="diamond" color="brown" fillcolor="lightgrey" style="filled"  ];
+  "x_1214" -> "1214-[]";
+  "1203-[1189]" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-76fe" shape="diamond" color="brown" label="Faust1.0Rewrite"  ];
+  "x_1203" -> "1203-[1189]";
+  "1203-[1189]" -> "x_1189";
+  "1213-[1198, 1203]" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-7710" shape="diamond" color="brown" label="Faust1.0Resolution"  ];
+  "x_1213" -> "1213-[1198, 1203]";
+  "1213-[1198, 1203]" -> "x_1198";
+  "1213-[1198, 1203]" -> "x_1203";
+  "1170-[]" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-76ea" shape="diamond" color="brown" fillcolor="lightgrey" style="filled"  ];
+  "x_1170" -> "1170-[]";
+  "1202-[1215]" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-7735" shape="diamond" color="brown" label="Faust1.0Rewrite"  ];
+  "x_1202" -> "1202-[1215]";
+  "1202-[1215]" -> "x_1215";
+  "1209-[1199, 1213]" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-7715" shape="diamond" color="brown" label="Faust1.0Resolution"  ];
+  "x_1209" -> "1209-[1199, 1213]";
+  "1209-[1199, 1213]" -> "x_1199";
+  "1209-[1199, 1213]" -> "x_1213";
+  "1199-[]" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-76f2" shape="diamond" color="brown" fillcolor="lightgrey" style="filled"  ];
+  "x_1199" -> "1199-[]";
+  "1217-[1202, 1205, 1223, 1233]" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-7749" shape="diamond" color="brown" label="Faust1.0Forward_subsumption_resolution__resolution"  ];
+  "x_1217" -> "1217-[1202, 1205, 1223, 1233]";
+  "1217-[1202, 1205, 1223, 1233]" -> "x_1202";
+  "1217-[1202, 1205, 1223, 1233]" -> "x_1205";
+  "1217-[1202, 1205, 1223, 1233]" -> "x_1223";
+  "1217-[1202, 1205, 1223, 1233]" -> "x_1233";
+  "1200-[]" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-7739" shape="diamond" color="brown" fillcolor="lightgrey" style="filled"  ];
+  "x_1200" -> "1200-[]";
+  "1233-[1200, 1218]" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-7742" shape="diamond" color="brown" label="Faust1.0Resolution"  ];
+  "x_1233" -> "1233-[1200, 1218]";
+  "1233-[1200, 1218]" -> "x_1200";
+  "1233-[1200, 1218]" -> "x_1218";
+  "1200-[1200]" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-773d" shape="diamond" color="brown" label="Faust1.0Rewrite"  ];
+  "x_1200" -> "1200-[1200]";
+  "1200-[1200]" -> "x_1200";
+  "1215-[]" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-7731" shape="diamond" color="brown" fillcolor="lightgrey" style="filled"  ];
+  "x_1215" -> "1215-[]";
+  "1189-[]" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-76fa" shape="diamond" color="brown" fillcolor="lightgrey" style="filled"  ];
+  "x_1189" -> "1189-[]";
+  "1198-[1200, 1207]" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-770b" shape="diamond" color="brown" label="Faust1.0Resolution"  ];
+  "x_1198" -> "1198-[1200, 1207]";
+  "1198-[1200, 1207]" -> "x_1200";
+  "1198-[1200, 1207]" -> "x_1207";
+  "1220-[]" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-76e2" shape="diamond" color="brown" fillcolor="lightgrey" style="filled"  ];
+  "x_1220" -> "1220-[]";
+  "1201-[1209, 1222]" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-771a" shape="diamond" color="brown" label="Faust1.0Resolution"  ];
+  "x_1201" -> "1201-[1209, 1222]";
+  "1201-[1209, 1222]" -> "x_1209";
+  "1201-[1209, 1222]" -> "x_1222";
+  "1207-[1210]" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-7706" shape="diamond" color="brown" label="Faust1.0Rewrite"  ];
+  "x_1207" -> "1207-[1210]";
+  "1207-[1210]" -> "x_1210";
+  "1222-[1170]" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-76ee" shape="diamond" color="brown" label="Faust1.0Rewrite"  ];
+  "x_1222" -> "1222-[1170]";
+  "1222-[1170]" -> "x_1170";
+  "1218-[1230]" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-7751" shape="diamond" color="brown" label="Faust1.0Rewrite"  ];
+  "x_1218" -> "1218-[1230]";
+  "1218-[1230]" -> "x_1230";
+  "1205-[1201, 1204, 1214]" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/Faust---1.0/combine_P1_self_improve.owl#_6336bdc5:123eadccd10:-7720" shape="diamond" color="brown" label="Faust1.0Forward_subsumption_resolution__resolution"  ];
+  "x_1205" -> "1205-[1201, 1204, 1214]";
+  "1205-[1201, 1204, 1214]" -> "x_1201";
+  "1205-[1201, 1204, 1214]" -> "x_1204";
+  "1205-[1201, 1204, 1214]" -> "x_1214";
+ }
+
+}
