@@ -1,0 +1,792 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns="http://inference-web.org/2.0/pml-justification.owl#"
+    xmlns:pmlr="http://inference-web.org/2.0/pml-relation.owl#"
+    xmlns:pmlp="http://inference-web.org/2.0/pml-provenance.owl#"
+    xmlns:daml="http://www.daml.org/2001/03/daml+oil#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:ds="http://inference-web.org/2.0/ds.owl#" > 
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5553">
+    <pmlp:hasDescription rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5552"/>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">killed(butler,agatha)
+ | hates(charles,agatha)</pmlp:hasRawString>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-557c">
+    <hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/SOS.owl#SOS"/>
+    <hasAntecedentList rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-557b"/>
+    <hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/SOS2.0Hyper.owl#SOS2.0Hyper"/>
+    <fromAnswer rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#answer"/>
+    <hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</hasIndex>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-555d">
+    <pmlp:hasDescription rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-555c"/>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">~ hates(A,agatha)
+ | ~ hates(A,butler)
+ | ~ hates(A,charles)</pmlp:hasRawString>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-554d">
+    <pmlp:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.cs.miami.edu/~tptp/cgi-bin/SeeTPTP?Category=Solutions&amp;Domain=PUZ&amp;File=PUZ001-1&amp;System=SOS---2.0.UNS-Ref.s#4</pmlp:hasURL>
+    <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TPTP Formula</pmlp:hasName>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cnf(4,axiom,
+    ( ~ killed(A,B)
+    | hates(A,B) ),
+    file('PUZ001-1.p',unknown)).
+</pmlp:hasRawString>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-556c">
+    <pmlp:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.cs.miami.edu/~tptp/cgi-bin/SeeTPTP?Category=Solutions&amp;Domain=PUZ&amp;File=PUZ001-1&amp;System=SOS---2.0.UNS-Ref.s#11</pmlp:hasURL>
+    <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TPTP Formula</pmlp:hasName>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cnf(11,axiom,
+    ( hates(agatha,charles) ),
+    file('PUZ001-1.p',unknown)).
+</pmlp:hasRawString>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-553c">
+    <pmlp:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.cs.miami.edu/~tptp/cgi-bin/SeeTPTP?Category=Solutions&amp;Domain=PUZ&amp;File=PUZ001-1&amp;System=SOS---2.0.UNS-Ref.s#6</pmlp:hasURL>
+    <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TPTP Formula</pmlp:hasName>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cnf(6,axiom,
+    ( ~ lives(A)
+    | richer(A,agatha)
+    | hates(butler,A) ),
+    file('PUZ001-1.p',unknown)).
+</pmlp:hasRawString>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5563">
+    <pmlp:hasSource rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Faust---1.0/answer.owl#ns_agatha_hates_charles_source"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#SourceUsage"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5583">
+    <hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/SOS.owl#SOS"/>
+    <hasAntecedentList rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5582"/>
+    <hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/SOS2.0Hyper.owl#SOS2.0Hyper"/>
+    <fromAnswer rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#answer"/>
+    <hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</hasIndex>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5544">
+    <hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/SOS.owl#SOS"/>
+    <hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Told.owl#Told"/>
+    <fromAnswer rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#answer"/>
+    <hasSourceUsage rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5543"/>
+    <hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</hasIndex>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5573">
+    <hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/EP1.0pre.owl#EP1.0pre"/>
+    <hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Told.owl#Told"/>
+    <fromAnswer rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#answer"/>
+    <hasSourceUsage rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5572"/>
+    <hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#int">4</hasIndex>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-555c">
+    <pmlp:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.cs.miami.edu/~tptp/cgi-bin/SeeTPTP?Category=Solutions&amp;Domain=PUZ&amp;File=PUZ001-1&amp;System=SOS---2.0.UNS-Ref.s#3</pmlp:hasURL>
+    <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TPTP Formula</pmlp:hasName>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cnf(3,axiom,
+    ( ~ hates(A,agatha)
+    | ~ hates(A,butler)
+    | ~ hates(A,charles) ),
+    file('PUZ001-1.p',unknown)).
+</pmlp:hasRawString>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-558d">
+    <hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/SOS.owl#SOS"/>
+    <hasAntecedentList rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-558c"/>
+    <hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/SOS2.0Hyper.owl#SOS2.0Hyper"/>
+    <fromQuery rdf:resource="http://inference-web.org/proofs/tptp/Problems/PUZ/PUZ001-1/query.owl#query"/>
+    <hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</hasIndex>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-557b">
+    <pmlr:hasMember rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_11"/>
+    <pmlr:hasMember rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_5"/>
+    <ds:first rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_11"/>
+    <ds:rest rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-557a"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-554c">
+    <hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/SOS.owl#SOS"/>
+    <hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Told.owl#Told"/>
+    <fromAnswer rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#answer"/>
+    <hasSourceUsage rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-554b"/>
+    <hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</hasIndex>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5564">
+    <hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/Faust.owl#Faust"/>
+    <fromAnswer rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#answer"/>
+    <hasSourceUsage rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5563"/>
+    <hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#int">7</hasIndex>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-556b">
+    <hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/Metis2.1.owl#Metis2.1"/>
+    <hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Told.owl#Told"/>
+    <fromAnswer rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#answer"/>
+    <hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</hasIndex>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_10">
+    <isConsequentOf rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5591"/>
+    <hasConclusion rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5593"/>
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2008-01-28T11:32:13-05:00</pmlp:hasCreationDateTime>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-553d">
+    <pmlp:hasDescription rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-553c"/>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">~ lives(A)
+ | richer(A,agatha)
+ | hates(butler,A)</pmlp:hasRawString>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_15">
+    <isConsequentOf rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5560"/>
+    <hasConclusion rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5562"/>
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2008-01-28T11:32:13-05:00</pmlp:hasCreationDateTime>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5584">
+    <pmlp:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.cs.miami.edu/~tptp/cgi-bin/SeeTPTP?Category=Solutions&amp;Domain=PUZ&amp;File=PUZ001-1&amp;System=SOS---2.0.UNS-Ref.s#21</pmlp:hasURL>
+    <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TPTP Formula</pmlp:hasName>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cnf(21,plain,
+    ( hates(charles,agatha) ),
+    inference(hyper,[status(thm)],[19,3,15,17]),
+    [iquote('hyper,19,3,15,17')]).
+</pmlp:hasRawString>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-554b">
+    <pmlp:hasSource rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/answer.owl#ns_4_source"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#SourceUsage"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5574">
+    <pmlp:hasSource rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/answer.owl#ns_11_source"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#SourceUsage"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5543">
+    <pmlp:hasSource rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/answer.owl#ns_1_source"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#SourceUsage"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_6">
+    <isConsequentOf rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-553b"/>
+    <hasConclusion rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-553d"/>
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2008-01-28T11:32:13-05:00</pmlp:hasCreationDateTime>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-555b">
+    <hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/SOS.owl#SOS"/>
+    <hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Told.owl#Told"/>
+    <fromAnswer rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#answer"/>
+    <hasSourceUsage rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-555a"/>
+    <hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</hasIndex>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5554">
+    <ds:first rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_18"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-558e">
+    <pmlp:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.cs.miami.edu/~tptp/cgi-bin/SeeTPTP?Category=Solutions&amp;Domain=PUZ&amp;File=PUZ001-1&amp;System=SOS---2.0.UNS-Ref.s#23</pmlp:hasURL>
+    <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TPTP Formula</pmlp:hasName>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cnf(23,plain,
+    ( $false ),
+    inference(hyper,[status(thm)],[21,2,10]),
+    [iquote('hyper,21,2,10')]).
+</pmlp:hasRawString>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5590">
+    <pmlp:hasSource rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/answer.owl#ns_10_source"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#SourceUsage"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-555f">
+    <pmlr:hasMember rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_10"/>
+    <pmlr:hasMember rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_5"/>
+    <ds:first rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_10"/>
+    <ds:rest rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-555e"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5539">
+    <pmlp:hasDescription rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5538"/>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">lives(butler)</pmlp:hasRawString>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5551">
+    <hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/SOS.owl#SOS"/>
+    <hasAntecedentList rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5550"/>
+    <hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/SOS2.0Hyper.owl#SOS2.0Hyper"/>
+    <fromAnswer rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#answer"/>
+    <hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</hasIndex>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-557e">
+    <pmlp:hasDescription rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-557d"/>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hates(butler,charles)</pmlp:hasRawString>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_21">
+    <isConsequentOf rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5583"/>
+    <hasConclusion rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5585"/>
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2008-01-28T11:32:13-05:00</pmlp:hasCreationDateTime>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-553e">
+    <ds:first rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_6"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-556a">
+    <hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/EP.owl#EP"/>
+    <hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Told.owl#Told"/>
+    <fromAnswer rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#answer"/>
+    <hasSourceUsage rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5569"/>
+    <hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#int">6</hasIndex>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_18">
+    <isConsequentOf rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5551"/>
+    <hasConclusion rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5553"/>
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2008-01-28T11:32:13-05:00</pmlp:hasCreationDateTime>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5559">
+    <pmlp:hasDescription rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5558"/>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hates(butler,butler)
+ | hates(charles,agatha)</pmlp:hasRawString>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-554a">
+    <pmlp:hasDescription rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5549"/>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">killed(butler,agatha)
+ | killed(charles,agatha)</pmlp:hasRawString>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5579">
+    <pmlp:hasDescription rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5578"/>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">~ hates(agatha,A)
+ | hates(butler,A)</pmlp:hasRawString>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5585">
+    <pmlp:hasDescription rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5584"/>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hates(charles,agatha)</pmlp:hasRawString>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5565">
+    <pmlp:hasSource rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Vampire---9.0/answer.owl#ns_8_source"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#SourceUsage"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-558f">
+    <pmlp:hasDescription rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-558e"/>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">$false</pmlp:hasRawString>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-557f">
+    <ds:first rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_17"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5571">
+    <hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/Faust.owl#Faust"/>
+    <hasAntecedentList rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5570"/>
+    <hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Faust1.0Rewrite.owl#Faust1.0Rewrite"/>
+    <fromAnswer rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#answer"/>
+    <hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#int">5</hasIndex>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5570">
+    <pmlr:hasMember rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Faust---1.0/combined1.owl#ns_agatha_hates_charles"/>
+    <ds:first rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Faust---1.0/combined1.owl#ns_agatha_hates_charles"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5546">
+    <pmlp:hasDescription rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5545"/>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">~ killed(A,B)
+ | ~ richer(A,B)</pmlp:hasRawString>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-555e">
+    <ds:first rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_5"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5552">
+    <pmlp:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.cs.miami.edu/~tptp/cgi-bin/SeeTPTP?Category=Solutions&amp;Domain=PUZ&amp;File=PUZ001-1&amp;System=SOS---2.0.UNS-Ref.s#18</pmlp:hasURL>
+    <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TPTP Formula</pmlp:hasName>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cnf(18,plain,
+    ( killed(butler,agatha)
+    | hates(charles,agatha) ),
+    inference(hyper,[status(thm)],[12,4]),
+    [iquote('hyper,12,4')]).
+</pmlp:hasRawString>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_1">
+    <isConsequentOf rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5544"/>
+    <hasConclusion rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5546"/>
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2008-01-28T11:32:13-05:00</pmlp:hasCreationDateTime>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-557d">
+    <pmlp:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.cs.miami.edu/~tptp/cgi-bin/SeeTPTP?Category=Solutions&amp;Domain=PUZ&amp;File=PUZ001-1&amp;System=SOS---2.0.UNS-Ref.s#17</pmlp:hasURL>
+    <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TPTP Formula</pmlp:hasName>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cnf(17,plain,
+    ( hates(butler,charles) ),
+    inference(hyper,[status(thm)],[11,5]),
+    [iquote('hyper,11,5')]).
+</pmlp:hasRawString>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-553f">
+    <pmlr:hasMember rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_8"/>
+    <pmlr:hasMember rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_6"/>
+    <ds:first rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_8"/>
+    <ds:rest rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-553e"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5586">
+    <pmlp:hasSource rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/answer.owl#ns_2_source"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#SourceUsage"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5566">
+    <hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/VAMPIRE.owl#VAMPIRE"/>
+    <hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Assumption.owl#Assumption"/>
+    <fromAnswer rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#answer"/>
+    <hasSourceUsage rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5565"/>
+    <hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#int">8</hasIndex>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_17">
+    <isConsequentOf rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-557c"/>
+    <hasConclusion rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-557e"/>
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2008-01-28T11:32:13-05:00</pmlp:hasCreationDateTime>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_8">
+    <isConsequentOf rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5537"/>
+    <hasConclusion rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5539"/>
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2008-01-28T11:32:13-05:00</pmlp:hasCreationDateTime>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5545">
+    <pmlp:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.cs.miami.edu/~tptp/cgi-bin/SeeTPTP?Category=Solutions&amp;Domain=PUZ&amp;File=PUZ001-1&amp;System=SOS---2.0.UNS-Ref.s#1</pmlp:hasURL>
+    <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TPTP Formula</pmlp:hasName>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cnf(1,axiom,
+    ( ~ killed(A,B)
+    | ~ richer(A,B) ),
+    file('PUZ001-1.p',unknown)).
+</pmlp:hasRawString>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5572">
+    <pmlp:hasSource rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.0pre/answer.owl#ns_8_source"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#SourceUsage"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5587">
+    <hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/SOS.owl#SOS"/>
+    <hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Told.owl#Told"/>
+    <fromAnswer rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#answer"/>
+    <hasSourceUsage rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5586"/>
+    <hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</hasIndex>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5582">
+    <pmlr:hasMember rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_19"/>
+    <pmlr:hasMember rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_3"/>
+    <pmlr:hasMember rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_15"/>
+    <pmlr:hasMember rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_17"/>
+    <ds:first rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_19"/>
+    <ds:rest rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5581"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5557">
+    <hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/SOS.owl#SOS"/>
+    <hasAntecedentList rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5556"/>
+    <hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/SOS2.0Hyper.owl#SOS2.0Hyper"/>
+    <fromAnswer rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#answer"/>
+    <hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</hasIndex>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-558a">
+    <ds:first rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_10"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_2">
+    <isConsequentOf rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5587"/>
+    <hasConclusion rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5589"/>
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2008-01-28T11:32:13-05:00</pmlp:hasCreationDateTime>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5567">
+    <pmlp:hasSource rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Otter---3.3/answer.owl#ns_11_source"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#SourceUsage"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5577">
+    <hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/SOS.owl#SOS"/>
+    <hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Told.owl#Told"/>
+    <fromAnswer rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#answer"/>
+    <hasSourceUsage rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5576"/>
+    <hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</hasIndex>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5592">
+    <pmlp:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.cs.miami.edu/~tptp/cgi-bin/SeeTPTP?Category=Solutions&amp;Domain=PUZ&amp;File=PUZ001-1&amp;System=SOS---2.0.UNS-Ref.s#10</pmlp:hasURL>
+    <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TPTP Formula</pmlp:hasName>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cnf(10,axiom,
+    ( hates(agatha,agatha) ),
+    file('PUZ001-1.p',unknown)).
+</pmlp:hasRawString>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#answer">
+    <isConsequentOf rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-558d"/>
+    <hasConclusion rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-558f"/>
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2008-01-28T11:32:13-05:00</pmlp:hasCreationDateTime>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5548">
+    <hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/SOS.owl#SOS"/>
+    <hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Told.owl#Told"/>
+    <fromAnswer rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#answer"/>
+    <hasSourceUsage rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5547"/>
+    <hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</hasIndex>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5538">
+    <pmlp:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.cs.miami.edu/~tptp/cgi-bin/SeeTPTP?Category=Solutions&amp;Domain=PUZ&amp;File=PUZ001-1&amp;System=SOS---2.0.UNS-Ref.s#8</pmlp:hasURL>
+    <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TPTP Formula</pmlp:hasName>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cnf(8,axiom,
+    ( lives(butler) ),
+    file('PUZ001-1.p',unknown)).
+</pmlp:hasRawString>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5540">
+    <hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/SOS.owl#SOS"/>
+    <hasAntecedentList rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-553f"/>
+    <hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/SOS2.0Hyper.owl#SOS2.0Hyper"/>
+    <fromAnswer rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#answer"/>
+    <hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</hasIndex>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5581">
+    <ds:first rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_3"/>
+    <ds:rest rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5580"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5558">
+    <pmlp:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.cs.miami.edu/~tptp/cgi-bin/SeeTPTP?Category=Solutions&amp;Domain=PUZ&amp;File=PUZ001-1&amp;System=SOS---2.0.UNS-Ref.s#19</pmlp:hasURL>
+    <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TPTP Formula</pmlp:hasName>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cnf(19,plain,
+    ( hates(butler,butler)
+    | hates(charles,agatha) ),
+    inference(hyper,[status(thm)],[14,1,18]),
+    [iquote('hyper,14,1,18')]).
+</pmlp:hasRawString>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5560">
+    <hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/SOS.owl#SOS"/>
+    <hasAntecedentList rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-555f"/>
+    <hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/SOS2.0Hyper.owl#SOS2.0Hyper"/>
+    <fromAnswer rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#answer"/>
+    <hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</hasIndex>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_14">
+    <isConsequentOf rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5540"/>
+    <hasConclusion rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5542"/>
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2008-01-28T11:32:13-05:00</pmlp:hasCreationDateTime>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5588">
+    <pmlp:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.cs.miami.edu/~tptp/cgi-bin/SeeTPTP?Category=Solutions&amp;Domain=PUZ&amp;File=PUZ001-1&amp;System=SOS---2.0.UNS-Ref.s#2</pmlp:hasURL>
+    <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TPTP Formula</pmlp:hasName>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cnf(2,axiom,
+    ( ~ hates(agatha,A)
+    | ~ hates(charles,A) ),
+    file('PUZ001-1.p',unknown)).
+</pmlp:hasRawString>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_3">
+    <isConsequentOf rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-555b"/>
+    <hasConclusion rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-555d"/>
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2008-01-28T11:32:13-05:00</pmlp:hasCreationDateTime>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_19">
+    <isConsequentOf rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5557"/>
+    <hasConclusion rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5559"/>
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2008-01-28T11:32:13-05:00</pmlp:hasCreationDateTime>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5550">
+    <pmlr:hasMember rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_12"/>
+    <pmlr:hasMember rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_4"/>
+    <ds:first rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_12"/>
+    <ds:rest rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-554f"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5568">
+    <hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/Otter3.3.owl#Otter3.3"/>
+    <hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Told.owl#Told"/>
+    <fromAnswer rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#answer"/>
+    <hasSourceUsage rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5567"/>
+    <hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#int">3</hasIndex>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5578">
+    <pmlp:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.cs.miami.edu/~tptp/cgi-bin/SeeTPTP?Category=Solutions&amp;Domain=PUZ&amp;File=PUZ001-1&amp;System=SOS---2.0.UNS-Ref.s#5</pmlp:hasURL>
+    <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TPTP Formula</pmlp:hasName>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cnf(5,axiom,
+    ( ~ hates(agatha,A)
+    | hates(butler,A) ),
+    file('PUZ001-1.p',unknown)).
+</pmlp:hasRawString>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5591">
+    <hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/SOS.owl#SOS"/>
+    <hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Told.owl#Told"/>
+    <fromAnswer rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#answer"/>
+    <hasSourceUsage rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5590"/>
+    <hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</hasIndex>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5547">
+    <pmlp:hasSource rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/answer.owl#ns_12_source"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#SourceUsage"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5537">
+    <hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/SOS.owl#SOS"/>
+    <hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Told.owl#Told"/>
+    <fromAnswer rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#answer"/>
+    <hasSourceUsage rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5536"/>
+    <hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</hasIndex>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5561">
+    <pmlp:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.cs.miami.edu/~tptp/cgi-bin/SeeTPTP?Category=Solutions&amp;Domain=PUZ&amp;File=PUZ001-1&amp;System=SOS---2.0.UNS-Ref.s#15</pmlp:hasURL>
+    <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TPTP Formula</pmlp:hasName>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cnf(15,plain,
+    ( hates(butler,agatha) ),
+    inference(hyper,[status(thm)],[10,5]),
+    [iquote('hyper,10,5')]).
+</pmlp:hasRawString>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5555">
+    <ds:first rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_1"/>
+    <ds:rest rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5554"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_11">
+    <hasConclusion rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-556d"/>
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2008-01-28T11:32:13-05:00</pmlp:hasCreationDateTime>
+    <isConsequentOf rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5573"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+    <isConsequentOf rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5571"/>
+    <isConsequentOf rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5568"/>
+    <isConsequentOf rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-556b"/>
+    <isConsequentOf rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5566"/>
+    <isConsequentOf rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5564"/>
+    <isConsequentOf rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-556f"/>
+    <isConsequentOf rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5575"/>
+    <isConsequentOf rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-556a"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_4">
+    <isConsequentOf rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-554c"/>
+    <hasConclusion rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-554e"/>
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2008-01-28T11:32:13-05:00</pmlp:hasCreationDateTime>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5580">
+    <ds:first rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_15"/>
+    <ds:rest rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-557f"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5589">
+    <pmlp:hasDescription rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5588"/>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">~ hates(agatha,A)
+ | ~ hates(charles,A)</pmlp:hasRawString>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-558c">
+    <pmlr:hasMember rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_21"/>
+    <pmlr:hasMember rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_2"/>
+    <pmlr:hasMember rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_10"/>
+    <ds:first rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_21"/>
+    <ds:rest rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-558b"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5569">
+    <pmlp:hasSource rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---0.999/answer.owl#ns_8_source"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#SourceUsage"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5575">
+    <hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/SOS.owl#SOS"/>
+    <hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Told.owl#Told"/>
+    <fromAnswer rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#answer"/>
+    <hasSourceUsage rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5574"/>
+    <hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</hasIndex>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-555a">
+    <pmlp:hasSource rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/answer.owl#ns_3_source"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#SourceUsage"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-554f">
+    <ds:first rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_4"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5542">
+    <pmlp:hasDescription rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5541"/>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">richer(butler,agatha)
+ | hates(butler,butler)</pmlp:hasRawString>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5536">
+    <pmlp:hasSource rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/answer.owl#ns_8_source"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#SourceUsage"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-556f">
+    <hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/SNARK20070805r043.owl#SNARK20070805r043"/>
+    <hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Assumption.owl#Assumption"/>
+    <fromAnswer rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#answer"/>
+    <hasSourceUsage rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-556e"/>
+    <hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#int">2</hasIndex>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-558b">
+    <ds:first rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_2"/>
+    <ds:rest rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-558a"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_5">
+    <isConsequentOf rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5577"/>
+    <hasConclusion rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5579"/>
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2008-01-28T11:32:13-05:00</pmlp:hasCreationDateTime>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-556d">
+    <pmlp:hasDescription rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-556c"/>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hates(agatha,charles)</pmlp:hasRawString>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5556">
+    <pmlr:hasMember rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_14"/>
+    <pmlr:hasMember rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_1"/>
+    <pmlr:hasMember rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_18"/>
+    <ds:first rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_14"/>
+    <ds:rest rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5555"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_12">
+    <isConsequentOf rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5548"/>
+    <hasConclusion rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-554a"/>
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2008-01-28T11:32:13-05:00</pmlp:hasCreationDateTime>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5562">
+    <pmlp:hasDescription rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5561"/>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hates(butler,agatha)</pmlp:hasRawString>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5593">
+    <pmlp:hasDescription rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5592"/>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hates(agatha,agatha)</pmlp:hasRawString>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5576">
+    <pmlp:hasSource rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/answer.owl#ns_5_source"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#SourceUsage"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-553a">
+    <pmlp:hasSource rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/answer.owl#ns_6_source"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#SourceUsage"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5549">
+    <pmlp:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.cs.miami.edu/~tptp/cgi-bin/SeeTPTP?Category=Solutions&amp;Domain=PUZ&amp;File=PUZ001-1&amp;System=SOS---2.0.UNS-Ref.s#12</pmlp:hasURL>
+    <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TPTP Formula</pmlp:hasName>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cnf(12,axiom,
+    ( killed(butler,agatha)
+    | killed(charles,agatha) ),
+    file('PUZ001-1.p',unknown)).
+</pmlp:hasRawString>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-553b">
+    <hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/SOS.owl#SOS"/>
+    <hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Told.owl#Told"/>
+    <fromAnswer rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#answer"/>
+    <hasSourceUsage rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-553a"/>
+    <hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</hasIndex>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-554e">
+    <pmlp:hasDescription rdf:resource="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-554d"/>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">~ killed(A,B)
+ | hates(A,B)</pmlp:hasRawString>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-5541">
+    <pmlp:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.cs.miami.edu/~tptp/cgi-bin/SeeTPTP?Category=Solutions&amp;Domain=PUZ&amp;File=PUZ001-1&amp;System=SOS---2.0.UNS-Ref.s#14</pmlp:hasURL>
+    <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TPTP Formula</pmlp:hasName>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cnf(14,plain,
+    ( richer(butler,agatha)
+    | hates(butler,butler) ),
+    inference(hyper,[status(thm)],[8,6]),
+    [iquote('hyper,8,6')]).
+</pmlp:hasRawString>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-556e">
+    <pmlp:hasSource rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SNARK---20070805r043/answer.owl#ns_agatha_hates_charles_source"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#SourceUsage"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined1.owl#_-b804245:123ea9573d1:-557a">
+    <ds:first rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined1.owl#ns_5"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+</rdf:RDF>

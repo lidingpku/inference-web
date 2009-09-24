@@ -1,0 +1,103 @@
+/*
+
+#generated: 2009-09-24T01:48:36Z
+#context (total): 1 - [http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SOS---2.0/combined7.owl] 
+#hyperedges (total): 22
+#hyperedges (axioms): 12
+#hyperedges (share conclusion): 3 (e.g. [3767, 3764, 3773])
+#vertices (total): 17
+#vertices (outputs): 17
+#vertices (inputs): 16
+#vertices (roots): 1 (e.g. [3770] )
+*/digraph g { rankdir=BT; node [ shape = box];
+/* hello */
+ "x_3764" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined7.owl#_-b804245:123ea9573d1:-5153" shape="box" label="hates(butler,agatha)" fillcolor="red" style="filled"  ];
+  "x_3765" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined7.owl#_-b804245:123ea9573d1:-51c9" shape="box" label="~ killed(A,B)  | hates(A,B)" fillcolor="red"  ];
+  "x_3766" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined7.owl#_-b804245:123ea9573d1:-51bb" shape="box" label="~ hates(agatha,A)  | ~ hates(charles,A)" fillcolor="red"  ];
+  "x_3767" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined7.owl#_-b804245:123ea9573d1:-5097" shape="box" label="hates(charles,agatha)" fillcolor="red" style="filled"  ];
+  "x_3768" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined7.owl#_-b804245:123ea9573d1:-51d4" shape="box" label="hates(butler,butler)  | hates(charles,agatha)" fillcolor="red"  ];
+  "x_3769" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined7.owl#_-b804245:123ea9573d1:-5197" shape="box" label="~ hates(agatha,A)  | hates(butler,A)" fillcolor="red"  ];
+  "x_3770" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined7.owl#_-b804245:123ea9573d1:-51c5" shape="box" label="$false" fillcolor="red"  ];
+  "x_3771" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined7.owl#_-b804245:123ea9573d1:-5075" shape="box" label="lives(butler)" fillcolor="red"  ];
+  "x_3772" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined7.owl#_-b804245:123ea9573d1:-507e" shape="box" label="richer(butler,agatha)  | hates(butler,butler)" fillcolor="red"  ];
+  "x_3773" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined7.owl#_-b804245:123ea9573d1:-5183" shape="box" label="hates(butler,charles)" fillcolor="red" style="filled"  ];
+  "x_3774" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined7.owl#_-b804245:123ea9573d1:-51bf" shape="box" label="hates(agatha,agatha)" fillcolor="red"  ];
+  "x_3775" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined7.owl#_-b804245:123ea9573d1:-5193" shape="box" label="hates(agatha,charles)" fillcolor="red"  ];
+  "x_3776" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined7.owl#_-b804245:123ea9573d1:-5086" shape="box" label="killed(butler,agatha)  | killed(charles,agatha)" fillcolor="red"  ];
+  "x_3777" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined7.owl#_-b804245:123ea9573d1:-51b2" shape="box" label="~ hates(A,agatha)  | ~ hates(A,butler)  | ~ hates(A,charles)" fillcolor="red"  ];
+  "x_3778" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined7.owl#_-b804245:123ea9573d1:-5082" shape="box" label="~ killed(A,B)  | ~ richer(A,B)" fillcolor="red"  ];
+  "x_3779" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined7.owl#_-b804245:123ea9573d1:-51ce" shape="box" label="killed(butler,agatha)  | hates(charles,agatha)" fillcolor="red"  ];
+  "x_3780" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined7.owl#_-b804245:123ea9573d1:-5079" shape="box" label="~ lives(A)  | richer(A,agatha)  | hates(butler,A)" fillcolor="red"  ];
+  "3768-[3772, 3778, 3779]" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined7.owl#_-b804245:123ea9573d1:-51d2" shape="diamond" color="green" label="SOS2.0Hyper"  ];
+  "x_3768" -> "3768-[3772, 3778, 3779]";
+  "3768-[3772, 3778, 3779]" -> "x_3772";
+  "3768-[3772, 3778, 3779]" -> "x_3778";
+  "3768-[3772, 3778, 3779]" -> "x_3779";
+  "3771-[]" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined7.owl#_-b804245:123ea9573d1:-5073" shape="diamond" color="green" label="Told"  ];
+  "x_3771" -> "3771-[]";
+  "3775-[]" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined7.owl#_-b804245:123ea9573d1:-5191" shape="diamond" color="green" label="Told"  ];
+  "x_3775" -> "3775-[]";
+  "3773-[]" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined7.owl#_-b804245:123ea9573d1:-5181" shape="diamond" color="purple" label="SNARK20070805r043HYPERRESOLVE"  ];
+  "x_3773" -> "3773-[]";
+  "3774-[]" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined7.owl#_-b804245:123ea9573d1:-51bd" shape="diamond" color="green" label="Told"  ];
+  "x_3774" -> "3774-[]";
+  "3778-[]" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined7.owl#_-b804245:123ea9573d1:-5080" shape="diamond" color="green" label="Told"  ];
+  "x_3778" -> "3778-[]";
+  "3767-[3768, 3773, 3777]" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined7.owl#_-b804245:123ea9573d1:-510a" shape="diamond" color="green" label="SOS2.0Hyper"  ];
+  "x_3767" -> "3767-[3768, 3773, 3777]";
+  "3767-[3768, 3773, 3777]" -> "x_3768";
+  "3767-[3768, 3773, 3777]" -> "x_3773";
+  "3767-[3768, 3773, 3777]" -> "x_3777";
+  "3780-[]" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined7.owl#_-b804245:123ea9573d1:-5077" shape="diamond" color="green" label="Told"  ];
+  "x_3780" -> "3780-[]";
+  "3769-[]" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined7.owl#_-b804245:123ea9573d1:-5195" shape="diamond" color="green" label="Told"  ];
+  "x_3769" -> "3769-[]";
+  "3772-[3771, 3780]" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined7.owl#_-b804245:123ea9573d1:-507c" shape="diamond" color="green" label="SOS2.0Hyper"  ];
+  "x_3772" -> "3772-[3771, 3780]";
+  "3772-[3771, 3780]" -> "x_3771";
+  "3772-[3771, 3780]" -> "x_3780";
+  "3779-[3765, 3776]" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined7.owl#_-b804245:123ea9573d1:-51cc" shape="diamond" color="green" label="SOS2.0Hyper"  ];
+  "x_3779" -> "3779-[3765, 3776]";
+  "3779-[3765, 3776]" -> "x_3765";
+  "3779-[3765, 3776]" -> "x_3776";
+  "3777-[]" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined7.owl#_-b804245:123ea9573d1:-51b0" shape="diamond" color="green" label="Told"  ];
+  "x_3777" -> "3777-[]";
+  "3767-[3764, 3768, 3773, 3777]" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined7.owl#_-b804245:123ea9573d1:-5167" shape="diamond" color="green" label="SOS2.0Hyper"  ];
+  "x_3767" -> "3767-[3764, 3768, 3773, 3777]";
+  "3767-[3764, 3768, 3773, 3777]" -> "x_3764";
+  "3767-[3764, 3768, 3773, 3777]" -> "x_3768";
+  "3767-[3764, 3768, 3773, 3777]" -> "x_3773";
+  "3767-[3764, 3768, 3773, 3777]" -> "x_3777";
+  "3773-[3769, 3775]" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined7.owl#_-b804245:123ea9573d1:-519a" shape="diamond" color="green" label="SOS2.0Hyper"  ];
+  "x_3773" -> "3773-[3769, 3775]";
+  "3773-[3769, 3775]" -> "x_3769";
+  "3773-[3769, 3775]" -> "x_3775";
+  "3776-[]" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined7.owl#_-b804245:123ea9573d1:-5084" shape="diamond" color="green" label="Told"  ];
+  "x_3776" -> "3776-[]";
+  "3767-[3768, 3777]" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined7.owl#_-b804245:123ea9573d1:-50e2" shape="diamond" color="green" label="SOS2.0Hyper"  ];
+  "x_3767" -> "3767-[3768, 3777]";
+  "3767-[3768, 3777]" -> "x_3768";
+  "3767-[3768, 3777]" -> "x_3777";
+  "3767-[3764, 3768, 3777]" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined7.owl#_-b804245:123ea9573d1:-509c" shape="diamond" color="green" label="SOS2.0Hyper"  ];
+  "x_3767" -> "3767-[3764, 3768, 3777]";
+  "3767-[3764, 3768, 3777]" -> "x_3764";
+  "3767-[3764, 3768, 3777]" -> "x_3768";
+  "3767-[3764, 3768, 3777]" -> "x_3777";
+  "3764-[3769, 3774]" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined7.owl#_-b804245:123ea9573d1:-515c" shape="diamond" color="green" label="SOS2.0Hyper"  ];
+  "x_3764" -> "3764-[3769, 3774]";
+  "3764-[3769, 3774]" -> "x_3769";
+  "3764-[3769, 3774]" -> "x_3774";
+  "3770-[3766, 3767, 3774]" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined7.owl#_-b804245:123ea9573d1:-51c3" shape="diamond" color="green" label="SOS2.0Hyper"  ];
+  "x_3770" -> "3770-[3766, 3767, 3774]";
+  "3770-[3766, 3767, 3774]" -> "x_3766";
+  "3770-[3766, 3767, 3774]" -> "x_3767";
+  "3770-[3766, 3767, 3774]" -> "x_3774";
+  "3765-[]" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined7.owl#_-b804245:123ea9573d1:-51c7" shape="diamond" color="green" label="Told"  ];
+  "x_3765" -> "3765-[]";
+  "3766-[]" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined7.owl#_-b804245:123ea9573d1:-51b9" shape="diamond" color="green" label="Told"  ];
+  "x_3766" -> "3766-[]";
+  "3764-[]" [ URL="http://inference-web.org/test/combine/PUZ/PUZ001-1/SOS---2.0/combined7.owl#_-b804245:123ea9573d1:-5151" shape="diamond" color="brown" label="Faust1.0Resolution"  ];
+  "x_3764" -> "3764-[]";
+ }
+
+}
