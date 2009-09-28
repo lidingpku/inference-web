@@ -1,5 +1,6 @@
 package org.inference_web.pml;
 
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeSet;
@@ -19,18 +20,22 @@ public class AgentPmlCrawler {
 	
 	public static Set<String> crawl_quick(String sz_seed_url){
 		AgentPmlCrawler crawler = new AgentPmlCrawler();
-		crawler.crawl(sz_seed_url, true);
+		crawler.crawl(sz_seed_url);
 		return crawler.m_results;
 	}
-	
-	public void crawl(String sz_seed_url, boolean b_validate){
-		crawl(sz_seed_url, sz_seed_url+".*", b_validate);
+
+	public void crawl(String sz_seed_url){
+		HashSet<String> patterns = new HashSet<String>();
+		patterns.add( sz_seed_url+".*");
+		crawl(sz_seed_url, patterns, true);
 	}
+
 	
-	public void crawl(String sz_seed_url, String sz_pattern, boolean b_validate){
+	public void crawl(String sz_seed_url, Set<String> set_sz_pattern, boolean b_validate){
 		AgentSimpleHttpCrawler crawler = new AgentSimpleHttpCrawler();
 		crawler.m_seed_url = sz_seed_url;
-		crawler.m_allowed_url_patterns.add(sz_pattern);
+		for(String sz_pattern: set_sz_pattern)
+			crawler.m_allowed_url_patterns.add(sz_pattern);
 		crawler.m_max_crawl_depth=3;
 		//crawler.m_max_results =10;
 		crawler.crawl();	
