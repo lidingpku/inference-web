@@ -1,22 +1,22 @@
-package org.inference_web.iwapp.hypergraph;
+package org.inference_web.pml;
 
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.ibm.icu.util.StringTokenizer;
-
 import sw4j.util.DataPVTMap;
 
+import com.ibm.icu.util.StringTokenizer;
 
-public class ToolFormula {
+
+public class ToolFormulaFol {
 		
 	public static DataPVTMap <String,String>  map_eq_formula(Set<String> setStr){
 		DataPVTMap <String,String> ret = new DataPVTMap<String,String>(); 
 		
 		for(String str:setStr){
-			ret.add(normlize_formula(str),str);
+			ret.add(normalize(str),str);
 		}
 		return ret;
 	}
@@ -30,7 +30,7 @@ public class ToolFormula {
 		return count;
 	}
 	
-	public static String normlize_formula(String inputStr){
+	public static String normalize(String inputStr){
 		//////////////////////////////////
 		// predicate reorder
 		TreeSet<String>set_temp = new TreeSet<String>();
@@ -64,7 +64,7 @@ public class ToolFormula {
 		//used non-capture lookbehind feature 
 		//see http://java.sun.com/j2se/1.5.0/docs/api/java/util/regex/Pattern.html
 		//
-		String patternStr = "(?<!\\w)([A-Z][\\w]*)";
+		String patternStr = "(?:\\W)([A-Z][\\w]*)";
 	    Pattern pattern = Pattern.compile(patternStr);
 	    Matcher matcher = pattern.matcher(inputStr);
 	    

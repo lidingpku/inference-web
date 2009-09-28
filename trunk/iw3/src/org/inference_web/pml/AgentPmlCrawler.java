@@ -1,6 +1,7 @@
-package org.inference_web.iwapp.crawler;
+package org.inference_web.pml;
 
 import java.util.Iterator;
+import java.util.Set;
 import java.util.TreeSet;
 
 import com.hp.hpl.jena.rdf.model.Model;
@@ -9,46 +10,22 @@ import sw4j.app.pml.IW200407;
 import sw4j.app.pml.PMLP;
 import sw4j.rdf.load.AgentModelLoader;
 import sw4j.task.load.AgentSimpleHttpCrawler;
-import sw4j.util.Sw4jException;
-import sw4j.util.ToolIO;
-import sw4j.util.ToolString;
 
-public class PmlCrawler {
-	public static void main(String[] args){
-		String [][] arySeed = new String [][]{
-				{"http://inference-web.org/registry/"},
-				{"http://iw.cs.utep.edu/astronomy/solar/registry/"},
-				{"http://iw.cs.utep.edu/earthscience/crustal/registry/"},
-				{"http://iw.cs.utep.edu/earthscience/gravity/registry/"},
-				{"http://iw.cs.utep.edu/earthscience/seismic/"},
-				{"http://iw.vsto.org/registry"},
-				{"http://escience.rpi.edu/pml/"},
-		};
-		String szFileName= "files/iwsearch/pmlp-urls.txt";
-		PmlCrawler crawler = new PmlCrawler();
-		for (int i=0; i<arySeed.length; i++){
-			crawler.crawl(arySeed[i][0],arySeed[i][0]+".*", true);
-		}
-		String szContent =ToolString.printCollectionToString(crawler.m_results);
-		System.out.println(szContent);
-		try {
-			ToolIO.pipeStringToFile(szContent, szFileName,false);
-		} catch (Sw4jException e) {
-			e.printStackTrace();
-		}
-		
-		szContent =ToolString.printCollectionToString(crawler.m_errors);
-		szFileName= "files/iwsearch/pmlp-error-urls.txt";
-		System.out.println(szContent);
-		try {
-			ToolIO.pipeStringToFile(szContent, szFileName,false);
-		} catch (Sw4jException e) {
-			e.printStackTrace();
-		}
-	}
-	
+
+public class AgentPmlCrawler {
 	public TreeSet<String> m_results = new TreeSet<String>();
 	public TreeSet<String> m_errors = new TreeSet<String>();
+	
+	
+	public static Set<String> crawl_quick(String sz_seed_url){
+		AgentPmlCrawler crawler = new AgentPmlCrawler();
+		crawler.crawl(sz_seed_url, true);
+		return crawler.m_results;
+	}
+	
+	public void crawl(String sz_seed_url, boolean b_validate){
+		crawl(sz_seed_url, sz_seed_url+".*", b_validate);
+	}
 	
 	public void crawl(String sz_seed_url, String sz_pattern, boolean b_validate){
 		AgentSimpleHttpCrawler crawler = new AgentSimpleHttpCrawler();
