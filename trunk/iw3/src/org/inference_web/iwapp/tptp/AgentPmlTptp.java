@@ -54,7 +54,8 @@ public class AgentPmlTptp {
 	
 	public void run(){
 		try {
-			run_normalize();
+			run_load();
+		//	run_normalize();
 			run_combine();
 			run_plot_original();
 			run_improve_self();
@@ -66,12 +67,15 @@ public class AgentPmlTptp {
 
 	}
 	
-	public void run_normalize() throws MalformedURLException{
+	public void run_load(){
 		
 		for (String sz_url_pml: set_url_pml){
 			m_hg.add_data(sz_url_pml);
 			
-		}
+		}	
+	}
+	public void run_normalize() throws MalformedURLException{
+
 
 		for (String sz_url_pml: m_hg.getContext()){
 			Model m = m_hg.getModelOriginal(sz_url_pml);
