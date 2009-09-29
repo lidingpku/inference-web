@@ -36,6 +36,4 @@ public class DataPmlHgTptp extends DataPmlHg {
 	}
 
 
-
-
 }

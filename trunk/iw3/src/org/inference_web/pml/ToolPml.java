@@ -1,9 +1,10 @@
 package org.inference_web.pml;
 
+import java.io.File;
 import java.io.InputStream;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
-
 import java.util.Map;
 import java.util.Set;
 
@@ -18,6 +19,8 @@ import sw4j.rdf.load.AgentModelLoader;
 import sw4j.rdf.load.RDFSYNTAX;
 import sw4j.rdf.util.AgentSparql;
 import sw4j.rdf.util.ToolJena;
+import sw4j.util.DataObjectGroupMap;
+import sw4j.util.DataPVHMap;
 import sw4j.util.DataQname;
 import sw4j.util.Sw4jException;
 import sw4j.util.ToolIO;
@@ -31,6 +34,7 @@ import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.Statement;
+import com.hp.hpl.jena.vocabulary.OWL;
 import com.hp.hpl.jena.vocabulary.RDF;
 
 public class ToolPml {
@@ -45,6 +49,9 @@ public class ToolPml {
 		}
 		return set_info;
 	}
+
+
+
 	
 	public static Set<Resource> list_info(Model m, Set<Resource> set_res_step){
 		Set<Resource> ret = new HashSet<Resource>();
@@ -65,8 +72,19 @@ public class ToolPml {
 		return ret;
 	}
 	 
+	public static Set<Resource> list_info(Model m){
+		Set<Resource> ret = new HashSet<Resource>();
+		for (RDFNode node: m.listObjectsOfProperty(PMLR.hasInput).toSet()){
+			ret.add((Resource)node);
+		}
+		for (RDFNode node: m.listObjectsOfProperty(PMLR.hasOutput).toSet()){
+			ret.add((Resource)node);
+		}
+		return ret;
+	}
+
 	public static Set<Resource> list_depending_steps(Model m, Resource res_info_root){
-		Set<Resource> set_step = m.listSubjectsWithProperty(RDF.type,PMLR.Step).toSet();
+		Set<Resource> set_step = m.listSubjectsWithProperty(RDF.type,PMLJ.InferenceStep).toSet();
 		Set<RDFNode> set_step_depends = null;
 		for(Resource res_step_root: m.listSubjectsWithProperty(PMLR.hasOutput, res_info_root).toSet()){
 			if (null==set_step_depends)
@@ -77,18 +95,36 @@ public class ToolPml {
 		set_step.retainAll(set_step_depends);
 		return set_step;
 	}
+
 	
-	/**
-	 * sign pml model, return something new
-	 * 
-	 * @param m
-	 * @param sz_namespace_bnode
-	 * @return
-	 */
-	public static Model pml_sign(Model m, String sz_namespace_bnode){
-		return ToolJena.model_signBlankNode(m, sz_namespace_bnode);
+
+
+	
+	public static Model pml_create_normalize(Model m, String sz_namespace_base){
+			
+		Model model_norm = ToolJena.create_signBlankNode(m, sz_namespace_base);
+
+		//TODO: to be remove in the future
+		model_norm = ToolJena.create_unsignBlankNode(model_norm, PMLJ.InferenceStep);
+		model_norm = ToolJena.create_unsignBlankNode(model_norm, PMLJ.NodeSetList);
+
+		//decouple list
+		pml_update_decouple_list(model_norm);
+
+		return model_norm;
 	}
 
+
+
+	public static void pml_update_decouple_list(Model model_norm){
+		//increment model with decoupled list
+    	ToolJena.update_decoupleList(model_norm, RDF.first, RDF.rest, PMLR.hasMember, false);
+    	ToolJena.update_decoupleList(model_norm, PMLDS.first, PMLDS.rest, PMLR.hasMember, false);
+    	
+    	//add PMLR namespace declaration
+    	model_norm.setNsPrefix(PMLR.class.getSimpleName().toLowerCase(), PMLR.getURI());
+	}
+	
 	/**
 	 * normalize a PML model
 	 * * decouple recursive list
@@ -98,15 +134,13 @@ public class ToolPml {
 	 * @param model_norm
 	 * @return
 	 */
-	public static void pml_index(Model model_norm){	
-		getLogger().info(model_norm.size());
-		//increment model with decoupled list
-    	ToolJena.model_update_List2Map(model_norm, RDF.first, RDF.rest, PMLR.hasMember, false);
-    	ToolJena.model_update_List2Map(model_norm, PMLDS.first, PMLDS.rest, PMLR.hasMember, false);
-    	
-    	//add PMLR namespace declaration
-    	model_norm.setNsPrefix(PMLR.class.getSimpleName().toLowerCase(), PMLR.getURI());
+	public static void pml_update_index(Model model_norm){
+		pml_update_decouple_list(model_norm);
+		Model model_more = pml_create_index(model_norm);
+		ToolJena.update_copy(model_norm, model_more);
 
+	}
+	public static Model pml_create_index(Model model_norm){	
     	////////////////////////////////
     	// add index data
     	// * transitive dependency relation among inferencestep and nodeset
@@ -127,15 +161,16 @@ public class ToolPml {
 			Model model_more = (Model)ret;
 //System.out.println(ToolJena.printModelToString(model_more));			
 			//add transitive inference
-			ToolJena.model_add_transtive(model_more, PMLR.dependsOn);
+			ToolJena.updateModelTranstive(model_more, PMLR.dependsOn);
 			
-			ToolJena.model_merge(model_norm, model_more);
+			ToolJena.update_copyNsPrefix(model_more, model_norm);
 			
+			getLogger().info("create pml index with size: " + model_more.size());
+			return model_more;
 		} catch (Sw4jException e) {
 			e.printStackTrace();
+			return null;
 		}
-		getLogger().info(model_norm.size());
-
 	}
 	
 	
@@ -255,12 +290,14 @@ public class ToolPml {
 		return map_url_model.get(sz_url_pml);
 	}
 	
+	public static String IWV_NAMESPACE = "http://inference-web.org/vocab#";
+	/*
 	
-	private static int gid = 0;
-	public static String IWV_BASE_URI = "http://inference-web.org/vocab/";
+	private static int ggid = 0;
 	public static Resource create_resource(Resource type, Model m){
-		String sz_id = "_"+gid;
-		gid++;
+		
+		String sz_id = "_"+ggid;
+		ggid++;
 		if (PMLP.Information.equals(type))
 			sz_id= "info"+sz_id;
 		else if (PMLJ.NodeSet.equals(type))
@@ -268,48 +305,222 @@ public class ToolPml {
 		else if (PMLJ.InferenceStep.equals(type))
 			sz_id= "is"+sz_id;
 		else if (PMLJ.NodeSetList.equals(type))
-			sz_id= "list"+sz_id;
+			return m.createResource().addProperty(RDF.type, type);
+		else 
+			sz_id="other" +sz_id;
 		
-		return m.createResource(IWV_BASE_URI+sz_id).addProperty(RDF.type, type);
+		return m.createResource(IWV_NAMESPACE+sz_id).addProperty(RDF.type, type);
+		
+		//return m.createResource().addProperty(RDF.type, type);
+	}*/
+	
+	public static void pml_save_data(Model model, File f_output, String sz_namespace, Map<String,String> map_relative_url){
+		String sz_content= ToolJena.printModelToString(model, RDFSYNTAX.RDFXML, sz_namespace);
+		if (null!= map_relative_url)
+			for (String pattern :map_relative_url.keySet()){
+				sz_content = sz_content.replaceAll(pattern, map_relative_url.get(pattern));
+			}
+			
+		ToolIO.pipeStringToFile(sz_content, f_output);
 	}
 	
-	public static Model create_pml2_model(Set<Resource> set_res_step, Model model_ref){
+	public static void pml_create_by_copy(Set<Resource>[] ary_set_res_step, Model model_ref, DataObjectGroupMap<Resource> map_info_id, Resource res_info_root, File f_output){
+		Model model_data= ToolPml.pml_create_by_copy(ary_set_res_step, model_ref, map_info_id,res_info_root);
+		ToolPml.pml_save_data(model_data, f_output, ToolPml.IWV_NAMESPACE, null);
+	}
+	
+	public static Model pml_create_by_copy(Set<Resource>[] ary_set_res_step, Model model_ref, DataObjectGroupMap<Resource> map_info_id, Resource res_info_root){
 		Model model_data = ModelFactory.createDefaultModel();
-		for (Resource res_step: set_res_step){
-			copy_step(model_data, res_step, model_ref);
+		
+		HashMap<RDFNode,Resource> map_res_res= new HashMap<RDFNode,Resource>();
+		HashMap<Integer,Resource> map_gid_info = new  HashMap<Integer,Resource>();
+		HashMap<Integer,Resource> map_gid_ns = new  HashMap<Integer,Resource>();
+
+		//process root
+		Resource res_ns_root =model_ref.listSubjectsWithProperty(PMLJ.hasConclusion, res_info_root).next();
+		int gid_root = map_info_id.getGid(res_info_root);
+		Resource res_ns_root_mapped = model_data.createResource("#root");
+		{
+			map_gid_info.put(gid_root, res_info_root);
+			map_res_res.put(res_info_root, model_data.createResource("#info_"+gid_root));
+			
+			//copy info data
+			ToolJena.update_copyResourceDescription(model_data, model_ref, res_info_root, null,true);
+
+			
+			map_gid_ns.put(gid_root, res_ns_root);
+			map_res_res.put(res_ns_root, res_ns_root_mapped);
+
+			//copy ns data
+			ToolJena.update_copyResourceDescription(model_data, model_ref, res_ns_root, null,false);
+			ToolJena.update_copyResourceDescription(model_data, model_ref, res_ns_root, PMLJ.hasVariableMapping, true);
+			
+			System.out.println("root gid:" +gid_root);
 		}
-		model_data = ToolJena.model_unsignBlankNode(model_data, PMLJ.InferenceStep);
-		model_data = ToolJena.model_unsignBlankNode(model_data, PMLP.Information);
+		/*
+		for(Set<Resource> set_step: ary_set_res_step){
+			for (Resource res_info: ToolPml.list_info(model_ref, set_step)){
+				int gid = map_info_id.getGid(res_info);
+				Resource res_info_mapped = map_gid_info.get(gid);
+				if (null==res_info_mapped){
+					res_info_mapped = res_info;
+					map_gid_info.put(gid, res_info);
+				}
+				map_info_info.put(res_info, res_info_mapped);
+				
+				Resource res_ns = model_ref.listSubjectsWithProperty(PMLJ.hasConclusion, res_info).next();
+				Resource res_ns_mapped = map_gid_ns.get(gid);
+				if (null==res_ns_mapped){
+					res_ns_mapped = res_ns;
+					map_gid_ns.put(gid, res_ns);
+				}
+				map_ns_ns.put(res_ns, res_ns_mapped);
+			}
+		}
+		*/
+		//map_gid_info.clear();
+	//	map_gid_ns.clear();
+			
+		//copy data
+		for(Set<Resource> set_res_step: ary_set_res_step){
+			for (Resource res_step: set_res_step){
+				//skip input=output
+				
+				//copy step data
+				ToolJena.update_copyResourceDescription(model_data, model_ref, res_step, null,false);
+				model_data.add(ToolJena.create_copyList(model_ref, ToolJena.getValueOfProperty(model_ref, res_step, PMLJ.hasAntecedentList, (Resource)null), PMLDS.first, PMLDS.rest));
+//				ToolJena.update_copyResourceDescription(model_data, model_ref, res_step, PMLJ.hasAntecedentList, true);
+				ToolJena.update_copyResourceDescription(model_data, model_ref, res_step, PMLJ.hasSourceUsage, true);
+
+				map_res_res.put(res_step, model_data.createResource());
+
+				
+				//copy info
+				for (Resource res_info: ToolPml.list_info(model_ref, res_step)){
+					int gid = map_info_id.getGid(res_info);
+					Resource res_info_mapped = map_gid_info.get(gid);
+					if (null==res_info_mapped){
+						res_info_mapped = res_info;
+						map_gid_info.put(gid, res_info);
+						
+						//copy info data
+						ToolJena.update_copyResourceDescription(model_data, model_ref, res_info_mapped, null,true);
+					}
+					map_res_res.put(res_info, model_data.createResource("#info_"+gid));
+					
+					
+					Resource res_ns = model_ref.listSubjectsWithProperty(PMLJ.hasConclusion, res_info).next();
+					Resource res_ns_mapped = map_gid_ns.get(gid);
+					if (null==res_ns_mapped){
+						res_ns_mapped = res_ns;
+						map_gid_ns.put(gid, res_ns_mapped);
+						
+						//copy ns data
+						ToolJena.update_copyResourceDescription(model_data, model_ref, res_ns_mapped, null,false);
+						ToolJena.update_copyResourceDescription(model_data, model_ref, res_ns_mapped, PMLJ.hasVariableMapping, true);
+					}
+					
+					if (gid==gid_root)
+						map_res_res.put(res_ns, res_ns_root_mapped);
+					else
+						map_res_res.put(res_ns, model_data.createResource("#ns_"+gid));
+					
+				}
+			}
+		}
+		
+		
+		//filter
+		model_data =  ToolJena.create_filter(model_data, new Property[]{PMLR.dependsOn, PMLR.dependsOnDirect, PMLJ.hasIndex, PMLJ.fromAnswer, PMLJ.fromQuery, PMLJ.isConsequentOf});
+		
+
+		
+		//TODO: add isconseuquentof index, fromanser
+		HashMap<Resource, Integer> map_ns_index = new HashMap<Resource, Integer>();
+		for(Statement stmt: model_data.listStatements(null, PMLR.hasOutput, (String)null).toSet()){
+			Resource res_step =stmt.getSubject();
+			Resource res_info =(Resource) stmt.getObject();
+
+			Resource res_ns = model_ref.listSubjectsWithProperty(PMLJ.hasConclusion, res_info).next();
+			
+			model_data.add(res_ns, PMLJ.isConsequentOf, res_step);
+			if (ary_set_res_step[0].contains(res_step)){
+				res_step.addLiteral(PMLJ.hasIndex,0);
+				map_ns_index.put(res_ns, 1);
+			}
+		}
+		
+		for(Statement stmt: model_data.listStatements(null, PMLR.hasOutput, (String)null).toSet()){
+			Resource res_step =stmt.getSubject();
+			Resource res_info =(Resource) stmt.getObject();
+						
+			Resource res_ns = model_ref.listSubjectsWithProperty(PMLJ.hasConclusion, res_info).next();
+			if (ary_set_res_step[0].contains(res_step)){
+				
+			}else{
+				Integer id = map_ns_index.get(res_ns);
+				if (null==id)
+					id=0;
+				res_step.addLiteral(PMLJ.hasIndex,id);
+				id++;
+				map_ns_index.put(res_ns, id);
+			}
+		}
+		
+		//rename resources
+		model_data = ToolJena.create_rename(model_data, map_res_res);
+
+	//	model_data =  ToolJena.model_filter(model_data, new Property[]{ PMLJ.hasIndex});
+
+
+		//model_data = ToolJena.model_unsignBlankNode(model_data, PMLJ.InferenceStep);
+		//model_data = ToolJena.model_unsignBlankNode(model_data, PMLJ.NodeSet);
+		//model_data = ToolJena.model_unsignBlankNode(model_data, PMLJ.NodeSetList);
+		ToolJena.update_copyNsPrefix(model_data, model_ref);
 		return model_data;
 	}
-	
-	public static void copy_step(Model model_data, Resource res_step, Model model_ref ){
+/*	
+	public static void copy_step(Model model_data, Resource res_step, Model model_ref,  Map<Resource,Resource> map_res_res){
+		//copy description
+		//copy inconsequentof
+		//	copy description
+		//  copy hasconclusion
+		//	  copy description
+		//    copy hasdescription
+		//copy hasantecedentlist
+		
+		
 		Resource res_step_output= create_resource(PMLJ.InferenceStep, model_data);
-		copy_description(model_data, res_step_output, model_ref, res_step, PMLJ.hasInferenceEngine);
-		copy_description(model_data, res_step_output, model_ref, res_step, PMLJ.hasInferenceRule);
+		copy_resource_description(model_data, res_step_output, model_ref, res_step, PMLJ.hasInferenceEngine);
+		copy_resource_description(model_data, res_step_output, model_ref, res_step, PMLJ.hasInferenceRule);
 		
 		Resource res_info_conclusion = (Resource) model_ref.listObjectsOfProperty(res_step, PMLR.hasOutput).next();
-		Resource res_ns_conclusion = create_resource(PMLJ.NodeSet, model_data);
+		res_info_conclusion = map_info_info.get(res_info_conclusion);
+		Resource res_ns_conclusion = map_info_ns.get(res_info_conclusion);
+		if (null==res_ns_conclusion){
+			res_ns_conclusion=create_resource(PMLJ.NodeSet, model_data);
+			map_info_ns.put(res_info_conclusion, res_ns_conclusion);
+		}
 		res_ns_conclusion.addProperty(PMLJ.hasConclusion, res_info_conclusion);
 		model_data.add(model_ref.listStatements(res_info_conclusion,null,(String)null));
 
 		Set<Resource> set_ns_antecedent = new HashSet<Resource>();
 		for (RDFNode node: model_ref.listObjectsOfProperty(res_step, PMLR.hasOutput).toSet()){
 			Resource res_info = (Resource) node;
-			Resource res_ns = create_resource(PMLJ.NodeSet, model_data);
+			res_info = map_info_info.get(res_info);
+			Resource res_ns = map_info_ns.get(res_info);
+			if (null==res_ns){
+				res_ns=create_resource(PMLJ.NodeSet, model_data);
+				map_info_ns.put(res_info, res_ns);
+			}
 			res_ns.addProperty(PMLJ.hasConclusion, res_info);
 			model_data.add(model_ref.listStatements(res_info,null,(String)null));
 			set_ns_antecedent.add(res_ns);
 		}
 		
-		create_step(model_data,res_step, res_ns_conclusion,set_ns_antecedent );
+		create_step(model_data,res_step_output, res_ns_conclusion,set_ns_antecedent );
 	}
 	
-	private static void copy_description(Model model_data,Resource res_data, Model model_ref, Resource res_ref, Property prop){
-		for (Statement stmt: model_ref.listStatements(res_ref,prop,(String)null).toSet()){
-			model_data.add(model_data.createStatement(res_data, stmt.getPredicate(), stmt.getObject()));
-		}
-	}
 	
 	public static void create_step(Model model_data, Resource res_step, Resource res_conclsion, Set<Resource> set_antecedents ){
 		res_conclsion.addProperty(PMLJ.isConsequentOf, res_step);
@@ -325,6 +536,9 @@ public class ToolPml {
 			parent = list;
 		}
 	}
+*/	
+
+	
 
 
 	public static void pml_gen_deductive_ontology(String sz_filename){
@@ -342,9 +556,44 @@ public class ToolPml {
 		m.read(IW200407.getURI());
 		
 		getLogger().info("original ontology size: "+m.size());
-		m = ToolJena.model_createDeductiveClosure(m);
+		m = ToolJena.create_deduction(m);
 		getLogger().info("deduction ontology size: "+m.size());
 		
 		return m;
+	}
+
+
+
+
+	public static Model create_mappings(Model m){
+		HashSet<Model> set_model = new HashSet<Model>();
+		set_model.add(m);
+		return create_mappings(m);
+	}
+
+	public static Model create_mappings(Collection<Model> models){
+		DataPVHMap<String,Resource> map_norm_info = new DataPVHMap<String,Resource>();
+		for (Model model: models){
+			for (Resource res_info: model.listSubjectsWithProperty(RDF.type, PMLP.Information).toSet()){
+				DataPmlInfo dpi = new DataPmlInfo(res_info, model);
+				map_norm_info.add(dpi.getNormalizedString(), res_info);
+			}
+			
+		}
+		
+		// create mappings
+		Model model_mappings = ModelFactory.createDefaultModel();
+		for (String norm: map_norm_info.keySet()){
+			Set<Resource> set_info = map_norm_info.getValuesAsSet(norm);
+			Resource res_info_root = null;
+			for (Resource res_info: set_info){
+				if (null==res_info_root)
+					res_info_root = res_info;
+				else
+					model_mappings.add(model_mappings.createStatement(res_info_root, OWL.sameAs, res_info));
+			}
+		}
+	
+		return model_mappings;
 	}
 }

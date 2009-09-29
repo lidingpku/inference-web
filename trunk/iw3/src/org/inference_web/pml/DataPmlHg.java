@@ -19,13 +19,13 @@ import sw4j.task.graph.DataHyperEdge;
 import sw4j.task.graph.DataHyperGraph;
 import sw4j.util.DataObjectGroupMap;
 import sw4j.util.DataPVHMap;
+import sw4j.util.DataSmartMap;
 import sw4j.util.Sw4jException;
 import sw4j.util.ToolIO;
 import sw4j.util.ToolSafe;
 import sw4j.util.ToolURI;
 
 import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.Statement;
@@ -77,7 +77,7 @@ public class DataPmlHg {
 	public Model getModelAll() {
 		//merge all models
 		if (null==m_model_all){
-			m_model_all = ToolJena.model_merge(this.m_context_model_data.values());
+			m_model_all = ToolJena.create_copy(this.m_context_model_data.values());
 
 			//update vertex group
 			for(Resource info: m_model_all.listSubjectsWithProperty(RDF.type,PMLP.Information).toSet())
@@ -86,11 +86,12 @@ public class DataPmlHg {
 			m_map_res_vertex.normalize();
 			
 			//add index data
-			ToolPml.pml_index(m_model_all);
+			ToolPml.pml_update_index(m_model_all);
 		}
 		return m_model_all;
 	}
 
+	
 	public DataHyperGraph getHyperGraph(){
 		//check cache
 		if (null!=m_dhg)
@@ -105,7 +106,7 @@ public class DataPmlHg {
 		m_map_res_vertex.normalize();
 		
 		m_dhg = new DataHyperGraph();
-		for (Resource res_step: getModelAll().listSubjectsWithProperty(RDF.type, PMLR.Step).toSet()){
+		for (Resource res_step: getModelAll().listSubjectsWithProperty(RDF.type, PMLJ.InferenceStep).toSet()){
 			DataHyperEdge edge = createHyperEdge(getModelAll(), res_step, m_map_res_vertex);
 			m_dhg.add(edge);
 			m_map_step_edge.put(res_step, edge);
@@ -150,14 +151,8 @@ public class DataPmlHg {
 		return ToolPml.list_depending_steps(getModelAll(), res_info_root);
 	}
 	
-	public Set<Resource> getSubHg(){
-		getHyperGraph();
-		return getModelAll().listSubjectsWithProperty(RDF.type, PMLJ.InferenceStep).toSet();		
-	}
 	
 	public Set<Resource> getSubHg(String sz_url_pml){
-		getHyperGraph();
-
 		if (ToolSafe.isEmpty(sz_url_pml))
 			return new HashSet<Resource>();
 
@@ -168,16 +163,15 @@ public class DataPmlHg {
 		
 		return model_data.listSubjectsWithProperty(RDF.type, PMLJ.InferenceStep).toSet();		
 	}
-	
+
+	public Set<Resource> getSubHg(){
+		return getModelAll().listSubjectsWithProperty(RDF.type, PMLJ.InferenceStep).toSet();		
+	}
+
 	public Set<Resource> getSubHg( DataHyperGraph dhg, Resource res_root, String sz_url_pml ){
 		getHyperGraph();
 
-		Model model_data = ToolPml.pml_load(sz_url_pml, this.m_context_model_data);
-		
-		Set<Resource> subjects =null;
-		if (!ToolSafe.isEmpty(model_data)){
-			 subjects = model_data.listSubjects().toSet();
-		}
+		Set<Resource> set_res_step_dependant = ToolPml.list_depending_steps(getModelAll(), res_root);
 
 		Set<Resource> ret = new HashSet<Resource>();
 		//try to reuse PML resources from the supplied context
@@ -188,7 +182,7 @@ public class DataPmlHg {
 					res_edge_chosen=res_edge;
 				
 				boolean bHasRoot = (null!=res_root)&& getModelAll().listStatements(res_edge, PMLR.hasOutput, res_root).hasNext(); 
-				boolean bInContext = (null!=subjects)&&subjects.contains(res_edge);
+				boolean bInContext = (null!=set_res_step_dependant)&&set_res_step_dependant.contains(res_edge);
 				
 				if (bInContext || bHasRoot){
 					res_edge_chosen=res_edge;
@@ -276,7 +270,10 @@ public class DataPmlHg {
 			}
 		}
 		
-		ret = String.format("digraph g \n{ rankdir=BT;\n %s }\n",ret);
+		String label=this.stat(set_res_edge).toString();
+
+		
+		ret = String.format("digraph g \n{ rankdir=BT;\n label=%s \n%s }\n",label, ret);
 		return ret;
 	}
 
@@ -339,14 +336,14 @@ public class DataPmlHg {
 
 				ret_optimal += String.format(" \"%s\" ;\n",label_edge);	
 			}
-			String label="n/a";
+			String label=this.stat(set_res_edge1, set_res_edge2).toString();
 			
-			ret_optimal = String.format("subgraph cluster_opt \n{ label=\"%s\" \n %s \n}\n", label, ret_optimal);
+			ret_optimal = String.format("subgraph cluster_opt \n{ label=\"%s\" \n fontsize=30 fillcolor=cornsilk style=filled \n %s \n}\n", label, ret_optimal);
 		}
 		
 		//optimal solution
 		
-		String ret = String.format("digraph g \n{ rankdir=BT;\n %s \n %s \n}\n",ret_background, ret_optimal);
+		String ret = String.format("digraph g \n{ rankdir=BT;\n   \n %s \n %s \n}\n",ret_background, ret_optimal);
 		return ret;
 	}
 
@@ -358,14 +355,30 @@ public class DataPmlHg {
 		//set shape
 		prop.put("shape", "diamond");
 
+		prop.put("penwidth", "5");
+
 		//add link
-		if (res_edge.isURIResource())
+		if (res_edge.isURIResource()){
 			prop.put("URL", res_edge.getURI());
+		}else{
+			//link to iw browser?
+			Resource nodeset= getModelAll().listSubjectsWithProperty(PMLJ.isConsequentOf,res_edge).next();
+			String sz_url;
+			try {
+				sz_url = String.format("%s?url=%s","http://browser.inference-web.org/iwbrowser/BrowseNodeSet",ToolURI.encodeURIString(nodeset.getURI()));
+				prop.put("URL", sz_url);	
+			} catch (Sw4jException e) {
+				e.printStackTrace();
+			}
+
+		}
 	
 		// set fill color
+		prop.put("style", "filled");
 		if (edge.isAtomic()){
-			prop.put("style", "filled");
 			prop.put("fillcolor", "lightgrey");				
+		}else{
+			prop.put("fillcolor", "white");							
 		}
 		
 		//set border color
@@ -404,14 +417,17 @@ public class DataPmlHg {
 		//set shape
 		prop.put("shape", "box");
 		
+		
 		if (null==dhg||!dhg.getNodes().contains(gid))
 			return prop;
 
 		
 		int antecedents = dhg.getEdgesByOutput(gid).size();
+		prop.put("style", "filled");
 		if (antecedents>1){
-			prop.put("style", "filled");
 			prop.put("fillcolor", "red");
+		}else{
+			prop.put("fillcolor", "white");			
 		}
 		
 		//add border color
@@ -423,15 +439,6 @@ public class DataPmlHg {
 		if (res_node.isURIResource())
 			prop.put("URL", res_node.getURI());
 		else{
-			//link to iw browser?
-			Resource nodeset= getModelAll().listSubjectsWithProperty(PMLJ.hasConclusion,res_node).next();
-			String sz_url;
-			try {
-				sz_url = String.format("%s?url=%s","http://browser.inference-web.org/iwbrowser/BrowseNodeSet",ToolURI.encodeURIString(nodeset.getURI()));
-				prop.put("URL", sz_url);	
-			} catch (Sw4jException e) {
-				e.printStackTrace();
-			}
 		}
 		
 		//add label
@@ -456,37 +463,6 @@ public class DataPmlHg {
 	protected String graphviz_get_engine_color(Resource resEngine) {
 		return m_map_color_engine.getColor( (null!=resEngine)?resEngine.getURI():"n/a");
 	}
-
-	public Model create_mappings(){
-		return create_mappings(this.m_context_model_data.values());
-	}
-	
-	public static Model create_mappings(Collection<Model> models){
-		DataPVHMap<String,Resource> map_norm_info = new DataPVHMap<String,Resource>();
-		for (Model model: models){
-			for (Resource res_info: model.listSubjectsWithProperty(RDF.type, PMLP.Information).toSet()){
-				DataPmlInfo dpi = new DataPmlInfo(res_info, model);
-				map_norm_info.add(dpi.getNormalizedString(), res_info);
-			}
-			
-		}
-		
-		// create mappings
-		Model model_mappings = ModelFactory.createDefaultModel();
-		for (String norm: map_norm_info.keySet()){
-			Set<Resource> set_info = map_norm_info.getValuesAsSet(norm);
-			Resource res_info_root = null;
-			for (Resource res_info: set_info){
-				if (null==res_info_root)
-					res_info_root = res_info;
-				else
-					model_mappings.add(model_mappings.createStatement(res_info_root, OWL.sameAs, res_info));
-			}
-		}
-
-		return model_mappings;
-	}
-
 
 	/*
 	public static void export_dot2(DataHyperGraph dhg, DataHyperGraph dhg_all, DataPmlHg hg, String file_output, String sz_context){
@@ -564,4 +540,71 @@ public class DataPmlHg {
 		}
 		
 	}
+	
+	public DataObjectGroupMap<Resource> getInfoMap() {
+		return this.m_map_res_vertex;
+	}
+
+	public Set<Resource> copy_without_loop(Set<Resource> set_step){
+		HashSet<Resource> ret = new HashSet<Resource>();
+		for (Resource res_step: set_step){
+			DataHyperEdge edge = this.m_map_step_edge.get(res_step);
+			if (!edge.hasLoop()){
+				ret.add(res_step);
+			}
+		}
+		return ret;
+	}
+
+	public Collection<Model> getModels() {
+		return this.m_context_model_data.values();
+	}
+
+	
+	public static String STAT_WEIGHT = "weight";
+	public static String STAT_WEIGHT_SAVING = "weight[saving]";
+	
+	public static String STAT_STEP = "step";
+	public static String STAT_STEP_NEW = "step[new]";
+	public static String STAT_STEP_SAVING = "step[saving]";
+
+	public static String STAT_STEP_AXIOM = "step(axiom)";
+	public static String STAT_STEP_AXIOM_SAVING = "step(axiom)[saving]";
+	
+	public static String STAT_FORMULA = "formula";
+	public static String STAT_FORMULA_NEW = "formula[new]";
+	
+	public DataSmartMap stat(Set<Resource> set_step_improved, Set<Resource> set_step_original){
+		DataSmartMap data= new DataSmartMap();
+		DataHyperGraph g_improved = this.getHyperGraph(set_step_improved);
+		DataHyperGraph g_original = this.getHyperGraph(set_step_original);
+		
+		DataSmartMap data1= stat(set_step_improved);
+		data.copy(data1);
+
+		Set<Integer> set_formular_new = g_improved.getVertices();
+		set_formular_new.removeAll(g_original.getVertices());
+		data.put(STAT_FORMULA_NEW, set_formular_new.size());
+		
+		data.put(STAT_STEP_SAVING, set_step_original.size() -  set_step_improved.size());
+
+		Set<DataHyperEdge> set_step_new = g_improved.getEdges();
+		set_step_new.removeAll(g_original.getEdges());
+		data.put(STAT_STEP_NEW, set_step_new.size());
+
+		return data;
+	}
+
+	public DataSmartMap stat(Set<Resource> set_step){
+		DataSmartMap data= new DataSmartMap();
+		DataHyperGraph dhg = this.getHyperGraph(set_step);
+
+		data.put(STAT_WEIGHT, dhg.getTotalWeight());
+		data.put(STAT_STEP, dhg.getEdges().size());
+		data.put(STAT_STEP_AXIOM, dhg.getAxioms().size());
+		data.put(STAT_FORMULA, dhg.getNodes().size());
+		
+		return data;
+	}
+
 }
