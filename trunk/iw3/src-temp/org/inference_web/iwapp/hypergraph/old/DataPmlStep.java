@@ -40,7 +40,7 @@ public class DataPmlStep {
 		//get antecedents
 		NodeIterator iter_list = m.listObjectsOfProperty(is, PMLJ.hasAntecedentList);
 		if (iter_list.hasNext())
-			m_antecedents = ToolJena.getListMembers(m,(Resource)(iter_list.nextNode()), PMLDS.first, PMLDS.rest);
+			m_antecedents = ToolJena.listListMembers(m,(Resource)(iter_list.nextNode()), PMLDS.first, PMLDS.rest);
 	
 		
 				
@@ -51,7 +51,7 @@ public class DataPmlStep {
 		
 		// save description about information of conclusion
 		Resource info = (Resource) (m.listObjectsOfProperty(m_conclusion, PMLJ.hasConclusion).next());
-		m_model.add(ToolJena.getModel_byDescription(m, info, true));
+		ToolJena.update_copyResourceDescription(m_model, m, info, null, true);
 	
 		// save description about inference step
 		m_model.add(m.listStatements(is, null, (String)null));
@@ -72,12 +72,12 @@ public class DataPmlStep {
 			NodeIterator iter= m.listObjectsOfProperty(is, PMLJ.hasSourceUsage);
 			if (iter.hasNext()){
 				Resource res = (Resource) iter.next();
-				m_model.add(ToolJena.getModel_byDescription(m, res, true));
+				ToolJena.update_copyResourceDescription(m_model, m, res, null, true);
 			}
 		}
 
 		// save prefix mapping
-		ToolJena.model_copyNsPrefix(m_model, m);
+		ToolJena.update_copyNsPrefix(m_model, m);
 		
 	
 		
@@ -157,7 +157,7 @@ public class DataPmlStep {
 		//set new index info
 		tptpModel.add(tptpModel.createStatement(m_model.listSubjectsWithProperty(RDF.type,PMLJ.InferenceStep).nextResource(), PMLJ.hasIndex, m.createTypedLiteral(index)));
 		
-		ToolJena.model_merge(m, tptpModel);
-		ToolJena.model_copyNsPrefix(m, m_model);
+		ToolJena.update_copy(m, tptpModel);
+		ToolJena.update_copyNsPrefix(m, m_model);
 	}
 }

@@ -51,7 +51,7 @@ public class ToolPmlTest {
 			
 			Map<String, Model> map = ToolPml.pml_load(sz_url_pml);
 			Model model_data = map.get(sz_url_pml);
-			Model model_all = ToolJena.model_merge(map.values());
+			Model model_all = ToolJena.create_copy(map.values());
 
 			System.out.println("-------------test load summary-----------");
 			System.out.println("loaded:"+ToolString.printCollectionToString(map.keySet()));
@@ -60,10 +60,10 @@ public class ToolPmlTest {
 				fail("not enough triples loaded");
 			}
 			//sign
-			model_all = ToolPml.pml_sign(model_all, sz_url_pml);
+			model_all = ToolPml.pml_create_normalize(model_all, sz_url_pml);
 			
 			//index
-			ToolPml.pml_index(model_all);
+			ToolPml.pml_create_index(model_all);
 			test_index(model_all);
 			
 			test_transitive_steps(model_data, model_all, data[2]);

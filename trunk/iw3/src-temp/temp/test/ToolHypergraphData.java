@@ -45,7 +45,7 @@ public class ToolHypergraphData {
 	}
 	
 	public static Model pml2hg(Model pml, String xmlbase, String url_pml){
-		ToolJena.model_update_List2Map(pml, PMLDS.first, PMLDS.rest, null,false);
+		ToolJena.update_decoupleList(pml, PMLDS.first, PMLDS.rest, null,false);
 
 		StmtIterator iter = pml.listStatements(null, RDFS.member, (String)null);
 		while (iter.hasNext()){
