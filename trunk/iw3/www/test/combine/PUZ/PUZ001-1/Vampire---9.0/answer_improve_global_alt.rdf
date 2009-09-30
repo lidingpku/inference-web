@@ -9,234 +9,31 @@
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
     xmlns:ds="http://inference-web.org/2.0/ds.owl#" > 
   <rdf:Description rdf:nodeID="A0">
-    <ds:first rdf:resource="#ns_347"/>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A1">
-    <pmlr:hasInput rdf:resource="#info_102"/>
-    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Vampire9.0Resolution.owl#Vampire9.0Resolution"/>
-    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/VAMPIRE.owl#VAMPIRE"/>
-    <pmlj:hasAntecedentList rdf:nodeID="A2"/>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
-    <pmlr:hasInput rdf:resource="#info_395"/>
-    <pmlr:hasOutput rdf:resource="#info_261"/>
-    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</pmlj:hasIndex>
-  </rdf:Description>
-  <rdf:Description rdf:about="#ns_261">
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
-    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:51-04:00</pmlp:hasCreationDateTime>
-    <pmlj:hasConclusion rdf:resource="#info_261"/>
-    <pmlj:isConsequentOf rdf:nodeID="A1"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A3">
+    <pmlj:hasSourceUsage rdf:nodeID="A1"/>
     <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Told.owl#Told"/>
-    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/VAMPIRE.owl#VAMPIRE"/>
-    <pmlj:hasSourceUsage rdf:nodeID="A4"/>
-    <pmlr:hasOutput rdf:resource="#info_441"/>
     <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/VAMPIRE.owl#VAMPIRE"/>
+    <pmlr:hasOutput rdf:resource="#info_82"/>
     <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0</pmlj:hasIndex>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A5">
-    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cnf(butler,hypothesis,
-    ( lives(butler) ),
-    file('PUZ001-1.tptp',butler)).
-</pmlp:hasRawString>
-    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
-    <pmlp:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.cs.miami.edu/~tptp/cgi-bin/SeeTPTP?Category=Solutions&amp;Domain=PUZ&amp;File=PUZ001-1&amp;System=SNARK---20080805r005.UNS-Ref.s#butler</pmlp:hasURL>
-    <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TPTP Formula</pmlp:hasName>
+  <rdf:Description rdf:about="#ns_390">
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+    <pmlj:hasConclusion rdf:resource="#info_390"/>
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:51-04:00</pmlp:hasCreationDateTime>
+    <pmlj:isConsequentOf rdf:nodeID="A2"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A6">
+  <rdf:Description rdf:nodeID="A3">
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
     <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cnf(9,axiom,
     ( ~ killed(X0,X1)
     | hates(X0,X1) ),
     file(input,killer_hates_victim)).
 </pmlp:hasRawString>
     <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
-    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
-    <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TPTP Formula</pmlp:hasName>
     <pmlp:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.cs.miami.edu/~tptp/cgi-bin/SeeTPTP?Category=Solutions&amp;Domain=PUZ&amp;File=PUZ001-1&amp;System=Vampire---9.0.UNS-Ref.s#9</pmlp:hasURL>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A7">
-    <ds:first rdf:resource="#ns_427"/>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#info_8">
-    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">~ hates(agatha,X0)
- | hates(butler,X0)</pmlp:hasRawString>
-    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
-    <pmlp:hasDescription rdf:nodeID="A8"/>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A9">
-    <pmlr:hasInput rdf:resource="#info_395"/>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
-    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/SNARK20070805r043HYPERRESOLVE.owl#SNARK20070805r043HYPERRESOLVE"/>
-    <pmlr:hasInput rdf:resource="#info_258"/>
-    <pmlr:hasOutput rdf:resource="#info_67"/>
-    <pmlj:hasAntecedentList rdf:nodeID="A10"/>
-    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/SNARK20080805r005.owl#SNARK20080805r005"/>
-    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0</pmlj:hasIndex>
-  </rdf:Description>
-  <rdf:Description rdf:about="#info_203">
-    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">~ hates(X0,butler)
- | ~ hates(X0,charles)
- | ~ hates(X0,agatha)</pmlp:hasRawString>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
-    <pmlp:hasDescription rdf:nodeID="A11"/>
-    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A12">
-    <pmlr:hasMember rdf:resource="#ns_260"/>
-    <pmlr:hasMember rdf:resource="#ns_308"/>
-    <ds:first rdf:resource="#ns_260"/>
-    <ds:rest rdf:nodeID="A13"/>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#info_441">
-    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
-    <pmlp:hasDescription rdf:nodeID="A14"/>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
-    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">~ hates(charles,X0)
- | ~ hates(agatha,X0)</pmlp:hasRawString>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A15">
-    <pmlr:hasInput rdf:resource="#info_172"/>
-    <pmlr:hasOutput rdf:resource="#info_55"/>
-    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/VAMPIRE.owl#VAMPIRE"/>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
-    <pmlr:hasInput rdf:resource="#info_347"/>
-    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Vampire9.0Resolution.owl#Vampire9.0Resolution"/>
-    <pmlj:hasAntecedentList rdf:nodeID="A16"/>
-    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0</pmlj:hasIndex>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A17">
-    <ds:first rdf:resource="#ns_203"/>
-    <ds:rest rdf:nodeID="A18"/>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#ns_172">
-    <pmlj:hasConclusion rdf:resource="#info_172"/>
-    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:51-04:00</pmlp:hasCreationDateTime>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
-    <pmlj:isConsequentOf rdf:nodeID="A19"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A20">
-    <ds:first rdf:resource="#ns_427"/>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A21">
-    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/VAMPIRE.owl#VAMPIRE"/>
-    <pmlj:hasAntecedentList rdf:nodeID="A22"/>
-    <pmlr:hasInput rdf:resource="#info_55"/>
-    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Vampire---9.0/answer.owl#Rule_resolution__forward_subsumption_resolution"/>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
-    <pmlr:hasOutput rdf:resource="#info_0"/>
-    <pmlr:hasInput rdf:resource="#info_357"/>
-    <pmlr:hasInput rdf:resource="#info_8"/>
-    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0</pmlj:hasIndex>
-  </rdf:Description>
-  <rdf:Description rdf:about="#info_55">
-    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">~ hates(butler,agatha)</pmlp:hasRawString>
-    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
-    <pmlp:hasDescription rdf:nodeID="A23"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#ns_395">
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
-    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:50-04:00</pmlp:hasCreationDateTime>
-    <pmlj:hasConclusion rdf:resource="#info_395"/>
-    <pmlj:isConsequentOf rdf:nodeID="A24"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#ns_357">
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
-    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:51-04:00</pmlp:hasCreationDateTime>
-    <pmlj:hasConclusion rdf:resource="#info_357"/>
-    <pmlj:isConsequentOf rdf:nodeID="A25"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#root">
-    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:51-04:00</pmlp:hasCreationDateTime>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
-    <pmlj:hasConclusion rdf:resource="#info_0"/>
-    <pmlj:isConsequentOf rdf:nodeID="A21"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A26">
-    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Told.owl#Told"/>
-    <pmlr:hasOutput rdf:resource="#info_203"/>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
-    <pmlj:hasSourceUsage rdf:nodeID="A27"/>
-    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/VAMPIRE.owl#VAMPIRE"/>
-    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0</pmlj:hasIndex>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A28">
-    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
-    <pmlp:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.cs.miami.edu/~tptp/cgi-bin/SeeTPTP?Category=Solutions&amp;Domain=PUZ&amp;File=PUZ001-1&amp;System=Vampire---9.0.UNS-Ref.s#29</pmlp:hasURL>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
-    <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TPTP Formula</pmlp:hasName>
-    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cnf(29,plain,
-    ( ~ hates(butler,butler)
-    | ~ hates(butler,agatha) ),
-    inference('resolution, forward subsumption resolution',[],[8,15,10])).
-</pmlp:hasRawString>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A29">
-    <pmlr:hasInput rdf:resource="#info_67"/>
-    <pmlj:hasAntecedentList rdf:nodeID="A30"/>
-    <pmlr:hasOutput rdf:resource="#info_158"/>
-    <pmlr:hasInput rdf:resource="#info_102"/>
-    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/SOS2.0Hyper.owl#SOS2.0Hyper"/>
-    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/SOS.owl#SOS"/>
-    <pmlr:hasInput rdf:resource="#info_427"/>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
-    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0</pmlj:hasIndex>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A14">
-    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cnf(14,plain,
-    ( ~ hates(charles,X0)
-    | ~ hates(agatha,X0) ),
-    inference(normalize,[],[5])).
-</pmlp:hasRawString>
-    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
-    <pmlp:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.cs.miami.edu/~tptp/cgi-bin/SeeTPTP?Category=Solutions&amp;Domain=PUZ&amp;File=PUZ001-1&amp;System=Vampire---9.0.UNS-Ref.s#14</pmlp:hasURL>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
     <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TPTP Formula</pmlp:hasName>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A31">
-    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
-    <pmlp:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.cs.miami.edu/~tptp/cgi-bin/SeeTPTP?Category=Solutions&amp;Domain=PUZ&amp;File=PUZ001-1&amp;System=Vampire---9.0.UNS-Ref.s#39</pmlp:hasURL>
-    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cnf(39,plain,
-    ( $false ),
-    inference('resolution, forward subsumption resolution',[],[7,10,38])).
-</pmlp:hasRawString>
-    <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TPTP Formula</pmlp:hasName>
-  </rdf:Description>
-  <rdf:Description rdf:about="#ns_427">
-    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:50-04:00</pmlp:hasCreationDateTime>
-    <pmlj:hasConclusion rdf:resource="#info_427"/>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
-    <pmlj:isConsequentOf rdf:nodeID="A32"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A10">
-    <pmlr:hasMember rdf:resource="#ns_258"/>
-    <pmlr:hasMember rdf:resource="#ns_395"/>
-    <ds:first rdf:resource="#ns_395"/>
-    <ds:rest rdf:nodeID="A33"/>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A34">
-    <pmlp:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.cs.miami.edu/~tptp/cgi-bin/SeeTPTP?Category=Solutions&amp;Domain=PUZ&amp;File=PUZ001-1&amp;System=SOS---2.0.UNS-Ref.s#19</pmlp:hasURL>
-    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
-    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cnf(19,plain,
-    ( hates(butler,butler)
-    | hates(charles,agatha) ),
-    inference(hyper,[status(thm)],[14,1,18]),
-    [iquote('hyper,14,1,18')]).
-</pmlp:hasRawString>
-    <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TPTP Formula</pmlp:hasName>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A23">
+  <rdf:Description rdf:nodeID="A4">
     <pmlp:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.cs.miami.edu/~tptp/cgi-bin/SeeTPTP?Category=Solutions&amp;Domain=PUZ&amp;File=PUZ001-1&amp;System=Vampire---9.0.UNS-Ref.s#38</pmlp:hasURL>
     <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
     <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cnf(38,plain,
@@ -246,132 +43,44 @@
     <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
     <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TPTP Formula</pmlp:hasName>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A35">
-    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Told.owl#Told"/>
-    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/VAMPIRE.owl#VAMPIRE"/>
-    <pmlj:hasSourceUsage rdf:nodeID="A36"/>
-    <pmlr:hasOutput rdf:resource="#info_258"/>
+  <rdf:Description rdf:nodeID="A5">
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cnf(7,axiom,
+    ( hates(agatha,agatha) ),
+    file(input,agatha_hates_agatha)).
+</pmlp:hasRawString>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+    <pmlp:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.cs.miami.edu/~tptp/cgi-bin/SeeTPTP?Category=Solutions&amp;Domain=PUZ&amp;File=PUZ001-1&amp;System=Vampire---9.0.UNS-Ref.s#7</pmlp:hasURL>
+    <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TPTP Formula</pmlp:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A6">
     <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Vampire9.0Resolution.owl#Vampire9.0Resolution"/>
+    <pmlr:hasInput rdf:resource="#info_379"/>
+    <pmlr:hasOutput rdf:resource="#info_303"/>
+    <pmlr:hasInput rdf:resource="#info_270"/>
+    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/VAMPIRE.owl#VAMPIRE"/>
+    <pmlj:hasAntecedentList rdf:nodeID="A7"/>
     <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0</pmlj:hasIndex>
   </rdf:Description>
-  <rdf:Description rdf:about="#ns_347">
-    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:51-04:00</pmlp:hasCreationDateTime>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
-    <pmlj:hasConclusion rdf:resource="#info_347"/>
-    <pmlj:isConsequentOf rdf:nodeID="A37"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#ns_260">
+  <rdf:Description rdf:about="#ns_225">
     <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
     <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:51-04:00</pmlp:hasCreationDateTime>
-    <pmlj:hasConclusion rdf:resource="#info_260"/>
-    <pmlj:isConsequentOf rdf:nodeID="A38"/>
+    <pmlj:hasConclusion rdf:resource="#info_225"/>
+    <pmlj:isConsequentOf rdf:nodeID="A8"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A11">
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
-    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
-    <pmlp:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.cs.miami.edu/~tptp/cgi-bin/SeeTPTP?Category=Solutions&amp;Domain=PUZ&amp;File=PUZ001-1&amp;System=Vampire---9.0.UNS-Ref.s#15</pmlp:hasURL>
-    <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TPTP Formula</pmlp:hasName>
-    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cnf(15,plain,
-    ( ~ hates(X0,butler)
-    | ~ hates(X0,charles)
-    | ~ hates(X0,agatha) ),
-    inference(normalize,[],[6])).
-</pmlp:hasRawString>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A39">
-    <pmlr:hasMember rdf:resource="#ns_357"/>
-    <pmlr:hasMember rdf:resource="#ns_158"/>
-    <pmlr:hasMember rdf:resource="#ns_441"/>
-    <ds:first rdf:resource="#ns_357"/>
-    <ds:rest rdf:nodeID="A40"/>
+  <rdf:Description rdf:nodeID="A9">
+    <ds:first rdf:resource="#ns_115"/>
     <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A41">
+  <rdf:Description rdf:about="#info_379">
     <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
-    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
-    <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TPTP Formula</pmlp:hasName>
-    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cnf(1,axiom,
-    ( ~ killed(A,B)
-    | ~ richer(A,B) ),
-    file('PUZ001-1.p',unknown)).
-</pmlp:hasRawString>
-    <pmlp:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.cs.miami.edu/~tptp/cgi-bin/SeeTPTP?Category=Solutions&amp;Domain=PUZ&amp;File=PUZ001-1&amp;System=SOS---2.0.UNS-Ref.s#1</pmlp:hasURL>
-  </rdf:Description>
-  <rdf:Description rdf:about="#ns_308">
-    <pmlj:hasConclusion rdf:resource="#info_308"/>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
-    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:51-04:00</pmlp:hasCreationDateTime>
-    <pmlj:isConsequentOf rdf:nodeID="A42"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A13">
-    <ds:first rdf:resource="#ns_308"/>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#ns_118">
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
-    <pmlj:hasConclusion rdf:resource="#info_118"/>
-    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:51-04:00</pmlp:hasCreationDateTime>
-    <pmlj:isConsequentOf rdf:nodeID="A43"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#info_172">
-    <pmlp:hasDescription rdf:nodeID="A28"/>
-    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
     <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">~ hates(butler,butler)
  | ~ hates(butler,agatha)</pmlp:hasRawString>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A22">
-    <pmlr:hasMember rdf:resource="#ns_357"/>
-    <pmlr:hasMember rdf:resource="#ns_55"/>
-    <pmlr:hasMember rdf:resource="#ns_8"/>
-    <ds:first rdf:resource="#ns_357"/>
-    <ds:rest rdf:nodeID="A44"/>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A32">
-    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/VAMPIRE.owl#VAMPIRE"/>
-    <pmlj:hasAntecedentList rdf:nodeID="A12"/>
-    <pmlr:hasInput rdf:resource="#info_308"/>
-    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Vampire9.0Resolution.owl#Vampire9.0Resolution"/>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
-    <pmlr:hasOutput rdf:resource="#info_427"/>
-    <pmlr:hasInput rdf:resource="#info_260"/>
-    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0</pmlj:hasIndex>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A18">
-    <ds:first rdf:resource="#ns_8"/>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#info_0">
-    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
-    <pmlp:hasDescription rdf:nodeID="A31"/>
-    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">$false</pmlp:hasRawString>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#ns_67">
-    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:50-04:00</pmlp:hasCreationDateTime>
-    <pmlj:hasConclusion rdf:resource="#info_67"/>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
-    <pmlj:isConsequentOf rdf:nodeID="A9"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A45">
-    <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TPTP Formula</pmlp:hasName>
-    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cnf(8,axiom,
-    ( hates(agatha,charles) ),
-    file(input,agatha_hates_charles)).
-</pmlp:hasRawString>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
-    <pmlp:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.cs.miami.edu/~tptp/cgi-bin/SeeTPTP?Category=Solutions&amp;Domain=PUZ&amp;File=PUZ001-1&amp;System=Vampire---9.0.UNS-Ref.s#8</pmlp:hasURL>
+    <pmlp:hasDescription rdf:nodeID="A10"/>
     <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
   </rdf:Description>
-  <rdf:Description rdf:about="#info_102">
-    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">~ killed(A,B)
- | ~ richer(A,B)</pmlp:hasRawString>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
-    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
-    <pmlp:hasDescription rdf:nodeID="A41"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A46">
+  <rdf:Description rdf:nodeID="A11">
     <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TPTP Formula</pmlp:hasName>
     <pmlp:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.cs.miami.edu/~tptp/cgi-bin/SeeTPTP?Category=Solutions&amp;Domain=PUZ&amp;File=PUZ001-1&amp;System=Vampire---9.0.UNS-Ref.s#17</pmlp:hasURL>
     <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cnf(17,plain,
@@ -380,321 +89,601 @@
     | hates(butler,X0) ),
     inference(resolution,[],[13,11])).
 </pmlp:hasRawString>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
     <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#ns_8">
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
-    <pmlj:hasConclusion rdf:resource="#info_8"/>
-    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:51-04:00</pmlp:hasCreationDateTime>
-    <pmlj:isConsequentOf rdf:nodeID="A47"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#ns_158">
-    <pmlj:isConsequentOf rdf:nodeID="A48"/>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
-    <pmlj:hasConclusion rdf:resource="#info_158"/>
-    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:50-04:00</pmlp:hasCreationDateTime>
-    <pmlj:isConsequentOf rdf:nodeID="A29"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A8">
-    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
-    <pmlp:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.cs.miami.edu/~tptp/cgi-bin/SeeTPTP?Category=Solutions&amp;Domain=PUZ&amp;File=PUZ001-1&amp;System=Vampire---9.0.UNS-Ref.s#10</pmlp:hasURL>
-    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cnf(10,axiom,
-    ( ~ hates(agatha,X0)
-    | hates(butler,X0) ),
-    file(input,same_hates)).
-</pmlp:hasRawString>
     <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A12">
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#SourceUsage"/>
+    <pmlp:hasUsageDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:51-04:00</pmlp:hasUsageDateTime>
+    <pmlp:hasSource rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Vampire---9.0/answer.owl#ns_4_source"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A10">
     <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TPTP Formula</pmlp:hasName>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A42">
-    <pmlj:hasSourceUsage rdf:nodeID="A49"/>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
-    <pmlr:hasOutput rdf:resource="#info_308"/>
-    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/VAMPIRE.owl#VAMPIRE"/>
-    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0</pmlj:hasIndex>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A43">
-    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Told.owl#Told"/>
-    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/VAMPIRE.owl#VAMPIRE"/>
-    <pmlr:hasOutput rdf:resource="#info_118"/>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
-    <pmlj:hasSourceUsage rdf:nodeID="A50"/>
-    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0</pmlj:hasIndex>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A33">
-    <ds:first rdf:resource="#ns_258"/>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A24">
-    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Told.owl#Told"/>
-    <pmlr:hasOutput rdf:resource="#info_395"/>
-    <pmlj:hasSourceUsage rdf:nodeID="A51"/>
-    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/VAMPIRE.owl#VAMPIRE"/>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
-    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0</pmlj:hasIndex>
-  </rdf:Description>
-  <rdf:Description rdf:about="#info_67">
-    <pmlp:hasDescription rdf:nodeID="A52"/>
-    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">richer(butler,agatha)
- | hates(butler,butler)</pmlp:hasRawString>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cnf(29,plain,
+    ( ~ hates(butler,butler)
+    | ~ hates(butler,agatha) ),
+    inference('resolution, forward subsumption resolution',[],[8,15,10])).
+</pmlp:hasRawString>
     <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A40">
-    <ds:first rdf:resource="#ns_441"/>
-    <ds:rest rdf:nodeID="A53"/>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A54">
-    <ds:first rdf:resource="#ns_395"/>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#info_395">
+    <pmlp:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.cs.miami.edu/~tptp/cgi-bin/SeeTPTP?Category=Solutions&amp;Domain=PUZ&amp;File=PUZ001-1&amp;System=Vampire---9.0.UNS-Ref.s#29</pmlp:hasURL>
     <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
-    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">~ lives(X)
- | richer(X,agatha)
- | hates(butler,X)</pmlp:hasRawString>
-    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
-    <pmlp:hasDescription rdf:nodeID="A55"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A44">
-    <ds:first rdf:resource="#ns_8"/>
-    <ds:rest rdf:nodeID="A56"/>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#ns_258">
-    <pmlj:hasConclusion rdf:resource="#info_258"/>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
-    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:50-04:00</pmlp:hasCreationDateTime>
-    <pmlj:isConsequentOf rdf:nodeID="A35"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#ns_102">
-    <pmlj:isConsequentOf rdf:nodeID="A57"/>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
-    <pmlj:hasConclusion rdf:resource="#info_102"/>
-    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:50-04:00</pmlp:hasCreationDateTime>
-  </rdf:Description>
-  <rdf:Description rdf:about="#info_261">
-    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">~ killed(X0,agatha)
- | ~ lives(X0)
- | hates(butler,X0)</pmlp:hasRawString>
+  <rdf:Description rdf:about="#info_336">
     <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
     <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
-    <pmlp:hasDescription rdf:nodeID="A46"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A58">
-    <pmlr:hasMember rdf:resource="#ns_427"/>
-    <pmlr:hasMember rdf:resource="#ns_258"/>
-    <pmlr:hasMember rdf:resource="#ns_261"/>
-    <ds:first rdf:resource="#ns_258"/>
-    <ds:rest rdf:nodeID="A59"/>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A30">
-    <pmlr:hasMember rdf:resource="#ns_427"/>
-    <pmlr:hasMember rdf:resource="#ns_67"/>
-    <pmlr:hasMember rdf:resource="#ns_102"/>
-    <ds:first rdf:resource="#ns_67"/>
-    <ds:rest rdf:nodeID="A60"/>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#info_357">
+    <pmlp:hasDescription rdf:nodeID="A5"/>
     <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hates(agatha,agatha)</pmlp:hasRawString>
-    <pmlp:hasDescription rdf:nodeID="A61"/>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
-    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
   </rdf:Description>
-  <rdf:Description rdf:about="#ns_203">
-    <pmlj:hasConclusion rdf:resource="#info_203"/>
+  <rdf:Description rdf:nodeID="A13">
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/VAMPIRE.owl#VAMPIRE"/>
+    <pmlj:hasSourceUsage rdf:nodeID="A14"/>
+    <pmlr:hasOutput rdf:resource="#info_383"/>
+    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Told.owl#Told"/>
+    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0</pmlj:hasIndex>
+  </rdf:Description>
+  <rdf:Description rdf:about="#ns_379">
+    <pmlj:hasConclusion rdf:resource="#info_379"/>
     <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:51-04:00</pmlp:hasCreationDateTime>
     <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
-    <pmlj:isConsequentOf rdf:nodeID="A26"/>
+    <pmlj:isConsequentOf rdf:nodeID="A15"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A47">
-    <pmlr:hasOutput rdf:resource="#info_8"/>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
-    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/VAMPIRE.owl#VAMPIRE"/>
-    <pmlj:hasSourceUsage rdf:nodeID="A62"/>
-    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Told.owl#Told"/>
-    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0</pmlj:hasIndex>
+  <rdf:Description rdf:nodeID="A14">
+    <pmlp:hasSource rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Vampire---9.0/answer.owl#ns_5_source"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#SourceUsage"/>
+    <pmlp:hasUsageDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:51-04:00</pmlp:hasUsageDateTime>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A38">
-    <pmlj:hasSourceUsage rdf:nodeID="A63"/>
-    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/VAMPIRE.owl#VAMPIRE"/>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
-    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Told.owl#Told"/>
-    <pmlr:hasOutput rdf:resource="#info_260"/>
-    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0</pmlj:hasIndex>
-  </rdf:Description>
-  <rdf:Description rdf:about="#info_158">
-    <pmlp:hasDescription rdf:nodeID="A34"/>
-    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hates(butler,butler)
- | hates(charles,agatha)</pmlp:hasRawString>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
-    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A64">
-    <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TPTP Formula</pmlp:hasName>
-    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cnf(18,plain,
-    ( killed(butler,agatha)
-    | hates(charles,agatha) ),
-    inference(hyper,[status(thm)],[12,4]),
-    [iquote('hyper,12,4')]).
-</pmlp:hasRawString>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
-    <pmlp:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.cs.miami.edu/~tptp/cgi-bin/SeeTPTP?Category=Solutions&amp;Domain=PUZ&amp;File=PUZ001-1&amp;System=SOS---2.0.UNS-Ref.s#18</pmlp:hasURL>
-    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#info_347">
-    <pmlp:hasDescription rdf:nodeID="A65"/>
-    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
-    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hates(butler,butler)</pmlp:hasRawString>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A61">
-    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
-    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cnf(7,axiom,
-    ( hates(agatha,agatha) ),
-    file(input,agatha_hates_agatha)).
-</pmlp:hasRawString>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
-    <pmlp:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.cs.miami.edu/~tptp/cgi-bin/SeeTPTP?Category=Solutions&amp;Domain=PUZ&amp;File=PUZ001-1&amp;System=Vampire---9.0.UNS-Ref.s#7</pmlp:hasURL>
-    <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TPTP Formula</pmlp:hasName>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A56">
-    <ds:first rdf:resource="#ns_55"/>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A25">
-    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/VAMPIRE.owl#VAMPIRE"/>
-    <pmlj:hasSourceUsage rdf:nodeID="A66"/>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
-    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Told.owl#Told"/>
-    <pmlr:hasOutput rdf:resource="#info_357"/>
-    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0</pmlj:hasIndex>
-  </rdf:Description>
-  <rdf:Description rdf:about="#info_118">
-    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hates(agatha,charles)</pmlp:hasRawString>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
-    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
-    <pmlp:hasDescription rdf:nodeID="A45"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A53">
-    <ds:first rdf:resource="#ns_158"/>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A48">
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
-    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/VAMPIRE.owl#VAMPIRE"/>
-    <pmlr:hasOutput rdf:resource="#info_158"/>
-    <pmlr:hasInput rdf:resource="#info_261"/>
-    <pmlr:hasInput rdf:resource="#info_427"/>
-    <pmlr:hasInput rdf:resource="#info_258"/>
-    <pmlj:hasAntecedentList rdf:nodeID="A58"/>
-    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Vampire---9.0/answer.owl#Rule_resolution__forward_subsumption_resolution"/>
-    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</pmlj:hasIndex>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A67">
-    <pmlr:hasMember rdf:resource="#ns_118"/>
-    <pmlr:hasMember rdf:resource="#ns_203"/>
-    <pmlr:hasMember rdf:resource="#ns_8"/>
-    <ds:first rdf:resource="#ns_118"/>
+  <rdf:Description rdf:nodeID="A16">
+    <ds:first rdf:resource="#ns_392"/>
     <ds:rest rdf:nodeID="A17"/>
     <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A16">
-    <pmlr:hasMember rdf:resource="#ns_172"/>
-    <pmlr:hasMember rdf:resource="#ns_347"/>
-    <ds:first rdf:resource="#ns_172"/>
-    <ds:rest rdf:nodeID="A0"/>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  <rdf:Description rdf:about="#info_3">
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">lives(butler)</pmlp:hasRawString>
+    <pmlp:hasDescription rdf:nodeID="A18"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A37">
-    <pmlr:hasInput rdf:resource="#info_357"/>
-    <pmlr:hasInput rdf:resource="#info_441"/>
-    <pmlj:hasAntecedentList rdf:nodeID="A39"/>
-    <pmlr:hasOutput rdf:resource="#info_347"/>
-    <pmlr:hasInput rdf:resource="#info_158"/>
-    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Vampire---9.0/answer.owl#Rule_resolution__forward_subsumption_resolution"/>
+  <rdf:Description rdf:nodeID="A19">
+    <pmlj:hasSourceUsage rdf:nodeID="A20"/>
     <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/VAMPIRE.owl#VAMPIRE"/>
+    <pmlr:hasOutput rdf:resource="#info_115"/>
     <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
     <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0</pmlj:hasIndex>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A68">
+  <rdf:Description rdf:nodeID="A21">
+    <pmlj:hasAntecedentList rdf:nodeID="A22"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+    <pmlr:hasOutput rdf:resource="#info_5"/>
+    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Vampire9.0Resolution.owl#Vampire9.0Resolution"/>
+    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/VAMPIRE.owl#VAMPIRE"/>
+    <pmlr:hasInput rdf:resource="#info_390"/>
+    <pmlr:hasInput rdf:resource="#info_213"/>
+    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0</pmlj:hasIndex>
+  </rdf:Description>
+  <rdf:Description rdf:about="#info_392">
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+    <pmlp:hasDescription rdf:nodeID="A23"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">~ hates(X0,agatha)
+ | ~ hates(X0,butler)
+ | ~ hates(X0,charles)</pmlp:hasRawString>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#root">
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:51-04:00</pmlp:hasCreationDateTime>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+    <pmlj:hasConclusion rdf:resource="#info_2"/>
+    <pmlj:isConsequentOf rdf:nodeID="A24"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A25">
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#SourceUsage"/>
+    <pmlp:hasUsageDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:51-04:00</pmlp:hasUsageDateTime>
+    <pmlp:hasSource rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Vampire---9.0/answer.owl#ns_11_source"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A26">
+    <ds:first rdf:resource="#ns_224"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A27">
+    <pmlr:hasInput rdf:resource="#info_336"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+    <pmlr:hasInput rdf:resource="#info_391"/>
+    <pmlj:hasAntecedentList rdf:nodeID="A28"/>
+    <pmlr:hasOutput rdf:resource="#info_270"/>
+    <pmlr:hasInput rdf:resource="#info_383"/>
+    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/VAMPIRE.owl#VAMPIRE"/>
+    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Vampire---9.0/answer.owl#Rule_resolution__forward_subsumption_resolution"/>
+    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0</pmlj:hasIndex>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A23">
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <pmlp:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.cs.miami.edu/~tptp/cgi-bin/SeeTPTP?Category=Solutions&amp;Domain=PUZ&amp;File=PUZ001-1&amp;System=Vampire---9.0.UNS-Ref.s#6</pmlp:hasURL>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cnf(6,axiom,
+    ( ~ hates(X0,agatha)
+    | ~ hates(X0,butler)
+    | ~ hates(X0,charles) ),
+    file(input,no_one_hates_everyone)).
+</pmlp:hasRawString>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+    <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TPTP Formula</pmlp:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A29">
+    <pmlp:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.cs.miami.edu/~tptp/cgi-bin/SeeTPTP?Category=Solutions&amp;Domain=PUZ&amp;File=PUZ001-1&amp;System=Vampire---9.0.UNS-Ref.s#5</pmlp:hasURL>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cnf(5,axiom,
+    ( ~ hates(agatha,X0)
+    | ~ hates(charles,X0) ),
+    file(input,different_hates)).
+</pmlp:hasRawString>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+    <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TPTP Formula</pmlp:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="#ns_224">
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:51-04:00</pmlp:hasCreationDateTime>
+    <pmlj:hasConclusion rdf:resource="#info_224"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+    <pmlj:isConsequentOf rdf:nodeID="A30"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#info_303">
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">~ hates(butler,agatha)</pmlp:hasRawString>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+    <pmlp:hasDescription rdf:nodeID="A4"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A31">
+    <pmlr:hasInput rdf:resource="#info_3"/>
+    <pmlr:hasInput rdf:resource="#info_5"/>
+    <pmlr:hasOutput rdf:resource="#info_391"/>
+    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/VAMPIRE.owl#VAMPIRE"/>
+    <pmlr:hasInput rdf:resource="#info_224"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+    <pmlj:hasAntecedentList rdf:nodeID="A32"/>
+    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Vampire---9.0/answer.owl#Rule_resolution__forward_subsumption_resolution"/>
+    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0</pmlj:hasIndex>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A33">
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+    <pmlj:hasSourceUsage rdf:nodeID="A34"/>
+    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/VAMPIRE.owl#VAMPIRE"/>
+    <pmlr:hasOutput rdf:resource="#info_392"/>
+    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Told.owl#Told"/>
+    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0</pmlj:hasIndex>
+  </rdf:Description>
+  <rdf:Description rdf:about="#ns_270">
+    <pmlj:hasConclusion rdf:resource="#info_270"/>
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:51-04:00</pmlp:hasCreationDateTime>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+    <pmlj:isConsequentOf rdf:nodeID="A27"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A35">
+    <pmlr:hasMember rdf:resource="#ns_39"/>
+    <pmlr:hasMember rdf:resource="#ns_115"/>
+    <ds:first rdf:resource="#ns_39"/>
+    <ds:rest rdf:nodeID="A9"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A36">
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+    <pmlp:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.cs.miami.edu/~tptp/cgi-bin/SeeTPTP?Category=Solutions&amp;Domain=PUZ&amp;File=PUZ001-1&amp;System=Vampire---9.0.UNS-Ref.s#8</pmlp:hasURL>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cnf(8,axiom,
+    ( hates(agatha,charles) ),
+    file(input,agatha_hates_charles)).
+</pmlp:hasRawString>
+    <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TPTP Formula</pmlp:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A37">
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cnf(35,plain,
+    ( hates(charles,agatha)
+    | hates(butler,butler) ),
+    inference('resolution, forward subsumption resolution',[],[2,17,31])).
+</pmlp:hasRawString>
+    <pmlp:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.cs.miami.edu/~tptp/cgi-bin/SeeTPTP?Category=Solutions&amp;Domain=PUZ&amp;File=PUZ001-1&amp;System=Vampire---9.0.UNS-Ref.s#35</pmlp:hasURL>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TPTP Formula</pmlp:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A28">
+    <pmlr:hasMember rdf:resource="#ns_336"/>
+    <pmlr:hasMember rdf:resource="#ns_391"/>
+    <pmlr:hasMember rdf:resource="#ns_383"/>
+    <ds:first rdf:resource="#ns_336"/>
+    <ds:rest rdf:nodeID="A38"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#ns_82">
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+    <pmlj:hasConclusion rdf:resource="#info_82"/>
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:51-04:00</pmlp:hasCreationDateTime>
+    <pmlj:isConsequentOf rdf:nodeID="A0"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A1">
+    <pmlp:hasUsageDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:51-04:00</pmlp:hasUsageDateTime>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#SourceUsage"/>
+    <pmlp:hasSource rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Vampire---9.0/answer.owl#ns_10_source"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A39">
+    <ds:first rdf:resource="#ns_213"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A17">
+    <ds:first rdf:resource="#ns_82"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#ns_303">
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+    <pmlj:hasConclusion rdf:resource="#info_303"/>
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:51-04:00</pmlp:hasCreationDateTime>
+    <pmlj:isConsequentOf rdf:nodeID="A6"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A40">
+    <ds:first rdf:resource="#ns_270"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#info_391">
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <pmlp:hasDescription rdf:nodeID="A37"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hates(charles,agatha)
+ | hates(butler,butler)</pmlp:hasRawString>
+  </rdf:Description>
+  <rdf:Description rdf:about="#info_225">
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hates(agatha,charles)</pmlp:hasRawString>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <pmlp:hasDescription rdf:nodeID="A36"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A41">
+    <ds:first rdf:resource="#ns_5"/>
+    <ds:rest rdf:nodeID="A26"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#ns_3">
+    <pmlj:hasConclusion rdf:resource="#info_3"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:51-04:00</pmlp:hasCreationDateTime>
+    <pmlj:isConsequentOf rdf:nodeID="A42"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A42">
+    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Told.owl#Told"/>
+    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/VAMPIRE.owl#VAMPIRE"/>
+    <pmlr:hasOutput rdf:resource="#info_3"/>
+    <pmlj:hasSourceUsage rdf:nodeID="A43"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0</pmlj:hasIndex>
+  </rdf:Description>
+  <rdf:Description rdf:about="#ns_213">
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+    <pmlj:hasConclusion rdf:resource="#info_213"/>
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:51-04:00</pmlp:hasCreationDateTime>
+    <pmlj:isConsequentOf rdf:nodeID="A44"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A7">
+    <pmlr:hasMember rdf:resource="#ns_379"/>
+    <pmlr:hasMember rdf:resource="#ns_270"/>
+    <ds:first rdf:resource="#ns_379"/>
+    <ds:rest rdf:nodeID="A40"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A20">
+    <pmlp:hasSource rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Vampire---9.0/answer.owl#ns_12_source"/>
+    <pmlp:hasUsageDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:51-04:00</pmlp:hasUsageDateTime>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#SourceUsage"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A15">
+    <pmlr:hasInput rdf:resource="#info_225"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+    <pmlr:hasOutput rdf:resource="#info_379"/>
+    <pmlr:hasInput rdf:resource="#info_392"/>
+    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/VAMPIRE.owl#VAMPIRE"/>
+    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Vampire---9.0/answer.owl#Rule_resolution__forward_subsumption_resolution"/>
+    <pmlj:hasAntecedentList rdf:nodeID="A45"/>
+    <pmlr:hasInput rdf:resource="#info_82"/>
+    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0</pmlj:hasIndex>
+  </rdf:Description>
+  <rdf:Description rdf:about="#info_390">
+    <pmlp:hasDescription rdf:nodeID="A46"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">~ killed(X0,X1)
+ | ~ richer(X0,X1)</pmlp:hasRawString>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A8">
+    <pmlr:hasOutput rdf:resource="#info_225"/>
+    <pmlj:hasSourceUsage rdf:nodeID="A47"/>
+    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Told.owl#Told"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/VAMPIRE.owl#VAMPIRE"/>
+    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0</pmlj:hasIndex>
+  </rdf:Description>
+  <rdf:Description rdf:about="#ns_392">
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+    <pmlj:hasConclusion rdf:resource="#info_392"/>
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:51-04:00</pmlp:hasCreationDateTime>
+    <pmlj:isConsequentOf rdf:nodeID="A33"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A48">
+    <ds:first rdf:resource="#ns_303"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#info_82">
+    <pmlp:hasDescription rdf:nodeID="A49"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">~ hates(agatha,X0)
+ | hates(butler,X0)</pmlp:hasRawString>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A18">
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cnf(2,axiom,
+    ( lives(butler) ),
+    file(input,butler)).
+</pmlp:hasRawString>
+    <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TPTP Formula</pmlp:hasName>
+    <pmlp:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.cs.miami.edu/~tptp/cgi-bin/SeeTPTP?Category=Solutions&amp;Domain=PUZ&amp;File=PUZ001-1&amp;System=Vampire---9.0.UNS-Ref.s#2</pmlp:hasURL>
+  </rdf:Description>
+  <rdf:Description rdf:about="#info_383">
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+    <pmlp:hasDescription rdf:nodeID="A29"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">~ hates(agatha,X0)
+ | ~ hates(charles,X0)</pmlp:hasRawString>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A50">
+    <pmlp:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.cs.miami.edu/~tptp/cgi-bin/SeeTPTP?Category=Solutions&amp;Domain=PUZ&amp;File=PUZ001-1&amp;System=Vampire---9.0.UNS-Ref.s#16</pmlp:hasURL>
+    <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TPTP Formula</pmlp:hasName>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
     <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cnf(16,plain,
     ( killed(charles,agatha)
     | killed(butler,agatha) ),
     inference(normalize,[],[12])).
 </pmlp:hasRawString>
     <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
-    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
-    <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TPTP Formula</pmlp:hasName>
-    <pmlp:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.cs.miami.edu/~tptp/cgi-bin/SeeTPTP?Category=Solutions&amp;Domain=PUZ&amp;File=PUZ001-1&amp;System=Vampire---9.0.UNS-Ref.s#16</pmlp:hasURL>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A57">
-    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Told.owl#Told"/>
-    <pmlr:hasOutput rdf:resource="#info_102"/>
+  <rdf:Description rdf:nodeID="A44">
+    <pmlj:hasSourceUsage rdf:nodeID="A25"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
     <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/VAMPIRE.owl#VAMPIRE"/>
-    <pmlj:hasSourceUsage rdf:nodeID="A69"/>
+    <pmlr:hasOutput rdf:resource="#info_213"/>
+    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Told.owl#Told"/>
+    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0</pmlj:hasIndex>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A51">
+    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Told.owl#Told"/>
+    <pmlr:hasOutput rdf:resource="#info_39"/>
+    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/VAMPIRE.owl#VAMPIRE"/>
+    <pmlj:hasSourceUsage rdf:nodeID="A52"/>
     <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
     <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0</pmlj:hasIndex>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A55">
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
-    <pmlp:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.cs.miami.edu/~tptp/cgi-bin/SeeTPTP?Category=Solutions&amp;Domain=PUZ&amp;File=PUZ001-1&amp;System=SNARK---20080805r005.UNS-Ref.s#butler_hates_poor</pmlp:hasURL>
-    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
-    <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TPTP Formula</pmlp:hasName>
-    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cnf(butler_hates_poor,hypothesis,
-    ( ~ lives(X)
-    | richer(X,agatha)
-    | hates(butler,X) ),
-    file('PUZ001-1.tptp',butler_hates_poor)).
-</pmlp:hasRawString>
-  </rdf:Description>
-  <rdf:Description rdf:about="#info_260">
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
-    <pmlp:hasDescription rdf:nodeID="A6"/>
-    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
-    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">~ killed(X0,X1)
- | hates(X0,X1)</pmlp:hasRawString>
-  </rdf:Description>
-  <rdf:Description rdf:about="#info_308">
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+  <rdf:Description rdf:about="#info_115">
     <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">killed(charles,agatha)
  | killed(butler,agatha)</pmlp:hasRawString>
     <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
-    <pmlp:hasDescription rdf:nodeID="A68"/>
+    <pmlp:hasDescription rdf:nodeID="A50"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A59">
-    <ds:first rdf:resource="#ns_261"/>
-    <ds:rest rdf:nodeID="A7"/>
+  <rdf:Description rdf:about="#ns_39">
+    <pmlj:hasConclusion rdf:resource="#info_39"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:51-04:00</pmlp:hasCreationDateTime>
+    <pmlj:isConsequentOf rdf:nodeID="A51"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A46">
+    <pmlp:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.cs.miami.edu/~tptp/cgi-bin/SeeTPTP?Category=Solutions&amp;Domain=PUZ&amp;File=PUZ001-1&amp;System=Vampire---9.0.UNS-Ref.s#4</pmlp:hasURL>
+    <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TPTP Formula</pmlp:hasName>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cnf(4,axiom,
+    ( ~ killed(X0,X1)
+    | ~ richer(X0,X1) ),
+    file(input,poorer_killer)).
+</pmlp:hasRawString>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A38">
+    <ds:first rdf:resource="#ns_383"/>
+    <ds:rest rdf:nodeID="A53"/>
     <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A19">
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
-    <pmlr:hasInput rdf:resource="#info_8"/>
+  <rdf:Description rdf:about="#ns_383">
+    <pmlj:hasConclusion rdf:resource="#info_383"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:51-04:00</pmlp:hasCreationDateTime>
+    <pmlj:isConsequentOf rdf:nodeID="A13"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A22">
+    <pmlr:hasMember rdf:resource="#ns_390"/>
+    <pmlr:hasMember rdf:resource="#ns_213"/>
+    <ds:first rdf:resource="#ns_390"/>
+    <ds:rest rdf:nodeID="A39"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A54">
+    <ds:first rdf:resource="#ns_82"/>
+    <ds:rest rdf:nodeID="A48"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#info_224">
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">killed(butler,agatha)
+ | hates(charles,agatha)</pmlp:hasRawString>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+    <pmlp:hasDescription rdf:nodeID="A55"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A32">
+    <pmlr:hasMember rdf:resource="#ns_224"/>
+    <pmlr:hasMember rdf:resource="#ns_3"/>
+    <pmlr:hasMember rdf:resource="#ns_5"/>
+    <ds:first rdf:resource="#ns_3"/>
+    <ds:rest rdf:nodeID="A41"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#ns_336">
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+    <pmlj:hasConclusion rdf:resource="#info_336"/>
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:51-04:00</pmlp:hasCreationDateTime>
+    <pmlj:isConsequentOf rdf:nodeID="A56"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#ns_115">
+    <pmlj:hasConclusion rdf:resource="#info_115"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:51-04:00</pmlp:hasCreationDateTime>
+    <pmlj:isConsequentOf rdf:nodeID="A19"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A43">
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#SourceUsage"/>
+    <pmlp:hasSource rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Vampire---9.0/answer.owl#ns_2_source"/>
+    <pmlp:hasUsageDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:51-04:00</pmlp:hasUsageDateTime>
+  </rdf:Description>
+  <rdf:Description rdf:about="#info_5">
+    <pmlp:hasDescription rdf:nodeID="A11"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">~ killed(X0,agatha)
+ | ~ lives(X0)
+ | hates(butler,X0)</pmlp:hasRawString>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A24">
     <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/VAMPIRE.owl#VAMPIRE"/>
+    <pmlr:hasInput rdf:resource="#info_303"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
     <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Vampire---9.0/answer.owl#Rule_resolution__forward_subsumption_resolution"/>
-    <pmlr:hasInput rdf:resource="#info_118"/>
-    <pmlj:hasAntecedentList rdf:nodeID="A67"/>
-    <pmlr:hasInput rdf:resource="#info_203"/>
-    <pmlr:hasOutput rdf:resource="#info_172"/>
+    <pmlr:hasInput rdf:resource="#info_336"/>
+    <pmlj:hasAntecedentList rdf:nodeID="A57"/>
+    <pmlr:hasOutput rdf:resource="#info_2"/>
+    <pmlr:hasInput rdf:resource="#info_82"/>
     <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0</pmlj:hasIndex>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A60">
-    <ds:first rdf:resource="#ns_102"/>
-    <ds:rest rdf:nodeID="A20"/>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
-  </rdf:Description>
   <rdf:Description rdf:nodeID="A2">
-    <pmlr:hasMember rdf:resource="#ns_102"/>
-    <pmlr:hasMember rdf:resource="#ns_395"/>
-    <ds:first rdf:resource="#ns_102"/>
-    <ds:rest rdf:nodeID="A54"/>
+    <pmlr:hasOutput rdf:resource="#info_390"/>
+    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Told.owl#Told"/>
+    <pmlj:hasSourceUsage rdf:nodeID="A12"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/VAMPIRE.owl#VAMPIRE"/>
+    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0</pmlj:hasIndex>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A58">
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+    <pmlp:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.cs.miami.edu/~tptp/cgi-bin/SeeTPTP?Category=Solutions&amp;Domain=PUZ&amp;File=PUZ001-1&amp;System=Vampire---9.0.UNS-Ref.s#39</pmlp:hasURL>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cnf(39,plain,
+    ( $false ),
+    inference('resolution, forward subsumption resolution',[],[7,10,38])).
+</pmlp:hasRawString>
+    <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TPTP Formula</pmlp:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A34">
+    <pmlp:hasSource rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Vampire---9.0/answer.owl#ns_6_source"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#SourceUsage"/>
+    <pmlp:hasUsageDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:51-04:00</pmlp:hasUsageDateTime>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A45">
+    <pmlr:hasMember rdf:resource="#ns_225"/>
+    <pmlr:hasMember rdf:resource="#ns_392"/>
+    <pmlr:hasMember rdf:resource="#ns_82"/>
+    <ds:first rdf:resource="#ns_225"/>
+    <ds:rest rdf:nodeID="A16"/>
     <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A65">
+  <rdf:Description rdf:about="#ns_391">
+    <pmlj:hasConclusion rdf:resource="#info_391"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:51-04:00</pmlp:hasCreationDateTime>
+    <pmlj:isConsequentOf rdf:nodeID="A31"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A55">
+    <pmlp:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.cs.miami.edu/~tptp/cgi-bin/SeeTPTP?Category=Solutions&amp;Domain=PUZ&amp;File=PUZ001-1&amp;System=Vampire---9.0.UNS-Ref.s#31</pmlp:hasURL>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cnf(31,plain,
+    ( killed(butler,agatha)
+    | hates(charles,agatha) ),
+    inference(resolution,[],[9,16])).
+</pmlp:hasRawString>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TPTP Formula</pmlp:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A59">
+    <pmlp:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.cs.miami.edu/~tptp/cgi-bin/SeeTPTP?Category=Solutions&amp;Domain=PUZ&amp;File=PUZ001-1&amp;System=Vampire---9.0.UNS-Ref.s#11</pmlp:hasURL>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cnf(11,axiom,
+    ( ~ lives(X0)
+    | richer(X0,agatha)
+    | hates(butler,X0) ),
+    file(input,butler_hates_poor)).
+</pmlp:hasRawString>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TPTP Formula</pmlp:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A56">
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+    <pmlj:hasSourceUsage rdf:nodeID="A60"/>
+    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/VAMPIRE.owl#VAMPIRE"/>
+    <pmlr:hasOutput rdf:resource="#info_336"/>
+    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Told.owl#Told"/>
+    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0</pmlj:hasIndex>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A30">
+    <pmlr:hasInput rdf:resource="#info_39"/>
+    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/VAMPIRE.owl#VAMPIRE"/>
+    <pmlr:hasInput rdf:resource="#info_115"/>
+    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Vampire9.0Resolution.owl#Vampire9.0Resolution"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+    <pmlr:hasOutput rdf:resource="#info_224"/>
+    <pmlj:hasAntecedentList rdf:nodeID="A35"/>
+    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0</pmlj:hasIndex>
+  </rdf:Description>
+  <rdf:Description rdf:about="#info_213">
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">~ lives(X0)
+ | richer(X0,agatha)
+ | hates(butler,X0)</pmlp:hasRawString>
+    <pmlp:hasDescription rdf:nodeID="A59"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A53">
+    <ds:first rdf:resource="#ns_391"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A47">
+    <pmlp:hasUsageDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:51-04:00</pmlp:hasUsageDateTime>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#SourceUsage"/>
+    <pmlp:hasSource rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Vampire---9.0/answer.owl#ns_8_source"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A60">
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#SourceUsage"/>
+    <pmlp:hasSource rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Vampire---9.0/answer.owl#ns_7_source"/>
+    <pmlp:hasUsageDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:51-04:00</pmlp:hasUsageDateTime>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A52">
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#SourceUsage"/>
+    <pmlp:hasUsageDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:51-04:00</pmlp:hasUsageDateTime>
+    <pmlp:hasSource rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Vampire---9.0/answer.owl#ns_9_source"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A49">
+    <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TPTP Formula</pmlp:hasName>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+    <pmlp:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.cs.miami.edu/~tptp/cgi-bin/SeeTPTP?Category=Solutions&amp;Domain=PUZ&amp;File=PUZ001-1&amp;System=Vampire---9.0.UNS-Ref.s#10</pmlp:hasURL>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cnf(10,axiom,
+    ( ~ hates(agatha,X0)
+    | hates(butler,X0) ),
+    file(input,same_hates)).
+</pmlp:hasRawString>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#info_2">
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">$false</pmlp:hasRawString>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+    <pmlp:hasDescription rdf:nodeID="A58"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#info_270">
+    <pmlp:hasDescription rdf:nodeID="A61"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hates(butler,butler)</pmlp:hasRawString>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A61">
     <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TPTP Formula</pmlp:hasName>
     <pmlp:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.cs.miami.edu/~tptp/cgi-bin/SeeTPTP?Category=Solutions&amp;Domain=PUZ&amp;File=PUZ001-1&amp;System=Vampire---9.0.UNS-Ref.s#37</pmlp:hasURL>
     <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
@@ -704,40 +693,25 @@
 </pmlp:hasRawString>
     <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
   </rdf:Description>
-  <rdf:Description rdf:about="#ns_441">
-    <pmlj:isConsequentOf rdf:nodeID="A3"/>
-    <pmlj:hasConclusion rdf:resource="#info_441"/>
-    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:51-04:00</pmlp:hasCreationDateTime>
+  <rdf:Description rdf:about="#info_39">
+    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
+    <pmlp:hasDescription rdf:nodeID="A3"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
+    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">~ killed(X0,X1)
+ | hates(X0,X1)</pmlp:hasRawString>
+  </rdf:Description>
+  <rdf:Description rdf:about="#ns_5">
     <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#info_427">
-    <pmlp:hasDescription rdf:nodeID="A64"/>
-    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">killed(butler,agatha)
- | hates(charles,agatha)</pmlp:hasRawString>
-    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A52">
-    <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TPTP Formula</pmlp:hasName>
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
-    <pmlp:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.cs.miami.edu/~tptp/cgi-bin/SeeTPTP?Category=Solutions&amp;Domain=PUZ&amp;File=PUZ001-1&amp;System=SNARK---20080805r005.UNS-Ref.s#16</pmlp:hasURL>
-    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cnf(16,plain,
-    ( richer(butler,agatha)
-    | hates(butler,butler) ),
-    inference('HYPERRESOLVE',[status(thm)],[butler_hates_poor,butler])).
-</pmlp:hasRawString>
-    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#info_258">
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#Information"/>
-    <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/TPTPCNF.owl#TPTPCNF"/>
-    <pmlp:hasDescription rdf:nodeID="A5"/>
-    <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">lives(butler)</pmlp:hasRawString>
-  </rdf:Description>
-  <rdf:Description rdf:about="#ns_55">
-    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
-    <pmlj:hasConclusion rdf:resource="#info_55"/>
+    <pmlj:hasConclusion rdf:resource="#info_5"/>
     <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:51-04:00</pmlp:hasCreationDateTime>
-    <pmlj:isConsequentOf rdf:nodeID="A15"/>
+    <pmlj:isConsequentOf rdf:nodeID="A21"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A57">
+    <pmlr:hasMember rdf:resource="#ns_336"/>
+    <pmlr:hasMember rdf:resource="#ns_303"/>
+    <pmlr:hasMember rdf:resource="#ns_82"/>
+    <ds:first rdf:resource="#ns_336"/>
+    <ds:rest rdf:nodeID="A54"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
   </rdf:Description>
 </rdf:RDF>
