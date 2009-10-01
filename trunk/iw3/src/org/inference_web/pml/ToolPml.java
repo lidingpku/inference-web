@@ -25,6 +25,7 @@ import sw4j.util.DataQname;
 import sw4j.util.Sw4jException;
 import sw4j.util.ToolIO;
 import sw4j.util.ToolSafe;
+import sw4j.util.ToolString;
 
 import com.hp.hpl.jena.query.Dataset;
 import com.hp.hpl.jena.query.DatasetFactory;
@@ -51,28 +52,35 @@ public class ToolPml {
 	}
 
 
+	public static final int OPT_LIST_INPUT=0;
+	public static final int OPT_LIST_OUTPUT=1;
+	public static final int OPT_LIST_ALL=2;
 
 	
-	public static Set<Resource> list_info(Model m, Set<Resource> set_res_step){
+	public static Set<Resource> list_info(Model m, Set<Resource> set_res_step, int option){
 		Set<Resource> ret = new HashSet<Resource>();
 		for(Resource res_step: set_res_step){
-			ret.addAll(list_info(m,res_step));
+			ret.addAll(list_info(m,res_step, option));
 		}
 		return ret;
 	}
 	
-	public static Set<Resource> list_info(Model m, Resource res_step){
+	public static Set<Resource> list_info(Model m, Resource res_step, int option){
+		
 		Set<Resource> ret = new HashSet<Resource>();
-		for (RDFNode node: m.listObjectsOfProperty(res_step,PMLR.hasInput).toSet()){
-			ret.add((Resource)node);
-		}
-		for (RDFNode node: m.listObjectsOfProperty(res_step,PMLR.hasOutput).toSet()){
-			ret.add((Resource)node);
-		}
+		if (option==OPT_LIST_INPUT || option==OPT_LIST_ALL)
+			for (RDFNode node: m.listObjectsOfProperty(res_step,PMLR.hasInput).toSet()){
+				ret.add((Resource)node);
+			}
+		
+		if (option==OPT_LIST_OUTPUT || option==OPT_LIST_ALL)
+			for (RDFNode node: m.listObjectsOfProperty(res_step,PMLR.hasOutput).toSet()){
+				ret.add((Resource)node);
+			}
 		return ret;
 	}
 	 
-	public static Set<Resource> list_info(Model m){
+	public static Set<Resource> list_info(Model m, int option){
 		Set<Resource> ret = new HashSet<Resource>();
 		for (RDFNode node: m.listObjectsOfProperty(PMLR.hasInput).toSet()){
 			ret.add((Resource)node);
@@ -320,7 +328,8 @@ public class ToolPml {
 			for (String pattern :map_relative_url.keySet()){
 				sz_content = sz_content.replaceAll(pattern, map_relative_url.get(pattern));
 			}
-			
+
+		getLogger().info(ToolString.formatXMLDateTime(System.currentTimeMillis()));
 		ToolIO.pipeStringToFile(sz_content, f_output);
 	}
 	
@@ -387,16 +396,17 @@ public class ToolPml {
 				//skip input=output
 				
 				//copy step data
-				ToolJena.update_copyResourceDescription(model_data, model_ref, res_step, null,false);
+				ToolJena.update_copyResourceDescription(model_data, model_ref, res_step, null, false);
 				model_data.add(ToolJena.create_copyList(model_ref, ToolJena.getValueOfProperty(model_ref, res_step, PMLJ.hasAntecedentList, (Resource)null), PMLDS.first, PMLDS.rest));
 //				ToolJena.update_copyResourceDescription(model_data, model_ref, res_step, PMLJ.hasAntecedentList, true);
-				ToolJena.update_copyResourceDescription(model_data, model_ref, res_step, PMLJ.hasSourceUsage, true);
+				
+				ToolJena.update_copyResourceDescription(model_data, model_ref, ToolJena.getValueOfProperty(model_ref, res_step, PMLJ.hasSourceUsage, (Resource)null),null, false);
 
 				map_res_res.put(res_step, model_data.createResource());
 
 				
 				//copy info
-				for (Resource res_info: ToolPml.list_info(model_ref, res_step)){
+				for (Resource res_info: ToolPml.list_info(model_ref, res_step, OPT_LIST_ALL)){
 					int gid = map_info_id.getGid(res_info);
 					Resource res_info_mapped = map_gid_info.get(gid);
 					if (null==res_info_mapped){
@@ -578,8 +588,8 @@ public class ToolPml {
 				DataPmlInfo dpi = new DataPmlInfo(res_info, model);
 				map_norm_info.add(dpi.getNormalizedString(), res_info);
 			}
-			
 		}
+				
 		
 		// create mappings
 		Model model_mappings = ModelFactory.createDefaultModel();
@@ -587,10 +597,17 @@ public class ToolPml {
 			Set<Resource> set_info = map_norm_info.getValuesAsSet(norm);
 			Resource res_info_root = null;
 			for (Resource res_info: set_info){
+				
 				if (null==res_info_root)
 					res_info_root = res_info;
-				else
+				else{
+				/*	if (!ToolSafe.isEmpty(set_res_info_skip)){
+						if (set_res_info_skip.contains(res_info_root)&&set_res_info_skip.contains(res_info))
+							continue;
+					}
+				*/
 					model_mappings.add(model_mappings.createStatement(res_info_root, OWL.sameAs, res_info));
+				}
 			}
 		}
 	

@@ -2,6 +2,7 @@ package org.inference_web.iwapp.tptp;
 
 import java.io.File;
 import java.net.MalformedURLException;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,10 +12,12 @@ import org.inference_web.pml.ToolPml;
 import com.hp.hpl.jena.rdf.model.Resource;
 import sw4j.task.graph.AgentHyperGraphOptimize;
 import sw4j.task.graph.DataHyperGraph;
+import sw4j.util.DataSmartMap;
 import sw4j.util.ToolSafe;
 
 public class TaskIwTptpImprove extends AgentIwTptp {
 	public static void main(String[] argv){
+		//run_test();
 		run_improve();
 	}
 	
@@ -56,6 +59,7 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 			run_plot_original();
 			run_combine();
 			run_improve(CONTEXT_IMPROVE_SELF, DataPmlHg.OPTION_WEIGHT_STEP);
+			run_improve(CONTEXT_IMPROVE_ROOT, DataPmlHg.OPTION_WEIGHT_STEP);
 			run_improve(CONTEXT_IMPROVE_GLOBAL, DataPmlHg.OPTION_WEIGHT_STEP);
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
@@ -222,27 +226,32 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 */	
 	public static final String CONTEXT_IMPROVE_GLOBAL = "_improve_global";
 	public static final String CONTEXT_IMPROVE_SELF = "_improve_self";
+	public static final String CONTEXT_IMPROVE_ROOT = "_improve_root";
 	
-	@SuppressWarnings("unchecked")
-	public void run_improve(String sz_context, int option_weight) throws MalformedURLException{
-		for (String sz_url_pml: set_url_pml){
-			///////////////////////////////////////////
-			//generate graphics
-			Resource res_info_root = m_hg.getRoot(sz_url_pml);
-			Integer root = m_hg.getHyperNode(res_info_root);
-			Set<Resource> set_step_original= this.m_hg.getSubHg(res_info_root);
+	HashMap<DataSmartMap, DataHyperGraph> m_cache_problem_solution= new HashMap<DataSmartMap, DataHyperGraph>();
+	private DataHyperGraph find_solution(String sz_context, int gid_root, int option_weight, String sz_url_pml, Set<Resource> set_step_original){
+		DataSmartMap key = new DataSmartMap();
+		key.put("context",sz_context);
+		key.put("root_id",gid_root);
+		key.put("opt_weight",option_weight);
+		
+		if (m_cache_problem_solution.keySet().contains(key)){
+			return m_cache_problem_solution.get(key);
+		}else{
 			
 			DataHyperGraph dhg;
 			if (CONTEXT_IMPROVE_GLOBAL.equals(sz_context))
 				dhg= this.m_hg.getHyperGraph();
-			else 
+			else if (CONTEXT_IMPROVE_ROOT.equals(sz_context)){
+				Set<Resource> set_step_keep_root = m_hg.getSubHgKeepRoot(sz_url_pml, gid_root);
+				dhg= this.m_hg.getHyperGraph(set_step_keep_root);
+			}else {
 				dhg = this.m_hg.getHyperGraph(set_step_original);
-
-			
+			}
 			m_hg.hg_set_weight(dhg, option_weight);
+
 			AgentHyperGraphOptimize hgt= new AgentHyperGraphOptimize();
-			hgt.traverse(dhg,root);
-			
+			hgt.traverse(dhg,gid_root);
 
 			//plot
 			if (ToolSafe.isEmpty(hgt.getSolutions())){
@@ -250,6 +259,27 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 			}
 
 			DataHyperGraph dhg_optimal = hgt.getSolutions().get(0);
+			m_cache_problem_solution.put(key, dhg_optimal);
+			return dhg_optimal;
+	
+		}
+		
+	}
+	
+	@SuppressWarnings("unchecked")
+	public void run_improve(String sz_context, int option_weight) throws MalformedURLException{
+		for (String sz_url_pml: set_url_pml){
+			///////////////////////////////////////////
+			//generate graphics
+			Resource res_info_root = m_hg.getRoot(sz_url_pml);
+			Integer gid_root = m_hg.getHyperNode(res_info_root);
+			Set<Resource> set_step_original= m_hg.getSubHg(res_info_root);
+			
+			DataHyperGraph dhg_optimal = find_solution( sz_context, gid_root,option_weight,sz_url_pml,set_step_original );
+			if (null==dhg_optimal){
+				System.exit(-1);
+			}
+			
 			Set<Resource> set_step_optimal= this.m_hg.getSubHg(dhg_optimal, res_info_root, sz_url_pml);
 			{
 				String sz_path = prepare_path(sz_url_pml,sz_context);

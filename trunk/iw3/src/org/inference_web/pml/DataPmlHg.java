@@ -167,6 +167,22 @@ public class DataPmlHg {
 	public Set<Resource> getSubHg(){
 		return getModelAll().listSubjectsWithProperty(RDF.type, PMLJ.InferenceStep).toSet();		
 	}
+	
+	public Set<Resource> getSubHgKeepRoot(String sz_url_pml_chosen, int id_root) {
+		Set<Resource> ret = getSubHg();
+		for (String sz_url_pml: this.m_context_model_data.keySet()){
+			Model m = m_context_model_data.get(sz_url_pml);
+			for (Resource res_step: m.listSubjectsWithProperty(RDF.type, PMLJ.InferenceStep).toSet()){
+				DataHyperEdge edge = this.m_map_step_edge.get(res_step);
+				if (!sz_url_pml.equals(sz_url_pml_chosen)){
+					if (edge.getOutput()==id_root){
+						ret.remove(res_step);
+					}
+				}
+			}
+		}
+		return ret;
+	}
 
 	public Set<Resource> getSubHg( DataHyperGraph dhg, Resource res_root, String sz_url_pml ){
 		getHyperGraph();
@@ -241,7 +257,7 @@ public class DataPmlHg {
 	public String graphviz_export_dot ( Set<Resource> set_res_edge ){
 		getHyperGraph();
 
-		Set<Resource> set_res_node = ToolPml.list_info(getModelAll(), set_res_edge);
+		Set<Resource> set_res_node = ToolPml.list_info(getModelAll(), set_res_edge, ToolPml.OPT_LIST_ALL);
 		DataHyperGraph dhg = this.getHyperGraph(set_res_edge);
 
 		String ret ="";
@@ -273,11 +289,11 @@ public class DataPmlHg {
 		String label=this.stat(set_res_edge).toString();
 
 		
-		ret = String.format("digraph g \n{ rankdir=BT;\n label=%s \n%s }\n",label, ret);
+		ret = String.format("digraph g \n{ rankdir=BT;\n labelloc=b label=\"%s\"  \n%s }\n",label, ret);
 		return ret;
 	}
 
-	public String graphviz_export_dot_diff ( Set<Resource> set_res_edge1, Set<Resource> set_res_edge2 ){
+	public String graphviz_export_dot_diff ( Set<Resource> set_res_edge_optimal, Set<Resource> set_res_edge_original ){
 		getHyperGraph();
 
 		String ret_background ="";
@@ -285,16 +301,22 @@ public class DataPmlHg {
 		//background
 		{
 			Set<Resource> set_res_edge = new HashSet<Resource>();
-			set_res_edge.addAll(set_res_edge1);
-			set_res_edge.addAll(set_res_edge2);
+			set_res_edge.addAll(set_res_edge_optimal);
+			set_res_edge.addAll(set_res_edge_original);
 
-			Set<Resource> set_res_node = ToolPml.list_info(getModelAll(), set_res_edge);
+			Set<Resource> set_res_node = ToolPml.list_info(getModelAll(), set_res_edge, ToolPml.OPT_LIST_ALL);
 			DataHyperGraph dhg = this.getHyperGraph(set_res_edge);
+			DataHyperGraph dhg_original = this.getHyperGraph(set_res_edge_original);
+			Set<Integer> set_vertex_original = dhg_original.getVertices();
 
 			//add maps for nodes
 			for (Resource res_node: set_res_node){
 				Integer gid=this.getHyperNode(res_node);
 				Properties prop =  graphviz_get_params_node(res_node, gid, dhg);
+				
+				if (!set_vertex_original.contains(gid))
+					prop.put("fontcolor", "green");
+				
 				String label_node = graphviz_get_id(gid);
 				ret_background += graphviz_print_node(label_node, prop);	
 			}
@@ -318,14 +340,14 @@ public class DataPmlHg {
 		}
 
 		String ret_optimal ="";
+		DataHyperGraph dhg_optimal = this.getHyperGraph(set_res_edge_optimal);
+		Set<Integer> set_vertex_optimal = dhg_optimal.getVertices();
 
 		{
-			Set<Resource> set_res_edge = set_res_edge1;
-			Set<Resource> set_res_node = ToolPml.list_info(getModelAll(), set_res_edge);
+			Set<Resource> set_res_edge = set_res_edge_optimal;
 
 			//add maps for nodes
-			for (Resource res_node: set_res_node){
-				Integer gid=this.getHyperNode(res_node);
+			for (Integer gid: set_vertex_optimal){;
 				String label_node = graphviz_get_id(gid);
 				ret_optimal += String.format(" %s ;",label_node);	
 			}
@@ -336,9 +358,9 @@ public class DataPmlHg {
 
 				ret_optimal += String.format(" \"%s\" ;\n",label_edge);	
 			}
-			String label=this.stat(set_res_edge1, set_res_edge2).toString();
+			String label=this.stat(set_res_edge_optimal, set_res_edge_original).toString();
 			
-			ret_optimal = String.format("subgraph cluster_opt \n{ label=\"%s\" \n fontsize=30 fillcolor=cornsilk style=filled \n %s \n}\n", label, ret_optimal);
+			ret_optimal = String.format("subgraph cluster_opt \n{ labelloc=b label=\"%s\" \n fontsize=30 fillcolor=cornsilk style=filled \n %s \n}\n", label, ret_optimal);
 		}
 		
 		//optimal solution
@@ -418,7 +440,7 @@ public class DataPmlHg {
 		prop.put("shape", "box");
 		
 		
-		if (null==dhg||!dhg.getNodes().contains(gid))
+		if (null==dhg||!dhg.getVertices().contains(gid))
 			return prop;
 
 		
@@ -429,6 +451,7 @@ public class DataPmlHg {
 		}else{
 			prop.put("fillcolor", "white");			
 		}
+	
 		
 		//add border color
 		Resource res_lang = ToolJena.getValueOfProperty(getModelAll(), res_node, PMLP.hasLanguage, (Resource)null);
@@ -602,7 +625,7 @@ public class DataPmlHg {
 		data.put(STAT_WEIGHT, dhg.getTotalWeight());
 		data.put(STAT_STEP, dhg.getEdges().size());
 		data.put(STAT_STEP_AXIOM, dhg.getAxioms().size());
-		data.put(STAT_FORMULA, dhg.getNodes().size());
+		data.put(STAT_FORMULA, dhg.getVertices().size());
 		
 		return data;
 	}

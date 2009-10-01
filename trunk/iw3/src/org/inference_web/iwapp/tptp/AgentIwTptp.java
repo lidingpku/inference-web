@@ -84,6 +84,13 @@ public class AgentIwTptp {
 
 	
 	public void run_create_mappings(boolean bSave){
+		//HashSet<Resource> set_res_info_skip = new HashSet<Resource>();
+		//TODO to skip or not skip, it is a question
+
+		//for (Model m: m_hg.getModels()){
+		//	set_res_info_skip.addAll(ToolPml.list_roots(m));
+		//}	
+
 		Model model_mappings = ToolPml.create_mappings(m_hg.getModels());
 		if (bSave){
 			String sz_path = prepare_path(sz_url_seed,null)+"mappings_i.owl";
