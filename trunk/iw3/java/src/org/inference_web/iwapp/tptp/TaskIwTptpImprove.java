@@ -15,6 +15,7 @@ import sw4j.task.graph.AgentHyperGraphOptimize;
 import sw4j.task.graph.DataHyperGraph;
 import sw4j.util.DataSmartMap;
 import sw4j.util.ToolSafe;
+import sw4j.util.ToolString;
 
 public class TaskIwTptpImprove extends AgentIwTptp {
 	public static void main(String[] argv){
@@ -413,6 +414,8 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 				ToolPml.pml_create_by_copy(ary_set_step_all, this.m_hg.getModelAll(), this.m_hg.getInfoMap(),res_info_root,f_output_rdf);
 			}
 			
+			System.gc();
+			System.out.println( ToolString.formatXMLDateTime()+" free memory: "+Runtime.getRuntime().freeMemory());
 
 		}
 	}
