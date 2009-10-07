@@ -1,0 +1,97 @@
+digraph g 
+{ rankdir=BT;
+   
+  "x_358" [ URL="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SNARK---20080805r005/answer.owl#ns_no_one_hates_everyone_conclusion" color="black" shape="box" label="~ hates(X,agatha)  | ~ hates(X,butler)  | ~ hates(X,charles)" fillcolor="white" style="filled"  ];
+  "x_375" [ URL="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SNARK---20080805r005/answer.owl#ns_17_conclusion" color="black" shape="box" label="hates(butler,butler)  | hates(charles,agatha)" fillcolor="white" style="filled"  ];
+  "x_340" [ URL="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SNARK---20080805r005/answer.owl#ns_killer_hates_victim_conclusion" color="black" shape="box" label="~ killed(X,Y)  | hates(X,Y)" fillcolor="white" style="filled"  ];
+  "x_376" [ URL="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SNARK---20080805r005/answer.owl#ns_agatha_hates_charles_conclusion" color="black" shape="box" label="hates(agatha,charles)" fillcolor="white" style="filled"  ];
+  "x_374" [ URL="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SNARK---20080805r005/answer.owl#ns_different_hates_conclusion" color="black" shape="box" label="~ hates(agatha,X)  | ~ hates(charles,X)" fillcolor="white" style="filled"  ];
+  "x_404" [ URL="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SNARK---20080805r005/answer.owl#ns_poorer_killer_conclusion" color="black" shape="box" label="~ killed(X,Y)  | ~ richer(X,Y)" fillcolor="white" style="filled"  ];
+  "x_382" [ URL="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SNARK---20080805r005/answer.owl#ns_19_conclusion" color="black" shape="box" label="$false" fillcolor="white" style="filled"  ];
+  "x_362" [ URL="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SNARK---20080805r005/answer.owl#ns_14_conclusion" color="black" shape="box" label="hates(butler,charles)" fillcolor="white" style="filled"  ];
+  "x_359" [ URL="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SNARK---20080805r005/answer.owl#ns_13_conclusion" color="black" shape="box" label="hates(butler,agatha)" fillcolor="white" style="filled"  ];
+  "x_363" [ URL="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SNARK---20080805r005/answer.owl#ns_18_conclusion" color="black" shape="box" label="hates(butler,butler)" fillcolor="white" style="filled"  ];
+  "x_421" [ URL="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SNARK---20080805r005/answer.owl#ns_agatha_hates_agatha_conclusion" color="black" shape="box" label="hates(agatha,agatha)" fillcolor="white" style="filled"  ];
+  "x_411" [ URL="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SNARK---20080805r005/answer.owl#ns_same_hates_conclusion" color="black" shape="box" label="~ hates(agatha,X)  | hates(butler,X)" fillcolor="white" style="filled"  ];
+  "x_412" [ URL="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SNARK---20080805r005/answer.owl#ns_15_conclusion" color="black" shape="box" label="killed(butler,agatha)  | hates(charles,agatha)" fillcolor="white" style="filled"  ];
+  "x_352" [ URL="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SNARK---20080805r005/answer.owl#ns_butler_hates_poor_conclusion" color="black" shape="box" label="~ lives(X)  | richer(X,agatha)  | hates(butler,X)" fillcolor="white" style="filled"  ];
+  "x_399" [ URL="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SNARK---20080805r005/answer.owl#ns_16_conclusion" color="black" shape="box" label="richer(butler,agatha)  | hates(butler,butler)" fillcolor="white" style="filled"  ];
+  "x_400" [ URL="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SNARK---20080805r005/answer.owl#ns_prove_neither_charles_nor_butler_did_it_conclusion" color="black" shape="box" label="killed(butler,agatha)  | killed(charles,agatha)" fillcolor="white" style="filled"  ];
+  "x_396" [ URL="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/SNARK---20080805r005/answer.owl#ns_butler_conclusion" color="black" shape="box" label="lives(butler)" fillcolor="white" style="filled"  ];
+  "-10e3408f:1242cc60da2:-7a2a" [ URL="http://browser.inference-web.org/iwbrowser/BrowseNodeSet?url=http%3A%2F%2Finference-web.org%2Fproofs%2Ftptp%2FSolutions%2FPUZ%2FPUZ001-1%2FSNARK---20080805r005%2Fanswer.owl%23ns_different_hates" color="cyan" shape="diamond" label="Assumption" fillcolor="lightgrey" style="filled" penwidth="5"  ];
+  "x_374" -> "-10e3408f:1242cc60da2:-7a2a";
+  "-10e3408f:1242cc60da2:-7a47" [ URL="http://browser.inference-web.org/iwbrowser/BrowseNodeSet?url=http%3A%2F%2Finference-web.org%2Fproofs%2Ftptp%2FSolutions%2FPUZ%2FPUZ001-1%2FSNARK---20080805r005%2Fanswer.owl%23ns_18" color="cyan" shape="diamond" label="SNARK20070805r043HYPERRESOLVE" fillcolor="white" style="filled" penwidth="5"  ];
+  "x_363" -> "-10e3408f:1242cc60da2:-7a47";
+  "-10e3408f:1242cc60da2:-7a47" -> "x_374";
+  "-10e3408f:1242cc60da2:-7a47" -> "x_375";
+  "-10e3408f:1242cc60da2:-7a47" -> "x_421";
+  "-10e3408f:1242cc60da2:-7a4a" [ URL="http://browser.inference-web.org/iwbrowser/BrowseNodeSet?url=http%3A%2F%2Finference-web.org%2Fproofs%2Ftptp%2FSolutions%2FPUZ%2FPUZ001-1%2FSNARK---20080805r005%2Fanswer.owl%23ns_13" color="cyan" shape="diamond" label="SNARK20070805r043HYPERRESOLVE" fillcolor="white" style="filled" penwidth="5"  ];
+  "x_359" -> "-10e3408f:1242cc60da2:-7a4a";
+  "-10e3408f:1242cc60da2:-7a4a" -> "x_411";
+  "-10e3408f:1242cc60da2:-7a4a" -> "x_421";
+  "-10e3408f:1242cc60da2:-7a39" [ URL="http://browser.inference-web.org/iwbrowser/BrowseNodeSet?url=http%3A%2F%2Finference-web.org%2Fproofs%2Ftptp%2FSolutions%2FPUZ%2FPUZ001-1%2FSNARK---20080805r005%2Fanswer.owl%23ns_killer_hates_victim" color="cyan" shape="diamond" label="Assumption" fillcolor="lightgrey" style="filled" penwidth="5"  ];
+  "x_340" -> "-10e3408f:1242cc60da2:-7a39";
+  "-10e3408f:1242cc60da2:-7a33" [ URL="http://browser.inference-web.org/iwbrowser/BrowseNodeSet?url=http%3A%2F%2Finference-web.org%2Fproofs%2Ftptp%2FSolutions%2FPUZ%2FPUZ001-1%2FSNARK---20080805r005%2Fanswer.owl%23ns_butler" color="cyan" shape="diamond" label="Assumption" fillcolor="lightgrey" style="filled" penwidth="5"  ];
+  "x_396" -> "-10e3408f:1242cc60da2:-7a33";
+  "-10e3408f:1242cc60da2:-7a50" [ URL="http://browser.inference-web.org/iwbrowser/BrowseNodeSet?url=http%3A%2F%2Finference-web.org%2Fproofs%2Ftptp%2FSolutions%2FPUZ%2FPUZ001-1%2FSNARK---20080805r005%2Fanswer.owl%23ns_agatha_hates_charles" color="cyan" shape="diamond" label="Assumption" fillcolor="lightgrey" style="filled" penwidth="5"  ];
+  "x_376" -> "-10e3408f:1242cc60da2:-7a50";
+  "-10e3408f:1242cc60da2:-7a3c" [ URL="http://browser.inference-web.org/iwbrowser/BrowseNodeSet?url=http%3A%2F%2Finference-web.org%2Fproofs%2Ftptp%2FSolutions%2FPUZ%2FPUZ001-1%2FSNARK---20080805r005%2Fanswer.owl%23ns_prove_neither_charles_nor_butler_did_it" color="cyan" shape="diamond" label="ToldNegated_conjecture" fillcolor="lightgrey" style="filled" penwidth="5"  ];
+  "x_400" -> "-10e3408f:1242cc60da2:-7a3c";
+  "-10e3408f:1242cc60da2:-7a36" [ URL="http://browser.inference-web.org/iwbrowser/BrowseNodeSet?url=http%3A%2F%2Finference-web.org%2Fproofs%2Ftptp%2FSolutions%2FPUZ%2FPUZ001-1%2FSNARK---20080805r005%2Fanswer.owl%23ns_16" color="cyan" shape="diamond" label="SNARK20070805r043HYPERRESOLVE" fillcolor="white" style="filled" penwidth="5"  ];
+  "x_399" -> "-10e3408f:1242cc60da2:-7a36";
+  "-10e3408f:1242cc60da2:-7a36" -> "x_352";
+  "-10e3408f:1242cc60da2:-7a36" -> "x_396";
+  "-10e3408f:1242cc60da2:-7a5b" [ URL="http://browser.inference-web.org/iwbrowser/BrowseNodeSet?url=http%3A%2F%2Finference-web.org%2Fproofs%2Ftptp%2FSolutions%2FPUZ%2FPUZ001-1%2FSNARK---20080805r005%2Fanswer.owl%23ns_agatha_hates_agatha" color="cyan" shape="diamond" label="Assumption" fillcolor="lightgrey" style="filled" penwidth="5"  ];
+  "x_421" -> "-10e3408f:1242cc60da2:-7a5b";
+  "-10e3408f:1242cc60da2:-7a30" [ URL="http://browser.inference-web.org/iwbrowser/BrowseNodeSet?url=http%3A%2F%2Finference-web.org%2Fproofs%2Ftptp%2FSolutions%2FPUZ%2FPUZ001-1%2FSNARK---20080805r005%2Fanswer.owl%23ns_butler_hates_poor" color="cyan" shape="diamond" label="Assumption" fillcolor="lightgrey" style="filled" penwidth="5"  ];
+  "x_352" -> "-10e3408f:1242cc60da2:-7a30";
+  "-10e3408f:1242cc60da2:-7a3f" [ URL="http://browser.inference-web.org/iwbrowser/BrowseNodeSet?url=http%3A%2F%2Finference-web.org%2Fproofs%2Ftptp%2FSolutions%2FPUZ%2FPUZ001-1%2FSNARK---20080805r005%2Fanswer.owl%23ns_15" color="cyan" shape="diamond" label="SNARK20070805r043HYPERRESOLVE" fillcolor="white" style="filled" penwidth="5"  ];
+  "x_412" -> "-10e3408f:1242cc60da2:-7a3f";
+  "-10e3408f:1242cc60da2:-7a3f" -> "x_340";
+  "-10e3408f:1242cc60da2:-7a3f" -> "x_400";
+  "-10e3408f:1242cc60da2:-7a4d" [ URL="http://browser.inference-web.org/iwbrowser/BrowseNodeSet?url=http%3A%2F%2Finference-web.org%2Fproofs%2Ftptp%2FSolutions%2FPUZ%2FPUZ001-1%2FSNARK---20080805r005%2Fanswer.owl%23ns_same_hates" color="cyan" shape="diamond" label="Assumption" fillcolor="lightgrey" style="filled" penwidth="5"  ];
+  "x_411" -> "-10e3408f:1242cc60da2:-7a4d";
+  "-10e3408f:1242cc60da2:-7a53" [ URL="http://browser.inference-web.org/iwbrowser/BrowseNodeSet?url=http%3A%2F%2Finference-web.org%2Fproofs%2Ftptp%2FSolutions%2FPUZ%2FPUZ001-1%2FSNARK---20080805r005%2Fanswer.owl%23ns_14" color="cyan" shape="diamond" label="SNARK20070805r043HYPERRESOLVE" fillcolor="white" style="filled" penwidth="5"  ];
+  "x_362" -> "-10e3408f:1242cc60da2:-7a53";
+  "-10e3408f:1242cc60da2:-7a53" -> "x_376";
+  "-10e3408f:1242cc60da2:-7a53" -> "x_411";
+  "-10e3408f:1242cc60da2:-7a43" [ URL="http://browser.inference-web.org/iwbrowser/BrowseNodeSet?url=http%3A%2F%2Finference-web.org%2Fproofs%2Ftptp%2FSolutions%2FPUZ%2FPUZ001-1%2FSNARK---20080805r005%2Fanswer.owl%23ns_17" color="cyan" shape="diamond" label="SNARK20070805r043HYPERRESOLVE" fillcolor="white" style="filled" penwidth="5"  ];
+  "x_375" -> "-10e3408f:1242cc60da2:-7a43";
+  "-10e3408f:1242cc60da2:-7a43" -> "x_399";
+  "-10e3408f:1242cc60da2:-7a43" -> "x_404";
+  "-10e3408f:1242cc60da2:-7a43" -> "x_412";
+  "-10e3408f:1242cc60da2:-7a2d" [ URL="http://browser.inference-web.org/iwbrowser/BrowseNodeSet?url=http%3A%2F%2Finference-web.org%2Fproofs%2Ftptp%2FSolutions%2FPUZ%2FPUZ001-1%2FSNARK---20080805r005%2Fanswer.owl%23ns_poorer_killer" color="cyan" shape="diamond" label="Assumption" fillcolor="lightgrey" style="filled" penwidth="5"  ];
+  "x_404" -> "-10e3408f:1242cc60da2:-7a2d";
+  "-10e3408f:1242cc60da2:-7a58" [ URL="http://browser.inference-web.org/iwbrowser/BrowseNodeSet?url=http%3A%2F%2Finference-web.org%2Fproofs%2Ftptp%2FSolutions%2FPUZ%2FPUZ001-1%2FSNARK---20080805r005%2Fanswer.owl%23answer" color="cyan" shape="diamond" label="SNARK20070805r043HYPERRESOLVE" fillcolor="white" style="filled" penwidth="5"  ];
+  "x_382" -> "-10e3408f:1242cc60da2:-7a58";
+  "-10e3408f:1242cc60da2:-7a58" -> "x_358";
+  "-10e3408f:1242cc60da2:-7a58" -> "x_359";
+  "-10e3408f:1242cc60da2:-7a58" -> "x_362";
+  "-10e3408f:1242cc60da2:-7a58" -> "x_363";
+  "-10e3408f:1242cc60da2:-7a27" [ URL="http://browser.inference-web.org/iwbrowser/BrowseNodeSet?url=http%3A%2F%2Finference-web.org%2Fproofs%2Ftptp%2FSolutions%2FPUZ%2FPUZ001-1%2FSNARK---20080805r005%2Fanswer.owl%23ns_no_one_hates_everyone" color="cyan" shape="diamond" label="Assumption" fillcolor="lightgrey" style="filled" penwidth="5"  ];
+  "x_358" -> "-10e3408f:1242cc60da2:-7a27";
+  
+ subgraph cluster_opt 
+{ labelloc=b label="{formula=17, formula[new]=0, rule=3, rule[new]=0, step=17, \n  step(axiom)=10, step[new]=0, step[saving]=0, weight=17}" 
+ fontsize=30 fillcolor=cornsilk style=filled 
+  x_411 ; x_375 ; x_374 ; x_340 ; x_412 ; x_400 ; x_382 ; x_376 ; x_404 ; x_358 ; x_359 ; x_352 ; x_399 ; x_396 ; x_421 ; x_362 ; x_363 ; "-10e3408f:1242cc60da2:-7a2a" ;
+ "-10e3408f:1242cc60da2:-7a47" ;
+ "-10e3408f:1242cc60da2:-7a4a" ;
+ "-10e3408f:1242cc60da2:-7a39" ;
+ "-10e3408f:1242cc60da2:-7a33" ;
+ "-10e3408f:1242cc60da2:-7a50" ;
+ "-10e3408f:1242cc60da2:-7a3c" ;
+ "-10e3408f:1242cc60da2:-7a36" ;
+ "-10e3408f:1242cc60da2:-7a5b" ;
+ "-10e3408f:1242cc60da2:-7a30" ;
+ "-10e3408f:1242cc60da2:-7a3f" ;
+ "-10e3408f:1242cc60da2:-7a4d" ;
+ "-10e3408f:1242cc60da2:-7a53" ;
+ "-10e3408f:1242cc60da2:-7a43" ;
+ "-10e3408f:1242cc60da2:-7a2d" ;
+ "-10e3408f:1242cc60da2:-7a58" ;
+ "-10e3408f:1242cc60da2:-7a27" ;
+ 
+}
+ 
+}
