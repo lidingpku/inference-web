@@ -37,6 +37,10 @@
           <path refid="my.classpath"/>
         </classpath>
       </javac>
+  	  <copy todir="${build.dir}">
+  	    <fileset dir="${src.dir}">
+  	    </fileset>
+  	  </copy>  		
     </target>  
   	
   	<target name="tptp-improve" depends="build">
