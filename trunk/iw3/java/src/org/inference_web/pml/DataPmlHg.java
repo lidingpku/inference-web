@@ -108,7 +108,7 @@ public class DataPmlHg {
 		m_dhg = new DataHyperGraph();
 		for (Resource res_step: getModelAll().listSubjectsWithProperty(RDF.type, PMLJ.InferenceStep).toSet()){
 			DataHyperEdge edge = createHyperEdge(getModelAll(), res_step, m_map_res_vertex);
-			m_dhg.add(edge);
+			m_dhg.add(edge, ToolJena.getNodeString(res_step));
 			m_map_step_edge.put(res_step, edge);
 			m_map_edge_step.add(edge, res_step);
 		}
@@ -119,8 +119,8 @@ public class DataPmlHg {
 		getHyperGraph();
 		
 		DataHyperGraph dhg = new DataHyperGraph();
-		for (Resource step: set_res_step){
-			dhg.add(this.getHyperEdge(step));
+		for (Resource res_step: set_res_step){
+			dhg.add(this.getHyperEdge(res_step), ToolJena.getNodeString(res_step));
 		}
 		return dhg;
 	}
@@ -444,7 +444,10 @@ public class DataPmlHg {
 			return prop;
 
 		
-		int antecedents = dhg.getEdgesByOutput(gid).size();
+		int antecedents = 0;
+		for (DataHyperEdge edge: dhg.getEdgesByOutput(gid)){
+			antecedents+=dhg.getContextsByEdge(edge).size();
+		}
 		prop.put("style", "filled");
 		if (antecedents>1){
 			prop.put("fillcolor", "red");
@@ -597,6 +600,9 @@ public class DataPmlHg {
 	public static String STAT_FORMULA = "formula";
 	public static String STAT_FORMULA_NEW = "formula[new]";
 	
+	public static String STAT_RULE= "rule";
+	public static String STAT_RULE_NEW = "rule[new]";
+
 	public DataSmartMap stat(Set<Resource> set_step_improved, Set<Resource> set_step_original){
 		DataSmartMap data= new DataSmartMap();
 		DataHyperGraph g_improved = this.getHyperGraph(set_step_improved);
@@ -615,6 +621,20 @@ public class DataPmlHg {
 		set_step_new.removeAll(g_original.getEdges());
 		data.put(STAT_STEP_NEW, set_step_new.size());
 
+		Set<RDFNode> set_res_rule_improved = new HashSet<RDFNode>();
+		Set<RDFNode> set_res_rule_original = new HashSet<RDFNode>();
+		for (Statement stmt: getModelAll().listStatements(null, PMLJ.hasInferenceRule, (String)null).toSet()){
+			if (set_step_improved.contains(stmt.getSubject()))
+				set_res_rule_improved.add(stmt.getObject());
+
+			if (set_step_original.contains(stmt.getSubject()))
+				set_res_rule_original.add(stmt.getObject());
+		}
+
+		set_step_improved.removeAll(set_step_original);
+		data.put(STAT_RULE_NEW, set_step_improved.size());
+
+		
 		return data;
 	}
 
@@ -627,6 +647,13 @@ public class DataPmlHg {
 		data.put(STAT_STEP_AXIOM, dhg.getAxioms().size());
 		data.put(STAT_FORMULA, dhg.getVertices().size());
 		
+		Set<RDFNode> set_res_rule = new HashSet<RDFNode>();
+		for (Statement stmt: getModelAll().listStatements(null, PMLJ.hasInferenceRule, (String)null).toSet()){
+
+			if (set_step.contains(stmt.getSubject()))
+				set_res_rule.add(stmt.getObject());
+		}
+		data.put(STAT_RULE, set_res_rule.size());
 		return data;
 	}
 

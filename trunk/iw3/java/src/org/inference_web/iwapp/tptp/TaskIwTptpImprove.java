@@ -5,6 +5,7 @@ import java.net.MalformedURLException;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 import org.inference_web.pml.DataPmlHg;
 import org.inference_web.pml.ToolPml;
@@ -18,15 +19,18 @@ import sw4j.util.ToolSafe;
 public class TaskIwTptpImprove extends AgentIwTptp {
 	public static void main(String[] argv){
 		//run_test();
-		run_improve();
+		run_improve_pair();
+		run_improve_version_EP();
+		run_improve_version_Metis();
+		//run_improve();
 	}
 	
 	public static void run_improve(){
 		//String sz_url_seed = "http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/";
 		String sz_url_seed = "http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/";
-		String sz_url_root_input= "http://inference-web.org/proofs/tptp/Solutions";
-		File dir_root_output = new File("www/test/combine");
-		String sz_url_root_output = "http://inference-web.org/test/combine";
+		String sz_url_root_input= "http://inference-web.org/proofs/tptp/Solutions/PUZ";
+		File dir_root_output = new File("www/test/tptp-iw/all");
+		String sz_url_root_output = "http://inference-web.org/test/tptp-iw/all";
 		
 		TaskIwTptpImprove tpn = new TaskIwTptpImprove();
 		tpn.init(sz_url_seed, sz_url_root_input, dir_root_output, sz_url_root_output);
@@ -34,13 +38,104 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 		tpn.filter_url_pml_base();
 		tpn.run();
 	}
+
+	public static void run_improve_pair(){
+		Set<String> reasoners1 = new TreeSet<String>();
+		Set<String> reasoners2 = new TreeSet<String>();
+		reasoners2.add("Ayane---1.1");
+	//	reasoners2.add("EP---0.999");	
+	//	reasoners2.add("EP---1.0");
+		reasoners2.add("EP---1.1");
+	//	reasoners2.add("EP---1.1pre");
+		reasoners2.add("Faust---1.0");
+	//	reasoners2.add("Metis---2.1");
+		reasoners2.add("Metis---2.2");
+		reasoners2.add("Otter---3.3");
+		reasoners2.add("SNARK---20080805r005");
+		reasoners2.add("SOS---2.0");
+	//	reasoners2.add("SPASS---3.01");
+		reasoners2.add("Vampire---9.0");
+		
+		reasoners1.add("EP---1.1");
+		//reasoners1.add("Ayane---1.1");
+		
+		for (String reasoner1: reasoners1){
+			for (String reasoner2: reasoners2){
+				if (reasoner1.equals(reasoner2))
+					continue;
+				
+				//String sz_url_seed = "http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/";
+				String sz_url_seed = "http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/";
+				String sz_url_root_input= "http://inference-web.org/proofs/tptp/Solutions/PUZ";
+				
+				String dir_name= reasoner1.substring(0,reasoner1.indexOf("---"))+"-"+reasoner2.substring(0,reasoner2.indexOf("---"));
+				
+				File dir_root_output = new File("www/test/tptp-iw/"+dir_name);
+				String sz_url_root_output = "http://inference-web.org/test/tptp-iw/"+dir_name;
+				Set<String> set_url_pml = new HashSet<String>();
+				set_url_pml.add("http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/"+reasoner1+"/answer.owl"); 
+				set_url_pml.add("http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/"+reasoner2+"/answer.owl"); 
+				
+				TaskIwTptpImprove tpn = new TaskIwTptpImprove();
+				tpn.init(sz_url_seed, sz_url_root_input, set_url_pml, dir_root_output, sz_url_root_output);
+				tpn.run();
+				
+			}			
+		}
+	}
+
+	public static void run_improve_version_EP(){
+		Set<String> reasoners2 = new TreeSet<String>();
+		reasoners2.add("EP---0.999");	
+		reasoners2.add("EP---1.0");
+		reasoners2.add("EP---1.1");
+		reasoners2.add("EP---1.1pre");
+
+		//reasoners2.add("Metis---2.1");
+		//reasoners2.add("Metis---2.2");
+		
+		
+		//String sz_url_seed = "http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/";
+		String sz_url_seed = "http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/";
+		String sz_url_root_input= "http://inference-web.org/proofs/tptp/Solutions/PUZ";
+		String dir_name= "EP";
+		File dir_root_output = new File("www/test/tptp-iw/"+dir_name);
+		String sz_url_root_output = "http://inference-web.org/test/tptp-iw/"+dir_name;
+		Set<String> set_url_pml = new HashSet<String>();
+		for (String reasoner2: reasoners2){
+			set_url_pml.add("http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/"+reasoner2+"/answer.owl"); 
+		}
+		TaskIwTptpImprove tpn = new TaskIwTptpImprove();
+		tpn.init(sz_url_seed, sz_url_root_input, set_url_pml, dir_root_output, sz_url_root_output);
+		tpn.run();						
+	}
 	
+	public static void run_improve_version_Metis(){
+		Set<String> reasoners2 = new TreeSet<String>();
+		reasoners2.add("Metis---2.1");
+		reasoners2.add("Metis---2.2");
+		
+		
+		//String sz_url_seed = "http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/";
+		String sz_url_seed = "http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/";
+		String sz_url_root_input= "http://inference-web.org/proofs/tptp/Solutions/PUZ";
+		String dir_name= "Metis";
+		File dir_root_output = new File("www/test/tptp-iw/"+dir_name);
+		String sz_url_root_output = "http://inference-web.org/test/tptp-iw/"+dir_name;
+		Set<String> set_url_pml = new HashSet<String>();
+		for (String reasoner2: reasoners2){
+			set_url_pml.add("http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/"+reasoner2+"/answer.owl"); 
+		}
+		TaskIwTptpImprove tpn = new TaskIwTptpImprove();
+		tpn.init(sz_url_seed, sz_url_root_input, set_url_pml, dir_root_output, sz_url_root_output);
+		tpn.run();						
+	}
 	public static void run_test(){
 		//String sz_url_seed = "http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/";
 		String sz_url_seed = "http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/";
 		String sz_url_root_input= "http://inference-web.org/proofs/tptp/Solutions";
-		File dir_root_output = new File("www/test/combine");
-		String sz_url_root_output = "http://inference-web.org/test/combine";
+		File dir_root_output = new File("www/test/tptp-iw");
+		String sz_url_root_output = "http://inference-web.org/test/tptp-iw";
 		Set<String> set_url_pml = new HashSet<String>();
 		set_url_pml.add("http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1pre/answer.owl"); 
 		set_url_pml.add("http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Otter---3.3/answer.owl"); 
@@ -234,6 +329,7 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 		key.put("context",sz_context);
 		key.put("root_id",gid_root);
 		key.put("opt_weight",option_weight);
+		key.put("url_pml",sz_url_pml);
 		
 		if (m_cache_problem_solution.keySet().contains(key)){
 			return m_cache_problem_solution.get(key);

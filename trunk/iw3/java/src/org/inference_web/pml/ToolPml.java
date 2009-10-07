@@ -348,14 +348,15 @@ public class ToolPml {
 		//process root
 		Resource res_ns_root =model_ref.listSubjectsWithProperty(PMLJ.hasConclusion, res_info_root).next();
 		int gid_root = map_info_id.getGid(res_info_root);
-		Resource res_ns_root_mapped = model_data.createResource("#root");
+		Resource res_ns_root_mapped = model_data.createResource("#answer");
 		{
 			map_gid_info.put(gid_root, res_info_root);
-			map_res_res.put(res_info_root, model_data.createResource("#info_"+gid_root));
-			
-			//copy info data
-			ToolJena.update_copyResourceDescription(model_data, model_ref, res_info_root, null,true);
-
+			if (res_info_root.isAnon()){
+				map_res_res.put(res_info_root, model_data.createResource("#info_"+gid_root));
+				
+				//copy info data
+				ToolJena.update_copyResourceDescription(model_data, model_ref, res_info_root, null,true);
+			}
 			
 			map_gid_ns.put(gid_root, res_ns_root);
 			map_res_res.put(res_ns_root, res_ns_root_mapped);
@@ -408,16 +409,17 @@ public class ToolPml {
 				//copy info
 				for (Resource res_info: ToolPml.list_info(model_ref, res_step, OPT_LIST_ALL)){
 					int gid = map_info_id.getGid(res_info);
-					Resource res_info_mapped = map_gid_info.get(gid);
-					if (null==res_info_mapped){
-						res_info_mapped = res_info;
-						map_gid_info.put(gid, res_info);
-						
-						//copy info data
-						ToolJena.update_copyResourceDescription(model_data, model_ref, res_info_mapped, null,true);
+					if (res_info.isAnon()){
+						Resource res_info_mapped = map_gid_info.get(gid);
+						if (null==res_info_mapped){
+							res_info_mapped = res_info;
+							map_gid_info.put(gid, res_info);
+							
+							//copy info data
+							ToolJena.update_copyResourceDescription(model_data, model_ref, res_info_mapped, null,true);
+						}
+						map_res_res.put(res_info, model_data.createResource("#info_"+gid));
 					}
-					map_res_res.put(res_info, model_data.createResource("#info_"+gid));
-					
 					
 					Resource res_ns = model_ref.listSubjectsWithProperty(PMLJ.hasConclusion, res_info).next();
 					Resource res_ns_mapped = map_gid_ns.get(gid);
