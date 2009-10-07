@@ -29,7 +29,7 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 		//String sz_url_seed = "http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/";
 		String sz_url_seed = "http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/";
 		String sz_url_root_input= "http://inference-web.org/proofs/tptp/Solutions/PUZ";
-		File dir_root_output = new File("file/tptp-iw/all");
+		File dir_root_output = new File("www/test/tptp-iw/all");
 		String sz_url_root_output = "http://inference-web.org/test/tptp-iw/all";
 		
 		TaskIwTptpImprove tpn = new TaskIwTptpImprove();
@@ -70,7 +70,7 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 				
 				String dir_name= reasoner1.substring(0,reasoner1.indexOf("---"))+"-"+reasoner2.substring(0,reasoner2.indexOf("---"));
 				
-				File dir_root_output = new File("file/tptp-iw/"+dir_name);
+				File dir_root_output = new File("www/test/tptp-iw/"+dir_name);
 				String sz_url_root_output = "http://inference-web.org/test/tptp-iw/"+dir_name;
 				Set<String> set_url_pml = new HashSet<String>();
 				set_url_pml.add("http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/"+reasoner1+"/answer.owl"); 
@@ -99,7 +99,7 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 		String sz_url_seed = "http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/";
 		String sz_url_root_input= "http://inference-web.org/proofs/tptp/Solutions/PUZ";
 		String dir_name= "EP";
-		File dir_root_output = new File("file/tptp-iw/"+dir_name);
+		File dir_root_output = new File("www/test/tptp-iw/"+dir_name);
 		String sz_url_root_output = "http://inference-web.org/test/tptp-iw/"+dir_name;
 		Set<String> set_url_pml = new HashSet<String>();
 		for (String reasoner2: reasoners2){
@@ -120,7 +120,7 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 		String sz_url_seed = "http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/";
 		String sz_url_root_input= "http://inference-web.org/proofs/tptp/Solutions/PUZ";
 		String dir_name= "Metis";
-		File dir_root_output = new File("file/tptp-iw/"+dir_name);
+		File dir_root_output = new File("www/test/tptp-iw/"+dir_name);
 		String sz_url_root_output = "http://inference-web.org/test/tptp-iw/"+dir_name;
 		Set<String> set_url_pml = new HashSet<String>();
 		for (String reasoner2: reasoners2){
@@ -134,7 +134,7 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 		//String sz_url_seed = "http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/";
 		String sz_url_seed = "http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/";
 		String sz_url_root_input= "http://inference-web.org/proofs/tptp/Solutions";
-		File dir_root_output = new File("file/tptp-iw");
+		File dir_root_output = new File("www/test/tptp-iw");
 		String sz_url_root_output = "http://inference-web.org/test/tptp-iw";
 		Set<String> set_url_pml = new HashSet<String>();
 		set_url_pml.add("http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1pre/answer.owl"); 

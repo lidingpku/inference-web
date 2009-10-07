@@ -155,6 +155,7 @@ public class ToolPml {
     	// * pmlr step connecting information as input and output
     	try {
     		String filename = "pml_index.sparql";
+    		System.out.println(ToolPml.class.getResource(filename));
         	InputStream in = ToolPml.class.getResourceAsStream(filename);
 			String sz_sparql_query = ToolIO.pipeInputStreamToString(in);
 			
