@@ -20,8 +20,8 @@ import sw4j.util.ToolString;
 public class TaskIwTptpImprove extends AgentIwTptp {
 	public static void main(String[] argv){
 		//run_test();
-		//run_improve_pair();
-		//run_improve_version_EP();
+		run_improve_pair();
+		run_improve_version_EP();
 		//run_improve_version_Metis();
 		run_improve();
 	}
@@ -138,7 +138,7 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 		File dir_root_output = new File("www/test/tptp-iw");
 		String sz_url_root_output = "http://inference-web.org/test/tptp-iw";
 		Set<String> set_url_pml = new HashSet<String>();
-		set_url_pml.add("http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1pre/answer.owl"); 
+		set_url_pml.add("http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl"); 
 		set_url_pml.add("http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Otter---3.3/answer.owl"); 
 		
 		TaskIwTptpImprove tpn = new TaskIwTptpImprove();

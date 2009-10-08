@@ -243,7 +243,7 @@ public class DataPmlHg {
 	}
 	
 	private static String graphviz_print_arc(String label_from, String label_to){
-		return String.format(" \"%s\" -> \"%s\";\n ", label_from, label_to );
+		return String.format(" \"%s\" -> \"%s\";\n ", label_from, label_to  );
 	}
 	
 	private static String graphviz_get_id(Integer node){
@@ -279,17 +279,18 @@ public class DataPmlHg {
 
 			Integer output= edge.getOutput();
 			String label_node = graphviz_get_id(output);
-			ret += graphviz_print_arc(label_node, label_edge );
+			//changed
+			ret += graphviz_print_arc( label_edge, label_node );
 			for(Integer input : edge.getInputs()){
 				label_node = graphviz_get_id(input);
-				ret += graphviz_print_arc( label_edge, label_node );
+				ret += graphviz_print_arc(  label_node, label_edge );
 			}
 		}
 		
 		String label=this.stat(set_res_edge).toString();
 
 		
-		ret = String.format("digraph g \n{ rankdir=BT;\n labelloc=b label=\"%s\"  \n%s }\n",label, ret);
+		ret = String.format("digraph g \n{ labelloc=b label=\"%s\"  \n%s }\n",label, ret);
 		return ret;
 	}
 
@@ -331,10 +332,11 @@ public class DataPmlHg {
 
 				Integer output= edge.getOutput();
 				String label_node = graphviz_get_id(output);
-				ret_background += graphviz_print_arc(label_node, label_edge );
+				// changed
+				ret_background += graphviz_print_arc( label_edge, label_node );
 				for(Integer input : edge.getInputs()){
 					label_node = graphviz_get_id(input);
-					ret_background += graphviz_print_arc( label_edge, label_node );
+					ret_background += graphviz_print_arc( label_node, label_edge );
 				}
 			}
 		}
@@ -359,13 +361,14 @@ public class DataPmlHg {
 				ret_optimal += String.format(" \"%s\" ;\n",label_edge);	
 			}
 			String label=this.stat(set_res_edge_optimal, set_res_edge_original).toString();
+			//TODO
 			
 			ret_optimal = String.format("subgraph cluster_opt \n{ labelloc=b label=\"%s\" \n fontsize=30 fillcolor=cornsilk style=filled \n %s \n}\n", label, ret_optimal);
 		}
 		
 		//optimal solution
 		
-		String ret = String.format("digraph g \n{ rankdir=BT;\n   \n %s \n %s \n}\n",ret_background, ret_optimal);
+		String ret = String.format("digraph g \n{  \n %s \n %s \n}\n",ret_background, ret_optimal);
 		return ret;
 	}
 
@@ -375,7 +378,11 @@ public class DataPmlHg {
 		Properties prop = new Properties();
 
 		//set shape
-		prop.put("shape", "diamond");
+		if (edge.isAtomic()){
+			prop.put("shape", "invhouse");				
+		}else{
+			prop.put("shape", "diamond");
+		}
 
 		prop.put("penwidth", "5");
 
@@ -397,11 +404,7 @@ public class DataPmlHg {
 	
 		// set fill color
 		prop.put("style", "filled");
-		if (edge.isAtomic()){
-			prop.put("fillcolor", "lightgrey");				
-		}else{
-			prop.put("fillcolor", "white");							
-		}
+		prop.put("fillcolor", "white");							
 		
 		//set border color
 		Resource res_engine = (ToolJena.getValueOfProperty(getModelAll(), res_edge, PMLJ.hasInferenceEngine, (Resource)null));
@@ -533,10 +536,8 @@ public class DataPmlHg {
 					Runtime.getRuntime().exec(command);
 				}
 			} catch (Sw4jException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
