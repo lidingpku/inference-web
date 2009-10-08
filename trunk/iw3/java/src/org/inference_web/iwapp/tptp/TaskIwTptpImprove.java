@@ -20,9 +20,9 @@ import sw4j.util.ToolString;
 public class TaskIwTptpImprove extends AgentIwTptp {
 	public static void main(String[] argv){
 		//run_test();
-		run_improve_pair();
-		run_improve_version_EP();
-		run_improve_version_Metis();
+		//run_improve_pair();
+		//run_improve_version_EP();
+		//run_improve_version_Metis();
 		run_improve();
 	}
 	

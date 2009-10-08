@@ -53,7 +53,7 @@ public class AgentIwTptp {
 	public void filter_url_pml_base(){
 		HashSet<String> set_engine = new HashSet<String>();
 		set_engine.add("Ayane---1.1");
-		set_engine.add("EP---1.1pre");
+		set_engine.add("EP---1.1");
 		set_engine.add("Faust---1.0");
 		set_engine.add("Metis---2.2");
 		set_engine.add("Otter---3.3");
