@@ -12,6 +12,7 @@ import org.inference_web.pml.ToolPml;
 
 import com.hp.hpl.jena.rdf.model.Resource;
 import sw4j.task.graph.AgentHyperGraphOptimize;
+import sw4j.task.graph.DataHyperEdge;
 import sw4j.task.graph.DataHyperGraph;
 import sw4j.util.DataSmartMap;
 import sw4j.util.ToolSafe;
@@ -139,7 +140,8 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 		String sz_url_root_output = "http://inference-web.org/test/tptp-iw";
 		Set<String> set_url_pml = new HashSet<String>();
 		set_url_pml.add("http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl"); 
-		set_url_pml.add("http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Otter---3.3/answer.owl"); 
+//		set_url_pml.add("http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Otter---3.3/answer.owl"); 
+		set_url_pml.add("http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Faust---1.0/answer.owl");
 		
 		TaskIwTptpImprove tpn = new TaskIwTptpImprove();
 		tpn.init(sz_url_seed, sz_url_root_input, set_url_pml, dir_root_output, sz_url_root_output);
@@ -335,6 +337,7 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 		if (m_cache_problem_solution.keySet().contains(key)){
 			return m_cache_problem_solution.get(key);
 		}else{
+			DataHyperGraph dhg_orginal = this.m_hg.getHyperGraph(set_step_original);
 			
 			DataHyperGraph dhg;
 			if (CONTEXT_IMPROVE_GLOBAL.equals(sz_context))
@@ -343,7 +346,7 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 				Set<Resource> set_step_keep_root = m_hg.getSubHgKeepRoot(sz_url_pml, gid_root);
 				dhg= this.m_hg.getHyperGraph(set_step_keep_root);
 			}else {
-				dhg = this.m_hg.getHyperGraph(set_step_original);
+				dhg = dhg_orginal;
 			}
 			m_hg.hg_set_weight(dhg, option_weight);
 
@@ -351,11 +354,25 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 			hgt.traverse(dhg,gid_root);
 
 			//plot
-			if (ToolSafe.isEmpty(hgt.getSolutions())){
+
+			DataHyperGraph dhg_optimal =null;
+			int match_optimal = -1;
+			Set<DataHyperEdge> edges_original = dhg_orginal.getEdges();
+			for (DataHyperGraph dgh_candidate: hgt.getSolutions()){
+				Set<DataHyperEdge> edges_optimal = new HashSet<DataHyperEdge> (dgh_candidate.getEdges());
+				edges_optimal.retainAll(edges_original);
+				int match = edges_optimal.size();
+				
+				if (match_optimal == -1 || match_optimal<match){
+					dhg_optimal = dgh_candidate;
+					match_optimal = match;
+				}
+			}
+			
+			if (ToolSafe.isEmpty(dhg_optimal)){
 				System.exit(-1);
 			}
 
-			DataHyperGraph dhg_optimal = hgt.getSolutions().get(0);
 			m_cache_problem_solution.put(key, dhg_optimal);
 			return dhg_optimal;
 	

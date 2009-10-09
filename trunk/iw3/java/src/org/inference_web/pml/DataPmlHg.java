@@ -351,7 +351,7 @@ public class DataPmlHg {
 			//add maps for nodes
 			for (Integer gid: set_vertex_optimal){;
 				String label_node = graphviz_get_id(gid);
-				ret_optimal += String.format(" %s ;",label_node);	
+				ret_optimal += String.format(" %s ;\n",label_node);	
 			}
 			
 			//add maps for edges
@@ -361,7 +361,10 @@ public class DataPmlHg {
 				ret_optimal += String.format(" \"%s\" ;\n",label_edge);	
 			}
 			String label=this.stat(set_res_edge_optimal, set_res_edge_original).toString();
-			//TODO
+
+			//insert change line
+			int pos = label.indexOf(",",label.length()/2)+1;
+			label=label.substring(0,pos)+"\\n"+label.substring(pos);
 			
 			ret_optimal = String.format("subgraph cluster_opt \n{ labelloc=b label=\"%s\" \n fontsize=30 fillcolor=cornsilk style=filled \n %s \n}\n", label, ret_optimal);
 		}
