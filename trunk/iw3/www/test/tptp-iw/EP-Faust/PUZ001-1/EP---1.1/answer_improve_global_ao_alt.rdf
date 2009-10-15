@@ -1,0 +1,678 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:pmlj="http://inference-web.org/2.0/pml-justification.owl#"
+    xmlns:pmlr="http://inference-web.org/2.0/pml-relation.owl#"
+    xmlns:pmlp="http://inference-web.org/2.0/pml-provenance.owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:ds="http://inference-web.org/2.0/ds.owl#" > 
+  <rdf:Description rdf:nodeID="A0">
+    <ds:first rdf:resource="#ns_178"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A1">
+    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Told.owl#Told"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+    <pmlj:hasSourceUsage rdf:nodeID="A2"/>
+    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/Faust.owl#Faust"/>
+    <pmlr:hasOutput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Faust---1.0/answer.owl#ns_different_hates_conclusion"/>
+    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0</pmlj:hasIndex>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A3">
+    <pmlr:hasOutput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_8_conclusion"/>
+    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Told.owl#Told"/>
+    <pmlj:hasSourceUsage rdf:nodeID="A4"/>
+    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/EP1.1.owl#EP1.1"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</pmlj:hasIndex>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A5">
+    <ds:first rdf:resource="#ns_201"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#ns_124">
+    <pmlj:hasConclusion rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_29_conclusion"/>
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-09-22T20:43:23-04:00</pmlp:hasCreationDateTime>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+    <pmlj:isConsequentOf rdf:nodeID="A6"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A7">
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#SourceUsage"/>
+    <pmlp:hasUsageDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-09-22T20:43:23-04:00</pmlp:hasUsageDateTime>
+    <pmlp:hasSource rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_2_source"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A8">
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#SourceUsage"/>
+    <pmlp:hasUsageDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-09-22T20:43:23-04:00</pmlp:hasUsageDateTime>
+    <pmlp:hasSource rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_9_source"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A9">
+    <pmlr:hasInput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_2_conclusion"/>
+    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/EP1.1.owl#EP1.1"/>
+    <pmlr:hasInput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_29_conclusion"/>
+    <pmlj:hasAntecedentList rdf:nodeID="A10"/>
+    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/EP0.999Rw.owl#EP0.999Rw"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+    <pmlr:hasOutput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_30_conclusion"/>
+    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</pmlj:hasIndex>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A11">
+    <pmlr:hasMember rdf:resource="#ns_206"/>
+    <pmlr:hasMember rdf:resource="#ns_164"/>
+    <ds:first rdf:resource="#ns_206"/>
+    <ds:rest rdf:nodeID="A12"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#ns_201">
+    <pmlj:isConsequentOf rdf:nodeID="A13"/>
+    <pmlj:hasConclusion rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Faust---1.0/answer.owl#ns_176169184_conclusion"/>
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:48-04:00</pmlp:hasCreationDateTime>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A14">
+    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/EP0.999Spm.owl#EP0.999Spm"/>
+    <pmlr:hasInput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_10_conclusion"/>
+    <pmlr:hasInput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_7_conclusion"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/EP1.1.owl#EP1.1"/>
+    <pmlr:hasOutput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_14_conclusion"/>
+    <pmlj:hasAntecedentList rdf:nodeID="A15"/>
+    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</pmlj:hasIndex>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A16">
+    <pmlr:hasOutput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Faust---1.0/answer.owl#ns_168261192_conclusion"/>
+    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Faust1.0Rewrite.owl#Faust1.0Rewrite"/>
+    <pmlj:hasAntecedentList rdf:nodeID="A17"/>
+    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/Faust.owl#Faust"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+    <pmlr:hasInput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Faust---1.0/answer.owl#ns_different_hates_conclusion"/>
+    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0</pmlj:hasIndex>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A18">
+    <pmlr:hasOutput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_13_conclusion"/>
+    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/EP0.999Spm.owl#EP0.999Spm"/>
+    <pmlj:hasAntecedentList rdf:nodeID="A19"/>
+    <pmlr:hasInput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_12_conclusion"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+    <pmlr:hasInput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_9_conclusion"/>
+    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/EP1.1.owl#EP1.1"/>
+    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</pmlj:hasIndex>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A20">
+    <pmlr:hasMember rdf:resource="#ns_217"/>
+    <pmlr:hasMember rdf:resource="#ns_201"/>
+    <ds:first rdf:resource="#ns_217"/>
+    <ds:rest rdf:nodeID="A5"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#ns_133">
+    <pmlj:hasConclusion rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_12_conclusion"/>
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-09-22T20:43:23-04:00</pmlp:hasCreationDateTime>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+    <pmlj:isConsequentOf rdf:nodeID="A21"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A22">
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#SourceUsage"/>
+    <pmlp:hasUsageDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-09-22T20:43:23-04:00</pmlp:hasUsageDateTime>
+    <pmlp:hasSource rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_5_source"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A23">
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/EP1.1.owl#EP1.1"/>
+    <pmlj:hasSourceUsage rdf:nodeID="A8"/>
+    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Told.owl#Told"/>
+    <pmlr:hasOutput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_9_conclusion"/>
+    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</pmlj:hasIndex>
+  </rdf:Description>
+  <rdf:Description rdf:about="#ns_154">
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-09-22T20:43:23-04:00</pmlp:hasCreationDateTime>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+    <pmlj:hasConclusion rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_16_conclusion"/>
+    <pmlj:isConsequentOf rdf:nodeID="A24"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A12">
+    <ds:first rdf:resource="#ns_164"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#ns_229">
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:48-04:00</pmlp:hasCreationDateTime>
+    <pmlj:hasConclusion rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Faust---1.0/answer.owl#ns_168272912_conclusion"/>
+    <pmlj:isConsequentOf rdf:nodeID="A25"/>
+    <pmlj:isConsequentOf rdf:nodeID="A26"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A27">
+    <pmlr:hasMember rdf:resource="#ns_163"/>
+    <pmlr:hasMember rdf:resource="#ns_178"/>
+    <ds:first rdf:resource="#ns_163"/>
+    <ds:rest rdf:nodeID="A28"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A13">
+    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/EP0.999Spm.owl#EP0.999Spm"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+    <pmlr:hasInput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_10_conclusion"/>
+    <pmlr:hasOutput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_15_conclusion"/>
+    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/EP1.1.owl#EP1.1"/>
+    <pmlj:hasAntecedentList rdf:nodeID="A29"/>
+    <pmlr:hasInput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_8_conclusion"/>
+    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</pmlj:hasIndex>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A30">
+    <ds:first rdf:resource="#ns_182"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A31">
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#SourceUsage"/>
+    <pmlp:hasSource rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_6_source"/>
+    <pmlp:hasUsageDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-09-22T20:43:23-04:00</pmlp:hasUsageDateTime>
+  </rdf:Description>
+  <rdf:Description rdf:about="#ns_199">
+    <pmlj:hasConclusion rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Faust---1.0/answer.owl#ns_168254608_conclusion"/>
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:48-04:00</pmlp:hasCreationDateTime>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+    <pmlj:isConsequentOf rdf:nodeID="A32"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A33">
+    <pmlj:hasAntecedentList rdf:nodeID="A34"/>
+    <pmlr:hasInput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_4_conclusion"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+    <pmlr:hasInput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_11_conclusion"/>
+    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/EP0.999Spm.owl#EP0.999Spm"/>
+    <pmlr:hasOutput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_18_conclusion"/>
+    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/EP1.1.owl#EP1.1"/>
+    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</pmlj:hasIndex>
+  </rdf:Description>
+  <rdf:Description rdf:about="#ns_160">
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-09-22T20:43:23-04:00</pmlp:hasCreationDateTime>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+    <pmlj:hasConclusion rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_8_conclusion"/>
+    <pmlj:isConsequentOf rdf:nodeID="A3"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A35">
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/EP1.1.owl#EP1.1"/>
+    <pmlj:hasSourceUsage rdf:nodeID="A7"/>
+    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Told.owl#Told"/>
+    <pmlr:hasOutput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_2_conclusion"/>
+    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</pmlj:hasIndex>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A19">
+    <pmlr:hasMember rdf:resource="#ns_120"/>
+    <pmlr:hasMember rdf:resource="#ns_133"/>
+    <ds:first rdf:resource="#ns_120"/>
+    <ds:rest rdf:nodeID="A36"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A29">
+    <pmlr:hasMember rdf:resource="#ns_211"/>
+    <pmlr:hasMember rdf:resource="#ns_160"/>
+    <ds:first rdf:resource="#ns_211"/>
+    <ds:rest rdf:nodeID="A37"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#ns_141">
+    <pmlj:hasConclusion rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Faust---1.0/answer.owl#ns_176249928_conclusion"/>
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:48-04:00</pmlp:hasCreationDateTime>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+    <pmlj:isConsequentOf rdf:nodeID="A38"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#ns_218">
+    <pmlj:hasConclusion rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Faust---1.0/answer.owl#ns_no_one_hates_everyone_conclusion"/>
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:48-04:00</pmlp:hasCreationDateTime>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+    <pmlj:isConsequentOf rdf:nodeID="A39"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A28">
+    <ds:first rdf:resource="#ns_178"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A40">
+    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/EP1.1.owl#EP1.1"/>
+    <pmlr:hasInput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_32_conclusion"/>
+    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/EP0.999Rw.owl#EP0.999Rw"/>
+    <pmlj:hasAntecedentList rdf:nodeID="A20"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+    <pmlr:hasOutput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_33_conclusion"/>
+    <pmlr:hasInput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_15_conclusion"/>
+    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</pmlj:hasIndex>
+  </rdf:Description>
+  <rdf:Description rdf:about="#ns_228">
+    <pmlj:hasConclusion rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_30_conclusion"/>
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-09-22T20:43:23-04:00</pmlp:hasCreationDateTime>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+    <pmlj:isConsequentOf rdf:nodeID="A9"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A41">
+    <ds:first rdf:resource="#ns_192"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A42">
+    <pmlp:hasUsageDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-09-22T20:43:23-04:00</pmlp:hasUsageDateTime>
+    <pmlp:hasSource rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_11_source"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#SourceUsage"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A43">
+    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/EP1.1.owl#EP1.1"/>
+    <pmlr:hasInput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_30_conclusion"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+    <pmlj:hasAntecedentList rdf:nodeID="A44"/>
+    <pmlr:hasOutput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_31_conclusion"/>
+    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/EP0.999Cn.owl#EP0.999Cn"/>
+    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</pmlj:hasIndex>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A45">
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/EP1.1.owl#EP1.1"/>
+    <pmlj:hasSourceUsage rdf:nodeID="A22"/>
+    <pmlr:hasOutput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_5_conclusion"/>
+    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Told.owl#Told"/>
+    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</pmlj:hasIndex>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A26">
+    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/EP1.1.owl#EP1.1"/>
+    <pmlj:hasSourceUsage rdf:nodeID="A31"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+    <pmlr:hasOutput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_6_conclusion"/>
+    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Told.owl#Told"/>
+    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</pmlj:hasIndex>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A46">
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+    <pmlr:hasInput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Faust---1.0/answer.owl#ns_176139248_conclusion"/>
+    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/Faust.owl#Faust"/>
+    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Faust1.0Forward_subsumption_resolution__resolution.owl#Faust1.0Forward_subsumption_resolution__resolution"/>
+    <pmlr:hasInput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Faust---1.0/answer.owl#ns_176169184_conclusion"/>
+    <pmlj:hasAntecedentList rdf:nodeID="A47"/>
+    <pmlr:hasInput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Faust---1.0/answer.owl#ns_168272912_conclusion"/>
+    <pmlr:hasOutput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Faust---1.0/answer.owl#ns_contradiction_conclusion"/>
+    <pmlr:hasInput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Faust---1.0/answer.owl#ns_176259640_conclusion"/>
+    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0</pmlj:hasIndex>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A48">
+    <pmlp:hasUsageDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-09-22T20:43:23-04:00</pmlp:hasUsageDateTime>
+    <pmlp:hasSource rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_7_source"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#SourceUsage"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#ns_217">
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+    <pmlj:hasConclusion rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_32_conclusion"/>
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-09-22T20:43:23-04:00</pmlp:hasCreationDateTime>
+    <pmlj:isConsequentOf rdf:nodeID="A49"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A50">
+    <ds:first rdf:resource="#ns_140"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#ns_140">
+    <pmlj:hasConclusion rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Faust---1.0/answer.owl#ns_176139248_conclusion"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:48-04:00</pmlp:hasCreationDateTime>
+    <pmlj:isConsequentOf rdf:nodeID="A14"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A32">
+    <pmlr:hasOutput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_4_conclusion"/>
+    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Told.owl#Told"/>
+    <pmlj:hasSourceUsage rdf:nodeID="A51"/>
+    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/EP1.1.owl#EP1.1"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</pmlj:hasIndex>
+  </rdf:Description>
+  <rdf:Description rdf:about="#answer">
+    <pmlj:isConsequentOf rdf:nodeID="A46"/>
+    <pmlj:isConsequentOf rdf:nodeID="A40"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+    <pmlj:hasConclusion rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_35_conclusion"/>
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-09-22T20:43:23-04:00</pmlp:hasCreationDateTime>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A52">
+    <pmlr:hasMember rdf:resource="#ns_199"/>
+    <pmlr:hasMember rdf:resource="#ns_192"/>
+    <ds:first rdf:resource="#ns_199"/>
+    <ds:rest rdf:nodeID="A41"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#ns_192">
+    <pmlj:isConsequentOf rdf:nodeID="A53"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+    <pmlj:hasConclusion rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Faust---1.0/answer.owl#ns_176239808_conclusion"/>
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:48-04:00</pmlp:hasCreationDateTime>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A54">
+    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/EP1.1.owl#EP1.1"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Told.owl#Told"/>
+    <pmlj:hasSourceUsage rdf:nodeID="A42"/>
+    <pmlr:hasOutput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_11_conclusion"/>
+    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</pmlj:hasIndex>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A55">
+    <pmlr:hasInput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_14_conclusion"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/EP0.999Spm.owl#EP0.999Spm"/>
+    <pmlr:hasOutput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_22_conclusion"/>
+    <pmlj:hasAntecedentList rdf:nodeID="A56"/>
+    <pmlr:hasInput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_6_conclusion"/>
+    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/EP1.1.owl#EP1.1"/>
+    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</pmlj:hasIndex>
+  </rdf:Description>
+  <rdf:Description rdf:about="#ns_211">
+    <pmlj:hasConclusion rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_10_conclusion"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-09-22T20:43:23-04:00</pmlp:hasCreationDateTime>
+    <pmlj:isConsequentOf rdf:nodeID="A57"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#ns_120">
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-09-22T20:43:23-04:00</pmlp:hasCreationDateTime>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+    <pmlj:hasConclusion rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_9_conclusion"/>
+    <pmlj:isConsequentOf rdf:nodeID="A23"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A58">
+    <pmlr:hasMember rdf:resource="#ns_218"/>
+    <ds:first rdf:resource="#ns_218"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A59">
+    <ds:first rdf:resource="#ns_229"/>
+    <ds:rest rdf:nodeID="A50"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A25">
+    <pmlr:hasInput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Faust---1.0/answer.owl#ns_no_one_hates_everyone_conclusion"/>
+    <pmlr:hasOutput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Faust---1.0/answer.owl#ns_168272912_conclusion"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+    <pmlj:hasAntecedentList rdf:nodeID="A58"/>
+    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/Faust.owl#Faust"/>
+    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Faust1.0Rewrite.owl#Faust1.0Rewrite"/>
+    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0</pmlj:hasIndex>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A60">
+    <ds:first rdf:resource="#ns_224"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A44">
+    <pmlr:hasMember rdf:resource="#ns_228"/>
+    <ds:first rdf:resource="#ns_228"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#ns_130">
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:48-04:00</pmlp:hasCreationDateTime>
+    <pmlj:hasConclusion rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Faust---1.0/answer.owl#ns_different_hates_conclusion"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+    <pmlj:isConsequentOf rdf:nodeID="A1"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#ns_206">
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-09-22T20:43:23-04:00</pmlp:hasCreationDateTime>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+    <pmlj:hasConclusion rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_22_conclusion"/>
+    <pmlj:isConsequentOf rdf:nodeID="A55"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A61">
+    <ds:first rdf:resource="#ns_192"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A6">
+    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/EP1.1.owl#EP1.1"/>
+    <pmlr:hasInput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_18_conclusion"/>
+    <pmlr:hasInput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_25_conclusion"/>
+    <pmlj:hasAntecedentList rdf:nodeID="A62"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/EP0.999Spm.owl#EP0.999Spm"/>
+    <pmlr:hasOutput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_29_conclusion"/>
+    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</pmlj:hasIndex>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A62">
+    <pmlr:hasMember rdf:resource="#ns_125"/>
+    <pmlr:hasMember rdf:resource="#ns_192"/>
+    <ds:first rdf:resource="#ns_125"/>
+    <ds:rest rdf:nodeID="A61"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A36">
+    <ds:first rdf:resource="#ns_133"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#ns_182">
+    <pmlj:isConsequentOf rdf:nodeID="A35"/>
+    <pmlj:hasConclusion rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Faust---1.0/answer.owl#ns_168244584_conclusion"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:48-04:00</pmlp:hasCreationDateTime>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A63">
+    <pmlr:hasMember rdf:resource="#ns_224"/>
+    <pmlr:hasMember rdf:resource="#ns_141"/>
+    <pmlr:hasMember rdf:resource="#ns_182"/>
+    <ds:first rdf:resource="#ns_182"/>
+    <ds:rest rdf:nodeID="A64"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A47">
+    <pmlr:hasMember rdf:resource="#ns_201"/>
+    <pmlr:hasMember rdf:resource="#ns_164"/>
+    <pmlr:hasMember rdf:resource="#ns_229"/>
+    <pmlr:hasMember rdf:resource="#ns_140"/>
+    <ds:first rdf:resource="#ns_164"/>
+    <ds:rest rdf:nodeID="A65"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#ns_178">
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-09-22T20:43:23-04:00</pmlp:hasCreationDateTime>
+    <pmlj:hasConclusion rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_7_conclusion"/>
+    <pmlj:isConsequentOf rdf:nodeID="A66"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A37">
+    <ds:first rdf:resource="#ns_160"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A49">
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/EP1.1.owl#EP1.1"/>
+    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/EP0.999Rw.owl#EP0.999Rw"/>
+    <pmlr:hasInput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_31_conclusion"/>
+    <pmlr:hasInput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_22_conclusion"/>
+    <pmlj:hasAntecedentList rdf:nodeID="A11"/>
+    <pmlr:hasOutput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_32_conclusion"/>
+    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</pmlj:hasIndex>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A56">
+    <pmlr:hasMember rdf:resource="#ns_140"/>
+    <pmlr:hasMember rdf:resource="#ns_229"/>
+    <ds:first rdf:resource="#ns_229"/>
+    <ds:rest rdf:nodeID="A67"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A65">
+    <ds:first rdf:resource="#ns_201"/>
+    <ds:rest rdf:nodeID="A59"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#ns_224">
+    <pmlj:isConsequentOf rdf:nodeID="A54"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:48-04:00</pmlp:hasCreationDateTime>
+    <pmlj:hasConclusion rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Faust---1.0/answer.owl#ns_168303320_conclusion"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A39">
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/Faust.owl#Faust"/>
+    <pmlj:hasSourceUsage rdf:nodeID="A68"/>
+    <pmlr:hasOutput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Faust---1.0/answer.owl#ns_no_one_hates_everyone_conclusion"/>
+    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Told.owl#Told"/>
+    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0</pmlj:hasIndex>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A2">
+    <pmlp:hasUsageDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:48-04:00</pmlp:hasUsageDateTime>
+    <pmlp:hasSource rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Faust---1.0/answer.owl#ns_different_hates_source"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#SourceUsage"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A53">
+    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/EP1.1.owl#EP1.1"/>
+    <pmlr:hasInput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_13_conclusion"/>
+    <pmlr:hasInput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_16_conclusion"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+    <pmlj:hasAntecedentList rdf:nodeID="A69"/>
+    <pmlr:hasOutput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_25_conclusion"/>
+    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/EP0.999Sr.owl#EP0.999Sr"/>
+    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</pmlj:hasIndex>
+  </rdf:Description>
+  <rdf:Description rdf:about="#ns_171">
+    <pmlj:hasConclusion rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_13_conclusion"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-09-22T20:43:23-04:00</pmlp:hasCreationDateTime>
+    <pmlj:isConsequentOf rdf:nodeID="A18"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A70">
+    <pmlp:hasUsageDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-09-22T20:43:23-04:00</pmlp:hasUsageDateTime>
+    <pmlp:hasSource rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_12_source"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#SourceUsage"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A17">
+    <pmlr:hasMember rdf:resource="#ns_130"/>
+    <ds:first rdf:resource="#ns_130"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A67">
+    <ds:first rdf:resource="#ns_140"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A4">
+    <pmlp:hasUsageDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-09-22T20:43:23-04:00</pmlp:hasUsageDateTime>
+    <pmlp:hasSource rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_8_source"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#SourceUsage"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A71">
+    <ds:first rdf:resource="#ns_141"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A64">
+    <ds:first rdf:resource="#ns_224"/>
+    <ds:rest rdf:nodeID="A71"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A72">
+    <pmlr:hasOutput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Faust---1.0/answer.owl#ns_176259640_conclusion"/>
+    <pmlr:hasInput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Faust---1.0/answer.owl#ns_168244584_conclusion"/>
+    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/Faust.owl#Faust"/>
+    <pmlr:hasInput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Faust---1.0/answer.owl#ns_176249928_conclusion"/>
+    <pmlj:hasAntecedentList rdf:nodeID="A63"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Faust1.0Forward_subsumption_resolution__resolution.owl#Faust1.0Forward_subsumption_resolution__resolution"/>
+    <pmlr:hasInput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Faust---1.0/answer.owl#ns_168303320_conclusion"/>
+    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0</pmlj:hasIndex>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A68">
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#SourceUsage"/>
+    <pmlp:hasUsageDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:48-04:00</pmlp:hasUsageDateTime>
+    <pmlp:hasSource rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Faust---1.0/answer.owl#ns_no_one_hates_everyone_source"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A66">
+    <pmlr:hasOutput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_7_conclusion"/>
+    <pmlj:hasSourceUsage rdf:nodeID="A48"/>
+    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Told.owl#Told"/>
+    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/EP1.1.owl#EP1.1"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</pmlj:hasIndex>
+  </rdf:Description>
+  <rdf:Description rdf:about="#ns_164">
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:48-04:00</pmlp:hasCreationDateTime>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+    <pmlj:hasConclusion rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Faust---1.0/answer.owl#ns_176259640_conclusion"/>
+    <pmlj:isConsequentOf rdf:nodeID="A72"/>
+    <pmlj:isConsequentOf rdf:nodeID="A43"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A10">
+    <pmlr:hasMember rdf:resource="#ns_182"/>
+    <pmlr:hasMember rdf:resource="#ns_124"/>
+    <ds:first rdf:resource="#ns_124"/>
+    <ds:rest rdf:nodeID="A30"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A38">
+    <pmlr:hasOutput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Faust---1.0/answer.owl#ns_176249928_conclusion"/>
+    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Faust1.0Resolution.owl#Faust1.0Resolution"/>
+    <pmlr:hasInput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Faust---1.0/answer.owl#ns_168254608_conclusion"/>
+    <pmlr:hasInput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Faust---1.0/answer.owl#ns_176239808_conclusion"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/Faust.owl#Faust"/>
+    <pmlj:hasAntecedentList rdf:nodeID="A52"/>
+    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0</pmlj:hasIndex>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A69">
+    <pmlr:hasMember rdf:resource="#ns_154"/>
+    <pmlr:hasMember rdf:resource="#ns_171"/>
+    <ds:first rdf:resource="#ns_171"/>
+    <ds:rest rdf:nodeID="A73"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A21">
+    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/ToldNegated_conjecture.owl#ToldNegated_conjecture"/>
+    <pmlj:hasSourceUsage rdf:nodeID="A70"/>
+    <pmlr:hasOutput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_12_conclusion"/>
+    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/EP1.1.owl#EP1.1"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</pmlj:hasIndex>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A57">
+    <pmlj:hasSourceUsage rdf:nodeID="A74"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/EP1.1.owl#EP1.1"/>
+    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Told.owl#Told"/>
+    <pmlr:hasOutput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_10_conclusion"/>
+    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</pmlj:hasIndex>
+  </rdf:Description>
+  <rdf:Description rdf:about="#ns_163">
+    <pmlj:isConsequentOf rdf:nodeID="A45"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+    <pmlj:hasConclusion rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/Faust---1.0/answer.owl#ns_168261192_conclusion"/>
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-05-06T15:09:48-04:00</pmlp:hasCreationDateTime>
+    <pmlj:isConsequentOf rdf:nodeID="A16"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A34">
+    <pmlr:hasMember rdf:resource="#ns_199"/>
+    <pmlr:hasMember rdf:resource="#ns_224"/>
+    <ds:first rdf:resource="#ns_199"/>
+    <ds:rest rdf:nodeID="A60"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A74">
+    <pmlp:hasSource rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_10_source"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#SourceUsage"/>
+    <pmlp:hasUsageDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-09-22T20:43:23-04:00</pmlp:hasUsageDateTime>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A24">
+    <pmlr:hasInput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_7_conclusion"/>
+    <pmlj:hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/EP1.1.owl#EP1.1"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#InferenceStep"/>
+    <pmlj:hasAntecedentList rdf:nodeID="A27"/>
+    <pmlr:hasOutput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_16_conclusion"/>
+    <pmlr:hasInput rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_5_conclusion"/>
+    <pmlj:hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/EP0.999Spm.owl#EP0.999Spm"/>
+    <pmlj:hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</pmlj:hasIndex>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A73">
+    <ds:first rdf:resource="#ns_154"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A51">
+    <pmlp:hasSource rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_4_source"/>
+    <pmlp:hasUsageDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-09-22T20:43:23-04:00</pmlp:hasUsageDateTime>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-provenance.owl#SourceUsage"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A15">
+    <pmlr:hasMember rdf:resource="#ns_211"/>
+    <pmlr:hasMember rdf:resource="#ns_178"/>
+    <ds:first rdf:resource="#ns_211"/>
+    <ds:rest rdf:nodeID="A0"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#ns_125">
+    <pmlj:hasConclusion rdf:resource="http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/EP---1.1/answer.owl#ns_18_conclusion"/>
+    <rdf:type rdf:resource="http://inference-web.org/2.0/pml-justification.owl#NodeSet"/>
+    <pmlp:hasCreationDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-09-22T20:43:23-04:00</pmlp:hasCreationDateTime>
+    <pmlj:isConsequentOf rdf:nodeID="A33"/>
+  </rdf:Description>
+</rdf:RDF>
