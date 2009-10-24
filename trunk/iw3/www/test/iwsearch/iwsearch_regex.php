@@ -21,14 +21,20 @@ if (empty($class )){
 }
 
 if (!empty($output)){
+	$sparql_uri = URL_IWSEARCH_REGEX . "?query=".$query."&source=".$source."&class=".$class;
+	
    $url = sprintf("%s?sparql_uri=%s&service_uri=%s&output=%s",
      URL_SPARQL2JSON,
      urlencode( urlencode( URL_IWSEARCH_REGEX . "?query=".$query."&source=".$source."&class=".$class)),
      urlencode( SPARQL_TDB_IWSEARCH ),
      $output   );
 
-   if ($_GET["debug"])
+   if ($_GET["debug"]){
+      echo "<pre>";
+      echo file_get_contents($sparql_uri);
+      echo "</pre>";
       echo $url;
+     }
       
    echo file_get_contents($url);   
    exit();
