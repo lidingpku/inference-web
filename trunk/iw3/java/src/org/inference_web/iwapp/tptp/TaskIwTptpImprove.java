@@ -11,7 +11,10 @@ import org.inference_web.pml.DataPmlHg;
 import org.inference_web.pml.ToolPml;
 
 import com.hp.hpl.jena.rdf.model.Resource;
+
+import sw4j.task.graph.AgentHyperGraphAoStar;
 import sw4j.task.graph.AgentHyperGraphOptimize;
+import sw4j.task.graph.AgentHyperGraphTraverse;
 import sw4j.task.graph.DataHyperEdge;
 import sw4j.task.graph.DataHyperGraph;
 import sw4j.util.DataSmartMap;
@@ -327,12 +330,13 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 	public static final String CONTEXT_IMPROVE_ROOT = "_improve_root";
 	
 	HashMap<DataSmartMap, DataHyperGraph> m_cache_problem_solution= new HashMap<DataSmartMap, DataHyperGraph>();
-	private DataHyperGraph find_solution(String sz_context, int gid_root, int option_weight, String sz_url_pml, Set<Resource> set_step_original){
+	private DataHyperGraph find_solution(String sz_context, int gid_root, int option_weight, String sz_url_pml, Set<Resource> set_step_original, AgentHyperGraphTraverse alg){
 		DataSmartMap key = new DataSmartMap();
 		key.put("context",sz_context);
 		key.put("root_id",gid_root);
 		key.put("opt_weight",option_weight);
 		key.put("url_pml",sz_url_pml);
+		key.put("alg",alg.getClass().getSimpleName());
 		
 		if (m_cache_problem_solution.keySet().contains(key)){
 			return m_cache_problem_solution.get(key);
@@ -350,15 +354,14 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 			}
 			m_hg.hg_set_weight(dhg, option_weight);
 
-			AgentHyperGraphOptimize hgt= new AgentHyperGraphOptimize();
-			hgt.traverse(dhg,gid_root);
+			alg.traverse(dhg,gid_root);
 
 			//plot
 
 			DataHyperGraph dhg_optimal =null;
 			int match_optimal = -1;
 			Set<DataHyperEdge> edges_original = dhg_orginal.getEdges();
-			for (DataHyperGraph dgh_candidate: hgt.getSolutions()){
+			for (DataHyperGraph dgh_candidate: alg.getResultSolutions()){
 				Set<DataHyperEdge> edges_optimal = new HashSet<DataHyperEdge> (dgh_candidate.getEdges());
 				edges_optimal.retainAll(edges_original);
 				int match = edges_optimal.size();
@@ -382,53 +385,61 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 	
 	@SuppressWarnings("unchecked")
 	public void run_improve(String sz_context, int option_weight) throws MalformedURLException{
+		
 		for (String sz_url_pml: set_url_pml){
-			///////////////////////////////////////////
-			//generate graphics
-			Resource res_info_root = m_hg.getRoot(sz_url_pml);
-			Integer gid_root = m_hg.getHyperNode(res_info_root);
-			Set<Resource> set_step_original= m_hg.getSubHg(res_info_root);
-			
-			DataHyperGraph dhg_optimal = find_solution( sz_context, gid_root,option_weight,sz_url_pml,set_step_original );
-			if (null==dhg_optimal){
-				System.exit(-1);
-			}
-			
-			Set<Resource> set_step_optimal= this.m_hg.getSubHg(dhg_optimal, res_info_root, sz_url_pml);
-			{
-				String sz_path = prepare_path(sz_url_pml,sz_context);
-				File f_output_graph = new File(dir_root_output, sz_path);
-	
-				String sz_dot  = this.m_hg.graphviz_export_dot_diff(set_step_optimal, set_step_original);
-				DataPmlHg.graphviz_save(sz_dot, f_output_graph.getAbsolutePath());
-			}
-
-			//save data (optimal solution)
-			{
-
-				Set<Resource>[] ary_set_step_all= new Set[]{
-						set_step_optimal,
-				};
+			AgentHyperGraphTraverse[] ary_alg = new AgentHyperGraphTraverse[]{
+					new AgentHyperGraphOptimize(),
+					new AgentHyperGraphAoStar(),
+			};
+			for (AgentHyperGraphTraverse alg: ary_alg){
+				///////////////////////////////////////////
+				//generate graphics
+				Resource res_info_root = m_hg.getRoot(sz_url_pml);
+				Integer gid_root = m_hg.getHyperNode(res_info_root);
+				Set<Resource> set_step_original= m_hg.getSubHg(res_info_root);
 				
-				String sz_path = prepare_path(sz_url_pml,sz_context+".rdf");
-				File f_output_rdf= new File(dir_root_output, sz_path);
-
-				ToolPml.pml_create_by_copy(ary_set_step_all, this.m_hg.getModelAll(), this.m_hg.getInfoMap(),res_info_root,f_output_rdf);
-
-			}
-
-			//save data (optimal solution + original solution)
-			{
-
-				Set<Resource>[] ary_set_step_all= new Set[]{
-						set_step_optimal,
-						this.m_hg.copy_without_loop(set_step_original),
-				};
+				DataHyperGraph dhg_optimal = find_solution( sz_context, gid_root,option_weight,sz_url_pml,set_step_original, alg);
+				if (null==dhg_optimal){
+					System.exit(-1);
+				}
 				
-				String sz_path = prepare_path(sz_url_pml,sz_context+"_alt.rdf");
-				File f_output_rdf= new File(dir_root_output, sz_path);
+				Set<Resource> set_step_optimal= this.m_hg.getSubHg(dhg_optimal, res_info_root, sz_url_pml);
+				{
+					String sz_path = prepare_path(sz_url_pml,sz_context);
+					File f_output_graph = new File(dir_root_output, sz_path);
+		
+					String sz_dot  = this.m_hg.graphviz_export_dot_diff(set_step_optimal, set_step_original);
+					DataPmlHg.graphviz_save(sz_dot, f_output_graph.getAbsolutePath()+"_"+alg.getLabel());
+				}
 
-				ToolPml.pml_create_by_copy(ary_set_step_all, this.m_hg.getModelAll(), this.m_hg.getInfoMap(),res_info_root,f_output_rdf);
+				//save data (optimal solution)
+				{
+
+					Set<Resource>[] ary_set_step_all= new Set[]{
+							set_step_optimal,
+					};
+					
+					String sz_path = prepare_path(sz_url_pml,sz_context+"_"+alg.getLabel()+".rdf");
+					File f_output_rdf= new File(dir_root_output, sz_path);
+
+					ToolPml.pml_create_by_copy(ary_set_step_all, this.m_hg.getModelAll(), this.m_hg.getInfoMap(),res_info_root,f_output_rdf);
+
+				}
+
+				//save data (optimal solution + original solution)
+				{
+
+					Set<Resource>[] ary_set_step_all= new Set[]{
+							set_step_optimal,
+							this.m_hg.copy_without_loop(set_step_original),
+					};
+					
+					String sz_path = prepare_path(sz_url_pml,sz_context+"_"+alg.getLabel()+"_alt.rdf");
+					File f_output_rdf= new File(dir_root_output, sz_path);
+
+					ToolPml.pml_create_by_copy(ary_set_step_all, this.m_hg.getModelAll(), this.m_hg.getInfoMap(),res_info_root,f_output_rdf);
+				}
+				
 			}
 			
 			System.gc();
