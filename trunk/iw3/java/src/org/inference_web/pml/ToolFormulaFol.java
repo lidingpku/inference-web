@@ -1,7 +1,7 @@
 package org.inference_web.pml;
 
+import java.util.ArrayList;
 import java.util.Set;
-import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -33,7 +33,7 @@ public class ToolFormulaFol {
 	public static String normalize(String inputStr){
 		//////////////////////////////////
 		// predicate reorder
-		TreeSet<String>set_temp = new TreeSet<String>();
+		ArrayList<String> list_temp = new ArrayList<String>();
 		if (inputStr.indexOf('|')>0){
 			StringTokenizer st = new StringTokenizer(inputStr,"|");
 			boolean b_correct = true;
@@ -44,11 +44,15 @@ public class ToolFormulaFol {
 					b_correct = false;
 					break;
 				}
-				set_temp.add(token);
+				list_temp.add(token);
 			}
+			
+			//sort array
+			Object[] ary_temp= list_temp.toArray();
+			
 			if (b_correct){
 				String sz_temp = "";
-				for (String token: set_temp){
+				for (Object token: ary_temp){
 					if (sz_temp.length()>0){
 						sz_temp +=" | ";
 					}
