@@ -616,11 +616,17 @@ public class DataPmlHg {
 	public static String STAT_STEP_NEW = "step[new]";
 	public static String STAT_STEP_SAVING = "step[saving]";
 
+
 	public static String STAT_STEP_AXIOM = "step(axiom)";
 	public static String STAT_STEP_AXIOM_SAVING = "step(axiom)[saving]";
-	
+
 	public static String STAT_FORMULA = "formula";
 	public static String STAT_FORMULA_NEW = "formula[new]";
+
+	public static String STAT_FORMULA_UNION = "formula[union]";
+	public static String STAT_FORMULA_INTERSECTION = "formula[intersection]";
+	public static String STAT_FORMULA_AXIOM_UNION = "formula(axiom)[union]";
+	public static String STAT_FORMULA_AXIOM_INTERSECTION = "formula(axiom)[intersection]";
 	
 	public static String STAT_RULE= "rule";
 	public static String STAT_RULE_NEW = "rule[new]";
@@ -660,6 +666,33 @@ public class DataPmlHg {
 		return data;
 	}
 
+	public DataSmartMap stat_diff(Set<Resource> set_step_improved, Set<Resource> set_step_original){
+		DataSmartMap data= new DataSmartMap();
+		DataHyperGraph g_improved = this.getHyperGraph(set_step_improved);
+		DataHyperGraph g_original = this.getHyperGraph(set_step_original);
+		
+		DataSmartMap data1= stat(set_step_improved, set_step_original);
+		data.copy(data1);
+
+		Set<Integer> set_formula_union = g_improved.getVertices();
+		set_formula_union.addAll(g_original.getVertices());
+		data.put(STAT_FORMULA_UNION, set_formula_union.size());
+
+		Set<Integer> set_formula_intersetion= g_improved.getVertices();
+		set_formula_intersetion.retainAll(g_original.getVertices());
+		data.put(STAT_FORMULA_INTERSECTION, set_formula_intersetion.size());
+
+		Set<Integer> set_formula_axiom_union = g_improved.getAxioms();
+		set_formula_axiom_union.addAll(g_original.getAxioms());
+		data.put(STAT_FORMULA_AXIOM_UNION, set_formula_axiom_union.size());
+
+		Set<Integer> set_formula_axiom_intersetion= g_improved.getAxioms();
+		set_formula_axiom_intersetion.retainAll(g_original.getAxioms());
+		data.put(STAT_FORMULA_AXIOM_INTERSECTION, set_formula_axiom_intersetion.size());
+		
+		return data;
+	}
+
 	public DataSmartMap stat(Set<Resource> set_step){
 		DataSmartMap data= new DataSmartMap();
 		DataHyperGraph dhg = this.getHyperGraph(set_step);
@@ -679,4 +712,85 @@ public class DataPmlHg {
 		return data;
 	}
 
+	public void stat(String problem){
+		String ret ="";
+		for (String sz_context: this.m_context_model_data.keySet()){
+			Set<Resource> set_step = this.getSubHg(sz_context);
+			DataSmartMap data= stat(set_step);
+			
+			stat_context(sz_context,"c", data);
+			data.put("problem",problem);
+			
+			if (ret.length()==0){
+				ret += data.toCSVheader();
+				ret += "\n";
+			}
+			ret += data.toCSVrow();
+			ret += "\n";
+		}
+		System.out.println(ret);
+	}
+
+	public void stat_all(String problem){
+		String ret ="";
+		
+		Set<Resource> set_step = this.getSubHg();
+		DataSmartMap data= stat(set_step);
+		
+		data.put("problem",problem);
+		
+		DataSmartMap data1 = this.m_dhg.get_data_summary(false);
+		data.copy(data1);
+
+		if (ret.length()==0){
+			ret += data.toCSVheader();
+			ret += "\n";
+		}
+		ret += data.toCSVrow();
+		ret += "\n";
+		
+		System.out.println(ret);
+	}
+
+	public void stat_diff(String problem){
+		String ret ="";
+		for (String sz_context1: this.m_context_model_data.keySet()){
+			for (String sz_context2: this.m_context_model_data.keySet()){
+				if (sz_context1.equals(sz_context2))
+					continue;
+				DataSmartMap data= stat_diff(this.getSubHg(sz_context1),this.getSubHg(sz_context2));
+				
+				stat_context(sz_context1,"c1", data);
+				stat_context(sz_context2,"c2", data);
+				data.put("problem",problem);
+				
+				if (ret.length()==0){
+					ret += data.toCSVheader();
+					ret += "\n";
+				}
+				ret += data.toCSVrow();
+				ret += "\n";
+			}
+		}
+		System.out.println(ret);
+	}
+
+	public static void stat_context(String sz_url, String prefix, DataSmartMap data){
+		int counter = 1;
+		for (String item : sz_url.split("/")){
+			if (item.length()==0)
+				continue;
+			if (item.equals("proofs"))
+				continue;
+			if (item.equals("linked"))
+				continue;
+			if (item.equals("inference-web.org"))
+				continue;
+			if (item.equals("http:"))
+				continue;
+			String key = String.format("%s(k%d)",prefix, counter);
+			data.put(key,item);
+			counter ++;
+		}
+	}
 }

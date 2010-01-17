@@ -14,20 +14,27 @@ import sw4j.task.load.AgentSimpleHttpCrawler;
 
 
 public class AgentPmlCrawler {
+	public int MAX_CRAWL_DEPTH=10;
 	public TreeSet<String> m_results = new TreeSet<String>();
 	public TreeSet<String> m_errors = new TreeSet<String>();
 	
 	
-	public static Set<String> crawl_quick(String sz_seed_url){
+	public static Set<String> crawl_quick(String sz_seed_url, boolean b_validate){
 		AgentPmlCrawler crawler = new AgentPmlCrawler();
-		crawler.crawl(sz_seed_url);
+		crawler.crawl(sz_seed_url, b_validate);
 		return crawler.m_results;
 	}
 
-	public void crawl(String sz_seed_url){
+/*	public void crawl(String sz_seed_url){
 		HashSet<String> patterns = new HashSet<String>();
 		patterns.add( sz_seed_url+".*");
 		crawl(sz_seed_url, patterns, true);
+	}
+*/
+	public void crawl(String sz_seed_url, boolean b_validate){
+		HashSet<String> patterns = new HashSet<String>();
+		patterns.add( sz_seed_url+".*");
+		crawl(sz_seed_url, patterns, b_validate);
 	}
 
 	
@@ -36,7 +43,7 @@ public class AgentPmlCrawler {
 		crawler.m_seed_url = sz_seed_url;
 		for(String sz_pattern: set_sz_pattern)
 			crawler.m_allowed_url_patterns.add(sz_pattern);
-		crawler.m_max_crawl_depth=3;
+		crawler.m_max_crawl_depth= MAX_CRAWL_DEPTH;
 		//crawler.m_max_results =10;
 		crawler.crawl();	
 		

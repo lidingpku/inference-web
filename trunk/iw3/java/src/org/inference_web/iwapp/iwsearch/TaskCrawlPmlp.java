@@ -20,7 +20,7 @@ public class TaskCrawlPmlp {
 		String szFileName= "files/iwsearch/pmlp-urls.txt";
 		AgentPmlCrawler crawler = new AgentPmlCrawler();
 		for (int i=0; i<arySeed.length; i++){
-			crawler.crawl(arySeed[i][0]);
+			crawler.crawl(arySeed[i][0], true);
 		}
 		String szContent =ToolString.printCollectionToString(crawler.m_results);
 		System.out.println(szContent);

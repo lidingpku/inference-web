@@ -31,9 +31,10 @@ public class AgentIwTptp {
 	}
 
 	public void init(String sz_url_seed,  String sz_url_root_input, File dir_root_output, String sz_url_root_output){
-		set_url_pml = AgentPmlCrawler.crawl_quick(sz_url_seed);
+		set_url_pml = AgentPmlCrawler.crawl_quick(sz_url_seed, true);
 		this.init(sz_url_seed, sz_url_root_input, set_url_pml, dir_root_output, sz_url_root_output);
 	}
+
 
 	protected String prepare_path(String sz_url, String sz_ext){
 		String sz_path= sz_url.substring(sz_url_root_input.length());
@@ -124,4 +125,7 @@ public class AgentIwTptp {
 		}	
 	}
 
+	public void stat(){
+		
+	}
 }
