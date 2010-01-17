@@ -13,11 +13,21 @@ import com.hp.hpl.jena.vocabulary.RDF;
 
 public class TaskIwTptpNormalize extends AgentIwTptp{
 	public static void main(String[] argv){
-		String sz_url_seed = "http://inference-web.org/proofs/tptp/Solutions/";
-		String sz_url_root_input= "http://inference-web.org/proofs/tptp/Solutions";
-		run_norm(sz_url_seed,sz_url_root_input);
+		run();
 	}
 	
+	public static void run(){
+		String sz_url_seed = "http://inference-web.org/proofs/tptp/Solutions/";
+		String sz_url_root_input= "http://inference-web.org/proofs/tptp/Solutions";
+		run_norm(sz_url_seed,sz_url_root_input);		
+	}
+
+	public static void run_test(){
+		String sz_url_seed = "http://inference-web.org/proofs/tptp/Solutions/AGT/AGT009+1/";
+		String sz_url_root_input= "http://inference-web.org/proofs/tptp/Solutions";
+		run_norm(sz_url_seed,sz_url_root_input);		
+	}
+
 	public static void run_norm(String sz_url_seed, String sz_url_root_input){
 		//prepare seeds
 		File dir_root_output = new File("www/proofs/linked");
@@ -32,6 +42,8 @@ public class TaskIwTptpNormalize extends AgentIwTptp{
 	
 	void run_normalize(){
 		for (String sz_url_pml: this.set_url_pml){
+			System.out.println("processing: "+sz_url_pml);
+
 			Model m = ModelFactory.createDefaultModel();
 			m.read(sz_url_pml);
 			

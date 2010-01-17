@@ -492,7 +492,8 @@ public class DataPmlHg {
 		}
 		
 		//add label
-/*		String sz_label = ToolJena.getValueOfProperty(getModelAll(), res_node, PMLP.hasRawString, (String)null);
+/* TODO
+ 		String sz_label = ToolJena.getValueOfProperty(getModelAll(), res_node, PMLP.hasRawString, (String)null);
 		if (!ToolSafe.isEmpty(sz_label))
 			prop.put("label", sz_label.replaceAll("\n", " "));
 		else
@@ -712,7 +713,8 @@ public class DataPmlHg {
 		return data;
 	}
 
-	public void stat(String problem){
+
+	public String stat_one(String problem){
 		String ret ="";
 		for (String sz_context: this.m_context_model_data.keySet()){
 			Set<Resource> set_step = this.getSubHg(sz_context);
@@ -728,10 +730,10 @@ public class DataPmlHg {
 			ret += data.toCSVrow();
 			ret += "\n";
 		}
-		System.out.println(ret);
+		return ret;
 	}
 
-	public void stat_all(String problem){
+	public String stat_all(String problem){
 		String ret ="";
 		
 		Set<Resource> set_step = this.getSubHg();
@@ -749,10 +751,10 @@ public class DataPmlHg {
 		ret += data.toCSVrow();
 		ret += "\n";
 		
-		System.out.println(ret);
+		return ret;
 	}
 
-	public void stat_diff(String problem){
+	public String stat_diff(String problem){
 		String ret ="";
 		for (String sz_context1: this.m_context_model_data.keySet()){
 			for (String sz_context2: this.m_context_model_data.keySet()){
@@ -772,10 +774,10 @@ public class DataPmlHg {
 				ret += "\n";
 			}
 		}
-		System.out.println(ret);
+		return ret;
 	}
 
-	public static void stat_context(String sz_url, String prefix, DataSmartMap data){
+	private static void stat_context(String sz_url, String prefix, DataSmartMap data){
 		int counter = 1;
 		for (String item : sz_url.split("/")){
 			if (item.length()==0)

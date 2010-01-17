@@ -10,6 +10,7 @@ import org.inference_web.pml.ToolPml;
 
 import sw4j.rdf.load.RDFSYNTAX;
 import sw4j.rdf.util.ToolJena;
+import sw4j.util.ToolIO;
 
 import com.hp.hpl.jena.rdf.model.Model;
 
@@ -118,6 +119,38 @@ public class AgentIwTptp {
 		this.m_hg.add_mapping(model_mappings);
 	}
 
+	public void run_create_stats(){
+		{
+			String ret = m_hg.stat_all(sz_url_seed);
+			String filename = "stat_all.csv";
+			String sz_path = prepare_path(sz_url_seed,null)+ filename;
+			File f_output = new File(dir_root_output, sz_path);
+			
+			System.out.println(ret);
+			ToolIO.pipeStringToFile(ret, f_output);
+		}
+		
+		{
+			String ret = m_hg.stat_one(sz_url_seed);
+			String filename = "stat_one.csv";
+			String sz_path = prepare_path(sz_url_seed,null)+ filename;
+			File f_output = new File(dir_root_output, sz_path);
+			
+			System.out.println(ret);
+			ToolIO.pipeStringToFile(ret, f_output);
+		}
+		
+		{
+			String ret = m_hg.stat_diff(sz_url_seed);
+			String filename = "stat_diff.csv";
+			String sz_path = prepare_path(sz_url_seed,null)+ filename;
+			File f_output = new File(dir_root_output, sz_path);
+			
+			System.out.println(ret);
+			ToolIO.pipeStringToFile(ret, f_output);
+		}
+	}
+
 	public void run_load_data(){
 		for (String sz_url_pml: set_url_pml){
 			System.out.println("loading..."+ sz_url_pml);
@@ -125,7 +158,4 @@ public class AgentIwTptp {
 		}	
 	}
 
-	public void stat(){
-		
-	}
 }

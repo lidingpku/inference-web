@@ -33,7 +33,9 @@ public class AgentPmlCrawler {
 */
 	public void crawl(String sz_seed_url, boolean b_validate){
 		HashSet<String> patterns = new HashSet<String>();
-		patterns.add( sz_seed_url+".*");
+		String sz_pattern = sz_seed_url+".*";
+		sz_pattern = sz_pattern.replaceAll("\\+", "\\\\+");
+		patterns.add(sz_pattern );
 		crawl(sz_seed_url, patterns, b_validate);
 	}
 

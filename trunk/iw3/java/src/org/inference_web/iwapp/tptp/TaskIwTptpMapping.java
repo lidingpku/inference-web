@@ -46,11 +46,7 @@ public class TaskIwTptpMapping extends AgentIwTptp{
 		task.run_create_mappings(true);
 		
 		//generate statistics
-		task.m_hg.stat_all(sz_url_seed);
-
-		task.m_hg.stat(sz_url_seed);
-		
-		task.m_hg.stat_diff(sz_url_seed);
+		task.run_create_stats();
 	}
 	
 	
