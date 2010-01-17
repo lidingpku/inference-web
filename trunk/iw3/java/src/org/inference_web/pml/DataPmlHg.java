@@ -40,10 +40,14 @@ public class DataPmlHg {
 	HashMap<String,Model> m_context_model_data = new HashMap<String,Model>();;
 	DataObjectGroupMap<Resource> m_map_res_vertex= new DataObjectGroupMap<Resource>();
 
-	public void add_data(String sz_url_pml){
+	public void add_data(String sz_url_pml, Model m){
 		if (ToolSafe.isEmpty(sz_url_pml))
 			return;
 
+		if (null!=m){
+			m_context_model_data.put(sz_url_pml, m);
+		}
+		
 		ToolPml.pml_load(sz_url_pml, m_context_model_data);
 		clear_cache();
 	}
@@ -91,6 +95,20 @@ public class DataPmlHg {
 		return m_model_all;
 	}
 
+	/**
+	 * list all context related to a step
+	 * @param step
+	 * @return
+	 */
+	public Set<String> getContext(Resource step){
+		HashSet<String> ret = new HashSet<String>();
+		for (String context: this.m_context_model_data.keySet()){
+			Model m = this.m_context_model_data.get(context);
+			if (m.listSubjects().toSet().contains(step))
+				ret.add(context);
+		}
+		return ret;
+	}
 	
 	public DataHyperGraph getHyperGraph(){
 		//check cache
@@ -108,7 +126,7 @@ public class DataPmlHg {
 		m_dhg = new DataHyperGraph();
 		for (Resource res_step: getModelAll().listSubjectsWithProperty(RDF.type, PMLJ.InferenceStep).toSet()){
 			DataHyperEdge edge = createHyperEdge(getModelAll(), res_step, m_map_res_vertex);
-			m_dhg.add(edge, ToolJena.getNodeString(res_step));
+			m_dhg.add(edge, getContext(res_step));
 			m_map_step_edge.put(res_step, edge);
 			m_map_edge_step.add(edge, res_step);
 		}
@@ -120,7 +138,7 @@ public class DataPmlHg {
 		
 		DataHyperGraph dhg = new DataHyperGraph();
 		for (Resource res_step: set_res_step){
-			dhg.add(this.getHyperEdge(res_step), ToolJena.getNodeString(res_step));
+			dhg.add(this.getHyperEdge(res_step), getContext(res_step));
 		}
 		return dhg;
 	}
@@ -474,12 +492,12 @@ public class DataPmlHg {
 		}
 		
 		//add label
-		String sz_label = ToolJena.getValueOfProperty(getModelAll(), res_node, PMLP.hasRawString, (String)null);
+/*		String sz_label = ToolJena.getValueOfProperty(getModelAll(), res_node, PMLP.hasRawString, (String)null);
 		if (!ToolSafe.isEmpty(sz_label))
 			prop.put("label", sz_label.replaceAll("\n", " "));
 		else
 			System.out.println("no label");
-	
+*/	
 		
 		return prop;
 	}

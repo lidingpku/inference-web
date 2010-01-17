@@ -13,18 +13,19 @@ import com.hp.hpl.jena.vocabulary.RDF;
 
 public class TaskIwTptpNormalize extends AgentIwTptp{
 	public static void main(String[] argv){
-		run_norm();
+		String sz_url_seed = "http://inference-web.org/proofs/tptp/Solutions/PUZ/";
+		String sz_url_root_input= "http://inference-web.org/proofs/tptp/Solutions";
+		run_norm(sz_url_seed,sz_url_root_input);
 	}
 	
-	public static void run_norm(){
+	public static void run_norm(String sz_url_seed, String sz_url_root_input){
 		//prepare seeds
-		String sz_url_seed = "http://inference-web.org/proofs/tptp/Solutions/PUZ/PUZ001-1/";
-		String sz_url_root_input= "http://inference-web.org/proofs/tptp/Solutions";
-		File dir_root_output = new File("www/test/norm");
-		String sz_url_root_output = "http://inference-web.org/test/norm";
+		File dir_root_output = new File("www/proofs/linked");
+		String sz_url_root_output = "http://inference-web.org/proofs/linked";
 		
 		TaskIwTptpNormalize task = new TaskIwTptpNormalize();
 		task.init(sz_url_seed, sz_url_root_input, dir_root_output, sz_url_root_output);
+		task.filter_url_answer_only();
 		task.run_normalize();
 	}
 	

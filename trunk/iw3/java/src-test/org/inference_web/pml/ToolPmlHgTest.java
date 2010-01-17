@@ -38,7 +38,7 @@ public class ToolPmlHgTest {
 			String sz_url_pml = DataQname.extractNamespaceUrl(data[0]);
 
 			DataPmlHg hg = new DataPmlHg();
-			hg.add_data(sz_url_pml);
+			hg.add_data(sz_url_pml, null);
 
 			Model mapping_i = ToolPml.create_mappings(hg.getModelAll());
 			hg.add_mapping(mapping_i);

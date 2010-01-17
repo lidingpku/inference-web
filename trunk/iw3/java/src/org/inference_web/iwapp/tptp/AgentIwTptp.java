@@ -49,6 +49,15 @@ public class AgentIwTptp {
 		}
 	}
 	
+	public void filter_url_answer_only(){
+		//only keep those ends with answe
+		Iterator<String> iter = this.set_url_pml.iterator();
+		while (iter.hasNext()){
+			String url = iter.next();
+			if (!url.endsWith("answer.owl"))
+				iter.remove();
+		}
+	}
 	
 	public void filter_url_pml_base(){
 		HashSet<String> set_engine = new HashSet<String>();
@@ -93,9 +102,17 @@ public class AgentIwTptp {
 
 		Model model_mappings = ToolPml.create_mappings(m_hg.getModels());
 		if (bSave){
-			String sz_path = prepare_path(sz_url_seed,null)+"mappings_i.owl";
+			String filename = "mappings.owl";
+			
+			String sz_ns = sz_url_seed +filename+"#";
+			Model model_allsame = ToolJena.create_allsame(model_mappings, sz_ns); 
+			
+			String sz_path = prepare_path(sz_url_seed,null)+ filename;
 			File f_output_mappings = new File(dir_root_output, sz_path);
-			ToolJena.printModelToFile(model_mappings, RDFSYNTAX.RDFXML, f_output_mappings,false);
+			
+			ToolJena.update_copy(model_allsame, model_mappings);
+			ToolJena.printModelToFile(model_allsame, RDFSYNTAX.RDFXML, f_output_mappings,false);
+			
 		}
 		this.m_hg.add_mapping(model_mappings);
 	}
@@ -103,7 +120,7 @@ public class AgentIwTptp {
 	public void run_load_data(){
 		for (String sz_url_pml: set_url_pml){
 			System.out.println("loading..."+ sz_url_pml);
-			m_hg.add_data(sz_url_pml);
+			m_hg.add_data(sz_url_pml, null);
 		}	
 	}
 
