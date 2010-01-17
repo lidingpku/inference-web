@@ -54,6 +54,15 @@
     </target>  
   	<target name="tptp-norm" depends="build">
       <java classname="org.inference_web.iwapp.tptp.TaskIwTptpNormalize"
+           maxmemory ="1g">
+        <classpath>
+          <path refid="my.classpath"/>
+          <pathelement location="${build.dir}"/>
+        </classpath>
+      </java>
+    </target>  
+  	<target name="tptp-map" depends="build">
+      <java classname="org.inference_web.iwapp.tptp.TaskIwTptpMapping"
           fork="true" maxmemory ="1g">
         <classpath>
           <path refid="my.classpath"/>
