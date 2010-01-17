@@ -13,7 +13,7 @@ import com.hp.hpl.jena.vocabulary.RDF;
 
 public class TaskIwTptpNormalize extends AgentIwTptp{
 	public static void main(String[] argv){
-		String sz_url_seed = "http://inference-web.org/proofs/tptp/Solutions";
+		String sz_url_seed = "http://inference-web.org/proofs/tptp/Solutions/";
 		String sz_url_root_input= "http://inference-web.org/proofs/tptp/Solutions";
 		run_norm(sz_url_seed,sz_url_root_input);
 	}
