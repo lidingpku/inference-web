@@ -40,10 +40,10 @@ public class ToolPmlHgTest {
 			DataPmlHg hg = new DataPmlHg();
 			hg.add_data(sz_url_pml, null);
 
-			Model mapping_i = ToolPml.create_mappings(hg.getModelAll());
+			Model mapping_i = ToolPml.create_mappings(hg.getModelAll(false));
 			hg.add_mapping(mapping_i);
 			
-			verify(data[1],""+hg.getModelAll().size());
+			verify(data[1],""+hg.getModelAll(false).size());
 			verify(data[2],""+hg.getSubHg(hg.getRoot(sz_url_pml)).size());
 
 			String sz_dot = hg.graphviz_export_dot(hg.getSubHg(hg.getRoot(sz_url_pml)));

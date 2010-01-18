@@ -74,8 +74,8 @@ public class ToolPmlTest {
 
 	private Model test_index(Model m){
 		Property[] ary_property = new Property[]{
-				PMLR.dependsOn,
-				PMLR.dependsOnDirect,	
+	//			PMLR.dependsOn,
+	//			PMLR.dependsOnDirect,	
 				PMLR.hasMember,	
 			};
 		for (Property property: ary_property){
