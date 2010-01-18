@@ -144,7 +144,8 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 		Set<String> set_url_pml = new HashSet<String>();
 		set_url_pml.add("http://inference-web.org/proofs/linked/PUZ/PUZ001-1/EP---1.1/answer.owl"); 
 //		set_url_pml.add("http://inference-web.org/proofs/linked/PUZ/PUZ001-1/Otter---3.3/answer.owl"); 
-		set_url_pml.add("http://inference-web.org/proofs/linked/PUZ/PUZ001-1/Faust---1.0/answer.owl");
+//		set_url_pml.add("http://inference-web.org/proofs/linked/PUZ/PUZ001-1/Faust---1.0/answer.owl");
+		set_url_pml.add("http://inference-web.org/proofs/linked/PUZ/PUZ001-1/Metis---2.1/answer.owl");
 		
 		TaskIwTptpImprove tpn = new TaskIwTptpImprove();
 		tpn.init(sz_url_seed, sz_url_root_input, set_url_pml, dir_root_output, sz_url_root_output);
@@ -192,6 +193,7 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 
 		//merge node now
 		m_hg.getHyperGraph();
+
 		
 		String sz_dot = m_hg.graphviz_export_dot(m_hg.getSubHg());
 		DataPmlHg.graphviz_save(sz_dot, f_output_graph.getAbsolutePath());

@@ -1,6 +1,8 @@
 package org.inference_web.pml;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -31,6 +33,7 @@ public class ToolFormulaFol {
 	}
 	
 	public static String normalize(String inputStr){
+		
 		//////////////////////////////////
 		// predicate reorder
 		ArrayList<String> list_temp = new ArrayList<String>();
@@ -49,6 +52,8 @@ public class ToolFormulaFol {
 			
 			//sort array
 			Object[] ary_temp= list_temp.toArray();
+			Arrays.sort(ary_temp);
+			
 			
 			if (b_correct){
 				String sz_temp = "";
@@ -68,11 +73,12 @@ public class ToolFormulaFol {
 		//used non-capture lookbehind feature 
 		//see http://java.sun.com/j2se/1.5.0/docs/api/java/util/regex/Pattern.html
 		//
-		String patternStr = "(?:\\W)([A-Z][\\w]*)";
+		String patternStr = "(?<=\\W)([A-Z][\\w]*)";
 	    Pattern pattern = Pattern.compile(patternStr);
 	    Matcher matcher = pattern.matcher(inputStr);
 	    
 	    // Replace all occurrences of pattern in input
+	    HashMap<String,String> var_map = new HashMap<String,String> ();
 	    StringBuffer buf = new StringBuffer();
 	    boolean found = false;
 		int var_id= 0;
@@ -86,12 +92,17 @@ public class ToolFormulaFol {
 	    		}
 	    	}
 	        
-	        //generate new variable id
-	        String replaceStr = String.format("X%03d",var_id);
-	        var_id++;
+	    	String id = matcher.group(0);
+	    	String newid = var_map.get(id);
+	    	if (null==newid){
+		        //generate new variable id
+	    		newid= String.format("X%03d",var_id);
+		        var_id++;
+		        var_map.put(id, newid);
+	    	}
 	        
 	        //replace variable
-	        matcher.appendReplacement(buf, replaceStr);
+	        matcher.appendReplacement(buf, newid);
 	    }
 	    //append the rest
 	    matcher.appendTail(buf);

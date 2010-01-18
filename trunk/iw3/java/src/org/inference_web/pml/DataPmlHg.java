@@ -493,13 +493,13 @@ public class DataPmlHg {
 		}
 		
 		//add label
-/* TODO
+// TODO
  		String sz_label = ToolJena.getValueOfProperty(getModelAll(), res_node, PMLP.hasRawString, (String)null);
 		if (!ToolSafe.isEmpty(sz_label))
 			prop.put("label", sz_label.replaceAll("\n", " "));
 		else
 			System.out.println("no label");
-*/	
+	
 		
 		return prop;
 	}
@@ -782,14 +782,14 @@ public class DataPmlHg {
 			
 			Model m = res_step.getModel();
 			Set<RDFNode> rules = m.listObjectsOfProperty(res_step, PMLJ.hasInferenceRule).toSet();
-			if (rules.contains(m.createResource("http://inference-web.org/") )){
+			if (rules.contains(m.createResource("http://inference-web.org/registry/DPR/Told.owl#Told") )){
 				axiom_edges.add(edge);
 				axiom_vertices.add(edge.getOutput());
 			}
 		}
 	}
 	
-	public String stat_all(String problem){
+	public String stat_all(String problem, boolean bHeader){
 		String ret ="";
 		
 		Set<Resource> set_step = this.getSubHg();
@@ -808,9 +808,11 @@ public class DataPmlHg {
 		}
 		data.put("triples", sum);
 
-		if (ret.length()==0){
-			ret += data.toCSVheader();
-			ret += "\n";
+		if (bHeader){
+			if (ret.length()==0){
+				ret += data.toCSVheader();
+				ret += "\n";
+			}
 		}
 		ret += data.toCSVrow();
 		ret += "\n";
@@ -818,7 +820,7 @@ public class DataPmlHg {
 		return ret;
 	}
 
-	public String stat_one(String problem){
+	public String stat_one(String problem, boolean bHeader){
 		String ret ="";
 		for (Map.Entry<String, Model> entry: this.m_context_model_data.entrySet()){
 			String sz_context = entry.getKey();
@@ -832,9 +834,11 @@ public class DataPmlHg {
 
 			data.put("triples", entry.getValue().size());
 
-			if (ret.length()==0){
-				ret += data.toCSVheader();
-				ret += "\n";
+			if (bHeader){
+				if (ret.length()==0){
+					ret += data.toCSVheader();
+					ret += "\n";
+				}
 			}
 			ret += data.toCSVrow();
 			ret += "\n";

@@ -52,7 +52,10 @@ public class AgentCrawler {
 
 		//init
 		tovisit.add(m_seed_url);
-	
+		
+		if (isAllowed(m_seed_url))
+			m_results.add(m_seed_url);
+
 
 		//limited depth crawl
 		for (int i = 0; i<= this.getMaxCrawlDepth() && !tovisit.isEmpty(); i++){

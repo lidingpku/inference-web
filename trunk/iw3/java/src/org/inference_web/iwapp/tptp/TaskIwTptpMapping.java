@@ -8,7 +8,7 @@ import sw4j.util.ToolString;
 
 public class TaskIwTptpMapping extends AgentIwTptp{
 	public static void main(String[] argv){
-		run_test();
+		run_cat();
 	}
 
 	public static void run(){
@@ -19,6 +19,25 @@ public class TaskIwTptpMapping extends AgentIwTptp{
 			System.out.println("processing "+ problem);
 			run_mapping(problem, sz_url_root_input);
 		}
+	}
+	
+	public static void run_cat(){
+		String [] ARY_CATEGORY = new String []{
+			 "http://inference-web.org/proofs/tptp/Solutions/PUZ",
+			 "http://inference-web.org/proofs/tptp/Solutions/SEU",
+			 "http://inference-web.org/proofs/tptp/Solutions/SWC",
+			 "http://inference-web.org/proofs/tptp/Solutions/NUM",
+		};
+		String sz_url_root_input= "http://inference-web.org/proofs/tptp/Solutions";
+
+		for (String category: ARY_CATEGORY){
+			Set<String> set_problem = prepare_tptp_one_step(category);
+			for (String problem: set_problem ){
+				System.out.println("processing "+ problem);
+				run_mapping(problem, sz_url_root_input);
+			}			
+		}
+		
 	}
 	
 	public static void run_test(){

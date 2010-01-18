@@ -39,7 +39,10 @@ public class ToolFormulaFolTest {
 		
 		//	5
 		test_str.add("~ hates(agatha,A)  | hates(butler,A)");
-		
+
+		// 6
+		test_str.add("~ killed(X,Y)  | hates(X,Y)");
+		test_str.add(" hates(X1,X2)  | ~ killed(X1,X2) ");
 		
 		DataPVTMap <String,String> ret = ToolFormulaFol.map_eq_formula(test_str);
 

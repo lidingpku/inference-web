@@ -10,6 +10,7 @@ import org.inference_web.pml.ToolPml;
 
 import sw4j.rdf.load.RDFSYNTAX;
 import sw4j.rdf.util.ToolJena;
+import sw4j.util.Sw4jException;
 import sw4j.util.ToolIO;
 
 import com.hp.hpl.jena.rdf.model.Model;
@@ -122,32 +123,43 @@ public class AgentIwTptp {
 
 	public void run_create_stats(){
 		{
-			String ret = m_hg.stat_all(sz_url_problem);
-			String filename = "stat_all.csv";
-			String sz_path = prepare_path(sz_url_problem,null)+ filename;
-			File f_output = new File(dir_root_output, sz_path);
 			
-			getLogger().info(ret);
-			ToolIO.pipeStringToFile(ret, f_output);
+			String filename = "stat_all.csv";
+			//String sz_path = prepare_path(sz_url_problem,null)+ filename;
+			File f_output = new File(dir_root_output, filename);
+
+			String ret = m_hg.stat_all(sz_url_problem, !f_output.exists());
+
+			getLogger().info("write to "+ f_output.getAbsolutePath());
+			//getLogger().info(ret);
+			try {
+				ToolIO.pipeStringToFile(ret, f_output, false, true);
+			} catch (Sw4jException e) {
+				e.printStackTrace();
+			}
 		}
 		
 		{
-			String ret = m_hg.stat_one(sz_url_problem);
 			String filename = "stat_one.csv";
 			String sz_path = prepare_path(sz_url_problem,null)+ filename;
 			File f_output = new File(dir_root_output, sz_path);
-			
-			getLogger().info(ret);
+
+			String ret = m_hg.stat_one(sz_url_problem, true);
+
+			getLogger().info("write to "+ f_output.getAbsolutePath());
+			//getLogger().info(ret);
 			ToolIO.pipeStringToFile(ret, f_output);
 		}
 		
 		{
-			String ret = m_hg.stat_diff(sz_url_problem);
 			String filename = "stat_diff.csv";
 			String sz_path = prepare_path(sz_url_problem,null)+ filename;
 			File f_output = new File(dir_root_output, sz_path);
 			
-			getLogger().info(ret);
+			String ret = m_hg.stat_diff(sz_url_problem);
+
+			getLogger().info("write to "+ f_output.getAbsolutePath());
+			//getLogger().info(ret);
 			ToolIO.pipeStringToFile(ret, f_output);
 		}
 	}
@@ -182,7 +194,28 @@ public class AgentIwTptp {
 		getLogger().info(crawler.m_results.size());
 		return crawler.m_results;
 	}
-	
+
+
+
+	public static Set<String> prepare_tptp_one_step(String sz_seed){
+		AgentCrawler crawler = new AgentCrawler();
+		crawler.init(sz_seed);
+		crawler.m_max_crawl_depth=0;
+		crawler.crawl();
+
+		Iterator<String> iter = crawler.m_results.iterator();
+		while (iter.hasNext()){
+			String url = iter.next();
+			if (url.length() <= sz_seed.length()){
+				getLogger().info("removed "+url);
+				iter.remove();
+			}
+		}
+		
+		getLogger().info(crawler.m_results.size());
+		return crawler.m_results;
+	}
+
 	public static Set<String> prepare_tptp_solutions(String problem){
 		AgentCrawler crawler = new AgentCrawler();
 		crawler.init(problem);
