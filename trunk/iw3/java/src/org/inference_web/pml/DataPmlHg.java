@@ -683,12 +683,12 @@ public class DataPmlHg {
 		set_formula_intersetion.retainAll(g_original.getVertices());
 		data.put(STAT_FORMULA_INTERSECTION, set_formula_intersetion.size());
 
-		Set<Integer> set_formula_axiom_union = g_improved.getAxioms();
-		set_formula_axiom_union.addAll(g_original.getAxioms());
+		Set<Integer> set_formula_axiom_union = g_improved.getVerticesLeaf();
+		set_formula_axiom_union.addAll(g_original.getVerticesLeaf());
 		data.put(STAT_FORMULA_AXIOM_UNION, set_formula_axiom_union.size());
 
-		Set<Integer> set_formula_axiom_intersetion= g_improved.getAxioms();
-		set_formula_axiom_intersetion.retainAll(g_original.getAxioms());
+		Set<Integer> set_formula_axiom_intersetion= g_improved.getVerticesLeaf();
+		set_formula_axiom_intersetion.retainAll(g_original.getVerticesLeaf());
 		data.put(STAT_FORMULA_AXIOM_INTERSECTION, set_formula_axiom_intersetion.size());
 		
 		return data;
@@ -700,7 +700,7 @@ public class DataPmlHg {
 
 		data.put(STAT_WEIGHT, dhg.getTotalWeight());
 		data.put(STAT_STEP, dhg.getEdges().size());
-		data.put(STAT_STEP_AXIOM, dhg.getAxioms().size());
+		data.put(STAT_STEP_AXIOM, dhg.getVerticesLeaf().size());
 		data.put(STAT_FORMULA, dhg.getVertices().size());
 		
 		Set<RDFNode> set_res_rule = new HashSet<RDFNode>();
@@ -713,26 +713,6 @@ public class DataPmlHg {
 		return data;
 	}
 
-
-	public String stat_one(String problem){
-		String ret ="";
-		for (String sz_context: this.m_context_model_data.keySet()){
-			Set<Resource> set_step = this.getSubHg(sz_context);
-			DataSmartMap data= stat(set_step);
-			
-			stat_context(sz_context,"c", data);
-			data.put("problem",problem);
-			
-			if (ret.length()==0){
-				ret += data.toCSVheader();
-				ret += "\n";
-			}
-			ret += data.toCSVrow();
-			ret += "\n";
-		}
-		return ret;
-	}
-
 	public String stat_all(String problem){
 		String ret ="";
 		
@@ -740,6 +720,7 @@ public class DataPmlHg {
 		DataSmartMap data= stat(set_step);
 		
 		data.put("problem",problem);
+		stat_url_param(problem,"p", data);
 		
 		DataSmartMap data1 = this.m_dhg.get_data_summary(false);
 		data.copy(data1);
@@ -754,6 +735,28 @@ public class DataPmlHg {
 		return ret;
 	}
 
+	public String stat_one(String problem){
+		String ret ="";
+		for (String sz_context: this.m_context_model_data.keySet()){
+			Set<Resource> set_step = this.getSubHg(sz_context);
+			DataSmartMap data= stat(set_step);
+			
+			data.put("problem",problem);
+			stat_url_param(problem,"p", data);
+
+			stat_url_param(sz_context.substring(problem.length()),"s", data);
+
+			if (ret.length()==0){
+				ret += data.toCSVheader();
+				ret += "\n";
+			}
+			ret += data.toCSVrow();
+			ret += "\n";
+		}
+		return ret;
+	}
+
+
 	public String stat_diff(String problem){
 		String ret ="";
 		for (String sz_context1: this.m_context_model_data.keySet()){
@@ -762,10 +765,12 @@ public class DataPmlHg {
 					continue;
 				DataSmartMap data= stat_diff(this.getSubHg(sz_context1),this.getSubHg(sz_context2));
 				
-				stat_context(sz_context1,"c1", data);
-				stat_context(sz_context2,"c2", data);
 				data.put("problem",problem);
-				
+				stat_url_param(problem,"p", data);
+
+				stat_url_param(sz_context1.substring(problem.length()),"s1", data);
+				stat_url_param(sz_context2.substring(problem.length()),"s2", data);
+
 				if (ret.length()==0){
 					ret += data.toCSVheader();
 					ret += "\n";
@@ -777,7 +782,7 @@ public class DataPmlHg {
 		return ret;
 	}
 
-	private static void stat_context(String sz_url, String prefix, DataSmartMap data){
+	private static void stat_url_param(String sz_url, String prefix, DataSmartMap data){
 		int counter = 1;
 		for (String item : sz_url.split("/")){
 			if (item.length()==0)
@@ -789,6 +794,8 @@ public class DataPmlHg {
 			if (item.equals("inference-web.org"))
 				continue;
 			if (item.equals("http:"))
+				continue;
+			if (item.equals("answer.owl"))
 				continue;
 			String key = String.format("%s(k%d)",prefix, counter);
 			data.put(key,item);

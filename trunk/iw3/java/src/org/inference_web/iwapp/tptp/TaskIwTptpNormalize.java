@@ -17,10 +17,10 @@ import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.vocabulary.RDF;
 
 public class TaskIwTptpNormalize extends AgentIwTptp{
-	int MAX_TRIPLE= 400000; //0.4 million
+	int MAX_TRIPLE= 100000; //1 million
 	
 	public static void main(String[] argv){
-		run();
+		run_test();
 	}
 	
 	public static void run(){
