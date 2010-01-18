@@ -20,7 +20,7 @@ public class TaskIwTptpNormalize extends AgentIwTptp{
 	int MAX_TRIPLE= 1000000; //1 million
 	
 	public static void main(String[] argv){
-		run();
+		run_test();
 	}
 	
 	public static void run(){
@@ -35,7 +35,7 @@ public class TaskIwTptpNormalize extends AgentIwTptp{
 
 	public static void run_test(){
 		{
-		String sz_url_seed = "http://inference-web.org/proofs/tptp/Solutions/ALG/ALG026+1/";
+		String sz_url_seed = "http://inference-web.org/proofs/tptp/Solutions/ALG/ALG032+1/";
 		String sz_url_root_input= "http://inference-web.org/proofs/tptp/Solutions";
 		run_norm(sz_url_seed,sz_url_root_input);		
 		}
