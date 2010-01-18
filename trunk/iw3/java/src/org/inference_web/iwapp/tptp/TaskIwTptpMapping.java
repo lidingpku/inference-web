@@ -23,10 +23,9 @@ public class TaskIwTptpMapping extends AgentIwTptp{
 	
 	public static void run_cat(){
 		String [] ARY_CATEGORY = new String []{
-			 "http://inference-web.org/proofs/tptp/Solutions/PUZ",
-			 "http://inference-web.org/proofs/tptp/Solutions/SEU",
-			 "http://inference-web.org/proofs/tptp/Solutions/SWC",
-			 "http://inference-web.org/proofs/tptp/Solutions/NUM",
+			 "http://inference-web.org/proofs/linked/PUZ/",
+			 "http://inference-web.org/proofs/linked/SEU/",
+			 "http://inference-web.org/proofs/linked/NUM/",
 		};
 		String sz_url_root_input= "http://inference-web.org/proofs/tptp/Solutions";
 
@@ -37,7 +36,6 @@ public class TaskIwTptpMapping extends AgentIwTptp{
 				run_mapping(problem, sz_url_root_input);
 			}			
 		}
-		
 	}
 	
 	public static void run_test(){

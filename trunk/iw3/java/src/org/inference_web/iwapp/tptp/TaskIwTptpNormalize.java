@@ -20,7 +20,7 @@ public class TaskIwTptpNormalize extends AgentIwTptp{
 	int MAX_TRIPLE= 500000; //.5 million
 	
 	public static void main(String[] argv){
-		run();
+		run_cat();
 	}
 	
 	public static void run(){
@@ -32,6 +32,22 @@ public class TaskIwTptpNormalize extends AgentIwTptp{
 			run_norm(problem, sz_url_root_input);
 		}
 	}
+	
+	public static void run_cat(){
+		String [] ARY_CATEGORY = new String []{
+			 "http://inference-web.org/proofs/tptp/Solutions/SWC/",
+		};
+		String sz_url_root_input= "http://inference-web.org/proofs/tptp/Solutions";
+
+		for (String category: ARY_CATEGORY){
+			Set<String> set_problem = prepare_tptp_one_step(category);
+			for (String problem: set_problem ){
+				System.out.println("processing "+ problem);
+				run_norm(problem, sz_url_root_input);
+			}			
+		}
+	}
+
 
 	public static void run_test(){
 		{
