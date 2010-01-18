@@ -27,7 +27,7 @@ public class TaskIwTptpMapping extends AgentIwTptp{
 			 "http://inference-web.org/proofs/linked/SEU/",
 			 "http://inference-web.org/proofs/linked/NUM/",
 		};
-		String sz_url_root_input= "http://inference-web.org/proofs/tptp/Solutions";
+		String sz_url_root_input= "http://inference-web.org/proofs/linked";
 
 		for (String category: ARY_CATEGORY){
 			Set<String> set_problem = prepare_tptp_one_step(category);

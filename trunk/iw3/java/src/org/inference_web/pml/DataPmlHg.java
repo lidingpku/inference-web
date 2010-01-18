@@ -96,19 +96,25 @@ public class DataPmlHg {
 		return m_model_all;
 	}
 
+	DataPVHMap<Resource, String> m_map_step_contex = new DataPVHMap<Resource, String>();
 	/**
 	 * list all context related to a step
 	 * @param step
 	 * @return
 	 */
 	public Set<String> getContext(Resource step){
-		HashSet<String> ret = new HashSet<String>();
-		for (String context: this.m_context_model_data.keySet()){
-			Model m = this.m_context_model_data.get(context);
-			if (m.listSubjects().toSet().contains(step))
-				ret.add(context);
+		if (m_map_step_contex.keySet().contains(step))
+			return m_map_step_contex.getValuesAsSet(step);
+		else{
+			HashSet<String> ret = new HashSet<String>();
+			for (String context: this.m_context_model_data.keySet()){
+				Model m = this.m_context_model_data.get(context);
+				if (m.listSubjects().toSet().contains(step))
+					ret.add(context);
+			}
+			m_map_step_contex.add(step, ret);
+			return ret;
 		}
-		return ret;
 	}
 	
 	public DataHyperGraph getHyperGraph(){
