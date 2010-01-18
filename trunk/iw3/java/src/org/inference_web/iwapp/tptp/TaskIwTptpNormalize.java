@@ -14,7 +14,7 @@ import com.hp.hpl.jena.vocabulary.RDF;
 
 public class TaskIwTptpNormalize extends AgentIwTptp{
 	public static void main(String[] argv){
-		run_test();
+		run();
 	}
 	
 	public static void run(){
