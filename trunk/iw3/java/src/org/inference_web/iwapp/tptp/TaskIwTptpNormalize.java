@@ -35,6 +35,11 @@ public class TaskIwTptpNormalize extends AgentIwTptp{
 
 	public static void run_test(){
 		{
+			String sz_url_seed = "http://inference-web.org/proofs/tptp/Solutions/BOO/BOO014-4/";
+			String sz_url_root_input= "http://inference-web.org/proofs/tptp/Solutions";
+			run_norm(sz_url_seed,sz_url_root_input);		
+		}
+		{
 		String sz_url_seed = "http://inference-web.org/proofs/tptp/Solutions/ALG/ALG032+1/";
 		String sz_url_root_input= "http://inference-web.org/proofs/tptp/Solutions";
 		run_norm(sz_url_seed,sz_url_root_input);		
@@ -62,7 +67,23 @@ public class TaskIwTptpNormalize extends AgentIwTptp{
 			Logger.getLogger(this.getClass()).info("processing: "+sz_url_pml);
 
 			Model m = ModelFactory.createDefaultModel();
-			m.read(sz_url_pml);
+			try{
+				m.read(sz_url_pml);
+			}catch(Exception e){
+				//encounter bad RDF file
+				Logger.getLogger(this.getClass()).warn(" bad RDF file, skipped: "+ sz_url_pml);
+				e.printStackTrace();
+				
+				File f_output_pml = new File(dir_root_output, "bad-pml.csv");
+				try {
+					System.out.println("write to "+f_output_pml.getAbsolutePath());
+					ToolIO.pipeStringToFile(sz_url_pml+","+ m.size()+"\n", f_output_pml, false, true);
+				} catch (Sw4jException e1) {
+					e1.printStackTrace();
+				}
+
+				continue;
+			}
 			
 			if (!m.listSubjectsWithProperty(RDF.type, PMLJ.InferenceStep).hasNext()){
 				System.out.println("skipped (no pml inference step): "+sz_url_pml);
