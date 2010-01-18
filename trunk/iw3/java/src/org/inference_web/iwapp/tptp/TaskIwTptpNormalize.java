@@ -2,6 +2,7 @@ package org.inference_web.iwapp.tptp;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.Set;
 
 import org.inference_web.pml.ToolPml;
 
@@ -13,13 +14,17 @@ import com.hp.hpl.jena.vocabulary.RDF;
 
 public class TaskIwTptpNormalize extends AgentIwTptp{
 	public static void main(String[] argv){
-		run();
+		run_test();
 	}
 	
 	public static void run(){
-		String sz_url_seed = "http://inference-web.org/proofs/tptp/Solutions/";
 		String sz_url_root_input= "http://inference-web.org/proofs/tptp/Solutions";
-		run_norm(sz_url_seed,sz_url_root_input);		
+		
+		Set<String> set_problem = prepare_tptp_problems();
+		for (String problem: set_problem ){
+			System.out.println("processing "+ problem);
+			run_norm(problem, sz_url_root_input);
+		}
 	}
 
 	public static void run_test(){
@@ -28,14 +33,14 @@ public class TaskIwTptpNormalize extends AgentIwTptp{
 		run_norm(sz_url_seed,sz_url_root_input);		
 	}
 
-	public static void run_norm(String sz_url_seed, String sz_url_root_input){
+	public static void run_norm(String problem, String sz_url_root_input){
 		//prepare seeds
 		File dir_root_output = new File("www/proofs/linked");
 		String sz_url_root_output = "http://inference-web.org/proofs/linked";
 		
 		TaskIwTptpNormalize task = new TaskIwTptpNormalize();
-		task.init(sz_url_seed, sz_url_root_input, dir_root_output, sz_url_root_output);
-		task.filter_url_answer_only();
+		Set<String> url_pml = prepare_tptp_solutions(problem);
+		task.init(problem, sz_url_root_input,url_pml,  dir_root_output, sz_url_root_output);
 		task.run_normalize();
 	}
 	

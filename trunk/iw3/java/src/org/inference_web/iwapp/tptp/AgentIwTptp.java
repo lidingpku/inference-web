@@ -31,8 +31,8 @@ public class AgentIwTptp {
 		this.set_url_pml =set_url_pml; 
 	}
 
-	public void init(String sz_url_seed,  String sz_url_root_input, File dir_root_output, String sz_url_root_output){
-		set_url_pml = AgentPmlCrawler.crawl_quick(sz_url_seed, true);
+	public void init(String sz_url_seed,  String sz_url_root_input, File dir_root_output, String sz_url_root_output, boolean bValidate){
+		set_url_pml = AgentPmlCrawler.crawl_quick(sz_url_seed, bValidate);
 		this.init(sz_url_seed, sz_url_root_input, set_url_pml, dir_root_output, sz_url_root_output);
 	}
 
@@ -158,4 +158,42 @@ public class AgentIwTptp {
 		}	
 	}
 
+	public static Set<String> prepare_tptp_problems(){
+		String sz_seed = "http://inference-web.org/proofs/tptp/Solutions/";
+		AgentCrawler crawler = new AgentCrawler();
+		crawler.init(sz_seed);
+		crawler.m_max_crawl_depth=1;
+		crawler.crawl();
+
+		Iterator<String> iter = crawler.m_results.iterator();
+		while (iter.hasNext()){
+			String url = iter.next();
+			if (url.length() <= sz_seed.length()+4){
+				System.out.println("removed "+url);
+				iter.remove();
+			}
+		}
+		
+		System.out.println(crawler.m_results.size());
+		return crawler.m_results;
+	}
+	
+	public static Set<String> prepare_tptp_solutions(String problem){
+		AgentCrawler crawler = new AgentCrawler();
+		crawler.init(problem);
+		crawler.m_max_crawl_depth=1;
+		crawler.crawl();
+
+		Iterator<String> iter = crawler.m_results.iterator();
+		while (iter.hasNext()){
+			String url = iter.next();
+			
+			//filter non solutions
+			if (!url.endsWith("answer.owl"))
+				iter.remove();
+		}
+		
+		System.out.println(crawler.m_results.size());
+		return crawler.m_results;
+	}
 }

@@ -38,7 +38,7 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 		String sz_url_root_output = "http://inference-web.org/proofs/linked-analysis";
 		
 		TaskIwTptpImprove tpn = new TaskIwTptpImprove();
-		tpn.init(sz_url_seed, sz_url_root_input, dir_root_output, sz_url_root_output);
+		tpn.init(sz_url_seed, sz_url_root_input, dir_root_output, sz_url_root_output, true);
 		//filter sz_url_pml
 		tpn.filter_url_pml_base();
 		tpn.run();

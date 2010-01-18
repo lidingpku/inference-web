@@ -34,7 +34,7 @@ public class TaskIwTptpMapping extends AgentIwTptp{
 		
 		TaskIwTptpMapping task = new TaskIwTptpMapping();
 		if (null==set_url_pml)
-			task.init(sz_url_seed, sz_url_root_input, dir_root_output, sz_url_root_output);
+			task.init(sz_url_seed, sz_url_root_input, dir_root_output, sz_url_root_output, false);
 		else
 			task.init(sz_url_seed, sz_url_root_input,set_url_pml, dir_root_output, sz_url_root_output);
 		
@@ -52,11 +52,15 @@ public class TaskIwTptpMapping extends AgentIwTptp{
 	
 	public static DataPVHMap<String,String> list_tptp_problem_solution(String sz_url_root){
 		Set<String> set_url_pml = AgentPmlCrawler.crawl_quick(sz_url_root,false);
-		System.out.println(set_url_pml);
 		int LIMIT = 2;
 			
 		DataPVHMap<String,String> map = new DataPVHMap<String,String>();
 		for (String sz_url_pml: set_url_pml){
+			//skip non- answer.owl
+			if (!sz_url_pml.endsWith("answer.owl"))
+				continue;
+			
+			
 			String sz_url_base = sz_url_pml;
 			for (int i=0; i<LIMIT; i++)
 				sz_url_base = sz_url_pml.substring(0, sz_url_base.lastIndexOf("/"));
@@ -64,6 +68,7 @@ public class TaskIwTptpMapping extends AgentIwTptp{
 		}
 		return map;
 	}
+	
 
 	
 	

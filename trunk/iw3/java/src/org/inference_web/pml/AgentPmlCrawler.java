@@ -1,6 +1,5 @@
 package org.inference_web.pml;
 
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeSet;
@@ -14,39 +13,36 @@ import sw4j.task.load.AgentSimpleHttpCrawler;
 
 
 public class AgentPmlCrawler {
-	public int MAX_CRAWL_DEPTH=10;
 	public TreeSet<String> m_results = new TreeSet<String>();
 	public TreeSet<String> m_errors = new TreeSet<String>();
 	
-	
-	public static Set<String> crawl_quick(String sz_seed_url, boolean b_validate){
+ 	public static Set<String> crawl_quick(String sz_seed_url, boolean b_validate){
 		AgentPmlCrawler crawler = new AgentPmlCrawler();
 		crawler.crawl(sz_seed_url, b_validate);
 		return crawler.m_results;
 	}
+	
+	/*
 
-/*	public void crawl(String sz_seed_url){
+	public void crawl(String sz_seed_url){
 		HashSet<String> patterns = new HashSet<String>();
 		patterns.add( sz_seed_url+".*");
 		crawl(sz_seed_url, patterns, true);
 	}
 */
 	public void crawl(String sz_seed_url, boolean b_validate){
-		HashSet<String> patterns = new HashSet<String>();
-		String sz_pattern = sz_seed_url+".*";
-		sz_pattern = sz_pattern.replaceAll("\\+", "\\\\+");
-		patterns.add(sz_pattern );
-		crawl(sz_seed_url, patterns, b_validate);
+		crawl(sz_seed_url, null, b_validate);
 	}
 
 	
 	public void crawl(String sz_seed_url, Set<String> set_sz_pattern, boolean b_validate){
 		AgentSimpleHttpCrawler crawler = new AgentSimpleHttpCrawler();
-		crawler.m_seed_url = sz_seed_url;
-		for(String sz_pattern: set_sz_pattern)
-			crawler.m_allowed_url_patterns.add(sz_pattern);
-		crawler.m_max_crawl_depth= MAX_CRAWL_DEPTH;
-		//crawler.m_max_results =10;
+		if (null==set_sz_pattern){
+			crawler.init(sz_seed_url);
+		}else{
+			crawler.init(sz_seed_url,set_sz_pattern);			
+		}
+
 		crawler.crawl();	
 		
 		if (b_validate){
