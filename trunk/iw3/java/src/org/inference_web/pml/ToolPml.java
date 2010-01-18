@@ -93,13 +93,19 @@ public class ToolPml {
 
 	public static Set<Resource> list_depending_steps(Model m, Resource res_info_root){
 		Set<Resource> set_step = m.listSubjectsWithProperty(RDF.type,PMLJ.InferenceStep).toSet();
-		Set<RDFNode> set_step_depends = null;
+		Set<RDFNode> set_step_depends = new HashSet<RDFNode>();
 		for(Resource res_step_root: m.listSubjectsWithProperty(PMLR.hasOutput, res_info_root).toSet()){
-			if (null==set_step_depends)
+			for (RDFNode node_input: m.listObjectsOfProperty(res_step_root, PMLR.hasInput).toSet() ){
+				set_step_depends.add(node_input);
+				set_step_depends.addAll(list_depending_steps(m, (Resource)node_input));
+			}
+			
+/*TODO
+  			if (null==set_step_depends) 
 				set_step_depends = m.listObjectsOfProperty(res_step_root,PMLR.dependsOn).toSet();
 			else
 				set_step_depends.addAll( m.listObjectsOfProperty(res_step_root,PMLR.dependsOn).toSet());
-		}
+*/		}
 		set_step.retainAll(set_step_depends);
 		return set_step;
 	}
@@ -170,7 +176,8 @@ public class ToolPml {
 			Model model_more = (Model)ret;
 //System.out.println(ToolJena.printModelToString(model_more));			
 			//add transitive inference
-			ToolJena.updateModelTranstive(model_more, PMLR.dependsOn);
+//TODO
+//			ToolJena.updateModelTranstive(model_more, PMLR.dependsOn);
 			
 			ToolJena.update_copyNsPrefix(model_more, model_norm);
 			
@@ -444,7 +451,9 @@ public class ToolPml {
 		
 		
 		//filter
-		model_data =  ToolJena.create_filter(model_data, new Property[]{PMLR.dependsOn, PMLR.dependsOnDirect, PMLJ.hasIndex, PMLJ.fromAnswer, PMLJ.fromQuery, PMLJ.isConsequentOf});
+		model_data =  ToolJena.create_filter(model_data, new Property[]{
+//				PMLR.dependsOn, PMLR.dependsOnDirect, 
+				PMLJ.hasIndex, PMLJ.fromAnswer, PMLJ.fromQuery, PMLJ.isConsequentOf});
 		
 
 		

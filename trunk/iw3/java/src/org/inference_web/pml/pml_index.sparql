@@ -6,12 +6,12 @@ PREFIX rdfs:     <http://www.w3.org/2000/01/rdf-schema#>
 
 CONSTRUCT
 {
-?ns_o pmlr:dependsOnDirect ?is .
-?is pmlr:dependsOnDirect ?ns_i .
-?is pmlr:dependsOnDirect ?is_i .
-?ns_o pmlr:dependsOn ?is .
-?is pmlr:dependsOn ?ns_i .
-?is pmlr:dependsOn ?is_i .
+# ?ns_o pmlr:dependsOnDirect ?is .
+# ?is pmlr:dependsOnDirect ?ns_i .
+# ?is pmlr:dependsOnDirect ?is_i .
+# ?ns_o pmlr:dependsOn ?is .
+# ?is pmlr:dependsOn ?ns_i .
+# ?is pmlr:dependsOn ?is_i .
 
 ?is pmlr:hasInput ?i_i .
 ?is pmlr:hasOutput ?i_o .
