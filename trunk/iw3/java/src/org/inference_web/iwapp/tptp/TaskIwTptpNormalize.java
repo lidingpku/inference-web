@@ -17,7 +17,7 @@ import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.vocabulary.RDF;
 
 public class TaskIwTptpNormalize extends AgentIwTptp{
-	int MAX_TRIPLE= 1000000; //1 million
+	int MAX_TRIPLE= 500000; //.5 million
 	
 	public static void main(String[] argv){
 		run();
