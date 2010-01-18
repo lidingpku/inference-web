@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+import org.apache.log4j.Logger;
 import org.inference_web.pml.ToolPml;
 
 import sw4j.rdf.load.RDFSYNTAX;
@@ -126,7 +127,7 @@ public class AgentIwTptp {
 			String sz_path = prepare_path(sz_url_problem,null)+ filename;
 			File f_output = new File(dir_root_output, sz_path);
 			
-			System.out.println(ret);
+			getLogger().info(ret);
 			ToolIO.pipeStringToFile(ret, f_output);
 		}
 		
@@ -136,7 +137,7 @@ public class AgentIwTptp {
 			String sz_path = prepare_path(sz_url_problem,null)+ filename;
 			File f_output = new File(dir_root_output, sz_path);
 			
-			System.out.println(ret);
+			getLogger().info(ret);
 			ToolIO.pipeStringToFile(ret, f_output);
 		}
 		
@@ -146,18 +147,22 @@ public class AgentIwTptp {
 			String sz_path = prepare_path(sz_url_problem,null)+ filename;
 			File f_output = new File(dir_root_output, sz_path);
 			
-			System.out.println(ret);
+			getLogger().info(ret);
 			ToolIO.pipeStringToFile(ret, f_output);
 		}
 	}
 
 	public void run_load_data(){
 		for (String sz_url_pml: set_url_pml){
-			System.out.println("loading..."+ sz_url_pml);
+			getLogger().info("loading..."+ sz_url_pml);
 			m_hg.add_data(sz_url_pml, null);
 		}	
 	}
 
+	private static Logger getLogger(){
+		return Logger.getLogger(AgentIwTptp.class);
+	}
+	
 	public static Set<String> prepare_tptp_problems(){
 		String sz_seed = "http://inference-web.org/proofs/tptp/Solutions/";
 		AgentCrawler crawler = new AgentCrawler();
@@ -169,12 +174,12 @@ public class AgentIwTptp {
 		while (iter.hasNext()){
 			String url = iter.next();
 			if (url.length() <= sz_seed.length()+4){
-				System.out.println("removed "+url);
+				getLogger().info("removed "+url);
 				iter.remove();
 			}
 		}
 		
-		System.out.println(crawler.m_results.size());
+		getLogger().info(crawler.m_results.size());
 		return crawler.m_results;
 	}
 	
@@ -193,7 +198,7 @@ public class AgentIwTptp {
 				iter.remove();
 		}
 		
-		System.out.println(crawler.m_results.size());
+		getLogger().info(crawler.m_results.size());
 		return crawler.m_results;
 	}
 }

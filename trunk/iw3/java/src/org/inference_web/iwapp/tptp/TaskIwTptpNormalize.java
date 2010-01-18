@@ -17,8 +17,10 @@ import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.vocabulary.RDF;
 
 public class TaskIwTptpNormalize extends AgentIwTptp{
+	int MAX_TRIPLE= 1000000; //1 million
+	
 	public static void main(String[] argv){
-		run();
+		run_test();
 	}
 	
 	public static void run(){
@@ -32,7 +34,7 @@ public class TaskIwTptpNormalize extends AgentIwTptp{
 	}
 
 	public static void run_test(){
-		String sz_url_seed = "http://inference-web.org/proofs/tptp/Solutions/AGT/AGT009+1/";
+		String sz_url_seed = "http://inference-web.org/proofs/tptp/Solutions/ALG/ALG016+1/";
 		String sz_url_root_input= "http://inference-web.org/proofs/tptp/Solutions";
 		run_norm(sz_url_seed,sz_url_root_input);		
 	}
@@ -63,11 +65,12 @@ public class TaskIwTptpNormalize extends AgentIwTptp{
 			Logger.getLogger(this.getClass()).info(" number of triples: "+ m.size());
 			
 			//skip very large files
-			if (m.size()>100000){
+			if (m.size()>MAX_TRIPLE){
 				Logger.getLogger(this.getClass()).warn(" large file, skipped: "+ sz_url_pml);
 				File f_output_pml = new File(dir_root_output, "skipped-pml.csv");
 				try {
-					ToolIO.pipeStringToFile(sz_url_pml+","+ m.size(), f_output_pml, false, true);
+					System.out.println("write to "+f_output_pml.getAbsolutePath());
+					ToolIO.pipeStringToFile(sz_url_pml+","+ m.size()+"\n", f_output_pml, false, true);
 				} catch (Sw4jException e) {
 					e.printStackTrace();
 				}

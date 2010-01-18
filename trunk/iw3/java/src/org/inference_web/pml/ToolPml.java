@@ -155,7 +155,7 @@ public class ToolPml {
     	// * pmlr step connecting information as input and output
     	try {
     		String filename = "pml_index.sparql";
-    		System.out.println(ToolPml.class.getResource(filename));
+    		getLogger().info(ToolPml.class.getResource(filename));
         	InputStream in = ToolPml.class.getResourceAsStream(filename);
 			String sz_sparql_query = ToolIO.pipeInputStreamToString(in);
 			
@@ -163,7 +163,7 @@ public class ToolPml {
 			Dataset dataset = DatasetFactory.create(model_norm);
 			Object ret = o_sparql.exec(sz_sparql_query, dataset, RDFSYNTAX.RDFXML);
 			if (!(ret instanceof Model)){
-				System.out.println("Error");
+				getLogger().fatal("Error");
 				System.exit(-1);
 			}
 
@@ -191,7 +191,7 @@ public class ToolPml {
 	private static Model load(String sz_url, Map<String, Model> map_url_model){
 		Model m = map_url_model.get(sz_url);
 		if (null==m){
-			System.out.println("load " + sz_url);
+			getLogger().info("load " + sz_url);
 			AgentModelLoader loader = new AgentModelLoader(sz_url);
 			m=loader.getModelData();
 			if (null!=m)
@@ -268,7 +268,7 @@ public class ToolPml {
 					
 					String sz_url_new = DataQname.extractNamespaceUrl(instance.getURI());
 					if (ToolSafe.isEmpty(sz_url_new)){
-						System.out.println(instance.getURI());
+						getLogger().info("instance URI: "+instance.getURI());
 					}else{
 						set_to_visit.add(sz_url_new);
 					}
@@ -284,7 +284,7 @@ public class ToolPml {
 					
 					String sz_url_new = DataQname.extractNamespaceUrl(instance.getURI());
 					if (ToolSafe.isEmpty(sz_url_new)){
-						System.out.println(instance.getURI());
+						getLogger().info("instance URI: "+instance.getURI());
 					}else{
 						set_to_visit.add(sz_url_new);
 					}
@@ -366,7 +366,7 @@ public class ToolPml {
 			ToolJena.update_copyResourceDescription(model_data, model_ref, res_ns_root, null,false);
 			ToolJena.update_copyResourceDescription(model_data, model_ref, res_ns_root, PMLJ.hasVariableMapping, true);
 			
-			System.out.println("root gid:" +gid_root);
+			getLogger().info("root gid:" +gid_root);
 		}
 		/*
 		for(Set<Resource> set_step: ary_set_res_step){

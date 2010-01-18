@@ -3,6 +3,8 @@ package org.inference_web.iwapp.tptp;
 import java.io.File;
 import java.util.Set;
 
+import sw4j.util.ToolString;
+
 
 public class TaskIwTptpMapping extends AgentIwTptp{
 	public static void main(String[] argv){
@@ -41,6 +43,9 @@ public class TaskIwTptpMapping extends AgentIwTptp{
 		
 		//generate statistics
 		task.run_create_stats();
+
+		System.gc();
+		System.out.println( ToolString.formatXMLDateTime()+" free memory: "+Runtime.getRuntime().freeMemory());		
 	}
 	
 	/*
