@@ -45,7 +45,7 @@
   	
   	<target name="tptp-improve" depends="build">
       <java classname="org.inference_web.iwapp.tptp.TaskIwTptpImprove"
-          maxmemory ="2g">
+          maxmemory ="4g">
         <classpath>
           <path refid="my.classpath"/>
           <pathelement location="${build.dir}"/>
@@ -54,7 +54,7 @@
     </target>  
   	<target name="tptp-norm" depends="build">
       <java classname="org.inference_web.iwapp.tptp.TaskIwTptpNormalize"
-           maxmemory ="2g">
+           maxmemory ="4g">
         <classpath>
           <path refid="my.classpath"/>
           <pathelement location="${build.dir}"/>
@@ -63,7 +63,7 @@
     </target>  
   	<target name="tptp-map" depends="build">
       <java classname="org.inference_web.iwapp.tptp.TaskIwTptpMapping"
-           maxmemory ="2g">
+           maxmemory ="4g">
         <classpath>
           <path refid="my.classpath"/>
           <pathelement location="${build.dir}"/>
