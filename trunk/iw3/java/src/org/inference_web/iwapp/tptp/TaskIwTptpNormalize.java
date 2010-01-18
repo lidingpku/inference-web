@@ -7,6 +7,7 @@ import java.util.Set;
 import org.inference_web.pml.ToolPml;
 
 import sw4j.app.pml.PMLJ;
+import sw4j.util.ToolString;
 
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
@@ -33,14 +34,13 @@ public class TaskIwTptpNormalize extends AgentIwTptp{
 		run_norm(sz_url_seed,sz_url_root_input);		
 	}
 
-	public static void run_norm(String problem, String sz_url_root_input){
+	public static void run_norm(String sz_url_problem, String sz_url_root_input){
 		//prepare seeds
 		File dir_root_output = new File("www/proofs/linked");
 		String sz_url_root_output = "http://inference-web.org/proofs/linked";
 		
 		TaskIwTptpNormalize task = new TaskIwTptpNormalize();
-		Set<String> url_pml = prepare_tptp_solutions(problem);
-		task.init(problem, sz_url_root_input,url_pml,  dir_root_output, sz_url_root_output);
+		task.init(sz_url_problem, sz_url_root_input, dir_root_output, sz_url_root_output);
 		task.run_normalize();
 	}
 	
@@ -70,6 +70,8 @@ public class TaskIwTptpNormalize extends AgentIwTptp{
 
 			ToolPml.pml_save_data(model_norm, f_output_pml, sz_url_pml+"#",  map_relative_url);
 		}
+		System.gc();
+		System.out.println( ToolString.formatXMLDateTime()+" free memory: "+Runtime.getRuntime().freeMemory());
 	}
 	
 	

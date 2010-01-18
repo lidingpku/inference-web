@@ -3,9 +3,6 @@ package org.inference_web.iwapp.tptp;
 import java.io.File;
 import java.util.Set;
 
-import org.inference_web.pml.AgentPmlCrawler;
-
-import sw4j.util.DataPVHMap;
 
 public class TaskIwTptpMapping extends AgentIwTptp{
 	public static void main(String[] argv){
@@ -13,33 +10,30 @@ public class TaskIwTptpMapping extends AgentIwTptp{
 	}
 
 	public static void run(){
-		DataPVHMap<String,String> ps = list_tptp_problem_solution("http://inference-web.org/proofs/linked/");
+		String sz_url_root_input= "http://inference-web.org/proofs/tptp/Solutions";
 		
-		String sz_url_root_input= "http://inference-web.org/proofs/linked";
-		for (String sz_url_seed: ps.keySet())
-			run_mapping(sz_url_seed, ps.getValuesAsSet(sz_url_seed),sz_url_root_input);		
+		Set<String> set_problem = prepare_tptp_problems();
+		for (String problem: set_problem ){
+			System.out.println("processing "+ problem);
+			run_mapping(problem, sz_url_root_input);
+		}
 	}
 	
 	public static void run_test(){
-		String sz_url_seed = "http://inference-web.org/proofs/linked/PUZ/PUZ001-1/";
+		String sz_url_problem = "http://inference-web.org/proofs/linked/PUZ/PUZ001-1/";
 		String sz_url_root_input= "http://inference-web.org/proofs/linked";
 		
-		run_mapping(sz_url_seed, null,sz_url_root_input);
+		run_mapping(sz_url_problem, sz_url_root_input);
 	}
 	
-	public static void run_mapping(String sz_url_seed, Set<String> set_url_pml, String sz_url_root_input){
+	public static void run_mapping(String sz_url_problem,  String sz_url_root_input){
 		//prepare seeds
 		File dir_root_output = new File("www/proofs/linked");
 		String sz_url_root_output = "http://inference-web.org/proofs/linked";
 		
 		TaskIwTptpMapping task = new TaskIwTptpMapping();
-		if (null==set_url_pml)
-			task.init(sz_url_seed, sz_url_root_input, dir_root_output, sz_url_root_output, false);
-		else
-			task.init(sz_url_seed, sz_url_root_input,set_url_pml, dir_root_output, sz_url_root_output);
-		
-		task.filter_url_answer_only();
-		
+		task.init(sz_url_problem, sz_url_root_input, dir_root_output, sz_url_root_output);
+				
 		task.run_load_data();
 
 		//create mappings
@@ -49,8 +43,8 @@ public class TaskIwTptpMapping extends AgentIwTptp{
 		task.run_create_stats();
 	}
 	
-	
-	public static DataPVHMap<String,String> list_tptp_problem_solution(String sz_url_root){
+	/*
+	private static DataPVHMap<String,String> list_tptp_problem_solution(String sz_url_root){
 		Set<String> set_url_pml = AgentPmlCrawler.crawl_quick(sz_url_root,false);
 		int LIMIT = 2;
 			
@@ -68,7 +62,7 @@ public class TaskIwTptpMapping extends AgentIwTptp{
 		}
 		return map;
 	}
-	
+	*/
 
 	
 	

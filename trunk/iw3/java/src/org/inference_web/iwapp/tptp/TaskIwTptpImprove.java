@@ -38,7 +38,7 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 		String sz_url_root_output = "http://inference-web.org/proofs/linked-analysis";
 		
 		TaskIwTptpImprove tpn = new TaskIwTptpImprove();
-		tpn.init(sz_url_seed, sz_url_root_input, dir_root_output, sz_url_root_output, true);
+		tpn.init(sz_url_seed, sz_url_root_input, dir_root_output, sz_url_root_output);
 		//filter sz_url_pml
 		tpn.filter_url_pml_base();
 		tpn.run();
@@ -187,7 +187,7 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 		run_create_mappings(false);
 		
 		//DataHyperGraph dhg = this.m_hg.getHyperGraph();
-		String sz_path = prepare_path(sz_url_seed,null)+"combine";
+		String sz_path = prepare_path(sz_url_problem,null)+"combine";
 		File f_output_graph = new File(dir_root_output, sz_path);
 
 		//merge node now

@@ -5,7 +5,6 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-import org.inference_web.pml.AgentPmlCrawler;
 import org.inference_web.pml.ToolPml;
 
 import sw4j.rdf.load.RDFSYNTAX;
@@ -19,21 +18,22 @@ public class AgentIwTptp {
 	protected File dir_root_output = null;
 	protected Set<String> set_url_pml = null;
 	protected String sz_url_root_output= null;
-	protected String sz_url_seed = null;
+	protected String sz_url_problem = null;
 	protected String sz_url_root_input = null;
 
 
-	public void init(String sz_url_seed, String sz_url_root_input, Set<String> set_url_pml, File dir_root_output, String sz_url_root_output){
-		this.sz_url_seed =sz_url_seed; 
+	public void init(String sz_url_problem, String sz_url_root_input, Set<String> set_url_pml, File dir_root_output, String sz_url_root_output){
+		this.sz_url_problem =sz_url_problem; 
 		this.sz_url_root_input =sz_url_root_input; 
 		this.dir_root_output =dir_root_output; 
 		this.sz_url_root_output =sz_url_root_output; 
 		this.set_url_pml =set_url_pml; 
 	}
 
-	public void init(String sz_url_seed,  String sz_url_root_input, File dir_root_output, String sz_url_root_output, boolean bValidate){
-		set_url_pml = AgentPmlCrawler.crawl_quick(sz_url_seed, bValidate);
-		this.init(sz_url_seed, sz_url_root_input, set_url_pml, dir_root_output, sz_url_root_output);
+	public void init(String sz_url_problem,  String sz_url_root_input, File dir_root_output, String sz_url_root_output){
+		//set_url_pml = AgentPmlCrawler.crawl_quick(sz_url_problem, bValidate);
+		Set<String> url_pml = prepare_tptp_solutions(sz_url_problem);
+		this.init(sz_url_problem, sz_url_root_input, url_pml, dir_root_output, sz_url_root_output);
 	}
 
 
@@ -106,10 +106,10 @@ public class AgentIwTptp {
 		if (bSave){
 			String filename = "mappings.owl";
 			
-			String sz_ns = sz_url_seed +filename+"#";
+			String sz_ns = sz_url_problem +filename+"#";
 			Model model_allsame = ToolJena.create_allsame(model_mappings, sz_ns); 
 			
-			String sz_path = prepare_path(sz_url_seed,null)+ filename;
+			String sz_path = prepare_path(sz_url_problem,null)+ filename;
 			File f_output_mappings = new File(dir_root_output, sz_path);
 			
 			ToolJena.update_copy(model_allsame, model_mappings);
@@ -121,9 +121,9 @@ public class AgentIwTptp {
 
 	public void run_create_stats(){
 		{
-			String ret = m_hg.stat_all(sz_url_seed);
+			String ret = m_hg.stat_all(sz_url_problem);
 			String filename = "stat_all.csv";
-			String sz_path = prepare_path(sz_url_seed,null)+ filename;
+			String sz_path = prepare_path(sz_url_problem,null)+ filename;
 			File f_output = new File(dir_root_output, sz_path);
 			
 			System.out.println(ret);
@@ -131,9 +131,9 @@ public class AgentIwTptp {
 		}
 		
 		{
-			String ret = m_hg.stat_one(sz_url_seed);
+			String ret = m_hg.stat_one(sz_url_problem);
 			String filename = "stat_one.csv";
-			String sz_path = prepare_path(sz_url_seed,null)+ filename;
+			String sz_path = prepare_path(sz_url_problem,null)+ filename;
 			File f_output = new File(dir_root_output, sz_path);
 			
 			System.out.println(ret);
@@ -141,9 +141,9 @@ public class AgentIwTptp {
 		}
 		
 		{
-			String ret = m_hg.stat_diff(sz_url_seed);
+			String ret = m_hg.stat_diff(sz_url_problem);
 			String filename = "stat_diff.csv";
-			String sz_path = prepare_path(sz_url_seed,null)+ filename;
+			String sz_path = prepare_path(sz_url_problem,null)+ filename;
 			File f_output = new File(dir_root_output, sz_path);
 			
 			System.out.println(ret);
