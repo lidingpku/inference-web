@@ -93,7 +93,7 @@ public class ToolPmlTest {
 		Resource res_root = set_root.iterator().next();
 		
 		Resource res_root_step = ToolJena.getValueOfProperty(model_all, res_root, PMLJ.isConsequentOf, (Resource)null);  
-		Set<Resource> set_step = ToolPml.list_depending_steps(model_all, res_root_step);
+		Set<Resource> set_step = ToolPml.listStepDerivingInfoRecursive(model_all, res_root_step);
 		if (!sz_cnt_step.equals(""+set_step.size())){
 			System.out.println(res_root);
 			fail(String.format("unexpect number of steps: found %d, expected %s",set_step.size(), sz_cnt_step));

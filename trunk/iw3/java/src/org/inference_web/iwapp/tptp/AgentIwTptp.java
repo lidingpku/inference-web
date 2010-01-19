@@ -120,7 +120,8 @@ public class AgentIwTptp {
 		}
 		this.m_hg.add_mapping(model_mappings);
 	}
-
+	
+	
 	public void run_create_stats(){
 		{
 			
@@ -168,6 +169,19 @@ public class AgentIwTptp {
 		for (String sz_url_pml: set_url_pml){
 			getLogger().info("loading..."+ sz_url_pml);
 			m_hg.add_data(sz_url_pml, null);
+			
+			//record skipped files
+			if (m_hg.getModelOriginal(sz_url_pml)==null){
+				String filename = "skipped_rdf.csv";
+				//String sz_path = prepare_path(sz_url_problem,null)+ filename;
+				File f_output = new File(dir_root_output, filename);
+				
+				String ret = sz_url_pml+"\n";
+
+				getLogger().info("write to "+ f_output.getAbsolutePath());
+				ToolIO.pipeStringToFile(ret, f_output);
+
+			}
 		}	
 	}
 

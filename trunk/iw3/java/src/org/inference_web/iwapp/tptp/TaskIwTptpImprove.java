@@ -425,7 +425,7 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 					String sz_path = prepare_path(sz_url_pml,sz_context+"_"+alg.getLabel()+".rdf");
 					File f_output_rdf= new File(dir_root_output, sz_path);
 
-					ToolPml.pml_create_by_copy(ary_set_step_all, this.m_hg.getModelAll(false), this.m_hg.getInfoMap(),res_info_root,f_output_rdf);
+					ToolPml.pml_create_by_copy(ary_set_step_all, this.m_hg.getModelAll(true), this.m_hg.getInfoMap(),res_info_root,f_output_rdf);
 
 				}
 

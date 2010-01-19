@@ -57,30 +57,30 @@ public class ToolPml {
 	public static final int OPT_LIST_ALL=2;
 
 	
-	public static Set<Resource> list_info(Model m, Set<Resource> set_res_step, int option){
+	public static Set<Resource> listInfoOfStep(Model m, Set<Resource> set_res_step, int option){
 		Set<Resource> ret = new HashSet<Resource>();
 		for(Resource res_step: set_res_step){
-			ret.addAll(list_info(m,res_step, option));
+			ret.addAll(listInfoOfStep(m,res_step, option));
 		}
 		return ret;
 	}
 	
-	public static Set<Resource> list_info(Model m, Resource res_step, int option){
+	public static Set<Resource> listInfoOfStep(Model m, Resource res_step, int option){
 		
 		Set<Resource> ret = new HashSet<Resource>();
 		if (option==OPT_LIST_INPUT || option==OPT_LIST_ALL)
-			for (RDFNode node: m.listObjectsOfProperty(res_step,PMLR.hasInput).toSet()){
+			for (RDFNode node: listInfoInputOfStep(res_step,m)){
 				ret.add((Resource)node);
 			}
 		
 		if (option==OPT_LIST_OUTPUT || option==OPT_LIST_ALL)
-			for (RDFNode node: m.listObjectsOfProperty(res_step,PMLR.hasOutput).toSet()){
+			for (RDFNode node: listInfoOutputOfStep(res_step,m)){
 				ret.add((Resource)node);
 			}
 		return ret;
 	}
-	 
-	public static Set<Resource> list_info(Model m, int option){
+	 /*
+	private static Set<Resource> list_info(Model m, int option){
 		Set<Resource> ret = new HashSet<Resource>();
 		for (RDFNode node: m.listObjectsOfProperty(PMLR.hasInput).toSet()){
 			ret.add((Resource)node);
@@ -90,14 +90,14 @@ public class ToolPml {
 		}
 		return ret;
 	}
-
-	public static Set<Resource> list_depending_steps(Model m, Resource res_info_root){
+*/
+	public static Set<Resource> listStepDerivingInfoRecursive(Model m, Resource res_info_root){
 		Set<Resource> set_step = m.listSubjectsWithProperty(RDF.type,PMLJ.InferenceStep).toSet();
-		Set<RDFNode> set_step_depends = new HashSet<RDFNode>();
-		for(Resource res_step_root: m.listSubjectsWithProperty(PMLR.hasOutput, res_info_root).toSet()){
-			for (RDFNode node_input: m.listObjectsOfProperty(res_step_root, PMLR.hasInput).toSet() ){
-				set_step_depends.add(node_input);
-				set_step_depends.addAll(list_depending_steps(m, (Resource)node_input));
+		Set<Resource> set_step_depends = new HashSet<Resource>();
+		for(Resource res_step_root: listStepDerivingInfo(res_info_root, m)){
+			for (RDFNode node_input: listInfoInputOfStep(res_step_root, m) ){
+				set_step_depends.add((Resource)node_input);
+				set_step_depends.addAll(listStepDerivingInfoRecursive(m, (Resource)node_input));
 			}
 			
 /*TODO
@@ -207,7 +207,57 @@ public class ToolPml {
 		return m;
 	}
 	
+	public static Set<RDFNode> listInfoOutputOfStep(Resource res_step, Model m){
+		//try hasOutput first
+		Set<RDFNode> ret =  m.listObjectsOfProperty(res_step,PMLR.hasOutput).toSet();
+		if (ret.size()>0)
+			return ret;
+
+		//then try conventional structure
+		ret = new HashSet<RDFNode>();
+		Set<Resource> set_ns = m.listSubjectsWithProperty(PMLJ.isConsequentOf,res_step).toSet();
+		for (Resource ns: set_ns){
+			ret.addAll(m.listObjectsOfProperty(ns,PMLJ.hasConclusion).toSet());
+		}
+		return ret;
+	}
 	
+	public static Set<RDFNode> listInfoInputOfStep(Resource res_step, Model m){
+		//try hasOutput first
+		Set<RDFNode> ret =  m.listObjectsOfProperty(res_step,PMLR.hasInput).toSet();
+		if (ret.size()>0)
+			return ret;
+
+		//then try conventional structure		
+		ret = new HashSet<RDFNode>();
+		Set<RDFNode> set_list = m.listObjectsOfProperty(res_step, PMLJ.hasAntecedentList).toSet();
+		for (RDFNode list: set_list){
+			Set<RDFNode> set_ns= m.listObjectsOfProperty((Resource)list, PMLR.hasMember).toSet();
+			for (RDFNode ns: set_ns){
+				ret.addAll(m.listObjectsOfProperty((Resource)ns,PMLJ.hasConclusion).toSet());
+			}
+		}
+		return ret;
+	}
+	
+	public static Set<Resource> listStepDerivingInfo(Resource res_info, Model m){
+		//try hasOutput first
+		Set<Resource> ret =  m.listSubjectsWithProperty(PMLR.hasOutput, res_info).toSet();
+		if (ret.size()>0)
+			return ret;
+
+		//then try conventional structure
+		ret = new HashSet<Resource>();
+		Set<Resource> set_ns = m.listSubjectsWithProperty(PMLJ.hasConclusion, res_info).toSet();
+		for (Resource ns: set_ns){
+			for (RDFNode step : m.listObjectsOfProperty(ns,PMLJ.isConsequentOf).toSet()){
+				ret.add((Resource)step);
+			}
+		}
+		return ret;
+	}
+	
+
 	//public static final int MODEL_ME=0;
 	//public static final int MODEL_ALL=1;
 	
@@ -263,6 +313,7 @@ public class ToolPml {
 			String sz_url_temp = set_to_visit.iterator().next();
 			Model model = load(sz_url_temp, map_url_model);
 			
+			set_to_visit.remove(sz_url_temp);
 			if (null==model)
 				continue;
 			
@@ -415,7 +466,7 @@ public class ToolPml {
 
 				
 				//copy info
-				for (Resource res_info: ToolPml.list_info(model_ref, res_step, OPT_LIST_ALL)){
+				for (Resource res_info: ToolPml.listInfoOfStep(model_ref, res_step, OPT_LIST_ALL)){
 					int gid = map_info_id.getGid(res_info);
 					if (res_info.isAnon()){
 						Resource res_info_mapped = map_gid_info.get(gid);

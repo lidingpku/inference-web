@@ -6,9 +6,9 @@ import java.util.Set;
 import sw4j.util.ToolString;
 
 
-public class TaskIwTptpMapping extends AgentIwTptp{
+public class TaskIwTptpStat extends AgentIwTptp{
 	public static void main(String[] argv){
-		run();
+		run_cat();
 	}
 
 	public static void run(){
@@ -50,7 +50,7 @@ public class TaskIwTptpMapping extends AgentIwTptp{
 		File dir_root_output = new File("www/proofs/linked");
 		String sz_url_root_output = "http://inference-web.org/proofs/linked";
 		
-		TaskIwTptpMapping task = new TaskIwTptpMapping();
+		TaskIwTptpStat task = new TaskIwTptpStat();
 		task.init(sz_url_problem, sz_url_root_input, dir_root_output, sz_url_root_output);
 				
 		task.run_load_data();

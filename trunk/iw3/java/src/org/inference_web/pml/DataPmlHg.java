@@ -14,7 +14,6 @@ import org.inference_web.util.DataColorMap;
 
 import sw4j.app.pml.PMLJ;
 import sw4j.app.pml.PMLP;
-import sw4j.app.pml.PMLR;
 import sw4j.rdf.util.ToolJena;
 import sw4j.task.graph.DataHyperEdge;
 import sw4j.task.graph.DataHyperGraph;
@@ -138,7 +137,7 @@ public class DataPmlHg {
 		
 		m_dhg = new DataHyperGraph();
 		for (Resource res_step: getModelAll(false).listSubjectsWithProperty(RDF.type, PMLJ.InferenceStep).toSet()){
-			DataHyperEdge edge = createHyperEdge(getModelAll(true), res_step, m_map_res_vertex);
+			DataHyperEdge edge = createHyperEdge(getModelAll(false), res_step, m_map_res_vertex);
 			m_dhg.add(edge, getContext(res_step));
 			m_map_step_edge.put(res_step, edge);
 			m_map_edge_step.add(edge, res_step);
@@ -179,7 +178,7 @@ public class DataPmlHg {
 	 * @return
 	 */
 	public Set<Resource> getSubHg(Resource res_info_root){
-		return ToolPml.list_depending_steps(getModelAll(true), res_info_root);
+		return ToolPml.listStepDerivingInfoRecursive(getModelAll(false), res_info_root);
 	}
 	
 	
@@ -218,7 +217,7 @@ public class DataPmlHg {
 	public Set<Resource> getSubHg( DataHyperGraph dhg, Resource res_root, String sz_url_pml ){
 		getHyperGraph();
 
-		Set<Resource> set_res_step_dependant = ToolPml.list_depending_steps(getModelAll(true), res_root);
+		Set<Resource> set_res_step_dependant = ToolPml.listStepDerivingInfoRecursive(getModelAll(false), res_root);
 
 		Set<Resource> ret = new HashSet<Resource>();
 		//try to reuse PML resources from the supplied context
@@ -228,7 +227,7 @@ public class DataPmlHg {
 				if (null==res_edge_chosen)
 					res_edge_chosen=res_edge;
 				
-				boolean bHasRoot = (null!=res_root)&& getModelAll(true).listStatements(res_edge, PMLR.hasOutput, res_root).hasNext(); 
+				boolean bHasRoot = (null!=res_root)&& ToolPml.listInfoOutputOfStep(res_edge,getModelAll(false)).contains(res_root); 
 				boolean bInContext = (null!=set_res_step_dependant)&&set_res_step_dependant.contains(res_edge);
 				
 				if (bInContext || bHasRoot){
@@ -248,11 +247,16 @@ public class DataPmlHg {
 
 	private static DataHyperEdge createHyperEdge(Model model_data, Resource res_step, DataObjectGroupMap<Resource> map_res_gid){
 		//list output
-		Resource res_output = (ToolJena.getValueOfProperty(model_data, res_step, PMLR.hasOutput, (Resource)null));
+		//Resource res_output = (ToolJena.getValueOfProperty(model_data, res_step, PMLR.hasOutput, (Resource)null));
+		Set<RDFNode> set_output = ToolPml.listInfoOutputOfStep(res_step, model_data);
+		Resource res_output = (Resource) set_output.iterator().next();
+		
 		Integer  id_output = map_res_gid.addObject(res_output);
 		
+		
 		//list inputs
-		Set<RDFNode> set_res_input = model_data.listObjectsOfProperty(res_step, PMLR.hasInput).toSet();  
+		//Set<RDFNode> set_res_input = model_data.listObjectsOfProperty(res_step, PMLR.hasInput).toSet();
+		Set<RDFNode> set_res_input = ToolPml.listInfoInputOfStep(res_step,model_data);
 		Set<Integer> set_id_input = new  HashSet<Integer>();
 		for (RDFNode node_input: set_res_input){
 			Resource res_input = (Resource) node_input;
@@ -262,6 +266,8 @@ public class DataPmlHg {
 		//get antecedents
 		return new DataHyperEdge(id_output, set_id_input);
 	}
+	
+	
 	
 	private static String graphviz_print_node(String id, Properties prop){
 		String params="";
@@ -288,7 +294,7 @@ public class DataPmlHg {
 	public String graphviz_export_dot ( Set<Resource> set_res_edge ){
 		getHyperGraph();
 
-		Set<Resource> set_res_node = ToolPml.list_info(getModelAll(true), set_res_edge, ToolPml.OPT_LIST_ALL);
+		Set<Resource> set_res_node = ToolPml.listInfoOfStep(getModelAll(false), set_res_edge, ToolPml.OPT_LIST_ALL);
 		DataHyperGraph dhg = this.getHyperGraph(set_res_edge);
 
 		String ret ="";
@@ -336,7 +342,7 @@ public class DataPmlHg {
 			set_res_edge.addAll(set_res_edge_optimal);
 			set_res_edge.addAll(set_res_edge_original);
 
-			Set<Resource> set_res_node = ToolPml.list_info(getModelAll(true), set_res_edge, ToolPml.OPT_LIST_ALL);
+			Set<Resource> set_res_node = ToolPml.listInfoOfStep(getModelAll(false), set_res_edge, ToolPml.OPT_LIST_ALL);
 			DataHyperGraph dhg = this.getHyperGraph(set_res_edge);
 			DataHyperGraph dhg_original = this.getHyperGraph(set_res_edge_original);
 			Set<Integer> set_vertex_original = dhg_original.getVertices();
