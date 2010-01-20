@@ -39,12 +39,6 @@ public class TaskIwTptpMapping extends AgentIwTptp{
 		}
 	}
 	
-	public static void run_test(){
-		String sz_url_problem = "http://inference-web.org/proofs/linked/PUZ/PUZ001-1/";
-		String sz_url_root_input= "http://inference-web.org/proofs/linked";
-		
-		run_mapping(sz_url_problem, sz_url_root_input);
-	}
 	
 	public static void run_mapping(String sz_url_problem,  String sz_url_root_input){
 		//prepare seeds

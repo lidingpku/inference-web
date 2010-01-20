@@ -82,6 +82,8 @@ public class DataPmlHg {
 	public Model getModelAll(boolean bNeedIndex) {
 		//merge all models
 		if (null==m_model_all){
+			getLogger().info("getModelAll ...");
+			
 			m_model_all = ToolJena.create_copy(this.m_context_model_data.values());
 
 			//update vertex group
@@ -136,6 +138,7 @@ public class DataPmlHg {
 		
 		m_map_res_vertex.normalize();
 		*/
+		getLogger().info("getHyperGraph");
 		m_dhg = new DataHyperGraph();
 		for (Resource res_step: getModelAll(false).listSubjectsWithProperty(RDF.type, PMLJ.InferenceStep).toSet()){
 			DataHyperEdge edge = createHyperEdge(getModelAll(false), res_step, m_map_res_vertex);
@@ -817,21 +820,29 @@ public class DataPmlHg {
 		}
 	}
 	
-	public DataSmartMap stat_all(String problem){
+	public DataSmartMap stat_all(String problem, boolean bStatGraph){
 		
 		DataSmartMap data= new DataSmartMap();
 		
 		data.put("problem",problem);
 		stat_url_param(problem,"p", data);
-		
-		DataSmartMap data1 = this.getHyperGraph().get_data_summary(false);
-		data.copy(data1);
-		
+
 		//stat triples
 		data.put("triple(proof)", this.getModelAll(false).size());
 		
 		//count steps
 		data.put("step[occurence]", ToolPml.listStep(this.getModelAll(false)).size());
+
+		//other graph specific stat
+		if (bStatGraph){
+			DataSmartMap data1 = this.getHyperGraph().get_data_summary(false);
+			data.copy(data1);
+		}else{
+			//just create an empty graph as place holder
+			DataSmartMap data1 = new DataHyperGraph().get_data_summary(false);
+			data.copy(data1);
+		}
+		
 		
 		return data;
 	}

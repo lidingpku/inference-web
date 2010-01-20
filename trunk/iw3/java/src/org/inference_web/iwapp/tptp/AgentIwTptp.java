@@ -155,6 +155,10 @@ public class AgentIwTptp {
 	
 	
 	public void run_create_stats(){
+		//skip linked proofs with over 10000 info occurrence
+		boolean bStatGraph = m_hg.getModelAll(false).size()>10000;
+		
+		
 		{
 			getLogger().info("create  stat_all.csv ...");
 
@@ -162,7 +166,7 @@ public class AgentIwTptp {
 			//String sz_path = prepare_path(sz_url_problem,null)+ filename;
 			File f_output = new File(dir_root_output, filename);
 
-			DataSmartMap data = m_hg.stat_all(sz_url_problem);
+			DataSmartMap data = m_hg.stat_all(sz_url_problem,bStatGraph);
 			m_hg_stat.copy(data);
 
 			String ret = DataPmlHg.print_csv(m_hg_stat, !f_output.exists());
@@ -174,6 +178,11 @@ public class AgentIwTptp {
 			} catch (Sw4jException e) {
 				e.printStackTrace();
 			}
+		}
+		
+		if (!bStatGraph){
+			getLogger().info("skipped linked proofs: size="+  m_hg.getModelAll(false).size());
+			return;
 		}
 		
 		{
@@ -239,7 +248,7 @@ public class AgentIwTptp {
 		while (iter.hasNext()){
 			String url = iter.next();
 			if (url.length() <= sz_seed.length()+4){
-				getLogger().info("removed "+url);
+				//getLogger().info("removed "+url);
 				iter.remove();
 			}
 		}
