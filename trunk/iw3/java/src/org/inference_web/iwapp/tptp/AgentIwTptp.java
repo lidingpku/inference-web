@@ -157,7 +157,8 @@ public class AgentIwTptp {
 	public void run_create_stats(){
 		//skip linked proofs with over 10000 info occurrence
 		boolean bStatGraph = m_hg.getModelAll(false).size()>10000;
-		
+		getLogger().info("processing model all: size="+  m_hg.getModelAll(false).size());
+
 		
 		{
 			getLogger().info("create  stat_all.csv ...");
