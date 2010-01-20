@@ -8,7 +8,7 @@ import sw4j.util.ToolString;
 
 public class TaskIwTptpMapping extends AgentIwTptp{
 	public static void main(String[] argv){
-		run_cat();
+		run();
 	}
 
 	public static void run(){
