@@ -204,28 +204,49 @@ public class AgentIwTptp {
 		
 		{
 			getLogger().info("create  stat_one.csv ...");
-			String filename = "stat_one.csv";
-			String sz_path = prepare_path(sz_url_problem,null)+ filename;
-			File f_output = new File(dir_root_output, sz_path);
-
 			String ret = m_hg.stat_one(sz_url_problem, true);
-
-			getLogger().info("write to "+ f_output.getAbsolutePath());
-			//getLogger().info(ret);
-			ToolIO.pipeStringToFile(ret, f_output);
+			{
+				String filename = "stat_one.csv";
+				String sz_path = prepare_path(sz_url_problem,null)+ filename;
+				File f_output = new File(dir_root_output, sz_path);
+	
+	
+				getLogger().info("write to "+ f_output.getAbsolutePath());
+				//getLogger().info(ret);
+				ToolIO.pipeStringToFile(ret, f_output);
+			}
+			{
+				String filename = "stat_one.csv";
+				File f_output = new File(dir_root_output, filename);
+	
+				getLogger().info("write to "+ f_output.getAbsolutePath());
+				//getLogger().info(ret);
+				ToolIO.pipeStringToFile(ret, f_output);
+			}
 		}
 		
 		{
 			getLogger().info("create  stat_diff.csv ...");
-			String filename = "stat_diff.csv";
-			String sz_path = prepare_path(sz_url_problem,null)+ filename;
-			File f_output = new File(dir_root_output, sz_path);
-			
 			String ret = m_hg.stat_diff(sz_url_problem);
+			{
+				String filename = "stat_diff.csv";
+				String sz_path = prepare_path(sz_url_problem,null)+ filename;
+				File f_output = new File(dir_root_output, sz_path);
+				
 
-			getLogger().info("write to "+ f_output.getAbsolutePath());
-			//getLogger().info(ret);
-			ToolIO.pipeStringToFile(ret, f_output);
+				getLogger().info("write to "+ f_output.getAbsolutePath());
+				//getLogger().info(ret);
+				ToolIO.pipeStringToFile(ret, f_output);				
+			}
+			{
+				String filename = "stat_diff.csv";
+				File f_output = new File(dir_root_output, filename);
+				
+
+				getLogger().info("write to "+ f_output.getAbsolutePath());
+				//getLogger().info(ret);
+				ToolIO.pipeStringToFile(ret, f_output);				
+			}
 		}
 	}
 
