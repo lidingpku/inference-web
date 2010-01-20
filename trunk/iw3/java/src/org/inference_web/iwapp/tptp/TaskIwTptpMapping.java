@@ -12,9 +12,10 @@ public class TaskIwTptpMapping extends AgentIwTptp{
 	}
 
 	public static void run(){
+		String sz_seed = "http://inference-web.org/proofs/linked/";
 		String sz_url_root_input= "http://inference-web.org/proofs/linked";
 		
-		Set<String> set_problem = prepare_tptp_problems();
+		Set<String> set_problem = prepare_tptp_problems(sz_seed);
 		for (String problem: set_problem ){
 			
 			//skip ALG

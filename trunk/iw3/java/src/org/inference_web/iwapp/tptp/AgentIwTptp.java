@@ -288,8 +288,7 @@ public class AgentIwTptp {
 		return Logger.getLogger(AgentIwTptp.class);
 	}
 	
-	public static Set<String> prepare_tptp_problems(){
-		String sz_seed = "http://inference-web.org/proofs/tptp/Solutions/";
+	public static Set<String> prepare_tptp_problems(String sz_seed){
 		AgentCrawler crawler = new AgentCrawler();
 		crawler.init(sz_seed);
 		crawler.m_max_crawl_depth=1;

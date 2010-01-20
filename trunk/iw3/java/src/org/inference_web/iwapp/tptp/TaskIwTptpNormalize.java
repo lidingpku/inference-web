@@ -24,9 +24,10 @@ public class TaskIwTptpNormalize extends AgentIwTptp{
 	}
 	
 	public static void run(){
+		String sz_seed = "http://inference-web.org/proofs/tptp/Solutions/";
 		String sz_url_root_input= "http://inference-web.org/proofs/tptp/Solutions";
 		
-		Set<String> set_problem = prepare_tptp_problems();
+		Set<String> set_problem = prepare_tptp_problems(sz_seed);
 		for (String problem: set_problem ){
 			System.out.println("processing "+ problem);
 			run_norm(problem, sz_url_root_input);
