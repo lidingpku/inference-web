@@ -766,7 +766,6 @@ public class DataPmlHg {
 		}
 	}
 
-	
 	public DataSmartMap stat(Set<Resource> set_step){
 		DataSmartMap data= new DataSmartMap();
 		DataHyperGraph dhg = this.getHyperGraph(set_step);
@@ -837,6 +836,9 @@ public class DataPmlHg {
 		if (bStatGraph){
 			DataSmartMap data1 = this.getHyperGraph().get_data_summary(false);
 			data.copy(data1);
+
+			DataSmartMap data2 = stat(this.getSubHg());
+			data.copy(data2);
 		}else{
 			//just create an empty graph as place holder
 			DataSmartMap data1 = new DataHyperGraph().get_data_summary(false);
