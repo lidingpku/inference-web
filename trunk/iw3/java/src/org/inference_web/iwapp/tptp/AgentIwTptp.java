@@ -6,14 +6,18 @@ import java.util.Iterator;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
+import org.inference_web.pml.DataPmlHg;
 import org.inference_web.pml.ToolPml;
 
 import sw4j.rdf.load.RDFSYNTAX;
 import sw4j.rdf.util.ToolJena;
+import sw4j.util.DataPVHMap;
+import sw4j.util.DataSmartMap;
 import sw4j.util.Sw4jException;
 import sw4j.util.ToolIO;
 
 import com.hp.hpl.jena.rdf.model.Model;
+import com.hp.hpl.jena.rdf.model.Resource;
 
 public class AgentIwTptp {
 
@@ -94,7 +98,7 @@ public class AgentIwTptp {
 	}
 	
 	DataPmlHgTptp m_hg = new DataPmlHgTptp();
-
+	DataSmartMap m_hg_stat = new DataSmartMap();
 	
 	public void run_create_mappings(boolean bSave){
 		//HashSet<Resource> set_res_info_skip = new HashSet<Resource>();
@@ -103,19 +107,44 @@ public class AgentIwTptp {
 		//for (Model m: m_hg.getModels()){
 		//	set_res_info_skip.addAll(ToolPml.list_roots(m));
 		//}	
-
-		Model model_mappings = ToolPml.create_mappings(m_hg.getModels());
+		
+		DataPVHMap<String,Resource> eqmap = ToolPml.create_mappings(m_hg.getModels());
+		
+		getLogger().info("create mappings ... ");
+		Model model_mappings = ToolJena.create_sameas(eqmap.values());
+		
+		
 		if (bSave){
+			getLogger().info("save mappings ...");
+
 			String filename = "mappings.owl";
-			
 			String sz_ns = sz_url_problem +filename+"#";
-			Model model_allsame = ToolJena.create_allsame(model_mappings, sz_ns); 
-			
+
 			String sz_path = prepare_path(sz_url_problem,null)+ filename;
 			File f_output_mappings = new File(dir_root_output, sz_path);
 			
+			Model model_allsame = ToolJena.create_allsame(eqmap.values(), sz_ns); 
+
 			ToolJena.update_copy(model_allsame, model_mappings);
 			ToolJena.printModelToFile(model_allsame, RDFSYNTAX.RDFXML, f_output_mappings,false);
+
+			int count_shared =0;
+			int sum_shared =0;
+			int max_shared =0;
+			for(Set<Resource> set_res: eqmap.values()){
+				if (set_res.size()>1){
+					count_shared++;
+					sum_shared+=set_res.size();
+					max_shared = Math.max(set_res.size(), max_shared);
+				}
+			}
+			
+			m_hg_stat.put("info[occurence]", eqmap.getValues().size());
+			m_hg_stat.put("vertex[unique]", eqmap.keySet().size());
+			m_hg_stat.put("vertex(shared by info)", count_shared);
+			m_hg_stat.put("vertex(shared by info)[max]", max_shared);
+			m_hg_stat.put("vertex(shared by info)[avg]", 100*sum_shared/count_shared/100.0);
+			m_hg_stat.put("triple(sameas)", model_mappings.size());
 			
 		}
 		this.m_hg.add_mapping(model_mappings);
@@ -129,7 +158,10 @@ public class AgentIwTptp {
 			//String sz_path = prepare_path(sz_url_problem,null)+ filename;
 			File f_output = new File(dir_root_output, filename);
 
-			String ret = m_hg.stat_all(sz_url_problem, !f_output.exists());
+			DataSmartMap data = m_hg.stat_all(sz_url_problem);
+			m_hg_stat.copy(data);
+
+			String ret = DataPmlHg.print_csv(m_hg_stat, !f_output.exists());
 
 			getLogger().info("write to "+ f_output.getAbsolutePath());
 			//getLogger().info(ret);
@@ -167,7 +199,7 @@ public class AgentIwTptp {
 
 	public void run_load_data(){
 		for (String sz_url_pml: set_url_pml){
-			getLogger().info("loading..."+ sz_url_pml);
+		//	getLogger().info("loading..."+ sz_url_pml);
 			m_hg.add_data(sz_url_pml, null);
 			
 			//record skipped files
@@ -241,8 +273,10 @@ public class AgentIwTptp {
 			String url = iter.next();
 			
 			//filter non solutions
-			if (!url.endsWith("answer.owl"))
+			if (!url.endsWith("answer.owl")){
+				getLogger().info("removed "+url);
 				iter.remove();
+			}
 		}
 		
 		getLogger().info(crawler.m_results.size());

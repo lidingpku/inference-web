@@ -35,7 +35,6 @@ import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.Statement;
-import com.hp.hpl.jena.vocabulary.OWL;
 import com.hp.hpl.jena.vocabulary.RDF;
 
 public class ToolPml {
@@ -198,7 +197,7 @@ public class ToolPml {
 	private static Model load(String sz_url, Map<String, Model> map_url_model){
 		Model m = map_url_model.get(sz_url);
 		if (null==m){
-			getLogger().info("load " + sz_url);
+			//getLogger().info("load " + sz_url);
 			AgentModelLoader loader = new AgentModelLoader(sz_url);
 			m=loader.getModelData();
 			if (null!=m)
@@ -644,36 +643,27 @@ public class ToolPml {
 		return create_mappings(m);
 	}
 
-	public static Model create_mappings(Collection<Model> models){
+	public static DataPVHMap<String,Resource> create_mappings(Collection<Model> models){
 		DataPVHMap<String,Resource> map_norm_info = new DataPVHMap<String,Resource>();
 		for (Model model: models){
-			for (Resource res_info: model.listSubjectsWithProperty(RDF.type, PMLP.Information).toSet()){
+			//we should only consider Information as conclusion of nodeset, other instances of information should be skipped
+			//for (Resource res_info: model.listSubjectsWithProperty(RDF.type, PMLP.Information).toSet()){
+			for (RDFNode info: listInfoOutput(model)){
+				Resource res_info =(Resource) info;
 				DataPmlInfo dpi = new DataPmlInfo(res_info, model);
 				map_norm_info.add(dpi.getNormalizedString(), res_info);
 			}
 		}
-				
 		
-		// create mappings
-		Model model_mappings = ModelFactory.createDefaultModel();
-		for (String norm: map_norm_info.keySet()){
-			Set<Resource> set_info = map_norm_info.getValuesAsSet(norm);
-			Resource res_info_root = null;
-			for (Resource res_info: set_info){
-				
-				if (null==res_info_root)
-					res_info_root = res_info;
-				else{
-				/*	if (!ToolSafe.isEmpty(set_res_info_skip)){
-						if (set_res_info_skip.contains(res_info_root)&&set_res_info_skip.contains(res_info))
-							continue;
-					}
-				*/
-					model_mappings.add(model_mappings.createStatement(res_info_root, OWL.sameAs, res_info));
-				}
-			}
-		}
+		return map_norm_info;
+		
+	}
 	
-		return model_mappings;
+	public static Set<RDFNode> listInfoOutput(Model m){
+		return m.listObjectsOfProperty(PMLJ.hasConclusion).toSet();
+	}
+
+	public static Set<Resource> listStep(Model m) {
+		return m.listSubjectsWithProperty(RDF.type,PMLJ.InferenceStep).toSet();
 	}
 }

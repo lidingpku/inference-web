@@ -8,7 +8,7 @@ import sw4j.util.ToolString;
 
 public class TaskIwTptpMapping extends AgentIwTptp{
 	public static void main(String[] argv){
-		run();
+		run_cat();
 	}
 
 	public static void run(){
@@ -26,6 +26,7 @@ public class TaskIwTptpMapping extends AgentIwTptp{
 			 "http://inference-web.org/proofs/linked/PUZ/",
 			 "http://inference-web.org/proofs/linked/SEU/",
 			 "http://inference-web.org/proofs/linked/NUM/",
+			 "http://inference-web.org/proofs/linked/SWC/",
 		};
 		String sz_url_root_input= "http://inference-web.org/proofs/linked";
 
@@ -39,7 +40,7 @@ public class TaskIwTptpMapping extends AgentIwTptp{
 	}
 	
 	public static void run_test(){
-		String sz_url_problem = "http://inference-web.org/proofs/linked/PUZ/PUZ015-2.006/";
+		String sz_url_problem = "http://inference-web.org/proofs/linked/PUZ/PUZ001-1/";
 		String sz_url_root_input= "http://inference-web.org/proofs/linked";
 		
 		run_mapping(sz_url_problem, sz_url_root_input);

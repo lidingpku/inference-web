@@ -85,8 +85,8 @@ public class DataPmlHg {
 			m_model_all = ToolJena.create_copy(this.m_context_model_data.values());
 
 			//update vertex group
-			for(Resource info: m_model_all.listSubjectsWithProperty(RDF.type,PMLP.Information).toSet())
-				m_map_res_vertex.addObject(info);
+			for(RDFNode info: ToolPml.listInfoOutput(m_model_all))
+				m_map_res_vertex.addObject((Resource)info);
 			
 			m_map_res_vertex.normalize();
 		}
@@ -127,14 +127,15 @@ public class DataPmlHg {
 		if (null!=m_dhg)
 			return m_dhg;
 		
-		getModelAll(false);
-		
-		for (Resource info: getModelAll(false).listSubjectsWithProperty(RDF.type, PMLP.Information).toSet()){
-			m_map_res_vertex.addObject(info);
+		/*
+		 already done by getModelAll()
+		 
+		for (RDFNode info: ToolPml.listInfoOutput(getModelAll(false))){
+			m_map_res_vertex.addObject((Resource) info);
 		}
 		
 		m_map_res_vertex.normalize();
-		
+		*/
 		m_dhg = new DataHyperGraph();
 		for (Resource res_step: getModelAll(false).listSubjectsWithProperty(RDF.type, PMLJ.InferenceStep).toSet()){
 			DataHyperEdge edge = createHyperEdge(getModelAll(false), res_step, m_map_res_vertex);
@@ -397,7 +398,7 @@ public class DataPmlHg {
 
 				ret_optimal += String.format(" \"%s\" ;\n",label_edge);	
 			}
-			String label=this.stat(set_res_edge_optimal, set_res_edge_original).toString();
+			String label=this.stat(set_res_edge_optimal, set_res_edge_original,false).toString();
 
 			//insert change line
 			int pos = label.indexOf(",",label.length()/2)+1;
@@ -633,9 +634,7 @@ public class DataPmlHg {
 	public static String STAT_WEIGHT_SAVING = "weight[saving]";
 	
 	public static String STAT_STEP = "step";
-	public static String STAT_STEP_NEW = "step[new]";
 	public static String STAT_STEP_SAVING = "step[saving]";
-
 
 	public static String STAT_STEP_AXIOM = "step(axiom)";
 	public static String STAT_STEP_AXIOM_SAVING = "step(axiom)[saving]";
@@ -643,8 +642,17 @@ public class DataPmlHg {
 	public static String STAT_STEP_LEAF = "step(leaf)";
 	public static String STAT_STEP_LEAF_SAVING = "step(leaf)[saving]";
 
+	public static String STAT_STEP_UNION = "step[union]";
+	public static String STAT_STEP_INTERSECTION = "step[intersection]";
+	public static String STAT_STEP_NEW = "step[new]";
+	public static String STAT_STEP_AXIOM_UNION = "step(axiom)[union]";
+	public static String STAT_STEP_AXIOM_INTERSECTION = "step(axiom)[intersection]";
+	public static String STAT_STEP_AXIOM_NEW = "step(axiom)[new]";
+	public static String STAT_STEP_LEAF_UNION = "step(leaf)[union]";
+	public static String STAT_STEP_LEAF_INTERSECTION = "step(leaf)[intersection]";
+	public static String STAT_STEP_LEAF_NEW = "step(leaf)[new]";
+	
 	public static String STAT_FORMULA = "formula";
-	public static String STAT_FORMULA_NEW = "formula[new]";
 
 	public static String STAT_FORMULA_AXIOM = "formula(axiom)";
 	public static String STAT_FORMULA_AXIOM_SAVING = "formula(axiom)[saving]";
@@ -654,16 +662,21 @@ public class DataPmlHg {
 	
 	public static String STAT_FORMULA_UNION = "formula[union]";
 	public static String STAT_FORMULA_INTERSECTION = "formula[intersection]";
-	
+	public static String STAT_FORMULA_NEW = "formula[new]";
 	public static String STAT_FORMULA_AXIOM_UNION = "formula(axiom)[union]";
 	public static String STAT_FORMULA_AXIOM_INTERSECTION = "formula(axiom)[intersection]";
+	public static String STAT_FORMULA_AXIOM_NEW = "formula(axiom)[new]";
 	public static String STAT_FORMULA_LEAF_UNION = "formula(leaf)[union]";
 	public static String STAT_FORMULA_LEAF_INTERSECTION = "formula(leaf)[intersection]";
+	public static String STAT_FORMULA_LEAF_NEW = "formula(leaf)[new]";
 	
 	public static String STAT_RULE= "rule";
 	public static String STAT_RULE_NEW = "rule[new]";
+	
+	public static String STAT_RULE_UNION = "rule[union]";
+	public static String STAT_RULE_INTERSECTION = "rule[intersection]";
 
-	public DataSmartMap stat(Set<Resource> set_step_improved, Set<Resource> set_step_original){
+	public DataSmartMap stat(Set<Resource> set_step_improved, Set<Resource> set_step_original, boolean bDetail){
 		DataSmartMap data= new DataSmartMap();
 		DataHyperGraph g_improved = this.getHyperGraph(set_step_improved);
 		DataHyperGraph g_original = this.getHyperGraph(set_step_original);
@@ -671,15 +684,19 @@ public class DataPmlHg {
 		DataSmartMap data1= stat(set_step_improved);
 		data.copy(data1);
 
-		Set<Integer> set_formular_new = g_improved.getVertices();
-		set_formular_new.removeAll(g_original.getVertices());
-		data.put(STAT_FORMULA_NEW, set_formular_new.size());
-		
 		data.put(STAT_STEP_SAVING, set_step_original.size() -  set_step_improved.size());
+		// FORMULA saving has the same value
 
-		Set<DataHyperEdge> set_step_new = g_improved.getEdges();
-		set_step_new.removeAll(g_original.getEdges());
-		data.put(STAT_STEP_NEW, set_step_new.size());
+		if (bDetail)
+			stat_set(g_improved.getVertices(),g_original.getVertices(),STAT_FORMULA_UNION, STAT_FORMULA_INTERSECTION, STAT_FORMULA_NEW, data);		
+		else
+			stat_set(g_improved.getVertices(),g_original.getVertices(),null, null, STAT_FORMULA_NEW, data);
+
+		if (bDetail)
+			stat_set(g_improved.getEdges(),g_original.getEdges(),STAT_STEP_UNION, STAT_STEP_INTERSECTION, STAT_STEP_NEW, data);		
+		else
+			stat_set(g_improved.getEdges(),g_original.getEdges(),null, null, STAT_STEP_NEW, data);
+
 
 		Set<RDFNode> set_res_rule_improved = new HashSet<RDFNode>();
 		Set<RDFNode> set_res_rule_original = new HashSet<RDFNode>();
@@ -691,67 +708,59 @@ public class DataPmlHg {
 				set_res_rule_original.add(stmt.getObject());
 		}
 
-		set_step_improved.removeAll(set_step_original);
-		data.put(STAT_RULE_NEW, set_step_improved.size());
+		if (bDetail)
+			stat_set(set_res_rule_improved,set_res_rule_original,STAT_RULE_UNION, STAT_RULE_INTERSECTION, STAT_RULE_NEW, data);		
+		else
+			stat_set(set_res_rule_improved,set_res_rule_original,null, null, STAT_RULE_NEW, data);
 
+		if (bDetail){
+			Set<Integer> leaf_vertices_improved  = new HashSet<Integer>();
+			Set<DataHyperEdge> leaf_edges_improved = new HashSet<DataHyperEdge>();
+			Set<Integer> axiom_vertices_improved  = new HashSet<Integer>();
+			Set<DataHyperEdge> axiom_edges_improved = new HashSet<DataHyperEdge>();
+			
+			count_leaf(set_step_improved, leaf_vertices_improved,leaf_edges_improved,axiom_vertices_improved,axiom_edges_improved);
+
+			Set<Integer> leaf_vertices_original  = new HashSet<Integer>();
+			Set<DataHyperEdge> leaf_edges_original = new HashSet<DataHyperEdge>();
+			Set<Integer> axiom_vertices_original  = new HashSet<Integer>();
+			Set<DataHyperEdge> axiom_edges_original = new HashSet<DataHyperEdge>();
+			
+			count_leaf(set_step_original, leaf_vertices_original,leaf_edges_original,axiom_vertices_original,axiom_edges_original);
+
+			stat_set(leaf_vertices_improved,leaf_vertices_original, STAT_FORMULA_LEAF_UNION, STAT_FORMULA_LEAF_INTERSECTION, STAT_FORMULA_LEAF_NEW, data);		
+			stat_set(leaf_edges_improved,leaf_edges_original, STAT_STEP_LEAF_UNION, STAT_STEP_LEAF_INTERSECTION, STAT_STEP_LEAF_NEW, data);		
+			stat_set(axiom_vertices_improved,axiom_vertices_original, STAT_FORMULA_AXIOM_UNION, STAT_FORMULA_AXIOM_INTERSECTION, STAT_FORMULA_AXIOM_NEW, data);		
+			stat_set(axiom_edges_improved,axiom_edges_original, STAT_STEP_AXIOM_UNION, STAT_STEP_AXIOM_INTERSECTION, STAT_STEP_AXIOM_NEW, data);		
+		}
 		
 		return data;
 	}
-
-	public DataSmartMap stat_diff(Set<Resource> set_step_improved, Set<Resource> set_step_original){
-		DataSmartMap data= new DataSmartMap();
-		DataHyperGraph g_improved = this.getHyperGraph(set_step_improved);
-		DataHyperGraph g_original = this.getHyperGraph(set_step_original);
-		
-		DataSmartMap data1= stat(set_step_improved, set_step_original);
-		data.copy(data1);
-
-		Set<Integer> set_formula_union = g_improved.getVertices();
-		set_formula_union.addAll(g_original.getVertices());
-		data.put(STAT_FORMULA_UNION, set_formula_union.size());
-
-		Set<Integer> set_formula_intersetion= g_improved.getVertices();
-		set_formula_intersetion.retainAll(g_original.getVertices());
-		data.put(STAT_FORMULA_INTERSECTION, set_formula_intersetion.size());
-
-		Set<Integer> leaf_vertices_improved  = new HashSet<Integer>();
-		Set<DataHyperEdge> leaf_edges_improved = new HashSet<DataHyperEdge>();
-		Set<Integer> axiom_vertices_improved  = new HashSet<Integer>();
-		Set<DataHyperEdge> axiom_edges_improved = new HashSet<DataHyperEdge>();
-		
-		count_leaf(set_step_improved, leaf_vertices_improved,leaf_edges_improved,axiom_vertices_improved,axiom_edges_improved);
-
-		Set<Integer> leaf_vertices_original  = new HashSet<Integer>();
-		Set<DataHyperEdge> leaf_edges_original = new HashSet<DataHyperEdge>();
-		Set<Integer> axiom_vertices_original  = new HashSet<Integer>();
-		Set<DataHyperEdge> axiom_edges_original = new HashSet<DataHyperEdge>();
-		
-		count_leaf(set_step_original, leaf_vertices_original,leaf_edges_original,axiom_vertices_original,axiom_edges_original);
-		
-		{
-			Set<Integer> set_formula_axiom_union = new  HashSet<Integer>();
-			set_formula_axiom_union.addAll(axiom_vertices_improved);
-			set_formula_axiom_union.addAll(axiom_vertices_original);
-			data.put(STAT_FORMULA_AXIOM_UNION, set_formula_axiom_union.size());
 	
-			Set<Integer> set_formula_axiom_intersetion=  new  HashSet<Integer>();
-			set_formula_axiom_intersetion.addAll(axiom_vertices_improved);
-			set_formula_axiom_intersetion.retainAll(axiom_vertices_original);
-			data.put(STAT_FORMULA_AXIOM_INTERSECTION, set_formula_axiom_intersetion.size());
-		}
-		{
-			Set<Integer> set_formula_leaf_union = new  HashSet<Integer>();
-			set_formula_leaf_union.addAll(leaf_vertices_improved);
-			set_formula_leaf_union.addAll(leaf_vertices_original);
-			data.put(STAT_FORMULA_LEAF_UNION, set_formula_leaf_union.size());
 	
-			Set<Integer> set_formula_leaf_intersetion=  new  HashSet<Integer>();
-			set_formula_leaf_intersetion.addAll(leaf_vertices_improved);
-			set_formula_leaf_intersetion.retainAll(leaf_vertices_original);
-			data.put(STAT_FORMULA_LEAF_INTERSECTION, set_formula_leaf_intersetion.size());
+	@SuppressWarnings("unchecked")
+	private static void stat_set(Set set_new, Set set_original, String field_union, String field_intersect, String field_diff, DataSmartMap data){
+
+		if (!ToolSafe.isEmpty(field_union)){
+			Set set_union = new HashSet();
+			set_union.addAll(set_new);
+			set_union.addAll(set_original);
+			data.put(field_union,set_union.size());
 		}
 		
-		return data;
+		if (!ToolSafe.isEmpty(field_intersect)){
+			Set set_interset=  new HashSet();
+			set_interset.addAll(set_new);
+			set_interset.retainAll(set_original);
+			data.put(field_intersect,set_interset.size());
+		}
+		
+		if (!ToolSafe.isEmpty(field_diff)){
+			Set set_diff=  new HashSet();
+			set_diff.addAll(set_new);
+			set_diff.removeAll(set_original);
+			data.put(field_diff,set_diff.size());
+		}
 	}
 
 	
@@ -795,6 +804,7 @@ public class DataPmlHg {
 			if (!edge.isLeaf())
 				continue;
 			
+			
 			leaf_edges.add(edge);
 			leaf_vertices.add(edge.getOutput());
 			
@@ -807,25 +817,27 @@ public class DataPmlHg {
 		}
 	}
 	
-	public String stat_all(String problem, boolean bHeader){
-		String ret ="";
+	public DataSmartMap stat_all(String problem){
 		
-		Set<Resource> set_step = this.getSubHg();
-		DataSmartMap data= stat(set_step);
+		DataSmartMap data= new DataSmartMap();
 		
 		data.put("problem",problem);
 		stat_url_param(problem,"p", data);
 		
-		DataSmartMap data1 = this.m_dhg.get_data_summary(false);
+		DataSmartMap data1 = this.getHyperGraph().get_data_summary(false);
 		data.copy(data1);
 		
 		//stat triples
-		int sum= 0;
-		for (Model m: this.m_context_model_data.values()){
-			sum+=m.size();
-		}
-		data.put("triples", sum);
-
+		data.put("triple(proof)", this.getModelAll(false).size());
+		
+		//count steps
+		data.put("step[occurence]", ToolPml.listStep(this.getModelAll(false)).size());
+		
+		return data;
+	}
+	
+	public static String print_csv(DataSmartMap data, boolean bHeader){
+		String ret ="";
 		if (bHeader){
 			if (ret.length()==0){
 				ret += data.toCSVheader();
@@ -850,16 +862,9 @@ public class DataPmlHg {
 
 			stat_url_param(sz_context.substring(problem.length()),"s", data);
 
-			data.put("triples", entry.getValue().size());
+			data.put("triple", entry.getValue().size());
 
-			if (bHeader){
-				if (ret.length()==0){
-					ret += data.toCSVheader();
-					ret += "\n";
-				}
-			}
-			ret += data.toCSVrow();
-			ret += "\n";
+			ret+= print_csv(data,ret.length()==0);
 		}
 		return ret;
 	}
@@ -871,7 +876,7 @@ public class DataPmlHg {
 			for (String sz_context2: this.m_context_model_data.keySet()){
 				if (sz_context1.equals(sz_context2))
 					continue;
-				DataSmartMap data= stat_diff(this.getSubHg(sz_context1),this.getSubHg(sz_context2));
+				DataSmartMap data= stat(this.getSubHg(sz_context1),this.getSubHg(sz_context2), true);
 				
 				data.put("problem",problem);
 				stat_url_param(problem,"p", data);
@@ -879,12 +884,7 @@ public class DataPmlHg {
 				stat_url_param(sz_context1.substring(problem.length()),"s1", data);
 				stat_url_param(sz_context2.substring(problem.length()),"s2", data);
 
-				if (ret.length()==0){
-					ret += data.toCSVheader();
-					ret += "\n";
-				}
-				ret += data.toCSVrow();
-				ret += "\n";
+				ret+= print_csv(data,ret.length()==0);
 			}
 		}
 		return ret;
