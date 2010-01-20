@@ -183,6 +183,22 @@ public class AgentIwTptp {
 		
 		if (!bStatGraph){
 			getLogger().info("skipped very large linked proofs");
+
+			String filename = "skipped-problem-stat.csv";
+			//String sz_path = prepare_path(sz_url_problem,null)+ filename;
+			File f_output = new File(dir_root_output, filename);
+
+
+			String ret = sz_url_problem+"\n";
+
+			getLogger().info("write to "+ f_output.getAbsolutePath());
+			//getLogger().info(ret);
+			try {
+				ToolIO.pipeStringToFile(ret, f_output, false, true);
+			} catch (Sw4jException e) {
+				e.printStackTrace();
+			}
+
 			return;
 		}
 		
