@@ -12,7 +12,7 @@ public class TaskIwTptpMapping extends AgentIwTptp{
 	}
 
 	public static void run(){
-		String sz_url_root_input= "http://inference-web.org/proofs/tptp/Solutions";
+		String sz_url_root_input= "http://inference-web.org/proofs/linked";
 		
 		Set<String> set_problem = prepare_tptp_problems();
 		for (String problem: set_problem ){
