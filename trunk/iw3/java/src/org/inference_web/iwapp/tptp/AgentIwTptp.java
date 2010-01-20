@@ -153,7 +153,8 @@ public class AgentIwTptp {
 	
 	public void run_create_stats(){
 		{
-			
+			getLogger().info("create  stat_all.csv ...");
+
 			String filename = "stat_all.csv";
 			//String sz_path = prepare_path(sz_url_problem,null)+ filename;
 			File f_output = new File(dir_root_output, filename);
@@ -173,6 +174,7 @@ public class AgentIwTptp {
 		}
 		
 		{
+			getLogger().info("create  stat_one.csv ...");
 			String filename = "stat_one.csv";
 			String sz_path = prepare_path(sz_url_problem,null)+ filename;
 			File f_output = new File(dir_root_output, sz_path);
@@ -185,6 +187,7 @@ public class AgentIwTptp {
 		}
 		
 		{
+			getLogger().info("create  stat_diff.csv ...");
 			String filename = "stat_diff.csv";
 			String sz_path = prepare_path(sz_url_problem,null)+ filename;
 			File f_output = new File(dir_root_output, sz_path);
@@ -198,6 +201,7 @@ public class AgentIwTptp {
 	}
 
 	public void run_load_data(){
+		getLogger().info("run_load_data ...");
 		for (String sz_url_pml: set_url_pml){
 		//	getLogger().info("loading..."+ sz_url_pml);
 			m_hg.add_data(sz_url_pml, null);
