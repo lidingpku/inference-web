@@ -82,10 +82,13 @@ public class DataPmlHg {
 	public Model getModelAll(boolean bNeedIndex) {
 		//merge all models
 		if (null==m_model_all){
+			
 			getLogger().info("getModelAll ...");
 			
 			m_model_all = ToolJena.create_copy(this.m_context_model_data.values());
 
+			getLogger().info("getModelAll: size = "+m_model_all.size());
+			
 			//update vertex group
 			for(RDFNode info: ToolPml.listInfoOutput(m_model_all))
 				m_map_res_vertex.addObject((Resource)info);

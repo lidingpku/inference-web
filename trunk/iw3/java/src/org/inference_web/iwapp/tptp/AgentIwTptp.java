@@ -157,7 +157,7 @@ public class AgentIwTptp {
 	public void run_create_stats(){
 		//skip linked proofs with over 10000 info occurrence
 		int total_node= Integer.parseInt(m_hg_stat.getAsString("info[occurence]"));
-		getLogger().info("processing model all: size="+  m_hg.getModelAll(false).size()+", info[occurence]="+ total_node);
+		getLogger().info("processing run_create_stats: info[occurence]="+ total_node);
 		boolean bStatGraph = (total_node <10000);
 		
 		{
@@ -167,7 +167,7 @@ public class AgentIwTptp {
 			//String sz_path = prepare_path(sz_url_problem,null)+ filename;
 			File f_output = new File(dir_root_output, filename);
 
-			DataSmartMap data = m_hg.stat_all(sz_url_problem,bStatGraph);
+			DataSmartMap data = m_hg.stat_all(sz_url_problem, bStatGraph);
 			m_hg_stat.copy(data);
 
 			String ret = DataPmlHg.print_csv(m_hg_stat, !f_output.exists());
