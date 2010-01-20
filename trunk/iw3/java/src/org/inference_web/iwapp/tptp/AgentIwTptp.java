@@ -215,13 +215,19 @@ public class AgentIwTptp {
 				//getLogger().info(ret);
 				ToolIO.pipeStringToFile(ret, f_output);
 			}
+			//write big file
 			{
 				String filename = "stat_one.csv";
 				File f_output = new File(dir_root_output, filename);
 	
 				getLogger().info("write to "+ f_output.getAbsolutePath());
 				//getLogger().info(ret);
-				ToolIO.pipeStringToFile(ret, f_output);
+				try {
+					ToolIO.pipeStringToFile(ret, f_output, false, true);
+				} catch (Sw4jException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}
 		
@@ -238,6 +244,8 @@ public class AgentIwTptp {
 				//getLogger().info(ret);
 				ToolIO.pipeStringToFile(ret, f_output);				
 			}
+			
+			//write big file
 			{
 				String filename = "stat_diff.csv";
 				File f_output = new File(dir_root_output, filename);
@@ -245,7 +253,12 @@ public class AgentIwTptp {
 
 				getLogger().info("write to "+ f_output.getAbsolutePath());
 				//getLogger().info(ret);
-				ToolIO.pipeStringToFile(ret, f_output);				
+				try {
+					ToolIO.pipeStringToFile(ret, f_output, false, true);
+				} catch (Sw4jException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}				
 			}
 		}
 	}
