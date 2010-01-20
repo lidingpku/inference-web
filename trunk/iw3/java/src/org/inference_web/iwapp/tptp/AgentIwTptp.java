@@ -143,7 +143,10 @@ public class AgentIwTptp {
 			m_hg_stat.put("vertex[unique]", eqmap.keySet().size());
 			m_hg_stat.put("vertex(shared by info)", count_shared);
 			m_hg_stat.put("vertex(shared by info)[max]", max_shared);
-			m_hg_stat.put("vertex(shared by info)[avg]", 100*sum_shared/count_shared/100.0);
+			if (count_shared>0)
+				m_hg_stat.put("vertex(shared by info)[avg]", 100*sum_shared/count_shared/100.0);
+			else
+				m_hg_stat.put("vertex(shared by info)[avg]", 0);
 			m_hg_stat.put("triple(sameas)", model_mappings.size());
 			
 		}
