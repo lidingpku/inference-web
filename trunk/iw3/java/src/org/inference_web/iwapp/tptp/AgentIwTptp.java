@@ -156,9 +156,9 @@ public class AgentIwTptp {
 	
 	public void run_create_stats(){
 		//skip linked proofs with over 10000 info occurrence
-		boolean bStatGraph = m_hg.getModelAll(false).size()>10000;
-		getLogger().info("processing model all: size="+  m_hg.getModelAll(false).size());
-
+		int total_node= Integer.parseInt(m_hg_stat.getAsString("info[occurence]"));
+		getLogger().info("processing model all: size="+  m_hg.getModelAll(false).size()+", info[occurence]="+ total_node);
+		boolean bStatGraph = (total_node <10000);
 		
 		{
 			getLogger().info("create  stat_all.csv ...");
@@ -182,7 +182,7 @@ public class AgentIwTptp {
 		}
 		
 		if (!bStatGraph){
-			getLogger().info("skipped linked proofs: size="+  m_hg.getModelAll(false).size());
+			getLogger().info("skipped very large linked proofs");
 			return;
 		}
 		
