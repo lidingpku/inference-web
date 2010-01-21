@@ -62,7 +62,8 @@ public class TaskIwTptpMapping extends AgentIwTptp{
 		task.run_create_mappings(true);
 		
 		//generate statistics
-		task.run_create_stats();
+		task.run_create_stats_global("all");
+		task.run_create_stats_problem();
 
 		System.gc();
 		System.out.println( ToolString.formatXMLDateTime()+" free memory: "+Runtime.getRuntime().freeMemory());		

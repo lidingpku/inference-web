@@ -156,16 +156,15 @@ public class AgentIwTptp {
 	}
 	
 	
-	public void run_create_stats(){
+	public void run_create_stats_global(String cat){
 		//skip linked proofs with over 10000 info occurrence
 		int total_node= Integer.parseInt(m_hg_stat.getAsString("info[occurence]"));
-		getLogger().info("processing run_create_stats: info[occurence]="+ total_node);
+		getLogger().info("processing run_create_stats_global: info[occurence]="+ total_node);
 		boolean bStatGraph = (total_node <10000);
 		
 		{
-			getLogger().info("create  stat_all.csv ...");
 
-			String filename = "stat_all.csv";
+			String filename = String.format("stat_%s.csv",cat);
 			//String sz_path = prepare_path(sz_url_problem,null)+ filename;
 			File f_output = new File(dir_root_output, filename);
 
@@ -186,7 +185,7 @@ public class AgentIwTptp {
 		if (!bStatGraph){
 			getLogger().info("skipped very large linked proofs");
 
-			String filename = "skipped-problem-stat.csv";
+			String filename = String.format("skipped-problem-stat_%s.csv",cat);
 			//String sz_path = prepare_path(sz_url_problem,null)+ filename;
 			File f_output = new File(dir_root_output, filename);
 
@@ -201,6 +200,17 @@ public class AgentIwTptp {
 				e.printStackTrace();
 			}
 
+			return;
+		}
+		
+	}
+	
+	public void run_create_stats_problem(){
+		getLogger().info("processing run_create_stats_problem");
+		
+		int total_node= Integer.parseInt(m_hg_stat.getAsString("info[occurence]"));
+		boolean bStatGraph = (total_node <10000);
+		if (!bStatGraph){
 			return;
 		}
 		

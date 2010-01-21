@@ -67,7 +67,8 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 		return set_problem;
 	}
 	
-	public static void run_improve(){		
+	public static void run_improve(){	
+		gbPlotDot = false;
 		Set<String> set_problem =prepareProblemByCategory();
 		
 		for (String problem: set_problem ){
@@ -159,6 +160,8 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 		try {
 			run_load_data();
 			run_plot_original();
+			run_create_mappings(true);
+			run_create_stats_global("selection");
 			run_combine();
 			run_improve(CONTEXT_IMPROVE_SELF, DataPmlHg.OPTION_WEIGHT_STEP);
 			run_improve(CONTEXT_IMPROVE_ROOT, DataPmlHg.OPTION_WEIGHT_STEP);
@@ -193,7 +196,6 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 	}
 	
 	public void run_combine() throws MalformedURLException{
-		run_create_mappings(false);
 		
 		//skip if no pml exists
 		if (this.set_url_pml.size()==0)
