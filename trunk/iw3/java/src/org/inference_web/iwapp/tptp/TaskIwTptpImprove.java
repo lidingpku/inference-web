@@ -72,7 +72,7 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 		Set<String> set_problem =prepareProblemByCategory();
 		
 		for (String problem: set_problem ){
-			TaskIwTptpImprove.run_improve(problem, getReasonersCurrent(), "complete");
+			TaskIwTptpImprove.run_improve(problem, null, "complete");
 		}		
 	}
 	
@@ -138,7 +138,10 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 		String sz_url_root_input= getRootUrl(problem);
 		
 		Set<String> solutions  =prepare_tptp_solutions(problem);
-		filterSolution(solutions, reasoners);
+
+		filterSolutionGeneral(solutions,reasoners);
+		
+		filterSolutionUnqiue(solutions);
 
 		TaskIwTptpImprove tpn = new TaskIwTptpImprove();
 		tpn.init(problem, sz_url_root_input, solutions, dir_root_output, sz_url_root_output);
@@ -375,8 +378,8 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 			}
 			m_hg.hg_set_weight(dhg, option_weight);
 
-			// stop after found 10000 solutions
-			alg.traverse(dhg,gid_root, 10000, -1, -1);
+			// stop after found 1000 solutions
+			alg.traverse(dhg,gid_root, 1000, -1, -1);
 			//plot
 
 			DataHyperGraph dhg_optimal =null;

@@ -1,8 +1,11 @@
 package org.inference_web.iwapp.tptp;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -429,7 +432,15 @@ public class AgentIwTptp {
 		return "";
 	}
 	
-	public static void filterSolution(Set<String> solutions, Set<String> reasoners){
+	public static String extractReasonerName(String reasoner){
+		return reasoner.substring(0,reasoner.indexOf("---"));
+	}
+	
+	public static void filterSolutionCurrent(Set<String> solutions){
+		filterSolutionGeneral(solutions,getReasonersCurrent());
+	}
+	
+	public static void filterSolutionGeneral(Set<String> solutions, Set<String> reasoners){
 		Iterator<String> iter = solutions.iterator();
 		while (iter.hasNext()){
 			String sz_solution=iter.next();
@@ -437,6 +448,47 @@ public class AgentIwTptp {
 			if (!ToolSafe.isEmpty(reasoners)&&!reasoners.contains(reasoner))
 				iter.remove();
 		}
+	}
+
+	public static void filterSolutionUnqiue(Set<String> solutions){
+		HashMap<String,String> map_name_reasoner = new HashMap<String,String>();
+		for(String reasoner: getReasonerList()){
+			String name = extractReasonerName(reasoner);
+			String value = map_name_reasoner.get(name);
+			if (null!=value)
+				continue;
+			
+			if (solutions.contains(reasoner))
+				map_name_reasoner.put(name,reasoner);
+		}
+	}
+	
+	public static List<String> getReasonerList(){
+		List<String> reasoners = new ArrayList<String>();
+
+		reasoners.add("VampireLT---10.0");
+		reasoners.add("Vampire---10.0"); 
+		reasoners.add("Vampire---9.0");
+		reasoners.add("SPASS---3.01"); 
+		reasoners.add("SOS---2.0"); 
+		reasoners.add("SNARK---20080805r005"); 
+		reasoners.add("SNARK---20070805r043"); 
+		reasoners.add("SInE---0.4"); 
+		reasoners.add("SInE---0.3"); 
+		reasoners.add("Otter---3.3");
+		reasoners.add("Metis---2.2"); 
+		reasoners.add("Metis---2.1"); 
+		reasoners.add("Faust---1.0"); 
+		reasoners.add("EQP---0.9e"); 
+		reasoners.add("EQP---0.9d"); 
+		reasoners.add("EP---1.1"); 
+		reasoners.add("EP---1.1pre"); 
+		reasoners.add("EP---1.0"); 
+		reasoners.add("EP---1.0pre"); 
+		reasoners.add("EP---0.999"); 
+		reasoners.add("Ayane---1.1"); 
+		return reasoners;
+
 	}
 }
 
