@@ -56,7 +56,7 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 	public static Set<String> prepareProblemByCategory(){
 		String [] ARY_CATEGORY = new String []{
 				"http://inference-web.org/proofs/linked/PUZ/",
-				"http://inference-web.org/proofs/linked/SEU/",
+			//	"http://inference-web.org/proofs/linked/SEU/",
 			};
 
 		Set<String> set_problem = new TreeSet<String>();

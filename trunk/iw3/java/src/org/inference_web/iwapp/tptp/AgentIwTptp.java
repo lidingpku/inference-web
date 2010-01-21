@@ -451,16 +451,25 @@ public class AgentIwTptp {
 	}
 
 	public static void filterSolutionUnqiue(Set<String> solutions){
-		HashMap<String,String> map_name_reasoner = new HashMap<String,String>();
+		HashMap<String,String> map_name_url = new HashMap<String,String>();
+		for (String sz_solution : solutions){
+			String reasoner = extractReasoner(sz_solution);
+			map_name_url.put(reasoner, sz_solution);
+		}
+		HashMap<String,String> map_name_solution = new HashMap<String,String>();
 		for(String reasoner: getReasonerList()){
 			String name = extractReasonerName(reasoner);
-			String value = map_name_reasoner.get(name);
+			String value = map_name_solution.get(name);
 			if (null!=value)
 				continue;
 			
-			if (solutions.contains(reasoner))
-				map_name_reasoner.put(name,reasoner);
+			String sz_solution = map_name_url.get(reasoner);
+			if (null!= sz_solution)
+				map_name_solution.put(name, sz_solution);
 		}
+		
+		solutions.retainAll(map_name_solution.values());
+		
 	}
 	
 	public static List<String> getReasonerList(){
