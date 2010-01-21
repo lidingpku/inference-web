@@ -375,7 +375,8 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 			}
 			m_hg.hg_set_weight(dhg, option_weight);
 
-			alg.traverse(dhg,gid_root);
+			// stop after found 10000 solutions
+			alg.traverse(dhg,gid_root, 10000, -1, -1);
 			//plot
 
 			DataHyperGraph dhg_optimal =null;
