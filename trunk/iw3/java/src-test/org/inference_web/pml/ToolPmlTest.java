@@ -7,7 +7,6 @@ import java.util.Set;
 
 import org.junit.Test;
 
-import sw4j.app.pml.PMLJ;
 import sw4j.app.pml.PMLR;
 import sw4j.rdf.util.ToolJena;
 import sw4j.util.DataQname;
@@ -86,14 +85,14 @@ public class ToolPmlTest {
 	}
 	
 	private void test_transitive_steps(Model model_data, Model model_all, String sz_cnt_step){
-		Set<Resource> set_root = ToolPml.list_roots(model_data);
+		Set<Resource> set_root = ToolPml.list_roots(model_data).keySet();
 		if (set_root.size()!=1){
 			fail("expect exactly one root");
 		}
 		Resource res_root = set_root.iterator().next();
 		
-		Resource res_root_step = ToolJena.getValueOfProperty(model_all, res_root, PMLJ.isConsequentOf, (Resource)null);  
-		Set<Resource> set_step = ToolPml.listStepDerivingInfoRecursive(model_all, res_root_step);
+		//Resource res_root_step = ToolJena.getValueOfProperty(model_all, res_root, PMLJ.isConsequentOf, (Resource)null);  
+		Set<Resource> set_step = ToolPml.listStepDerivingInfoRecursive(model_all, res_root, null);
 		if (!sz_cnt_step.equals(""+set_step.size())){
 			System.out.println(res_root);
 			fail(String.format("unexpect number of steps: found %d, expected %s",set_step.size(), sz_cnt_step));

@@ -38,15 +38,15 @@ import com.hp.hpl.jena.vocabulary.RDF;
 
 public class ToolPml {
 	
-	public static Set<Resource> list_roots(Model m){
+	public static HashMap<Resource,Resource> list_roots(Model m){
+		HashMap<Resource,Resource> map_info_ns = new HashMap<Resource,Resource>();
 		Set<Resource> set_ns = m.listSubjectsWithProperty(PMLJ.isConsequentOf).toSet();
 		set_ns.removeAll(m.listObjectsOfProperty(PMLDS.first).toSet());
-		Set<Resource> set_info = new HashSet<Resource>();
 		for(Resource res_ns: set_ns){
 			Resource res_info = ToolJena.getValueOfProperty(m, res_ns, PMLJ.hasConclusion, (Resource)null);
-			set_info.add(res_info);
+			map_info_ns.put(res_info, res_ns);
 		}
-		return set_info;
+		return map_info_ns;
 	}
 
 
@@ -89,13 +89,21 @@ public class ToolPml {
 		return ret;
 	}
 */
-	public static Set<Resource> listStepDerivingInfoRecursive(Model m, Resource res_info_root){
+	public static Set<Resource> listStepDerivingInfoRecursive(Model m, Resource res_info_root, Set<RDFNode> visited){
+		if (null==visited){
+			visited = new HashSet<RDFNode>();
+		}
 		//Set<Resource> set_step = m.listSubjectsWithProperty(RDF.type,PMLJ.InferenceStep).toSet();
 		Set<Resource> set_step_depends = new HashSet<Resource>();
 		for(Resource res_step_root: listStepDerivingInfo(res_info_root, m)){
+			visited.add(res_info_root);
+			
 			set_step_depends.add(res_step_root);
 			for (RDFNode node_input: listInfoInputOfStep(res_step_root, m) ){
-				set_step_depends.addAll(listStepDerivingInfoRecursive(m, (Resource)node_input));
+				//skip visited nodes
+				if (visited.contains(node_input))
+					continue;				
+				set_step_depends.addAll(listStepDerivingInfoRecursive(m, (Resource)node_input,visited));
 			}
 			
 /*TODO

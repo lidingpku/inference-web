@@ -4,9 +4,11 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeSet;
 
+import org.apache.log4j.Logger;
 import org.inference_web.pml.DataPmlHg;
 import org.inference_web.pml.ToolPml;
 
@@ -18,38 +20,46 @@ import sw4j.task.graph.AgentHyperGraphTraverse;
 import sw4j.task.graph.DataHyperEdge;
 import sw4j.task.graph.DataHyperGraph;
 import sw4j.util.DataSmartMap;
+import sw4j.util.Sw4jException;
+import sw4j.util.ToolIO;
 import sw4j.util.ToolSafe;
 import sw4j.util.ToolString;
 
 public class TaskIwTptpImprove extends AgentIwTptp {
+	static boolean gbPlotDot = true;
+	
 	public static void main(String[] argv){
-		run_test();
-		//run_improve_pair();
-		//run_improve_version_EP();
-		//run_improve_version_Metis();
-		//run_improve();
+		//String problem = "http://inference-web.org/proofs/linked/PUZ/PUZ001-1/";
+
+		//run_test();
+		//run_improve_pair(problem);
+		//run_improve(problem,getReasonersEP(),"version/EP");
+		//run_improve_version(problem,getReasonersMetis(),"Metis");
+		run_improve();
+	}
+	
+	public static void run_test(){
+		String problem =  "http://inference-web.org/proofs/linked/NUM/NUM390+1/";
+		
+		Set<String> reasoners = new HashSet<String>();
+		reasoners.add("EP---1.0");
+		reasoners.add("SInE---0.3");
+		TaskIwTptpImprove.run_improve(problem,reasoners,"test");
 	}
 	
 	public static void run_improve(){
+		//gbPlotDot = false;
 		//String sz_url_seed = "http://inference-web.org/proofs/linked/PUZ/PUZ001-1/";
 		String sz_url_seed = "http://inference-web.org/proofs/linked/PUZ/";
-		String sz_url_root_input= "http://inference-web.org/proofs/linked";
-		File dir_root_output = new File("www/proofs/linked-analysis/complete");
-		String sz_url_root_output = "http://inference-web.org/proofs/linked-analysis/complete";
 		
 		Set<String> set_problem = prepare_tptp_problems(sz_url_seed);
+		
 		for (String problem: set_problem ){
-			TaskIwTptpImprove tpn = new TaskIwTptpImprove();
-			tpn.init(problem, sz_url_root_input, dir_root_output, sz_url_root_output);
-			
-			//filter sz_url_pml
-			tpn.run();
+			TaskIwTptpImprove.run_improve(problem, null, "complete");
 		}		
 	}
 	
-
-	public static void run_improve_pair(){
-		Set<String> reasoners1 = new TreeSet<String>();
+	public static Set<String> getReasonersCurrent(){
 		Set<String> reasoners2 = new TreeSet<String>();
 		reasoners2.add("Ayane---1.1");
 	//	reasoners2.add("EP---0.999");	
@@ -65,97 +75,96 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 	//	reasoners2.add("SPASS---3.01");
 		reasoners2.add("Vampire---9.0");
 		
-		reasoners1.add("EP---1.1");
-		//reasoners1.add("Ayane---1.1");
-		
-		for (String reasoner1: reasoners1){
-			for (String reasoner2: reasoners2){
-				if (reasoner1.equals(reasoner2))
-					continue;
-				
-				//String sz_url_seed = "http://inference-web.org/proofs/linked/PUZ/PUZ001-1/";
-				String sz_url_seed = "http://inference-web.org/proofs/linked/PUZ/PUZ001-1/";
-				String sz_url_root_input= "http://inference-web.org/proofs/linked";
-				
-				String dir_name= reasoner1.substring(0,reasoner1.indexOf("---"))+"-"+reasoner2.substring(0,reasoner2.indexOf("---"));
-				
-				File dir_root_output = new File("www/proofs/linked-analysis/pair/"+dir_name);
-				String sz_url_root_output = "http://inference-web.org/proofs/linked-analysis/pair/"+dir_name;
-				Set<String> set_url_pml = new HashSet<String>();
-				set_url_pml.add("http://inference-web.org/proofs/linked/PUZ/PUZ001-1/"+reasoner1+"/answer.owl"); 
-				set_url_pml.add("http://inference-web.org/proofs/linked/PUZ/PUZ001-1/"+reasoner2+"/answer.owl"); 
-				
-				TaskIwTptpImprove tpn = new TaskIwTptpImprove();
-				tpn.init(sz_url_seed, sz_url_root_input, set_url_pml, dir_root_output, sz_url_root_output);
-				tpn.run();
-				
-			}			
-		}
+		return reasoners2;
 	}
-
-	public static void run_improve_version_EP(){
+	
+	public static Set<String> getReasonersEP(){
 		Set<String> reasoners2 = new TreeSet<String>();
 		reasoners2.add("EP---0.999");	
 		reasoners2.add("EP---1.0");
 		reasoners2.add("EP---1.1");
 		reasoners2.add("EP---1.1pre");
-
-		//reasoners2.add("Metis---2.1");
-		//reasoners2.add("Metis---2.2");
 		
-		
-		//String sz_url_seed = "http://inference-web.org/proofs/linked/PUZ/PUZ001-1/";
-		String sz_url_seed = "http://inference-web.org/proofs/linked/PUZ/PUZ001-1/";
-		String sz_url_root_input= "http://inference-web.org/proofs/linked";
-		String dir_name= "EP";
-		File dir_root_output = new File("www/proofs/linked-analysis/version/"+dir_name);
-		String sz_url_root_output = "http://inference-web.org/proofs/linked-analysis/version/"+dir_name;
-		Set<String> set_url_pml = new HashSet<String>();
-		for (String reasoner2: reasoners2){
-			set_url_pml.add("http://inference-web.org/proofs/linked/PUZ/PUZ001-1/"+reasoner2+"/answer.owl"); 
-		}
-		TaskIwTptpImprove tpn = new TaskIwTptpImprove();
-		tpn.init(sz_url_seed, sz_url_root_input, set_url_pml, dir_root_output, sz_url_root_output);
-		tpn.run();						
+		return reasoners2;
 	}
-	
-	public static void run_improve_version_Metis(){
+
+	public static Set<String> getReasonersMetis(){
 		Set<String> reasoners2 = new TreeSet<String>();
 		reasoners2.add("Metis---2.1");
 		reasoners2.add("Metis---2.2");
 		
-		
-		//String sz_url_seed = "http://inference-web.org/proofs/linked/PUZ/PUZ001-1/";
-		String sz_url_seed = "http://inference-web.org/proofs/linked/PUZ/PUZ001-1/";
-		String sz_url_root_input= "http://inference-web.org/proofs/linked";
-		String dir_name= "Metis";
-		File dir_root_output = new File("www/proofs/linked-analysis/version/"+dir_name);
-		String sz_url_root_output = "http://inference-web.org/proofs/linked-analysis/version/"+dir_name;
-		Set<String> set_url_pml = new HashSet<String>();
-		for (String reasoner2: reasoners2){
-			set_url_pml.add("http://inference-web.org/proofs/linked/PUZ/PUZ001-1/"+reasoner2+"/answer.owl"); 
-		}
-		TaskIwTptpImprove tpn = new TaskIwTptpImprove();
-		tpn.init(sz_url_seed, sz_url_root_input, set_url_pml, dir_root_output, sz_url_root_output);
-		tpn.run();						
-	}
-	public static void run_test(){
-		//String sz_url_seed = "http://inference-web.org/proofs/linked/PUZ/PUZ001-1/";
-		String sz_url_seed = "http://inference-web.org/proofs/linked/PUZ/PUZ001-1/";
-		String sz_url_root_input= "http://inference-web.org/proofs/linked";
-		File dir_root_output = new File("www/proofs/linked-analysis/test");
-		String sz_url_root_output = "http://inference-web.org/proofs/linked-analysis/test";
-		Set<String> set_url_pml = new HashSet<String>();
-		set_url_pml.add("http://inference-web.org/proofs/linked/PUZ/PUZ001-1/EP---1.1/answer.owl"); 
-//		set_url_pml.add("http://inference-web.org/proofs/linked/PUZ/PUZ001-1/Otter---3.3/answer.owl"); 
-//		set_url_pml.add("http://inference-web.org/proofs/linked/PUZ/PUZ001-1/Faust---1.0/answer.owl");
-		set_url_pml.add("http://inference-web.org/proofs/linked/PUZ/PUZ001-1/Metis---2.1/answer.owl");
-		
-		TaskIwTptpImprove tpn = new TaskIwTptpImprove();
-		tpn.init(sz_url_seed, sz_url_root_input, set_url_pml, dir_root_output, sz_url_root_output);
-		tpn.run();
+		return reasoners2;
 	}
 	
+	public static String extractReasoner(String sz_url_pml){
+		for (String component : sz_url_pml.split("/")){
+			if (component.contains("---"))
+				return component;
+		}
+		return "";
+	}
+	
+	public static void run_improve_pair(String problem){
+		Set<String> reasoners = getReasonersCurrent();
+
+		String sz_url_root_input= getRootUrl(problem);
+
+		Set<String>  solutions  =prepare_tptp_solutions(problem);
+		for (String sz_solution_1: solutions){
+			String reasoner1 = extractReasoner(sz_solution_1);
+			if (!reasoners.contains(reasoner1))
+				continue;
+			
+			for (String sz_solution_2: solutions){
+				String reasoner2 = extractReasoner(sz_solution_2);
+				if (!reasoners.contains(reasoner2))
+					continue;
+
+				if (sz_solution_1.compareTo(sz_solution_2)>=0)
+					continue;
+				
+				String dir_name= reasoner1+"_"+reasoner2;
+				File dir_root_output = new File("www/proofs/linked-analysis/pair/"+dir_name);
+				String sz_url_root_output = "http://inference-web.org/proofs/linked-analysis/pair/"+dir_name;
+				
+				TaskIwTptpImprove tpn = new TaskIwTptpImprove();
+				Set<String> set_url_pml = new HashSet<String>();
+				set_url_pml.add(sz_solution_1); 
+				set_url_pml.add(sz_solution_2); 
+				
+				tpn.init(problem, sz_url_root_input, set_url_pml, dir_root_output, sz_url_root_output);
+				tpn.run();
+			}
+		}
+	}
+
+	public static void run_improve(String problem, Set<String> reasoners, String dir_name){
+		File dir_root_output = new File("www/proofs/linked-analysis/"+dir_name);
+		String sz_url_root_output = "http://inference-web.org/proofs/linked-analysis/"+dir_name;
+		String sz_url_root_input= getRootUrl(problem);
+		
+		Set<String> solutions  =prepare_tptp_solutions(problem);
+		Iterator<String> iter = solutions.iterator();
+		while (iter.hasNext()){
+			String sz_solution=iter.next();
+			String reasoner = extractReasoner(sz_solution);
+			if (!ToolSafe.isEmpty(reasoners)&&!reasoners.contains(reasoner))
+				iter.remove();
+		}
+
+		TaskIwTptpImprove tpn = new TaskIwTptpImprove();
+		tpn.init(problem, sz_url_root_input, solutions, dir_root_output, sz_url_root_output);
+		tpn.run();						
+
+	}
+
+	public static String getRootUrl(String problem){
+		String ret = problem;
+		for (int i=0; i<3;i++){
+			ret = ret.substring(0,ret.lastIndexOf("/"));
+		}
+		return ret;
+	}
 	
 	
 	
@@ -175,15 +184,23 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 	}
 	
 	public void run_plot_original() throws MalformedURLException{
+		//plot unless required
+		if (!gbPlotDot)
+			return;
+		
+
 		String sz_context= "_original";
 		for (String sz_url_pml: set_url_pml){
-		
+						
 			//plot it
 			String sz_path = prepare_path(sz_url_pml, sz_context);
 			File f_output_graph = new File(dir_root_output, sz_path);
 
 			Resource res_root = m_hg.getRoot(sz_url_pml);
-			String sz_dot = m_hg.graphviz_export_dot(m_hg.getSubHg(res_root));
+			Set<Resource> set_step = m_hg.getSubHg(res_root);
+
+			
+			String sz_dot = m_hg.graphviz_export_dot(set_step);
 			DataPmlHg.graphviz_save(sz_dot, f_output_graph.getAbsolutePath());			
 		}
 	}
@@ -199,6 +216,11 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 		m_hg.getHyperGraph();
 
 		
+		
+		//plot unless required
+		if (!gbPlotDot)
+			return;
+		// show the combined graph
 		String sz_dot = m_hg.graphviz_export_dot(m_hg.getSubHg());
 		DataPmlHg.graphviz_save(sz_dot, f_output_graph.getAbsolutePath());
 	}
@@ -378,8 +400,8 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 			}
 			
 			if (ToolSafe.isEmpty(dhg_optimal)){
-				System.out.println("empty result graphs");
-				System.exit(-1);
+				getLogger().info("empty result graphs");
+				return new DataHyperGraph();
 			}
 
 			m_cache_problem_solution.put(key, dhg_optimal);
@@ -387,6 +409,10 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 	
 		}
 		
+	}
+	
+	private Logger getLogger(){
+		return Logger.getLogger(this.getClass());
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -405,11 +431,51 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 				Set<Resource> set_step_original= m_hg.getSubHg(res_info_root);
 				
 				DataHyperGraph dhg_optimal = find_solution( sz_context, gid_root,option_weight,sz_url_pml,set_step_original, alg);
-				if (null==dhg_optimal){
-					System.exit(-1);
+
+				Set<Resource> set_step_optimal= this.m_hg.getSubHg(dhg_optimal, res_info_root, sz_url_pml);
+
+				//save log
+				{
+					getLogger().info("create stat_diff  improve ...");
+
+					String filename = "stat_diff_improve.csv";
+					//String sz_path = prepare_path(sz_url_problem,null)+ filename;
+					File f_output = new File(dir_root_output, filename);
+
+					DataSmartMap data= m_hg.stat(set_step_optimal,set_step_original, true);
+					
+					data.put("solution",sz_url_pml);
+					DataPmlHg.stat_url_param(sz_url_pml,"s", data);
+					data.put("s_context", sz_context);
+					data.put("s_alg", alg.getLabel());
+					data.put("s_option_weigth", option_weight);
+					
+					data.copy(alg.getResultSummaryData());
+
+					//make it shared for "pair" option
+					if (dir_root_output.getAbsolutePath().indexOf("pair")>0){
+						f_output = new File(dir_root_output.getParentFile(), filename);
+						data.put("s_path", dir_root_output.getName());
+					}
+					
+					
+					String ret = DataPmlHg.print_csv(data, !f_output.exists());
+
+					getLogger().info("write to "+ f_output.getAbsolutePath());
+					//getLogger().info(ret);
+					try {
+						ToolIO.pipeStringToFile(ret, f_output, false, true);
+					} catch (Sw4jException e) {
+						e.printStackTrace();
+					}
 				}
 				
-				Set<Resource> set_step_optimal= this.m_hg.getSubHg(dhg_optimal, res_info_root, sz_url_pml);
+				if (dhg_optimal.isEmpty()){
+					continue;
+				}
+				
+				//plot unless required
+				if (gbPlotDot )
 				{
 					String sz_path = prepare_path(sz_url_pml,sz_context);
 					File f_output_graph = new File(dir_root_output, sz_path);

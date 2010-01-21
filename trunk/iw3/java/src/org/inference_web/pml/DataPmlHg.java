@@ -33,8 +33,8 @@ import com.hp.hpl.jena.vocabulary.OWL;
 import com.hp.hpl.jena.vocabulary.RDF;
 
 public class DataPmlHg {
-	public Logger getLogger(){
-		return Logger.getLogger(this.getClass());
+	public static Logger getLogger(){
+		return Logger.getLogger(DataPmlHg.class);
 	}
 	
 	HashMap<String,Model> m_context_model_data = new HashMap<String,Model>();;
@@ -175,12 +175,24 @@ public class DataPmlHg {
 			return null;
 		
 		//assume a context only have one root
-		Set<Resource> roots = ToolPml.list_roots(model_data);
-		if (roots.size()!=1)
-			return null;
+		Map<Resource,Resource> map_root_ns = ToolPml.list_roots(model_data);
 		
-		Resource res_root =  roots.iterator().next();
-		return res_root;
+		//handle multiple roots
+		if (map_root_ns.size()>1){
+			getLogger().warn("PML with multiple roots, "+ sz_url_pml);
+			for (Map.Entry<Resource,Resource> root_ns : map_root_ns.entrySet()){
+				if (root_ns.getValue().getURI().endsWith("#answer"))
+					return root_ns.getKey();
+			}
+			return null;
+		}
+		
+		//now root could be either 0 or 1
+		if (map_root_ns.size()==0)
+			return null;
+		else {
+			return map_root_ns.keySet().iterator().next();
+		}		
 	}
 	
 	/**
@@ -190,7 +202,7 @@ public class DataPmlHg {
 	 * @return
 	 */
 	public Set<Resource> getSubHg(Resource res_info_root){
-		return ToolPml.listStepDerivingInfoRecursive(getModelAll(), res_info_root);
+		return ToolPml.listStepDerivingInfoRecursive(getModelAll(), res_info_root, null);
 	}
 	
 	
@@ -229,7 +241,7 @@ public class DataPmlHg {
 	public Set<Resource> getSubHg( DataHyperGraph dhg, Resource res_root, String sz_url_pml ){
 		getHyperGraph();
 
-		Set<Resource> set_res_step_dependant = ToolPml.listStepDerivingInfoRecursive(getModelAll(), res_root);
+		Set<Resource> set_res_step_dependant = ToolPml.listStepDerivingInfoRecursive(getModelAll(), res_root, null);
 
 		Set<Resource> ret = new HashSet<Resource>();
 		//try to reuse PML resources from the supplied context
@@ -303,9 +315,18 @@ public class DataPmlHg {
 		return ToolJena.getNodeString(res_edge);
 	}
 	
+	//only plot graph with less than 100 steps
+	public static int MAX_GRAPHVIZ_STEP = 100;
+	
 	public String graphviz_export_dot ( Set<Resource> set_res_edge ){
-		getHyperGraph();
+		//skip graph generation for graph with over 100 steps 
+		if (set_res_edge.size()> MAX_GRAPHVIZ_STEP){
+			return "";
+		}
+		getLogger().info("graphviz_export_dot ...");
 
+		getHyperGraph();
+		
 		Set<Resource> set_res_node = ToolPml.listInfoOfStep(getModelAll(), set_res_edge, ToolPml.OPT_LIST_ALL);
 		DataHyperGraph dhg = this.getHyperGraph(set_res_edge);
 
@@ -344,6 +365,13 @@ public class DataPmlHg {
 	}
 
 	public String graphviz_export_dot_diff ( Set<Resource> set_res_edge_optimal, Set<Resource> set_res_edge_original ){
+		//skip graph generation for graph with over 100 steps 
+		if (set_res_edge_optimal.size()> MAX_GRAPHVIZ_STEP || set_res_edge_original.size()> MAX_GRAPHVIZ_STEP){
+			return "";
+		}
+		
+		getLogger().info("graphviz_export_dot_diff ...");
+
 		getHyperGraph();
 
 		String ret_background ="";
@@ -528,7 +556,7 @@ public class DataPmlHg {
 		if (!ToolSafe.isEmpty(sz_label))
 			prop.put("label", sz_label.replaceAll("\n", " "));
 		else
-			System.out.println("no label");
+			getLogger().info("no label");
 	
 		
 		return prop;
@@ -573,6 +601,11 @@ public class DataPmlHg {
 	}
 	*/
 	public static void graphviz_save(String sz_content, String sz_file_output_common){
+		if (ToolSafe.isEmpty(sz_content)){
+			getLogger().info("empty file content for "+ sz_file_output_common);
+			return;
+		}
+
 		if (ToolSafe.isEmpty(sz_file_output_common)){
 			System.out.println(sz_content);
 		}else{
@@ -911,7 +944,7 @@ public class DataPmlHg {
 		return ret;
 	}
 
-	private static void stat_url_param(String sz_url, String prefix, DataSmartMap data){
+	public static void stat_url_param(String sz_url, String prefix, DataSmartMap data){
 		int counter = 1;
 		for (String item : sz_url.split("/")){
 			if (item.length()==0)
