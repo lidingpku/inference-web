@@ -4,7 +4,6 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -47,36 +46,36 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 		TaskIwTptpImprove.run_improve(problem,reasoners,"test");
 	}
 	
-	public static void run_improve(){
-		//gbPlotDot = false;
-		//String sz_url_seed = "http://inference-web.org/proofs/linked/PUZ/PUZ001-1/";
-		String sz_url_seed = "http://inference-web.org/proofs/linked/PUZ/";
+	public static  Set<String> prepareProblemAll(){
+		String sz_url_seed = "http://inference-web.org/proofs/linked/";
 		
 		Set<String> set_problem = prepare_tptp_problems(sz_url_seed);
+		return set_problem;
+	}
+	
+	public static Set<String> prepareProblemByCategory(){
+		String [] ARY_CATEGORY = new String []{
+				"http://inference-web.org/proofs/linked/PUZ/",
+				"http://inference-web.org/proofs/linked/SEU/",
+			};
+
+		Set<String> set_problem = new TreeSet<String>();
+		for (String category: ARY_CATEGORY){
+			set_problem.addAll( prepare_tptp_one_step(category));
+		}
+		
+		return set_problem;
+	}
+	
+	public static void run_improve(){		
+		Set<String> set_problem =prepareProblemByCategory();
 		
 		for (String problem: set_problem ){
-			TaskIwTptpImprove.run_improve(problem, null, "complete");
+			TaskIwTptpImprove.run_improve(problem, getReasonersCurrent(), "complete");
 		}		
 	}
 	
-	public static Set<String> getReasonersCurrent(){
-		Set<String> reasoners2 = new TreeSet<String>();
-		reasoners2.add("Ayane---1.1");
-	//	reasoners2.add("EP---0.999");	
-	//	reasoners2.add("EP---1.0");
-		reasoners2.add("EP---1.1");
-	//	reasoners2.add("EP---1.1pre");
-		reasoners2.add("Faust---1.0");
-	//	reasoners2.add("Metis---2.1");
-		reasoners2.add("Metis---2.2");
-		reasoners2.add("Otter---3.3");
-		reasoners2.add("SNARK---20080805r005");
-		reasoners2.add("SOS---2.0");
-	//	reasoners2.add("SPASS---3.01");
-		reasoners2.add("Vampire---9.0");
-		
-		return reasoners2;
-	}
+
 	
 	public static Set<String> getReasonersEP(){
 		Set<String> reasoners2 = new TreeSet<String>();
@@ -96,13 +95,7 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 		return reasoners2;
 	}
 	
-	public static String extractReasoner(String sz_url_pml){
-		for (String component : sz_url_pml.split("/")){
-			if (component.contains("---"))
-				return component;
-		}
-		return "";
-	}
+
 	
 	public static void run_improve_pair(String problem){
 		Set<String> reasoners = getReasonersCurrent();
@@ -144,13 +137,7 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 		String sz_url_root_input= getRootUrl(problem);
 		
 		Set<String> solutions  =prepare_tptp_solutions(problem);
-		Iterator<String> iter = solutions.iterator();
-		while (iter.hasNext()){
-			String sz_solution=iter.next();
-			String reasoner = extractReasoner(sz_solution);
-			if (!ToolSafe.isEmpty(reasoners)&&!reasoners.contains(reasoner))
-				iter.remove();
-		}
+		filterSolution(solutions, reasoners);
 
 		TaskIwTptpImprove tpn = new TaskIwTptpImprove();
 		tpn.init(problem, sz_url_root_input, solutions, dir_root_output, sz_url_root_output);
@@ -207,6 +194,10 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 	
 	public void run_combine() throws MalformedURLException{
 		run_create_mappings(false);
+		
+		//skip if no pml exists
+		if (this.set_url_pml.size()==0)
+			return;
 		
 		//DataHyperGraph dhg = this.m_hg.getHyperGraph();
 		String sz_path = prepare_path(sz_url_problem,null)+"combine";
@@ -461,7 +452,7 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 					
 					String ret = DataPmlHg.print_csv(data, !f_output.exists());
 
-					getLogger().info("write to "+ f_output.getAbsolutePath());
+					//getLogger().info("write to "+ f_output.getAbsolutePath());
 					//getLogger().info(ret);
 					try {
 						ToolIO.pipeStringToFile(ret, f_output, false, true);

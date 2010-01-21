@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.TreeSet;
 
 import org.apache.log4j.Logger;
 import org.inference_web.pml.DataPmlHg;
@@ -15,6 +16,7 @@ import sw4j.util.DataPVHMap;
 import sw4j.util.DataSmartMap;
 import sw4j.util.Sw4jException;
 import sw4j.util.ToolIO;
+import sw4j.util.ToolSafe;
 
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.Resource;
@@ -348,4 +350,83 @@ public class AgentIwTptp {
 		getLogger().info(crawler.m_results.size());
 		return crawler.m_results;
 	}
+	
+	public static Set<String> getReasonersCurrent(){
+		Set<String> reasoners = new TreeSet<String>();
+		reasoners.add("Ayane---1.1");
+		reasoners.add("Bliksem---1.12");
+		reasoners.add("CiME---2.01");
+		reasoners.add("Darwin---1.4.5");
+		reasoners.add("DarwinFM---1.4.5");
+		reasoners.add("DCTP---1.31");
+		reasoners.add("E---1.1");
+		reasoners.add("E-Darwin---1.2");
+		reasoners.add("E-KRHyper---1.1.3");
+		reasoners.add("EP---1.1");
+		reasoners.add("EQP---0.9e");
+		reasoners.add("Equinox---4.1");
+		reasoners.add("Fampire---1.3");
+		reasoners.add("FDP---0.9.16");
+		reasoners.add("Fiesta---2");
+		reasoners.add("Geo---2007f");
+		reasoners.add("GrAnDe---1.1");
+		reasoners.add("Imogen---2");
+		reasoners.add("iProver---0.7");
+		reasoners.add("IsabelleM---2009-1");
+		reasoners.add("IsabelleN---2009-1");
+		reasoners.add("IsabelleP---2009-1");
+		reasoners.add("leanCoP---2.1");
+		reasoners.add("LeanTAP---2.3");
+		reasoners.add("LEO-II---1.1");
+		reasoners.add("Mace2---2.2");
+		reasoners.add("Mace4---908");
+		reasoners.add("MANSEX---1");
+		reasoners.add("Matita---1");
+		reasoners.add("Metis---2.2");
+		reasoners.add("Muscadet---3");
+		reasoners.add("Otter---3.3");
+		reasoners.add("Paradox---3");
+		reasoners.add("PKRHyper---805");
+		reasoners.add("Prover9---908");
+		reasoners.add("S-SETHEO---0");
+		reasoners.add("Satallax---1.1");
+		reasoners.add("SETHEO---3.3");
+		reasoners.add("SInE---0.4");
+		reasoners.add("SNARK---20080805r018b");
+		reasoners.add("SNARKA---20080805r018b");
+		reasoners.add("SOS---2");
+		reasoners.add("SPASS---3.5");
+		reasoners.add("SPASS-XDB---3.01X0.3");
+		reasoners.add("SRASS---0.1");
+		reasoners.add("Theo---2006");
+		reasoners.add("ToFoF---0.1");
+		reasoners.add("TPS---3.080227G1d");
+		reasoners.add("Vampire---11");
+		reasoners.add("Vampire---9");
+		reasoners.add("Vampire---SUMO");
+		reasoners.add("Waldmeister---C09a");
+		reasoners.add("zChaff---04.11.15");
+		reasoners.add("Zenon---0.5.0");
+
+		return reasoners;
+	}
+	
+	public static String extractReasoner(String sz_url_pml){
+		for (String component : sz_url_pml.split("/")){
+			if (component.contains("---"))
+				return component;
+		}
+		return "";
+	}
+	
+	public static void filterSolution(Set<String> solutions, Set<String> reasoners){
+		Iterator<String> iter = solutions.iterator();
+		while (iter.hasNext()){
+			String sz_solution=iter.next();
+			String reasoner = extractReasoner(sz_solution);
+			if (!ToolSafe.isEmpty(reasoners)&&!reasoners.contains(reasoner))
+				iter.remove();
+		}
+	}
 }
+
