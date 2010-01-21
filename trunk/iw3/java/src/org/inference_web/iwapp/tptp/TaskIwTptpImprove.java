@@ -23,8 +23,8 @@ import sw4j.util.ToolString;
 
 public class TaskIwTptpImprove extends AgentIwTptp {
 	public static void main(String[] argv){
-		//run_test();
-		run_improve_pair();
+		run_test();
+		//run_improve_pair();
 		//run_improve_version_EP();
 		//run_improve_version_Metis();
 		//run_improve();
@@ -32,17 +32,21 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 	
 	public static void run_improve(){
 		//String sz_url_seed = "http://inference-web.org/proofs/linked/PUZ/PUZ001-1/";
-		String sz_url_seed = "http://inference-web.org/proofs/linked/PUZ/PUZ001-1/";
-		String sz_url_root_input= "http://inference-web.org/proofs/linked/PUZ";
-		File dir_root_output = new File("www/proofs/linked-analysis");
-		String sz_url_root_output = "http://inference-web.org/proofs/linked-analysis";
+		String sz_url_seed = "http://inference-web.org/proofs/linked/PUZ/";
+		String sz_url_root_input= "http://inference-web.org/proofs/linked";
+		File dir_root_output = new File("www/proofs/linked-analysis/complete");
+		String sz_url_root_output = "http://inference-web.org/proofs/linked-analysis/complete";
 		
-		TaskIwTptpImprove tpn = new TaskIwTptpImprove();
-		tpn.init(sz_url_seed, sz_url_root_input, dir_root_output, sz_url_root_output);
-		//filter sz_url_pml
-		tpn.filter_url_pml_base();
-		tpn.run();
+		Set<String> set_problem = prepare_tptp_problems(sz_url_seed);
+		for (String problem: set_problem ){
+			TaskIwTptpImprove tpn = new TaskIwTptpImprove();
+			tpn.init(problem, sz_url_root_input, dir_root_output, sz_url_root_output);
+			
+			//filter sz_url_pml
+			tpn.run();
+		}		
 	}
+	
 
 	public static void run_improve_pair(){
 		Set<String> reasoners1 = new TreeSet<String>();
@@ -71,7 +75,7 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 				
 				//String sz_url_seed = "http://inference-web.org/proofs/linked/PUZ/PUZ001-1/";
 				String sz_url_seed = "http://inference-web.org/proofs/linked/PUZ/PUZ001-1/";
-				String sz_url_root_input= "http://inference-web.org/proofs/linked/PUZ";
+				String sz_url_root_input= "http://inference-web.org/proofs/linked";
 				
 				String dir_name= reasoner1.substring(0,reasoner1.indexOf("---"))+"-"+reasoner2.substring(0,reasoner2.indexOf("---"));
 				
@@ -102,7 +106,7 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 		
 		//String sz_url_seed = "http://inference-web.org/proofs/linked/PUZ/PUZ001-1/";
 		String sz_url_seed = "http://inference-web.org/proofs/linked/PUZ/PUZ001-1/";
-		String sz_url_root_input= "http://inference-web.org/proofs/linked/PUZ";
+		String sz_url_root_input= "http://inference-web.org/proofs/linked";
 		String dir_name= "EP";
 		File dir_root_output = new File("www/proofs/linked-analysis/version/"+dir_name);
 		String sz_url_root_output = "http://inference-web.org/proofs/linked-analysis/version/"+dir_name;
@@ -123,7 +127,7 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 		
 		//String sz_url_seed = "http://inference-web.org/proofs/linked/PUZ/PUZ001-1/";
 		String sz_url_seed = "http://inference-web.org/proofs/linked/PUZ/PUZ001-1/";
-		String sz_url_root_input= "http://inference-web.org/proofs/linked/PUZ";
+		String sz_url_root_input= "http://inference-web.org/proofs/linked";
 		String dir_name= "Metis";
 		File dir_root_output = new File("www/proofs/linked-analysis/version/"+dir_name);
 		String sz_url_root_output = "http://inference-web.org/proofs/linked-analysis/version/"+dir_name;
@@ -357,7 +361,6 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 			m_hg.hg_set_weight(dhg, option_weight);
 
 			alg.traverse(dhg,gid_root);
-
 			//plot
 
 			DataHyperGraph dhg_optimal =null;
@@ -425,7 +428,7 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 					String sz_path = prepare_path(sz_url_pml,sz_context+"_"+alg.getLabel()+".rdf");
 					File f_output_rdf= new File(dir_root_output, sz_path);
 
-					ToolPml.pml_create_by_copy(ary_set_step_all, this.m_hg.getModelAll(true), this.m_hg.getInfoMap(),res_info_root,f_output_rdf);
+					ToolPml.pml_create_by_copy(ary_set_step_all, this.m_hg.getModelAll(), this.m_hg.getInfoMap(),res_info_root,f_output_rdf);
 
 				}
 
@@ -440,7 +443,7 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 					String sz_path = prepare_path(sz_url_pml,sz_context+"_"+alg.getLabel()+"_alt.rdf");
 					File f_output_rdf= new File(dir_root_output, sz_path);
 
-					ToolPml.pml_create_by_copy(ary_set_step_all, this.m_hg.getModelAll(false), this.m_hg.getInfoMap(),res_info_root,f_output_rdf);
+					ToolPml.pml_create_by_copy(ary_set_step_all, this.m_hg.getModelAll(), this.m_hg.getInfoMap(),res_info_root,f_output_rdf);
 				}
 				
 			}

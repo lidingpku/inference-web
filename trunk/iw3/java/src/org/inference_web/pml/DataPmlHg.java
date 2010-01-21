@@ -79,7 +79,7 @@ public class DataPmlHg {
 	HashMap <Resource,DataHyperEdge> m_map_step_edge= new HashMap <Resource,DataHyperEdge>();
 	DataPVHMap <DataHyperEdge,Resource> m_map_edge_step= new DataPVHMap <DataHyperEdge,Resource>();
 	
-	public Model getModelAll(boolean bNeedIndex) {
+	public Model getModelAll() {
 		//merge all models
 		if (null==m_model_all){
 			
@@ -96,13 +96,18 @@ public class DataPmlHg {
 			m_map_res_vertex.normalize();
 		}
 		
+		/*
 		//add index data
 		if (bNeedIndex){
 			if (!m_b_model_all_index)
 				ToolPml.pml_update_index(m_model_all);
 			m_b_model_all_index = true;
-		}
 			
+			this.m_dhg=null;
+			getHyperGraph();
+		}
+		*/
+		
 		return m_model_all;
 	}
 
@@ -135,7 +140,7 @@ public class DataPmlHg {
 		/*
 		 already done by getModelAll()
 		 
-		for (RDFNode info: ToolPml.listInfoOutput(getModelAll(false))){
+		for (RDFNode info: ToolPml.listInfoOutput(getModelAll())){
 			m_map_res_vertex.addObject((Resource) info);
 		}
 		
@@ -143,8 +148,8 @@ public class DataPmlHg {
 		*/
 		getLogger().info("getHyperGraph");
 		m_dhg = new DataHyperGraph();
-		for (Resource res_step: getModelAll(false).listSubjectsWithProperty(RDF.type, PMLJ.InferenceStep).toSet()){
-			DataHyperEdge edge = createHyperEdge(getModelAll(false), res_step, m_map_res_vertex);
+		for (Resource res_step: getModelAll().listSubjectsWithProperty(RDF.type, PMLJ.InferenceStep).toSet()){
+			DataHyperEdge edge = createHyperEdge(getModelAll(), res_step, m_map_res_vertex);
 			m_dhg.add(edge, getContext(res_step));
 			m_map_step_edge.put(res_step, edge);
 			m_map_edge_step.add(edge, res_step);
@@ -185,7 +190,7 @@ public class DataPmlHg {
 	 * @return
 	 */
 	public Set<Resource> getSubHg(Resource res_info_root){
-		return ToolPml.listStepDerivingInfoRecursive(getModelAll(false), res_info_root);
+		return ToolPml.listStepDerivingInfoRecursive(getModelAll(), res_info_root);
 	}
 	
 	
@@ -202,7 +207,7 @@ public class DataPmlHg {
 	}
 
 	public Set<Resource> getSubHg(){
-		return getModelAll(false).listSubjectsWithProperty(RDF.type, PMLJ.InferenceStep).toSet();		
+		return getModelAll().listSubjectsWithProperty(RDF.type, PMLJ.InferenceStep).toSet();		
 	}
 	
 	public Set<Resource> getSubHgKeepRoot(String sz_url_pml_chosen, int id_root) {
@@ -224,7 +229,7 @@ public class DataPmlHg {
 	public Set<Resource> getSubHg( DataHyperGraph dhg, Resource res_root, String sz_url_pml ){
 		getHyperGraph();
 
-		Set<Resource> set_res_step_dependant = ToolPml.listStepDerivingInfoRecursive(getModelAll(false), res_root);
+		Set<Resource> set_res_step_dependant = ToolPml.listStepDerivingInfoRecursive(getModelAll(), res_root);
 
 		Set<Resource> ret = new HashSet<Resource>();
 		//try to reuse PML resources from the supplied context
@@ -234,7 +239,7 @@ public class DataPmlHg {
 				if (null==res_edge_chosen)
 					res_edge_chosen=res_edge;
 				
-				boolean bHasRoot = (null!=res_root)&& ToolPml.listInfoOutputOfStep(res_edge,getModelAll(false)).contains(res_root); 
+				boolean bHasRoot = (null!=res_root)&& ToolPml.listInfoOutputOfStep(res_edge,getModelAll()).contains(res_root); 
 				boolean bInContext = (null!=set_res_step_dependant)&&set_res_step_dependant.contains(res_edge);
 				
 				if (bInContext || bHasRoot){
@@ -301,7 +306,7 @@ public class DataPmlHg {
 	public String graphviz_export_dot ( Set<Resource> set_res_edge ){
 		getHyperGraph();
 
-		Set<Resource> set_res_node = ToolPml.listInfoOfStep(getModelAll(false), set_res_edge, ToolPml.OPT_LIST_ALL);
+		Set<Resource> set_res_node = ToolPml.listInfoOfStep(getModelAll(), set_res_edge, ToolPml.OPT_LIST_ALL);
 		DataHyperGraph dhg = this.getHyperGraph(set_res_edge);
 
 		String ret ="";
@@ -349,7 +354,7 @@ public class DataPmlHg {
 			set_res_edge.addAll(set_res_edge_optimal);
 			set_res_edge.addAll(set_res_edge_original);
 
-			Set<Resource> set_res_node = ToolPml.listInfoOfStep(getModelAll(false), set_res_edge, ToolPml.OPT_LIST_ALL);
+			Set<Resource> set_res_node = ToolPml.listInfoOfStep(getModelAll(), set_res_edge, ToolPml.OPT_LIST_ALL);
 			DataHyperGraph dhg = this.getHyperGraph(set_res_edge);
 			DataHyperGraph dhg_original = this.getHyperGraph(set_res_edge_original);
 			Set<Integer> set_vertex_original = dhg_original.getVertices();
@@ -438,7 +443,7 @@ public class DataPmlHg {
 			prop.put("URL", res_edge.getURI());
 		}else{
 			//link to iw browser?
-			Resource nodeset= getModelAll(false).listSubjectsWithProperty(PMLJ.isConsequentOf,res_edge).next();
+			Resource nodeset= getModelAll().listSubjectsWithProperty(PMLJ.isConsequentOf,res_edge).next();
 			String sz_url;
 			try {
 				sz_url = String.format("%s?url=%s","http://browser.inference-web.org/iwbrowser/BrowseNodeSet",ToolURI.encodeURIString(nodeset.getURI()));
@@ -454,14 +459,14 @@ public class DataPmlHg {
 		prop.put("fillcolor", "white");							
 		
 		//set border color
-		Resource res_engine = (ToolJena.getValueOfProperty(getModelAll(false), res_edge, PMLJ.hasInferenceEngine, (Resource)null));
+		Resource res_engine = (ToolJena.getValueOfProperty(getModelAll(), res_edge, PMLJ.hasInferenceEngine, (Resource)null));
 		if (!ToolSafe.isEmpty(res_engine)){
 			String color = graphviz_get_engine_color(res_engine);
 			prop.put("color", color);					
 		}
 		
 		// set label
-		Resource res_rule= (ToolJena.getValueOfProperty(getModelAll(false), res_edge, PMLJ.hasInferenceRule, (Resource)null));
+		Resource res_rule= (ToolJena.getValueOfProperty(getModelAll(), res_edge, PMLJ.hasInferenceRule, (Resource)null));
 		if (!ToolSafe.isEmpty(res_rule))
 			prop.put("label", res_rule.getLocalName());	
 		else
@@ -507,7 +512,7 @@ public class DataPmlHg {
 	
 		
 		//add border color
-		Resource res_lang = ToolJena.getValueOfProperty(getModelAll(false), res_node, PMLP.hasLanguage, (Resource)null);
+		Resource res_lang = ToolJena.getValueOfProperty(getModelAll(), res_node, PMLP.hasLanguage, (Resource)null);
 		prop.put("color", graphviz_get_languge_color(res_lang));
 		
 		//add link
@@ -519,7 +524,7 @@ public class DataPmlHg {
 		
 		//add label
 // TODO
- 		String sz_label = ToolJena.getValueOfProperty(getModelAll(false), res_node, PMLP.hasRawString, (String)null);
+ 		String sz_label = ToolJena.getValueOfProperty(getModelAll(), res_node, PMLP.hasRawString, (String)null);
 		if (!ToolSafe.isEmpty(sz_label))
 			prop.put("label", sz_label.replaceAll("\n", " "));
 		else
@@ -706,7 +711,7 @@ public class DataPmlHg {
 
 		Set<RDFNode> set_res_rule_improved = new HashSet<RDFNode>();
 		Set<RDFNode> set_res_rule_original = new HashSet<RDFNode>();
-		for (Statement stmt: getModelAll(false).listStatements(null, PMLJ.hasInferenceRule, (String)null).toSet()){
+		for (Statement stmt: getModelAll().listStatements(null, PMLJ.hasInferenceRule, (String)null).toSet()){
 			if (set_step_improved.contains(stmt.getSubject()))
 				set_res_rule_improved.add(stmt.getObject());
 
@@ -790,7 +795,7 @@ public class DataPmlHg {
 		data.put(STAT_FORMULA_AXIOM, axiom_vertices.size());
 		
 		Set<RDFNode> set_res_rule = new HashSet<RDFNode>();
-		for (Statement stmt: getModelAll(false).listStatements(null, PMLJ.hasInferenceRule, (String)null).toSet()){
+		for (Statement stmt: getModelAll().listStatements(null, PMLJ.hasInferenceRule, (String)null).toSet()){
 
 			if (set_step.contains(stmt.getSubject()))
 				set_res_rule.add(stmt.getObject());
@@ -830,10 +835,10 @@ public class DataPmlHg {
 		stat_url_param(problem,"p", data);
 
 		//stat triples
-		data.put("triple(proof)", this.getModelAll(false).size());
+		data.put("triple(proof)", this.getModelAll().size());
 		
 		//count steps
-		data.put("step[occurence]", ToolPml.listStep(this.getModelAll(false)).size());
+		data.put("step[occurence]", ToolPml.listStep(this.getModelAll()).size());
 
 		//other graph specific stat
 		if (bStatGraph){

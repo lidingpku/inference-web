@@ -34,7 +34,6 @@ import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.vocabulary.RDF;
 
 public class ToolPml {
@@ -91,11 +90,11 @@ public class ToolPml {
 	}
 */
 	public static Set<Resource> listStepDerivingInfoRecursive(Model m, Resource res_info_root){
-		Set<Resource> set_step = m.listSubjectsWithProperty(RDF.type,PMLJ.InferenceStep).toSet();
+		//Set<Resource> set_step = m.listSubjectsWithProperty(RDF.type,PMLJ.InferenceStep).toSet();
 		Set<Resource> set_step_depends = new HashSet<Resource>();
 		for(Resource res_step_root: listStepDerivingInfo(res_info_root, m)){
+			set_step_depends.add(res_step_root);
 			for (RDFNode node_input: listInfoInputOfStep(res_step_root, m) ){
-				set_step_depends.add((Resource)node_input);
 				set_step_depends.addAll(listStepDerivingInfoRecursive(m, (Resource)node_input));
 			}
 			
@@ -105,8 +104,8 @@ public class ToolPml {
 			else
 				set_step_depends.addAll( m.listObjectsOfProperty(res_step_root,PMLR.dependsOn).toSet());
 */		}
-		set_step.retainAll(set_step_depends);
-		return set_step;
+		//set_step.retainAll(set_step_depends);
+		return set_step_depends;
 	}
 
 	
@@ -509,7 +508,40 @@ public class ToolPml {
 		
 		//TODO: add isconseuquentof index, fromanser
 		HashMap<Resource, Integer> map_ns_index = new HashMap<Resource, Integer>();
-		for(Statement stmt: model_data.listStatements(null, PMLR.hasOutput, (String)null).toSet()){
+		for (Resource res_step: ToolPml.listStep(model_data)){
+			for (RDFNode node_info: ToolPml.listInfoInputOfStep(res_step, model_data)){
+				Resource res_info =(Resource) node_info;
+				
+				Resource res_ns = model_ref.listSubjectsWithProperty(PMLJ.hasConclusion, res_info).next();
+				
+				model_data.add(res_ns, PMLJ.isConsequentOf, res_step);
+				if (ary_set_res_step[0].contains(res_step)){
+					res_step.addLiteral(PMLJ.hasIndex,0);
+					map_ns_index.put(res_ns, 1);
+				}
+			}
+		}
+		
+		for (Resource res_step: ToolPml.listStep(model_data)){
+			for (RDFNode node_info: ToolPml.listInfoOutputOfStep(res_step, model_data)){
+				Resource res_info =(Resource) node_info;
+				
+				Resource res_ns = model_ref.listSubjectsWithProperty(PMLJ.hasConclusion, res_info).next();
+				if (ary_set_res_step[0].contains(res_step)){
+					
+				}else{
+					Integer id = map_ns_index.get(res_ns);
+					if (null==id)
+						id=0;
+					res_step.addLiteral(PMLJ.hasIndex,id);
+					id++;
+					map_ns_index.put(res_ns, id);
+				}
+			}
+		}
+		
+		
+/*		for(Statement stmt: model_data.listStatements(null, PMLR.hasOutput, (String)null).toSet()){
 			Resource res_step =stmt.getSubject();
 			Resource res_info =(Resource) stmt.getObject();
 
@@ -538,7 +570,7 @@ public class ToolPml {
 				map_ns_index.put(res_ns, id);
 			}
 		}
-		
+	*/	
 		//rename resources
 		model_data = ToolJena.create_rename(model_data, map_res_res);
 
