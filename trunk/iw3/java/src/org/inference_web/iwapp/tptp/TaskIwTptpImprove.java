@@ -68,8 +68,9 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 	}
 	
 	public static void run_improve(){	
-		gbPlotDot = false;
-		Set<String> set_problem =prepareProblemByCategory();
+//		gbPlotDot = false;
+//TODO
+		Set<String> set_problem =prepareProblemAll();
 		
 		for (String problem: set_problem ){
 			TaskIwTptpImprove.run_improve(problem, null, "complete");
