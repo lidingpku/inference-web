@@ -168,7 +168,7 @@ public class TaskIwTptpImprove extends AgentIwTptp {
 			run_combine();
 			run_improve(CONTEXT_IMPROVE_SELF, DataPmlHg.OPTION_WEIGHT_STEP);
 			run_improve(CONTEXT_IMPROVE_ROOT, DataPmlHg.OPTION_WEIGHT_STEP);
-			run_improve(CONTEXT_IMPROVE_GLOBAL, DataPmlHg.OPTION_WEIGHT_STEP);
+//TODO			run_improve(CONTEXT_IMPROVE_GLOBAL, DataPmlHg.OPTION_WEIGHT_STEP);
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
