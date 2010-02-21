@@ -8,12 +8,12 @@ import org.junit.Test;
 public class TaskIwTptpTest {
 	@Test
 	public void test_improve1(){
-		String problem = "http://inference-web.org/proofs/linked/PUZ/PUZ001-1/";
+		String problem = "http://inference-web.org/proofs/linked/SEU/SEU139+1/";
 		
 		Set<String> reasoners = new HashSet<String>();
 		reasoners.add("EP---1.1");
 		reasoners.add("Otter---3.3");
-		TaskIwTptpImprove.run_improve(problem,reasoners,"test");
+		TaskIwTptpImprove.run_improve(problem,null,"test");
 	}
 
 	//@Test

@@ -7,10 +7,10 @@ import java.util.Set;
 
 import org.junit.Test;
 
-import sw4j.app.pml.PMLR;
 import sw4j.rdf.util.ToolJena;
 import sw4j.util.DataQname;
 import sw4j.util.ToolString;
+import sw4j.vocabulary.pml.PMLR;
 
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.Property;
