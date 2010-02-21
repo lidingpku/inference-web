@@ -1,8 +1,8 @@
 package org.inference_web.pml;
 
-import sw4j.app.pml.PMLP;
 import sw4j.rdf.util.ToolJena;
 import sw4j.util.ToolSafe;
+import sw4j.vocabulary.pml.PMLP;
 
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.Resource;

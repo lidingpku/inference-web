@@ -12,8 +12,6 @@ import java.util.Set;
 import org.apache.log4j.Logger;
 import org.inference_web.util.DataColorMap;
 
-import sw4j.app.pml.PMLJ;
-import sw4j.app.pml.PMLP;
 import sw4j.rdf.util.ToolJena;
 import sw4j.task.graph.DataHyperEdge;
 import sw4j.task.graph.DataHyperGraph;
@@ -24,6 +22,8 @@ import sw4j.util.Sw4jException;
 import sw4j.util.ToolIO;
 import sw4j.util.ToolSafe;
 import sw4j.util.ToolURI;
+import sw4j.vocabulary.pml.PMLJ;
+import sw4j.vocabulary.pml.PMLP;
 
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.RDFNode;

@@ -6,10 +6,10 @@ import java.util.TreeSet;
 
 import com.hp.hpl.jena.rdf.model.Model;
 
-import sw4j.app.pml.IW200407;
-import sw4j.app.pml.PMLP;
 import sw4j.rdf.load.AgentModelLoader;
 import sw4j.task.load.AgentSimpleHttpCrawler;
+import sw4j.vocabulary.pml.IW200407;
+import sw4j.vocabulary.pml.PMLP;
 
 
 public class AgentPmlCrawler {

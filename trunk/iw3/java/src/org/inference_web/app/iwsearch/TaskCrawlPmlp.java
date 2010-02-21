@@ -1,4 +1,4 @@
-package org.inference_web.iwapp.iwsearch;
+package org.inference_web.app.iwsearch;
 
 import org.inference_web.pml.AgentPmlCrawler;
 

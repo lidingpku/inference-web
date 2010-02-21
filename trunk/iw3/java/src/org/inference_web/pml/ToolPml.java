@@ -10,11 +10,6 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 
-import sw4j.app.pml.IW200407;
-import sw4j.app.pml.PMLDS;
-import sw4j.app.pml.PMLJ;
-import sw4j.app.pml.PMLP;
-import sw4j.app.pml.PMLR;
 import sw4j.rdf.load.AgentModelLoader;
 import sw4j.rdf.load.RDFSYNTAX;
 import sw4j.rdf.util.AgentSparql;
@@ -26,6 +21,11 @@ import sw4j.util.Sw4jException;
 import sw4j.util.ToolIO;
 import sw4j.util.ToolSafe;
 import sw4j.util.ToolString;
+import sw4j.vocabulary.pml.IW200407;
+import sw4j.vocabulary.pml.PMLDS;
+import sw4j.vocabulary.pml.PMLJ;
+import sw4j.vocabulary.pml.PMLP;
+import sw4j.vocabulary.pml.PMLR;
 
 import com.hp.hpl.jena.query.Dataset;
 import com.hp.hpl.jena.query.DatasetFactory;
