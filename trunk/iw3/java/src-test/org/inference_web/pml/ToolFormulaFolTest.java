@@ -6,7 +6,7 @@ import sw4j.util.DataPVTMap;
 import sw4j.util.ToolString;
 import static org.junit.Assert.fail;
 
-import org.inference_web.pml.ToolFormulaFol;
+import org.inference_web.util.ToolFormulaFol;
 import org.junit.Test;
 
 
