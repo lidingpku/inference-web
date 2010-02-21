@@ -7,10 +7,10 @@ import java.util.Set;
 import org.apache.log4j.Logger;
 import org.inference_web.pml.ToolPml;
 
-import sw4j.app.pml.PMLJ;
 import sw4j.util.Sw4jException;
 import sw4j.util.ToolIO;
 import sw4j.util.ToolString;
+import sw4j.vocabulary.pml.PMLJ;
 
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
