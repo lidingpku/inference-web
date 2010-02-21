@@ -1,4 +1,4 @@
-package org.inference_web.iwapp.tptp;
+package org.inference_web.app.tptp;
 
 import java.io.File;
 import java.util.HashMap;

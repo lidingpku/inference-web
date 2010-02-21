@@ -44,7 +44,7 @@
     </target>  
   	
   	<target name="tptp-improve" depends="build">
-      <java classname="org.inference_web.iwapp.tptp.TaskIwTptpImprove"
+      <java classname="org.inference_web.app.tptp.TaskIwTptpImprove"
           maxmemory ="4g">
         <classpath>
           <path refid="my.classpath"/>
@@ -53,7 +53,7 @@
       </java>
     </target>  
   	<target name="tptp-norm" depends="build">
-      <java classname="org.inference_web.iwapp.tptp.TaskIwTptpNormalize"
+      <java classname="org.inference_web.app.tptp.TaskIwTptpNormalize"
            maxmemory ="4g">
         <classpath>
           <path refid="my.classpath"/>
@@ -62,7 +62,7 @@
       </java>
     </target>  
   	<target name="tptp-map" depends="build">
-      <java classname="org.inference_web.iwapp.tptp.TaskIwTptpMapping"
+      <java classname="org.inference_web.app.tptp.TaskIwTptpMapping"
            maxmemory ="4g">
         <classpath>
           <path refid="my.classpath"/>
@@ -71,7 +71,7 @@
       </java>
     </target>  
   	<target name="tptp-stat" depends="build">
-      <java classname="org.inference_web.iwapp.tptp.TaskIwTptpStat"
+      <java classname="org.inference_web.app.tptp.TaskIwTptpStat"
            maxmemory ="4g">
         <classpath>
           <path refid="my.classpath"/>

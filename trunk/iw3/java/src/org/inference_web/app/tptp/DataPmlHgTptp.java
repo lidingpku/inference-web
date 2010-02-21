@@ -1,4 +1,4 @@
-package org.inference_web.iwapp.tptp;
+package org.inference_web.app.tptp;
 
 import org.inference_web.pml.DataPmlHg;
 

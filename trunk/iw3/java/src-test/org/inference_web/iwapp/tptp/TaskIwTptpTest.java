@@ -3,6 +3,8 @@ package org.inference_web.iwapp.tptp;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.inference_web.app.tptp.TaskIwTptpImprove;
+import org.inference_web.app.tptp.TaskIwTptpMapping;
 import org.junit.Test;
 
 public class TaskIwTptpTest {
