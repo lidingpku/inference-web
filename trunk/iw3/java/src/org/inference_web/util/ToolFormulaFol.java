@@ -1,4 +1,4 @@
-package org.inference_web.pml;
+package org.inference_web.util;
 
 import java.util.ArrayList;
 import java.util.Arrays;

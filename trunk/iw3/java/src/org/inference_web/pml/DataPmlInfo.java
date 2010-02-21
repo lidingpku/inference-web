@@ -1,5 +1,7 @@
 package org.inference_web.pml;
 
+import org.inference_web.util.ToolFormulaFol;
+
 import sw4j.rdf.util.ToolJena;
 import sw4j.util.ToolSafe;
 import sw4j.vocabulary.pml.PMLP;
