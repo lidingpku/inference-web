@@ -13,11 +13,22 @@ import sw4j.util.ToolString;
 import sw4j.vocabulary.pml.PMLR;
 
 import com.hp.hpl.jena.rdf.model.Model;
+import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.Resource;
 
 public class ToolPmlTest {
 	@Test
+	public void test_list_root(){
+		String url = "http://onto.rpi.edu/temp/mage-pml.rdf";
+		Model m = ModelFactory.createDefaultModel();
+		m.read(url);
+		
+		System.out.println(ToolPml.listInfoUsedAsRoot(m));
+		
+
+	}
+	//@Test
 	public void test_load(){
 		String[][] ary_url = new String[][]{
 				//load multiple files
@@ -85,16 +96,16 @@ public class ToolPmlTest {
 	}
 	
 	private void test_transitive_steps(Model model_data, Model model_all, String sz_cnt_step){
-		Set<Resource> set_root = ToolPml.list_roots(model_data).keySet();
-		if (set_root.size()!=1){
+		Set<Resource> set_info_root = ToolPml.listInfoUsedAsRoot(model_data);
+		if (set_info_root.size()!=1){
 			fail("expect exactly one root");
 		}
-		Resource res_root = set_root.iterator().next();
+		Resource res_info_root = set_info_root.iterator().next();
 		
 		//Resource res_root_step = ToolJena.getValueOfProperty(model_all, res_root, PMLJ.isConsequentOf, (Resource)null);  
-		Set<Resource> set_step = ToolPml.listStepDerivingInfoRecursive(model_all, res_root, null);
+		Set<Resource> set_step = ToolPml.listStepDerivingInfoRecursive(model_all, res_info_root, null);
 		if (!sz_cnt_step.equals(""+set_step.size())){
-			System.out.println(res_root);
+			System.out.println(res_info_root);
 			fail(String.format("unexpect number of steps: found %d, expected %s",set_step.size(), sz_cnt_step));
 		}
 	}

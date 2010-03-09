@@ -9,6 +9,26 @@ import com.hp.hpl.jena.rdf.model.Model;
 
 public class ToolPmlHgTest {
 	@Test
+	public void test_load_one(){
+		String sz_url_pml ="http://onto.rpi.edu/temp/mage-pml-v2.rdf";
+		
+		DataPmlHg hg = new DataPmlHg();
+		hg.add_data(sz_url_pml, null);
+		
+		Model m = hg.getModelAll();
+		ToolPml.pml_update_index(m);
+
+		{
+			String sz_dot = hg.graphviz_export_dot(hg.getSubHg());
+			String subpath = sz_url_pml.replaceAll("\\W+", "_");
+			DataPmlHg.graphviz_save(sz_dot, "local/output/pml/"+ subpath);			
+		}
+
+		
+		
+	}
+	
+	@Test
 	public void test_load(){
 		String[][] ary_url = new String[][]{
 				//simple case, 2 files
@@ -47,7 +67,12 @@ public class ToolPmlHgTest {
 			verify(data[2],""+hg.getSubHg(hg.getRoot(sz_url_pml)).size());
 
 			String sz_dot = hg.graphviz_export_dot(hg.getSubHg(hg.getRoot(sz_url_pml)));
-			DataPmlHg.graphviz_save(sz_dot, "output/pml/"+ sz_url_pml.substring(sz_url_pml.indexOf("proofs")).replaceAll("\\W+", "_"));
+			
+			String subpath = sz_url_pml.replaceAll("\\W+", "_");
+			if ( sz_url_pml.indexOf("proofs")>0)
+					subpath = sz_url_pml.substring(sz_url_pml.indexOf("proofs")).replaceAll("\\W+", "_");
+
+			DataPmlHg.graphviz_save(sz_dot, "local/output/pml/"+ subpath);
 		}
 	}
 
