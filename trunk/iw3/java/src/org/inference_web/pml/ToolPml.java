@@ -34,10 +34,11 @@ import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.Resource;
+import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.vocabulary.RDF;
 
 public class ToolPml {
-	
+	/*
 	public static HashMap<Resource,Resource> list_roots(Model m){
 		HashMap<Resource,Resource> map_info_ns = new HashMap<Resource,Resource>();
 		Set<Resource> set_ns = m.listSubjectsWithProperty(PMLJ.isConsequentOf).toSet();
@@ -48,8 +49,71 @@ public class ToolPml {
 		}
 		return map_info_ns;
 	}
+*/
+	public static Set<Resource> listInfoUsedAsInput(Model m){
+		if (m.listSubjectsWithProperty(PMLR.hasInput).hasNext()){
+			// see if index is available
+			Set<Resource> ret  = m.listSubjects().toSet();
+			ret.retainAll( m.listObjectsOfProperty(PMLR.hasInput).toSet());
+			return ret;
+		}else{
+			Set<Resource> ret  = new HashSet<Resource>();
+			//try to filter information nodes by query
+			for (Statement stmt: m.listStatements(null, PMLJ.hasConclusion, (String)null).toSet()){
+				
+				// if the nodeset was used as antecedent
+				if (m.contains(null, PMLDS.first, stmt.getSubject())){
+					ret.add((Resource)stmt.getObject());
+				}
+			}
+			return ret;
+		}
+	}
+
+	public static Set<Resource> listInfoUsedAsOutput(Model m){
+		if (m.listSubjectsWithProperty(PMLR.hasOutput).hasNext()){
+			// see if index is available
+			Set<Resource> ret  = m.listSubjects().toSet();
+			ret.retainAll( m.listObjectsOfProperty(PMLR.hasOutput).toSet());
+			return ret;
+		}else{
+			Set<Resource> ret  = new HashSet<Resource>();
+			//try to filter information nodes by query
+			for (Statement stmt: m.listStatements(null, PMLJ.hasConclusion, (String)null).toSet()){
+				
+				// if the nodeset was used as antecedent
+				if (m.contains(stmt.getSubject(), PMLJ.isConsequentOf)){
+					ret.add((Resource)stmt.getObject());
+				}
+			}
+			return ret;
+		}
+	}
+
+	
+	public static Set<Resource> listInfoUsedAsRoot(Model m){
+		Set<Resource> ret = listInfoUsedAsOutput(m);
+		ret.removeAll(listInfoUsedAsInput(m));
+		return ret;
+	}
 
 
+	public static Set<Resource> listInfoAsConclusion(Model m){
+		if (m.listSubjectsWithProperty(PMLR.hasOutput).hasNext()){
+			Set<Resource> ret = listInfoUsedAsOutput(m);
+			ret.addAll(listInfoUsedAsInput(m));
+			return ret;
+		}else{
+			Set<Resource> ret  = new HashSet<Resource>();
+
+			for (RDFNode node: m.listObjectsOfProperty(PMLJ.hasConclusion).toSet()){
+				ret.add((Resource)node);
+			}
+			return ret;
+		}
+	}
+
+	
 	public static final int OPT_LIST_INPUT=0;
 	public static final int OPT_LIST_OUTPUT=1;
 	public static final int OPT_LIST_ALL=2;
@@ -680,7 +744,8 @@ public class ToolPml {
 	public static Model create_mappings(Model m){
 		HashSet<Model> set_model = new HashSet<Model>();
 		set_model.add(m);
-		return create_mappings(m);
+		DataPVHMap<String,Resource> map_norm_info = create_mappings(set_model);
+		return ToolJena.create_sameas(map_norm_info.values());
 	}
 
 	public static DataPVHMap<String,Resource> create_mappings(Collection<Model> models){

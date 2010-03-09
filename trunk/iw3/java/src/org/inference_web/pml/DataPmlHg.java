@@ -17,6 +17,7 @@ import sw4j.task.graph.DataHyperEdge;
 import sw4j.task.graph.DataHyperGraph;
 import sw4j.util.DataObjectGroupMap;
 import sw4j.util.DataPVHMap;
+import sw4j.util.DataQname;
 import sw4j.util.DataSmartMap;
 import sw4j.util.Sw4jException;
 import sw4j.util.ToolIO;
@@ -167,6 +168,12 @@ public class DataPmlHg {
 		return dhg;
 	}
 	
+	/**
+	 * get one pmlp:Information used as "real" root
+	 * 
+	 * @param sz_url_pml
+	 * @return
+	 */
 	public Resource getRoot(String sz_url_pml){
 		
 		Model model_data = this.m_context_model_data.get(sz_url_pml);
@@ -175,23 +182,25 @@ public class DataPmlHg {
 			return null;
 		
 		//assume a context only have one root
-		Map<Resource,Resource> map_root_ns = ToolPml.list_roots(model_data);
+		Set<Resource> set_info_root = ToolPml.listInfoUsedAsRoot(model_data);
 		
 		//handle multiple roots
-		if (map_root_ns.size()>1){
+		if (set_info_root.size()>1){
 			getLogger().warn("PML with multiple roots, "+ sz_url_pml);
-			for (Map.Entry<Resource,Resource> root_ns : map_root_ns.entrySet()){
-				if (root_ns.getValue().getURI().endsWith("#answer"))
-					return root_ns.getKey();
+			
+			for (Resource root_info: set_info_root){
+				for (Resource root_ns: model_data.listSubjectsWithProperty(PMLJ.hasConclusion, root_info).toSet()){
+					if (root_ns.getURI().endsWith("#answer"))
+						return root_info;
+				}
 			}
-			return null;
 		}
 		
 		//now root could be either 0 or 1
-		if (map_root_ns.size()==0)
+		if (set_info_root.size()==0)
 			return null;
 		else {
-			return map_root_ns.keySet().iterator().next();
+			return set_info_root.iterator().next();
 		}		
 	}
 	
@@ -229,7 +238,7 @@ public class DataPmlHg {
 			for (Resource res_step: m.listSubjectsWithProperty(RDF.type, PMLJ.InferenceStep).toSet()){
 				DataHyperEdge edge = this.m_map_step_edge.get(res_step);
 				if (!sz_url_pml.equals(sz_url_pml_chosen)){
-					if (edge.getOutput()==id_root){
+					if (edge.getOutputs().contains(id_root)){
 						ret.remove(res_step);
 					}
 				}
@@ -271,24 +280,29 @@ public class DataPmlHg {
 
 	private static DataHyperEdge createHyperEdge(Model model_data, Resource res_step, DataObjectGroupMap<Resource> map_res_gid){
 		//list output
-		//Resource res_output = (ToolJena.getValueOfProperty(model_data, res_step, PMLR.hasOutput, (Resource)null));
-		Set<RDFNode> set_output = ToolPml.listInfoOutputOfStep(res_step, model_data);
-		Resource res_output = (Resource) set_output.iterator().next();
-		
-		Integer  id_output = map_res_gid.addObject(res_output);
-		
+		Set<Integer> set_id_output = new  HashSet<Integer>();
+		{
+			Set<RDFNode> set_info = ToolPml.listInfoOutputOfStep(res_step,model_data);
+			for (RDFNode node_info: set_info){
+				Resource res_info = (Resource) node_info;
+				set_id_output.add( map_res_gid.addObject(res_info));
+			}			
+		}
+
 		
 		//list inputs
 		//Set<RDFNode> set_res_input = model_data.listObjectsOfProperty(res_step, PMLR.hasInput).toSet();
-		Set<RDFNode> set_res_input = ToolPml.listInfoInputOfStep(res_step,model_data);
 		Set<Integer> set_id_input = new  HashSet<Integer>();
-		for (RDFNode node_input: set_res_input){
-			Resource res_input = (Resource) node_input;
-			set_id_input.add( map_res_gid.addObject(res_input));
+		{
+			Set<RDFNode> set_info = ToolPml.listInfoInputOfStep(res_step,model_data);
+			for (RDFNode node_info: set_info){
+				Resource res_info = (Resource) node_info;
+				set_id_input.add( map_res_gid.addObject(res_info));
+			}			
 		}
 
 		//get antecedents
-		return new DataHyperEdge(id_output, set_id_input);
+		return new DataHyperEdge(set_id_output, set_id_input);
 	}
 	
 	
@@ -347,13 +361,14 @@ public class DataPmlHg {
 
 			ret += graphviz_print_node(label_edge, prop);
 
-			Integer output= edge.getOutput();
-			String label_node = graphviz_get_id(output);
-			//changed
-			ret += graphviz_print_arc( label_edge, label_node );
-			for(Integer input : edge.getInputs()){
-				label_node = graphviz_get_id(input);
-				ret += graphviz_print_arc(  label_node, label_edge );
+			for (Integer output: edge.getOutputs()){
+				String label_node = graphviz_get_id(output);
+				//changed
+				ret += graphviz_print_arc( label_edge, label_node );
+				for(Integer input : edge.getInputs()){
+					label_node = graphviz_get_id(input);
+					ret += graphviz_print_arc(  label_node, label_edge );
+				}				
 			}
 		}
 		
@@ -407,13 +422,14 @@ public class DataPmlHg {
 
 				ret_background += graphviz_print_node(label_edge, prop);
 
-				Integer output= edge.getOutput();
-				String label_node = graphviz_get_id(output);
-				// changed
-				ret_background += graphviz_print_arc( label_edge, label_node );
-				for(Integer input : edge.getInputs()){
-					label_node = graphviz_get_id(input);
-					ret_background += graphviz_print_arc( label_node, label_edge );
+				for (Integer output: edge.getOutputs()){
+					String label_node = graphviz_get_id(output);
+					// changed
+					ret_background += graphviz_print_arc( label_edge, label_node );
+					for(Integer input : edge.getInputs()){
+						label_node = graphviz_get_id(input);
+						ret_background += graphviz_print_arc( label_node, label_edge );
+					}
 				}
 			}
 		}
@@ -495,9 +511,15 @@ public class DataPmlHg {
 		
 		// set label
 		Resource res_rule= (ToolJena.getValueOfProperty(getModelAll(), res_edge, PMLJ.hasInferenceRule, (Resource)null));
-		if (!ToolSafe.isEmpty(res_rule))
-			prop.put("label", res_rule.getLocalName());	
-		else
+		if (!ToolSafe.isEmpty(res_rule)){
+			try {
+				DataQname dq;
+				dq = DataQname.create(res_rule.getURI(),null);
+				prop.put("label", dq.getLocalname());	
+			} catch (Sw4jException e) {
+				prop.put("label", edge.toString());
+			}
+		}else
 			prop.put("label", edge.toString());
 		
 		return prop;
@@ -555,9 +577,17 @@ public class DataPmlHg {
  		String sz_label = ToolJena.getValueOfProperty(getModelAll(), res_node, PMLP.hasRawString, (String)null);
 		if (!ToolSafe.isEmpty(sz_label))
 			prop.put("label", sz_label.replaceAll("\n", " "));
-		else
-			getLogger().info("no label");
-	
+		else{
+			if (res_node.isURIResource()){
+				try {
+					DataQname dq;
+					dq = DataQname.create(res_node.getURI(),null);
+					prop.put("label", dq.getLocalname());	
+				} catch (Sw4jException e) {
+				}
+				
+			}
+		}
 		
 		return prop;
 	}
@@ -849,13 +879,13 @@ public class DataPmlHg {
 			
 			
 			leaf_edges.add(edge);
-			leaf_vertices.add(edge.getOutput());
+			leaf_vertices.addAll(edge.getOutputs());
 			
 			Model m = res_step.getModel();
 			Set<RDFNode> rules = m.listObjectsOfProperty(res_step, PMLJ.hasInferenceRule).toSet();
 			if (rules.contains(m.createResource("http://inference-web.org/registry/DPR/Told.owl#Told") )){
 				axiom_edges.add(edge);
-				axiom_vertices.add(edge.getOutput());
+				axiom_vertices.addAll(edge.getOutputs());
 			}
 		}
 	}
