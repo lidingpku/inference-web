@@ -1,0 +1,102 @@
+<html>
+<head>
+<title>
+</title>
+</head>
+<body>
+<pre>
+import java.util.*;
+import org.inference_web.pml.v2.pmlj.*;
+import org.inference_web.pml.v2.pmlp.*;
+import org.inference_web.pml.v2.util.*;
+import org.inference_web.pml.v2.vocabulary.*;
+
+public class NodeSetGen {
+
+  public NodeSetGen () {
+  	try {
+  		// initializing info needed to create NodeSet
+  		String nsURI = "http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/answer.owl#answer";
+  		String conclusionString = "(type TonysSpecialty ?x)";
+  		String languageURI = "http://inference-web.org/registry/LG/KIF.owl#KIF";
+  		String inferenceRuleURI = "http://inference-web.org/registry/DPR/GMP.owl#GMP";
+  		String inferenceEngineURI = "http://inference-web.org/registry/IE/JTP.owl#JTP";
+  		String antecedentURI1 = "http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/ns1.owl#ns1";
+  		String antecedentURI2 = "http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/ns2.owl#ns2";
+  		String variableMappingFrom = "?x";
+  		String variableMappingTo = "SHELLFISH";
+  		String sourceURI = "http://inference-web.org/registry/PUB/STE.owl#STE";
+  		String sourceUsageTimeStamp = "2005-10-17T10:30:00Z";
+
+  		// create NodeSet instance
+  		IWNodeSet ns = (IWNodeSet)PMLObjectManager.createPMLObject(PMLJ.NodeSet_lname);
+  		// set NodeSet's identification
+  		ns.setIdentifier(PMLObjectManager.getObjectID(nsURI));
+  		
+  		// create Information instance as conclusion
+  		IWInformation conclusion = (IWInformation)PMLObjectManager.createPMLObject(PMLP.Information_lname);
+  		// set conclusion string and its language
+  		conclusion.setHasRawString(conclusionString);
+  		conclusion.setHasLanguage(languageURI);
+  		// assign NodeSet's hasConclusion property value
+  		ns.setHasConclusion(conclusion);
+
+
+  		// create InferenceStep instance
+  		IWInferenceStep infStep0 = (IWInferenceStep)PMLObjectManager.createPMLObject(PMLJ.InferenceStep_lname);
+  		// set inference step position of a list, and the rule and engine used
+  		infStep0.setHasIndex(0);
+// create DocumentFragmentByOffset instance as source
+  		IWDocumentFragmentByOffset doc = (IWDocumentFragmentByOffset)PMLObjectManager.createPMLObject(PMLP.DocumentFragmentByOffset_lname);
+  		doc.setHasDocument(sourceURI);
+  		doc.setHasFromOffset("58");
+  		doc.setHasToOffset("91");  		
+  		// create SourceUsage instance
+  		IWSourceUsage srcUsg = (IWSourceUsage)PMLObjectManager.createPMLObject(PMLP.SourceUsage_lname);
+  		// set source and usage time
+  		srcUsg.setHasSource(doc);
+  		srcUsg.setHasUsageDateTime(sourceUsageTimeStamp);
+  		// assign InferenceStep's hasSourceUsage property value
+  		infStep0.setHasSourceUsage(srcUsg);
+  		// add the InferenceStep to the isConsequentOf property value list
+  		ns.addIsConsequentOf(infStep0);
+ 
+  		// create InferenceStep instance
+  		IWInferenceStep infStep1 = (IWInferenceStep)PMLObjectManager.createPMLObject(PMLJ.InferenceStep_lname);
+  		// set inference step position of a list, and the rule and engine used
+  		infStep1.setHasIndex(0);
+  		infStep1.setHasInferenceRule(inferenceRuleURI);
+  		infStep1.setHasInferenceEngine(inferenceEngineURI);
+  		// create Mapping instance
+  		IWMapping varMapping = (IWMapping)PMLObjectManager.createPMLObject(PMLJ.Mapping_lname);
+  		// set mapping values
+  		varMapping.setMapFrom(variableMappingFrom);
+  		varMapping.setMapTo(variableMappingTo);
+  		// assign InferenceStep's hasVariableMapping property value
+  		infStep1.addHasVariableMapping(varMapping);
+  		// create antecedent list
+  		List antecedents = new ArrayList();
+  		antecedents.add(antecedentURI1);
+  		antecedents.add(antecedentURI2);
+  		// set InferenceStep's hasAntecedentList property value
+  		infStep1.setHasAntecedentList(antecedents);
+  		
+  		// add the InferenceStep to the isConsequentOf property value list
+  		ns.addIsConsequentOf(infStep1);
+  		
+  		// get NodeSet's content on screen or save it to a file
+  		System.out.println(PMLObjectManager.printPMLObjectToString(ns));
+  		//PMLObjectManager.savePMLObject(ns, "fileName");
+  		
+  	} catch (Exception e) {
+  		e.printStackTrace();
+  	}
+  }
+
+  public static void main(String[] args) {
+    new NodeSetGen ();
+  }
+}
+</pre>
+</body>
+</html>

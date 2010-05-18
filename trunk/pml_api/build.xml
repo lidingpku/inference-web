@@ -1,0 +1,133 @@
+<project name="pml" default="api" basedir=".">
+	<description>
+		PML API  
+	</description>
+	
+	<!-- version information -->
+	<property name="version-major"  value="2"/>
+	<property name="version-minor"  value="0.0"/>
+	<property name="version-status" value="" />
+	<property name="version"        value="${version-major}.${version-minor}${version-status}"/>
+	
+	<!-- set global properties for this build -->
+	<property name="lib"       location="lib" />
+	<property name="src"       location="src"/>
+	<property name="build"     location="classes"/>
+	<property name="dist"      location="dist"/>
+	<property name="resources" location="resources"/>
+	<property name="doc"       location="doc"/>
+	<property name="apiname"   location="${lib}/pml.jar"/>
+	
+	<!-- dependecy settings -->
+	
+	<!-- Junit is version 4.1 -->
+	<property name="jar.junit"  location="${lib}/junit-4.1.jar"/>
+	
+	<!-- jena is version 2.5.6-->
+	<property name="libs.jena"  location="${lib}/Jena-2.5.6/lib/"/>
+	
+	<!-- pellet is version 1.5.0_11-b03 -->
+	<property name="jar.pellet" location="${lib}/pellet/pellet.jar"/>
+	
+	<!-- java settings -->
+	<property name="java.target" value="1.5"/>
+	<property name="java.deprecation" value="no"/>
+	<property name="java.debug" value="true"/>
+	
+	<!-- iw website settings -->
+	<property name="website"       value="http://inference-web.org"/>
+	
+	<!-- define source and library filesets -->
+	
+	<fileset id="src.java" dir="${src}" defaultexcludes="yes">
+		<include name="**/*.java"/>
+	</fileset>
+	
+	<fileset id="jar.jena" dir="${libs.jena}">
+		<include name="*.jar"/>
+	</fileset>
+	
+	<fileset id="jar.libs" 
+		dir="." 
+		defaultexcludes="yes"
+		includes=" **/*junit-4.1.jar **/*pellet.jar **/*Jena-2.5.6/lib/*jar"/>
+	
+	<!-- ant targets -->
+	
+	<target name="init">
+		<tstamp/>
+		<mkdir dir="${build}"/>
+	</target>
+	
+	<target name="compile" 
+		depends="init" 
+		description="compile the source">
+		<javac deprecation="${java.deprecation}" 
+			srcdir="${src}" 
+			destdir="${build}"
+			source="${java.target}"
+			target="${java.target}"
+			includeAntRuntime="no"
+			debug="${java.debug}">
+			<classpath>
+				<pathelement location="${jar.pellet}"/>
+				<pathelement location="${jar.junit}" />
+				<fileset refid="jar.jena" />
+			</classpath>
+		</javac>
+	</target>
+	
+	<target name="api"
+		depends="compile" 
+		description="generate the API distribution" >
+		<jar jarfile="${apiname}" 
+			basedir="${build}"/>
+		<delete dir="${build}"/>
+	</target>
+	
+	<target name="distributable"
+		depends="compile"
+		description="Build PML distributable jar">
+		
+		<mkdir dir="${dist}"/>
+		<jar jarfile="${dist}/${ant.project.name}-${version}.jar"
+			basedir="${build}">
+			<zipgroupfileset refid="jar.libs"/>
+		</jar>
+		<delete dir="${build}"/>
+	</target>
+	
+	<target name="gendoc"
+		depends="api"
+		description="generates the PML API JavaDoc">
+		<javadoc destdir="${doc}"
+			author="true"
+			version="true"
+			use="true"
+			windowtitle="PML">
+			<classpath>
+				<pathelement location="${jar.pellet}"/>
+				<pathelement location="${jar.junit}" />
+				<fileset refid="jar.jena" />
+				</classpath>
+			<fileset refid="src.java"/>
+			
+			<doctitle>
+				<![CDATA[<h1>PML API</h1>]]>
+			</doctitle>
+			<bottom>
+				<![CDATA[<i>Copyright &#169; 2003,2004,2005,2006,2007,2008,2009 Inference Web Group. All Rights Reserved.</i>]]>
+			</bottom>
+			<link href="${website}"/>
+		</javadoc>
+	</target>
+	
+	<target name="clean"
+		description="clean up" >
+		<delete file="${apiname}"/>
+		<delete dir="${doc}"/>
+		<delete dir="${build}"/>
+		<delete dir="${dist}" />
+	</target>
+	
+	</project>

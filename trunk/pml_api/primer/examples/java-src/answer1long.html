@@ -1,0 +1,74 @@
+<html>
+<head>
+<title>
+</title>
+</head>
+<body>
+<pre>
+import org.inference_web.pml.v2.pmlj.*;
+import org.inference_web.pml.v2.pmlp.*;
+import org.inference_web.pml.v2.util.*;
+import org.inference_web.pml.v2.vocabulary.*;
+
+public class NodeSetGen {
+
+  public NodeSetGen () {
+  	try {
+  		// initializing info needed to create NodeSet
+  		String proofURI = "http://inference-web.org/2007/primer/examples/proofs/tonys/answer_1/answer.owl#answer";
+  		String conclusionString = "(type TonysSpecialty SHELLFISH)";
+  		String languageURI = "http://inference-web.org/registry/LG/KIF.owl#KIF";
+  		String inferenceRuleURI = "http://inference-web.org/registry/DPR/Told.owl#Told";
+  		String sourceURI = "http://inference-web.org/registry/PUB/STE.owl#STE";
+  		String sourceUsageTimeStamp = "2005-10-17T10:30:00Z";
+
+  		// create NodeSet instance
+  		IWNodeSet ns = (IWNodeSet)PMLObjectManager.createPMLObject(PMLJ.NodeSet_lname);
+  		// set NodeSet's identification
+  		ns.setIdentifier(PMLObjectManager.getObjectID(proofURI));
+  		
+  		// create Information instance as conclusion
+  		IWInformation conclusion = (IWInformation)PMLObjectManager.createPMLObject(PMLP.Information_lname);
+  		// set conclusion string and its language
+  		conclusion.setHasRawString(conclusionString);
+  		conclusion.setHasLanguage(languageURI);
+  		// assign NodeSet's hasConclusion property value
+  		ns.setHasConclusion(conclusion);
+  		
+  		// create InferenceStep instance
+  		IWInferenceStep infStep = (IWInferenceStep)PMLObjectManager.createPMLObject(PMLJ.InferenceStep_lname);
+  		// set inference step position of a list and the rule used
+  		infStep.setHasIndex(0);
+  		infStep.setHasInferenceRule(inferenceRuleURI);
+  		// create DocumentFragmentByOffset instance as source
+  		IWDocumentFragmentByOffset doc = (IWDocumentFragmentByOffset)PMLObjectManager.createPMLObject(PMLP.DocumentFragmentByOffset_lname);
+  		doc.setHasDocument(sourceURI);
+  		doc.setHasFromOffset("58");
+  		doc.setHasToOffset("91");  		
+  		// create SourceUsage instance
+  		IWSourceUsage srcUsg = (IWSourceUsage)PMLObjectManager.createPMLObject(PMLP.SourceUsage_lname);
+  		// set source and usage time
+  		srcUsg.setHasSource(doc);
+  		srcUsg.setHasUsageDateTime(sourceUsageTimeStamp);
+  		// assign InferenceStep's hasSourceUsage property value
+  		infStep.setHasSourceUsage(srcUsg);
+  		// add the InferenceStep to the isConsequentOf property value list
+  		ns.addIsConsequentOf(infStep);
+  		
+  		// get NodeSet's content on screen or save it to a file
+  		System.out.println(PMLObjectManager.printPMLObjectToString(ns));
+  		//PMLObjectManager.savePMLObject(ns, "fileName");
+  		
+  	} catch (Exception e) {
+  		e.printStackTrace();
+  	}
+  }
+
+  public static void main(String[] args) {
+    new NodeSetGen ();
+  }
+}
+
+</pre>
+</body>
+</html>

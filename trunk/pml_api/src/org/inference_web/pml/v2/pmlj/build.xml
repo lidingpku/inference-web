@@ -1,0 +1,86 @@
+<project name="model" default="api" basedir=".">
+  <description>
+      Inference Web model 
+  </description>
+
+  <!-- set global properties for this build -->
+  <property name="src"     location="."/>
+  <property name="build"   location="class"/>
+  <property name="apiname" location="iw.jar"/>
+  <property name="lib"     location="lib"/>
+  <property name="doc"     location="doc"/>
+  <property name="jenalibs"  location="../../../jenalib/"/>
+  <property name="jtpjar"  location="../../../lib/jtp.jar"/>
+	<property name="pmljar" location = "../../pml/pml.jar" />
+
+  <target name="init">
+    <!-- Create the time stamp -->
+    <tstamp/>
+    <!-- Create the build directory structure used by compile -->
+    <mkdir dir="${build}"/>
+    <copy file="${pmljar}" todir="${lib}"/>
+    <copy file="${jtpjar}" todir="${lib}"/>
+    <copy todir="${lib}" >
+      <fileset dir="${jenalibs}" />
+    </copy>
+  </target>
+
+  <target name="compile" depends="init"
+        description="compile the source " >
+    <!-- Compile the java code from ${src} into ${build} -->
+    <javac srcdir="${src}" destdir="${build}">
+    <classpath>
+      <pathelement path="${classpath}"/>
+      <fileset dir="lib">
+        <include name="**/*.jar"/>
+      </fileset>
+    </classpath>
+  </javac>
+
+  </target>
+
+  <target name="api" depends="compile"
+        description="generate the API distribution" >
+
+    <jar jarfile="${apiname}" basedir="${build}"/>
+  </target>
+
+  <target name="gendoc" depends="api"
+        description="generates the PML API JavaDoc" >
+    <javadoc
+           destdir="${doc}"
+           author="true"
+           version="true"
+           use="true"
+           windowtitle="PML - Proof Markup Language API">
+      <classpath>
+        <pathelement path="${classpath}"/>
+        <fileset dir="lib">
+          <include name="**/*.jar"/>
+        </fileset>
+      </classpath>
+      <fileset dir="." defaultexcludes="yes">
+        <include name="**/*.java" />
+        <exclude name="**/impl/**"/>
+        <exclude name="**/dbutil/**"/>
+        <exclude name="**/util/**"/> 
+      </fileset>
+
+      <doctitle><![CDATA[<h1>PML API</h1>]]></doctitle>
+      <bottom><![CDATA[<i>Copyright &#169; 2003,2004,2005,2006 Stanford University. All Rights Reserved.</i>]]></bottom>
+      <link href="http://iw.stanford.edu/documents/api/"/>
+    </javadoc>
+  </target>
+
+  <target name="clean"
+        description="clean up" >
+    <delete file="${apiname}"/>
+    <delete dir="${doc}"/>
+    <!-- Delete the ${build} directory tree -->
+    <delete dir="${build}"/>
+    <!-- Delete all jars in WEB-INF -->
+    <delete dir="${lib}" />
+
+  </target>
+
+</project>

@@ -1,0 +1,58 @@
+<html>
+<head>
+<title>
+</title>
+</head>
+<body>
+<pre>
+import org.inference_web.pml.v2.pmlp.*;
+import org.inference_web.pml.v2.util.*;
+import org.inference_web.pml.v2.vocabulary.*;
+import org.inference_web.pml.context.*;
+
+public class ProvenanceGen {
+
+  public ProvenanceGen () {
+  	try {
+  		// initializing info needed to create Language
+  		String peURI = "http://inference-web.org/registry/LG/KIF.owl#KIF";
+  		String name = "Knowledge Interchange Format (KIF)";
+  		String peURL = "http://logic.stanford.edu/kif/kif.html";
+  		String author1URI = "http://inference-web.org/registry/PER/MGENESERETH.owl#MGENESERETH";
+  		String author2URI = "http://inference-web.org/registry/PER/RFIKES.owl#RFIKES";
+
+  		// create Language instance
+  		IWLanguage pe = (IWLanguage)PMLObjectManager.createPMLObject(PMLP.Language_lname);
+  		// set Language's identification
+  		pe.setIdentifier(PMLObjectManager.getObjectID(peURI));
+  		
+  		// set Language's name
+  		pe.setHasName(name);
+  		// create Information instance as description
+  		IWInformation description = (IWInformation)PMLObjectManager.createPMLObject(PMLP.Information_lname);
+  		// set language url as hasURL in content
+  		description.setHasURL(peURL);
+  		// assign provenance element's hasDescription property value
+  		pe.addHasDescription(description);
+  		// set author list
+  		List authors = new ArrayList();
+  		authors.add(author1URI);
+  		authors.add(author2URI);
+  		pe.setHasAuthorList(authors);
+ 		
+  		// get language's content on screen or save it to a file
+  		System.out.println(PMLObjectManager.printPMLObjectToString(pe));
+  		//PMLObjectManager.savePMLObject(pe, "fileName");
+
+  	} catch (Exception e) {
+  		e.printStackTrace();
+  	}
+  }
+
+  public static void main(String[] args) {
+    new ProvenanceGen ();
+  }
+}
+</pre>
+</body>
+</html>

@@ -1,0 +1,700 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <title>PML Primer</title>
+  <link href="../../iw2.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body lang="EN">
+<h1>Proof Markup Language (PML) Primer</h1>
+<h2>Working Draft 04 October 2007</h2>
+
+<p>This version:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="http://inference-web.org/2007/primer/"">
+http://inference-web.org/2007/primer/</a>&nbsp;
+<br>This version:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="http://inference-web.org/2007/primer/"">
+http://inference-web.org/2007/primer/</a>&nbsp; 
+<br>Previous version:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="http://iw.stanford.edu/2005/wd-pml-primer/">
+http://iw.stanford.edu/2005/wd-pml-primer/</a>&nbsp; <p>
+Editors:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Deborah L. McGuinness 
+(Stanford University, Rensselaer Polytechnic Institute)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Paulo Pinheiro da Silva 
+(Stanford University, The University of Texas at El Paso)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Li Ding (Stanford 
+University, Rensselaer Polytechnic Institute) </p>
+
+<p>Copyright &copy;2007 <abbr title="IW Group"> <a
+ href="http://inference-web.org/">Inference Web Group</a>.</abbr></p>
+<hr>
+<p><b>Abstract</b> <br />
+This document provides a brief introduction to the Proof Markup Language (PML), which is part of the <a href="http://inference-web.org/" class='external text' title="http://inference-web.org/" rel="nofollow">Inference Web</a> (IW) infrastructure for explanations. PML was designed to function as a proof interlingua. It can be used to encode justification collections in a declarative and interoperable format. PML may be used to support applications that need to interoperate and provide access information to components that require justifications for answers. PML has been used in a number of government and corporate projects to encode justification collections. Users and agents can benefit of justification collections encoded in PML by using the Inference Web framework. IW provides a number of web tools and off-line tools for browsing, manipulating, checking, searching, combining, summarizing and rendering PML. When employing engines to generate PML, users may use the framework to validate PML encodings. This document introduces PML by motivating its need through use of simple examples. The examples are functional and can be reused to test IW tools.
+</p>
+<table id='toc' class='toc'><tr><td><div id='toctitle'><h2>Contents</h2></div>
+
+<ul>
+<li class='toclevel-1'><a href="#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a></li>
+<li class='toclevel-1'><a href="#Motivating_Example"><span class="tocnumber">2</span> <span class="toctext">Motivating Example</span></a>
+<ul>
+<li class='toclevel-2'><a href="#Question_.26_Query"><span class="tocnumber">2.1</span> <span class="toctext">Question &amp; Query</span></a></li>
+<li class='toclevel-2'><a href="#Answer"><span class="tocnumber">2.2</span> <span class="toctext">Answer</span></a></li>
+
+<li class='toclevel-2'><a href="#Justification_Collection"><span class="tocnumber">2.3</span> <span class="toctext">Justification Collection</span></a></li>
+</ul>
+</li>
+<li class='toclevel-1'><a href="#Using_PML_to_Encode_Justification_Collections"><span class="tocnumber">3</span> <span class="toctext">Using PML to Encode Justification Collections</span></a>
+<ul>
+<li class='toclevel-2'><a href="#Encoding_Collections_With_A_Single_Justification_for_the_Answer"><span class="tocnumber">3.1</span> <span class="toctext">Encoding Collections With A Single Justification for the Answer</span></a>
+<ul>
+<li class='toclevel-3'><a href="#Answer_Justified_by_a_Direct_Assertion"><span class="tocnumber">3.1.1</span> <span class="toctext">Answer Justified by a Direct Assertion</span></a></li>
+
+<li class='toclevel-3'><a href="#Answer_Justified_as_an_Inference_Result"><span class="tocnumber">3.1.2</span> <span class="toctext">Answer Justified as an Inference Result</span></a></li>
+</ul>
+</li>
+<li class='toclevel-2'><a href="#Encoding_Answer_with_Multiple_Justifications"><span class="tocnumber">3.2</span> <span class="toctext">Encoding Answer with Multiple Justifications</span></a></li>
+<li class='toclevel-2'><a href="#Encoding_Proofs"><span class="tocnumber">3.3</span> <span class="toctext">Encoding Proofs</span></a>
+<ul>
+<li class='toclevel-3'><a href="#Encoding_the_Question"><span class="tocnumber">3.3.1</span> <span class="toctext">Encoding the Question</span></a></li>
+
+<li class='toclevel-3'><a href="#Encoding_the_Query.2FAnswer"><span class="tocnumber">3.3.2</span> <span class="toctext">Encoding the Query/Answer</span></a></li>
+<li class='toclevel-3'><a href="#Linking_NodeSets_to_Query_and_Answer"><span class="tocnumber">3.3.3</span> <span class="toctext">Linking NodeSets to Query and Answer</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class='toclevel-1'><a href="#References"><span class="tocnumber">4</span> <span class="toctext">References</span></a></li>
+</ul>
+
+</td></tr></table>
+<p><script type="text/javascript"> if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+</p>
+<a name="Introduction"></a><h2>Introduction</h2>
+<p>The Proof Markup Language consists of a specification of terms for encoding collections of justifications to answers in question answering scenarios. Some applications will view each justification in the collections as a formal proof and others may view each justification as an information manipulation trace describing both a reasoning process and provenance information that led a system to make a conclusion. 
+</p><p>With PML, collections of justifications can be encoded in the interlingua, and then be shared for interoperation and information integration among heterogeneous distributed applications especially for question answering systems.
+</p>
+<a name="Motivating_Example"></a><h2>Motivating Example</h2>
+<p>Many applications work in settings where answers will not be trusted or used unless they can provide at least one justification that supports the answer that end users (people or programs) can inspect. Consider the following example:
+</p>
+<a name="Question_.26_Query"></a><h3> Question &amp; Query </h3>
+
+<p>John is visiting Stanford and is aware of an online tour guide agent that has information about local restaurants. John is aware of a seafood restaurant nearby called Tony's, so he asks a question in English.
+</p>
+<pre> What type of food is Tony's specialty?</pre>
+<p>Upon receiving the question, the agent translated it into an internal representation, i.e.  a <a href="http://logic.stanford.edu/kif/kif.html" class='external text' title="http://logic.stanford.edu/kif/kif.html" rel="nofollow">Knowledge Interchange Format (KIF)</a> query:
+</p>
+<pre> (type TonysSpecialty&nbsp;?x) </pre>
+<a name="Answer"></a><h3> 
+Answer </h3>
+
+<p>Then the agent will run a question-answering process and come up with an answer in KIF.
+</p>
+<pre> (type TonysSpecialty ShellFish) </pre>
+<p>It then translate the answer above into English and present that to the end user.
+</p>
+<pre>Tony's specialty is Shellfish.</pre>
+<a name="Justification_Collection"></a><h3>Justification Collection</h3>
+<p>Upon John's request for justifying the answer, the agent can provide a <b>justification collection</b> where the answer is the final conclusion of the collection. The collection may consist of one or more justifications and is encoded in PML. We use justification collections to encode justifications because one answer may have many justifications depending, for example, on the variety of information sources and the agent's run-time inference processes. In this scenario, we will first show two representative types of justification collections where only only one justification can be extracted for the the final conclusion. 
+</p>
+<ul><li> The justification for the answer says that the answer was directly asserted from some source. In this case, the answer has been directly asserted from a publication named <a href="http://inference-web.org/iwregistrar/ViewProvenance?uri=http%3A%2F%2Finference-web.org%2Fregistry%2FPUB%2FSTE.owl%23STE&mode=full&reqreg=yes" class='external text' title="http://inference-web.org/iwregistrar/ViewProvenance?uri=http%3A%2F%2Finference-web.org%2Fregistry%2FPUB%2FSTE.owl%23STE&mode=full&reqreg=yes" rel="nofollow" target='prov'>Stanford's Tony's Specialty Example</a>, where the conclusion "Tony's specialty is shellfish" is mentioned in KIF.
+
+</li></ul>
+<ul><li> The justification for the answer says  that it was derived. In this case, the answer has been derived by Stanford's <a href="http://www.ksl.stanford.edu/software/JTP/" class='external text' title="http://www.ksl.stanford.edu/software/JTP/" rel="nofollow">Java Theorem Prover (JTP)</a> using one step General-Modus-Ponens inference based on two statements: 
+<ul><li> "Crab is subclass of Shellfish". This statement is included in an ontology named <a href="http://inference-web.org/iwregistrar/ViewProvenance?uri=http%3A%2F%2Finference-web.org%2Fregistry%2FONT%2FSTOntology.owl%23STOntology&mode=full&reqreg=yes" class='external text' title="http://inference-web.org/iwregistrar/ViewProvenance?uri=http%3A%2F%2Finference-web.org%2Fregistry%2FONT%2FSTOntology.owl%23STOntology&mode=full&reqreg=yes" rel="nofollow" target='prov'>Stanford's Tony's Specialty Ontology</a>, which mentioned the fact that crab is sub-class of shellfish in KIF.
+</li><li> "Tony's specialty is also&nbsp;?x if Crab is subClassOf&nbsp;?x" told by <a href="http://inference-web.org/iwregistrar/ViewProvenance?uri=http%3A%2F%2Finference-web.org%2Fregistry%2FPER%2FDLM.owl%23DLM&mode=full&reqreg=yes" class='external text' title="http://inference-web.org/iwregistrar/ViewProvenance?uri=http%3A%2F%2Finference-web.org%2Fregistry%2FPER%2FDLM.owl%23DLM&mode=full&reqreg=yes" rel="nofollow" target='prov'>Deborah</a>, who is a person.  (<a href='person.html'>sample program code using PML Java API to create Person PML</a>)
+</li></ul>
+
+</li></ul>
+<a name="Using_PML_to_Encode_Justification_Collections"></a><h2>Using PML to Encode Justification Collections</h2>
+<p>The justification collection for an answer is a directed acyclic graph of <b>node sets</b> connected by <b>inference steps</b>. Each node set has a conclusion and any number of inference steps including zero. An inference step is an application of an <i>inference rule</i> on the the conclusions of other node sets, which are called the <i>immediate antecedents</i> of the step. The conclusion of the node set hosting an inference step is the conclusion of applying the inference rule of the step on the immediate antecedents of the step. 
+</p><p>A justification collection can encode one or more justifications for a given <b>answer</b>. The answer is the <b>final conclusion of a collection</b>, which is the conclusion of the node set that is not an antecedent of any inference step in the collection. A collection is said to have a <i>single justification for the answer</i> if every node set in the collection has exactly one inference step. If every node set in the collection has at least one inference step and ate at least one node set in the collection has two or more inference step, it is said that the collection has <i>alternative justifications for the answer</i>.
+
+</p><p>We will first discuss how to use PML to encode justification collections with a single justification for the answer. Then we will explain how to encode justification collections with alternative justifications for the answer. Finally, we will describe how to encode information about the query and possible question originating the answer justified by the collection.
+</p>
+<a name="Encoding_Collections_With_A_Single_Justification_for_the_Answer"></a><h3>Encoding Collections With A Single Justification for the Answer</h3>
+<p>In this section we discuss multiple ways of encoding single justifications for the answer in our scenarion. We first present a way of encoding a trivial justification for the answer and then we present a more complex justification for the same answer. 
+</p>
+<a name="Answer_Justified_by_a_Direct_Assertion"></a><h4>Answer Justified by a Direct Assertion</h4>
+<p>In what follows, we show how to represent justification collections for the conclusion '(type TonysSpecialty SHELLFISH)' that have been directly asserted. We have created several justification collections supporting the same conclusion with increasing amounts of provenance information.
+</p>
+<hr />
+<p><b>A short justification</b>
+</p><p>The justification means:
+</p>
+<div style="border: 1pt dashed blue; background&nbsp;: grey; padding: 1em 1em;">
+<p>'(type  TonysSpecialty SHELLFISH)'  has being directly asserted.
+
+</p>
+</div>
+<p>The justification can be encoded in the following PML: (<a href="http://browser.inference-web.org/iwbrowser/NodeSetBrowser?url=http%3A%2F%2Finference-web.org%2Fproofs%2Fprimer%2Fexamples%2Ftonys%2Fanswer_1%2Fanswer-short.owl%23answer" class='external text' title="http://browser.inference-web.org/iwbrowser/NodeSetBrowser?url=http://inference-web.org/2007/primer/examples/proofs/tonys/answer_1/answer-short.owl#answer" rel="nofollow">browse it in IWBrowser</a>) (<a href='answer1short.html'>sample program code using PML Java API</a>).  
+</p>
+
+<table border="0" cellpadding="0" cellspacing="0">
+  <tr><td bgcolor="#cccccc">
+  <pre>
+  &lt;pmlj:NodeSet rdf:about="<a href="http://inference-web.org/2007/primer/examples/proofs/tonys/answer_1/answer.owl#answer" class='external free' title="http://inference-web.org/2007/primer/examples/proofs/tonys/answer_1/answer.owl#answer" rel="nofollow">http://inference-web.org/2007/primer/examples/proofs/tonys/answer_1/answer.owl#answer</a>"&gt;
+    &lt;pmlj:hasConclusion&gt;
+      &lt;pmlp:Information&gt;
+        &lt;pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        &gt;<font color="#ff0000">(type TonysSpecialty SHELLFISH)</font>&lt;/pmlp:hasRawString&gt;
+        &lt;pmlp:hasLanguage rdf:resource="<font color="#ff0000"><a href="http://inference-web.org/registry/LG/KIF.owl#KIF" class='external free' title="http://inference-web.org/registry/LG/KIF.owl#KIF" rel="nofollow">http://inference-web.org/registry/LG/KIF.owl#KIF</a></font>"/&gt;
+      &lt;/pmlp:Information&gt;
+    &lt;/pmlj:hasConclusion&gt;
+    &lt;pmlj:ConsequentOf&gt;
+      &lt;pmlj:InferenceStep&gt;
+        &lt;pmlj:hasIndex rdf:datatype="<a href="http://www.w3.org/2001/XMLSchema#int" class='external free' title="http://www.w3.org/2001/XMLSchema#int" rel="nofollow">http://www.w3.org/2001/XMLSchema#int</a>"&gt;<font color="#ff0000">0</font>&lt;/hasIndex&gt;
+        &lt;pmlj:hasInferenceRule rdf:resource="<font color="#ff0000"><a href="http://inference-web.org/registry/DPR/Told.owl#Told" class='external free' title="http://inference-web.org/registry/DPR/Told.owl#Told" rel="nofollow">http://inference-web.org/registry/DPR/Told.owl#Told</a></font>"/&gt;
+      &lt;/pmlj:InferenceStep&gt;
+    &lt;/pmlj:isConsequentOf&gt;
+  &lt;/pmlj:NodeSet&gt;
+  </pre>
+  </td></tr>
+</table>
+<p><font size="1" color="#008000"> NOTE: the font colors in the gray boxes are used in the following manner: (i) black for new content; (ii) red for highlighted new content; and (iii) green for visited content.</font>
+</p><p>One of the most basic elements in PML is a NodeSet. A <b>NodeSet</b> is used to encode information about an information manipulation process that was used to derive a conclusion. 
+
+</p><p>This example shows a simple instance of NodeSet which captures one justification for information that has been directly asserted. A NodeSet usually has the following properties:
+</p>
+<ul><li> hasConclusion: 
+          <ul>
+            <li>hasRawString - the conclusion in string format of the direct assertion.</li>
+            <li>hasLanguage - the URI of the metadata about the language encoding the conclusion string.</li>
+          </ul>
+</li><li> isConsequentOf: the InferenceStep used to obtain the conclusion
+</li></ul>
+<p>An instance of <b>InferenceStep</b> encodes one justification for the conclusion of NodeSet. It usually has the following properties:
+</p>
+<ul><li> hasIndex: auxiliary property for sorting the inference step since a node set may be justified by multiple inference steps independently.
+</li><li> hasInferenceRule: the URI of the metadata about the Rule used to derive the conclusion. In this case, "Told" refers to a direct assertion. The conclusion of a told inference step is a statement in the knowledge base.
+
+</li></ul>
+<hr />
+<p><b>A refinement of the above justification (with source usage information)</b>
+</p><p>The justification means:
+</p>
+<div style="border: 1pt dashed blue; background&nbsp;: grey; padding: 1em 1em;">
+<p>(type  TonysSpecialty SHELLFISH)' has been directly asserted in  
+Stanford's Tony's Specialty Example as of 10:30 on 2005-10-17
+</p>
+</div>
+<p>The justification can be encoded in the following PML: (<a href="http://browser.inference-web.org/iwbrowser/NodeSetBrowser?url=http%3A%2F%2Finference-web.org%2Fproofs%2Fprimer%2Fexamples%2Ftonys%2Fanswer_1%2Fanswer-medium.owl%23answer" class='external text' title="http://browser.inference-web.org/iwbrowser/NodeSetBrowser?url=http://inference-web.org/2007/primer/examples/proofs/tonys/answer_1/answer-medium.owl#answer" rel="nofollow">browse it in IWBrowser</a>) (<a href='answer1medium.html'>sample program code using PML Java API</a>)
+</p>
+
+<table border="0" cellpadding="0" cellspacing="0">
+  <tr><td bgcolor="#cccccc">
+  <pre>
+<font color="#008000">  &lt;pmlj:NodeSet rdf:about="<a href="http://inference-web.org/2007/primer/examples/proofs/tonys/answer_1/answer.owl#answer" class='external free' title="http://inference-web.org/2007/primer/examples/proofs/tonys/answer_1/answer.owl#answer" rel="nofollow">http://inference-web.org/2007/primer/examples/proofs/tonys/answer_1/answer.owl#answer</a>"&gt;
+    &lt;pmlj:hasConclusion&gt;
+      &lt;pmlp:Information&gt;
+        &lt;pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        &gt;(type TonysSpecialty SHELLFISH)&lt;/pmlp:hasRawString&gt;
+        &lt;pmlp:hasLanguage rdf:resource="<font color="#ff0000"><a href="http://inference-web.org/registry/LG/KIF.owl#KIF" class='external free' title="http://inference-web.org/registry/LG/KIF.owl#KIF" rel="nofollow">http://inference-web.org/registry/LG/KIF.owl#KIF</a></font>"/&gt;
+      &lt;/pmlp:Information&gt;
+    &lt;/pmlj:hasConclusion&gt;
+    &lt;pmlj:ConsequentOf&gt;
+      &lt;pmlj:InferenceStep&gt;
+        &lt;pmlj:hasIndex rdf:datatype="<a href="http://www.w3.org/2001/XMLSchema#int" class='external free' title="http://www.w3.org/2001/XMLSchema#int" rel="nofollow">http://www.w3.org/2001/XMLSchema#int</a>"&gt;0&lt;/hasIndex&gt;
+        &lt;pmlj:hasInferenceRule rdf:resource="<font color="#ff0000"><a href="http://inference-web.org/registry/DPR/Told.owl#Told" class='external free' title="http://inference-web.org/registry/DPR/Told.owl#Told" rel="nofollow">http://inference-web.org/registry/DPR/Told.owl#Told</a></font>"/&gt;
+</font>        &lt;pmlj:hasSourceUsage&gt;
+          &lt;pmlp:SourceUsage&gt;
+            &lt;pmlp:hasSource rdf:resource="<font color="#ff0000"><a href="http://inference-web.org/registry/PUB/STE.owl#STE" class='external free' title="http://inference-web.org/registry/PUB/STE.owl#STE" rel="nofollow">http://inference-web.org/registry/PUB/STE.owl#STE</a></font>"/&gt;
+            &lt;pmlp:hasUsageDateTime rdf:datatype="<a href="http://www.w3.org/2001/XMLSchema#dateTime" class='external free' title="http://www.w3.org/2001/XMLSchema#dateTime" rel="nofollow">http://www.w3.org/2001/XMLSchema#dateTime</a>"
+            &gt;<font color="#ff0000">2005-10-17T10:30:00Z</font>&lt;/pmlp:hasUsageDateTime&gt;
+          &lt;/pmlp:SourceUsage&gt;
+        &lt;/hasSourceUsage&gt;
+<font color="#008000">      &lt;/pmlj:InferenceStep&gt;
+    &lt;/pmlj:isConsequentOf&gt;
+  &lt;/pmlj:NodeSet&gt;</font>
+  </pre>
+  </td></tr>
+</table>
+
+<p>This example expands the example above by adding additional source information.  The PML utilizes the SourceUsage construct. An instance of <b>SourceUsage</b> caputures the source and how the source has been used, and it usually has the following properties:
+</p>
+<ul><li> hasUsageDateTime:  this property records the time when this source has been accessed to draw the  conclusion. PML uses a standard XML schema datatype format to encode time (<a href="http://www.w3.org/2001/XMLSchema#dateTime" class='external text' title="http://www.w3.org/2001/XMLSchema#dateTime" rel="nofollow">xsd:dateTime</a>).
+</li><li> hasSource:  the URI of the metadata of the registered source.  In this example, it is the <a href="http://inference-web.org/registry/PUB/STE.owl#STE">Stanford's Tony's Specialty Example</a>. (<a href='pubtony.html'>sample program code using PML Java API to create this source</a>)
+</li></ul>
+<hr />
+<p><b>A refinement of the above justification (with enriched source usage information)</b>
+</p><p>The justification means:
+
+</p>
+<div style="border: 1pt dashed blue; background&nbsp;: grey; padding: 1em 1em;">
+<p>'(type  TonysSpecialty SHELLFISH)' has been directly asserted in Stanford's Tony's Specialty Example as a span of text between byte offset 58 and byte offset 91 as of 10:30 on 2005-10-17
+</p>
+</div>
+<p>The justification can be encoded in the following PML: (<a href="http://browser.inference-web.org/iwbrowser/NodeSetBrowser?url=http%3A%2F%2Finference-web.org%2Fproofs%2Fprimer%2Fexamples%2Ftonys%2Fanswer_1%2Fanswer-long.owl%23answer" class='external text' title="http://browser.inference-web.org/iwbrowser/NodeSetBrowser?url=http://inference-web.org/2007/primer/examples/proofs/tonys/answer_1/answer-long.owl#answer" rel="nofollow">browse it in IWBrowser</a>)  (<a href='answer1long.html'>sample program code using PML Java API</a>)
+</p>
+
+<table border="0" cellpadding="0" cellspacing="0">
+  <tr><td bgcolor="#cccccc">
+  <pre>
+<font color="#008000">  &lt;pmlj:NodeSet rdf:about="<a href="http://inference-web.org/2007/primer/examples/proofs/tonys/answer_1/answer.owl#answer" class='external free' title="http://inference-web.org/2007/primer/examples/proofs/tonys/answer_1/answer.owl#answer" rel="nofollow">http://inference-web.org/2007/primer/examples/proofs/tonys/answer_1/answer.owl#answer</a>"&gt;
+    &lt;pmlj:hasConclusion&gt;
+      &lt;pmlp:Information&gt;
+        &lt;pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        &gt;(type TonysSpecialty SHELLFISH)&lt;/pmlp:hasRawString&gt;
+        &lt;pmlp:hasLanguage rdf:resource="<a href="http://inference-web.org/registry/LG/KIF.owl#KIF" class='external free' title="http://inference-web.org/registry/LG/KIF.owl#KIF" rel="nofollow">http://inference-web.org/registry/LG/KIF.owl#KIF</a>"/&gt;
+      &lt;/pmlp:Information&gt;
+    &lt;/pmlj:hasConclusion&gt;
+    &lt;pmlj:ConsequentOf&gt;
+      &lt;pmlj:InferenceStep&gt;
+        &lt;pmlj:hasIndex rdf:datatype="<a href="http://www.w3.org/2001/XMLSchema#int" class='external free' title="http://www.w3.org/2001/XMLSchema#int" rel="nofollow">http://www.w3.org/2001/XMLSchema#int</a>"&gt;0&lt;/hasIndex&gt;
+        &lt;pmlj:hasInferenceRule rdf:resource="<font color="#ff0000"><a href="http://inference-web.org/registry/DPR/Told.owl#Told" class='external free' title="http://inference-web.org/registry/DPR/Told.owl#Told" rel="nofollow">http://inference-web.org/registry/DPR/Told.owl#Told</a></font>"/&gt;
+        &lt;pmlj:hasSourceUsage&gt;
+          &lt;pmlp:SourceUsage&gt;
+            &lt;pmlp:hasSource&gt;
+              &lt;pmlp:DocumentFragmentByOffset&gt;
+                &lt;pmlp:hasDocument rdf:resource="<font color="#ff0000"><a href="http://inference-web.org/registry/PUB/STE.owl#STE" class='external free' title="http://inference-web.org/registry/PUB/STE.owl#STE" rel="nofollow">http://inference-web.org/registry/PUB/STE.owl#STE</a></font>"/&gt;
+</font>                &lt;pmlp:hasFromOffset rdf:datatype="<a href="http://www.w3.org/2001/XMLSchema#int" class='external free' title="http://www.w3.org/2001/XMLSchema#int" rel="nofollow">http://www.w3.org/2001/XMLSchema#int</a>"&gt;<font color="#ff0000">58</font>&lt;/pmlp:hasFromOffset&gt;
+                &lt;pmlp:hasToOffset rdf:datatype="<a href="http://www.w3.org/2001/XMLSchema#int" class='external free' title="http://www.w3.org/2001/XMLSchema#int" rel="nofollow">http://www.w3.org/2001/XMLSchema#int</a>"&gt;<font color="#ff0000">91</font>&lt;/pmlp:hasToOffset&gt;
+<font color="#008000">              &lt;/pmlp:DocumentFragmentByOffset&gt;
+            &lt;/pmlp:hasSource&gt;
+            &lt;pmlp:hasUsageDateTime rdf:datatype="<a href="http://www.w3.org/2001/XMLSchema#dateTime" class='external free' title="http://www.w3.org/2001/XMLSchema#dateTime" rel="nofollow">http://www.w3.org/2001/XMLSchema#dateTime</a>"
+            &gt;2005-10-17T10:30:00Z&lt;/pmlp:hasUsageDateTime&gt;
+          &lt;/pmlp:SourceUsage&gt;
+        &lt;/hasSourceUsage&gt;
+      &lt;/pmlj:InferenceStep&gt;
+    &lt;/pmlj:isConsequentOf&gt;
+  &lt;/pmlj:NodeSet&gt;</font>
+  </pre>
+  </td></tr>
+</table>
+
+<p>This example includes additional information using SourceUsage.  It  specifies the portion of the source text being used.  These two properties are not required since they are auxiliary and often used for display purposes.
+</p>
+<a name="Answer_Justified_as_an_Inference_Result"></a><h4>Answer Justified as an Inference Result</h4>
+<p>In what follows, we show how to represent justifications derived from inference. A very simple justification with three node sets are elaborated below. We will quickly mention representing the premises and elaborate the construction 
+</p>
+<hr />
+<p><b>The premises (from direct assertion)</b>
+</p><p>Premise 1:
+</p>
+<div style="border: 1pt dashed blue; background&nbsp;: grey; padding: 1em 1em;">
+<p>'(subClassOf CRAB SHELLFISH)' has being directly asserted in Stanford's Tony's Specialty Ontology as a span of text between byte offset 56 and byte offset 82 as of 10:30 on 2005-10-17
+</p>
+
+</div>
+<p>The justification can be encoded in the following PML: (<a href="http://browser.inference-web.org/iwbrowser/NodeSetBrowser?url=http%3A%2F%2Finference-web.org%2Fproofs%2Fprimer%2Fexamples%2Ftonys%2Fanswer_2%2Fns1.owl%23ns1" class='external text' title="http://browser.inference-web.org/iwbrowser/NodeSetBrowser?url=http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/ns1.owl#ns1" rel="nofollow">browse it in IWBrowser</a>)  (<a href='answer2ns1.html'>sample program code using PML Java API</a>)
+</p>
+
+<table border="0" cellpadding="0" cellspacing="0">
+  <tr><td bgcolor="#cccccc">
+  <pre>
+  &lt;pmlj:NodeSet rdf:about="<a href="http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/ns1.owl#ns1">http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/ns1.owl#ns1</a>"&gt;
+    &lt;pmlj:hasConclusion&gt;
+      &lt;pmlp:Information&gt;
+        &lt;pmlp:hasRawString rdf:datatype="<a href="http://www.w3.org/2001/XMLSchema#string" class='external free' title="http://www.w3.org/2001/XMLSchema#string" rel="nofollow">http://www.w3.org/2001/XMLSchema#string</a>"
+        &gt;<font color="#ff0000">(subClassOf CRAB SHELLFISH)</font>&lt;/pmlp:hasRawString&gt;
+        &lt;pmlp:hasLanguage rdf:resource="<a href="http://inference-web.org/registry/LG/KIF.owl#KIF" class='external free' title="http://inference-web.org/registry/LG/KIF.owl#KIF" rel="nofollow">http://inference-web.org/registry/LG/KIF.owl#KIF</a>"/&gt;
+      &lt;/pmlp:Information&gt;
+    &lt;/pmlj:hasConclusion&gt;
+    &lt;pmlj:ConsequentOf&gt;
+      &lt;pmlj:InferenceStep&gt;
+        &lt;pmlj:hasIndex rdf:datatype="<a href="<a href="http://www.w3.org/2001/XMLSchema#int" class='external free' title="http://www.w3.org/2001/XMLSchema#int" rel="nofollow">http://www.w3.org/2001/XMLSchema#int</a>"&gt;<font color="#ff0000">0</font>&lt;/hasIndex&gt;
+        &lt;pmlj:hasInferenceRule rdf:resource="<a href="http://inference-web.org/registry/DPR/Told.owl#Told" class='external free' title="http://inference-web.org/registry/DPR/Told.owl#Told" rel="nofollow">http://inference-web.org/registry/DPR/Told.owl#Told</a>"/&gt;
+        &lt;pmlj:hasSourceUsage&gt;
+          &lt;pmlp:SourceUsage&gt;
+            &lt;pmlp:hasSource&gt;
+              &lt;pmlp:DocumentFragmentByOffset&gt;
+                &lt;pmlp:hasFromOffset rdf:datatype="<a href="http://www.w3.org/2001/XMLSchema#int" class='external free' title="http://www.w3.org/2001/XMLSchema#int" rel="nofollow">http://www.w3.org/2001/XMLSchema#int</a>"&gt;<font color="#ff0000">56</font>&lt;/pmlp:hasFromOffset&gt;
+                &lt;pmlp:hasDocument rdf:resource="<a href="http://inference-web.org/registry/ONT/STOntology.owl#STOntology">http://inference-web.org/registry/ONT/STOntology.owl#STOntology</a>"/&gt;
+                &lt;pmlp:hasToOffset rdf:datatype="<a href="<a href="http://www.w3.org/2001/XMLSchema#int" class='external free' title="http://www.w3.org/2001/XMLSchema#int" rel="nofollow">http://www.w3.org/2001/XMLSchema#int</a>"&gt;<font color="#ff0000">82</font>&lt;/pmlp:hasToOffset&gt;
+              &lt;/pmlp:DocumentFragmentByOffset&gt;
+            &lt;/pmlp:hasSource&gt;
+            &lt;pmlp:hasUsageDateTime rdf:datatype="<a href="http://www.w3.org/2001/XMLSchema#dateTime" class='external free' title="http://www.w3.org/2001/XMLSchema#dateTime" rel="nofollow">http://www.w3.org/2001/XMLSchema#dateTime</a>"&gt;<font color="#ff0000">2005-10-17T10:30:00Z</font>&lt;/pmlp:hasUsageDateTime&gt;
+          &lt;/pmlp:SourceUsage&gt;
+        &lt;/hasSourceUsage&gt;
+      &lt;/pmlj:InferenceStep&gt;
+    &lt;/pmlj:isConsequentOf&gt;
+  &lt;/pmlj:NodeSet&gt;
+  </pre>
+  </td></tr>
+</table>
+
+
+<p><br />
+Premise 2:
+</p>
+<div style="border: 1pt dashed blue; background&nbsp;: grey; padding: 1em 1em;">
+<p>'(or (not(subClassOf CRAB&nbsp;?x)) (type TonysSpecialty&nbsp;?x))' 
+has being directly asserted in Deborah as of 10:30 on 2005-10-17
+</p>
+</div>
+<p>The justification can be encoded in the following PML: (<a href="http://browser.inference-web.org/iwbrowser/NodeSetBrowser?url=http%3A%2F%2Finference-web.org%2Fproofs%2Fprimer%2Fexamples%2Ftonys%2Fanswer_2%2Fns2.owl%23ns2" class='external text' title="http://browser.inference-web.org/iwbrowser/NodeSetBrowser?url=http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/ns2.owl#ns2" rel="nofollow">browse it in IWBrowser</a>)  (<a href='answer2ns2.html'>sample program code using PML Java API</a>)
+</p>
+ 
+<table border="0" cellpadding="0" cellspacing="0">
+  <tr><td bgcolor="#cccccc">
+  <pre>
+    &lt;pmlj:NodeSet rdf:about="<a href="http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/ns2.owl#ns2">http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/ns2.owl#ns2</a>"&gt;
+    &lt;pmlj:hasConclusion&gt;
+      &lt;pmlp:Information&gt;
+        &lt;pmlp:hasRawString rdf:datatype="<a href="http://www.w3.org/2001/XMLSchema#string" class='external free' title="http://www.w3.org/2001/XMLSchema#string" rel="nofollow">http://www.w3.org/2001/XMLSchema#string</a>"
+        &gt;<font color="#ff0000">(or (not(subClassOf CRAB ?x)) (type TonysSpecialty ?x))</font>&lt;/pmlp:hasRawString&gt;
+        &lt;pmlp:hasLanguage rdf:resource="<a href="http://inference-web.org/registry/LG/KIF.owl#KIF" class='external free' title="http://inference-web.org/registry/LG/KIF.owl#KIF" rel="nofollow">http://inference-web.org/registry/LG/KIF.owl#KIF</a>"/&gt;
+      &lt;/pmlp:Information&gt;
+    &lt;/pmlj:hasConclusion&gt;
+    &lt;pmlj:ConsequentOf&gt;
+      &lt;pmlj:InferenceStep&gt;
+        &lt;pmlj:hasIndex rdf:datatype="<a href="<a href="http://www.w3.org/2001/XMLSchema#int" class='external free' title="http://www.w3.org/2001/XMLSchema#int" rel="nofollow">http://www.w3.org/2001/XMLSchema#int</a>"&gt;<font color="#ff0000">0</font>&lt;/hasIndex&gt;
+        &lt;pmlj:hasInferenceRule rdf:resource="<a href="http://inference-web.org/registry/DPR/Told.owl#Told" class='external free' title="http://inference-web.org/registry/DPR/Told.owl#Told" rel="nofollow">http://inference-web.org/registry/DPR/Told.owl#Told</a>"/&gt;
+        &lt;pmlj:hasSourceUsage&gt;
+          &lt;pmlp:SourceUsage&gt;
+            &lt;pmlp:hasSource rdf:resource="<a href="http://inference-web.org/registry/PER/DLM.owl#DLM" class='external free' title="http://inference-web.org/registry/PER/DLM.owl#DLM" rel="nofollow">http://inference-web.org/registry/PER/DLM.owl#DLM</a>"/&gt;
+            &lt;pmlp:hasUsageDateTime rdf:datatype="<a href="http://www.w3.org/2001/XMLSchema#dateTime" class='external free' title="http://www.w3.org/2001/XMLSchema#dateTime" rel="nofollow">http://www.w3.org/2001/XMLSchema#dateTime</a>"&gt;<font color="#ff0000">2005-10-17T10:30:00Z</font>&lt;/pmlp:hasUsageDateTime&gt;
+          &lt;/pmlp:SourceUsage&gt;
+        &lt;/hasSourceUsage&gt;
+      &lt;/pmlj:InferenceStep&gt;
+    &lt;/pmlj:isConsequentOf&gt;
+  &lt;/pmlj:NodeSet&gt;
+  </pre>
+  </td></tr>
+</table>
+  
+<hr />
+<p><b>A simple derived justification</b>
+</p><p>The justification means:
+</p>
+<div style="border: 1pt dashed blue; background&nbsp;: grey; padding: 1em 1em;">
+<p>'(type TonysSpecialty SHELLFISH)' is derived from the application of General Modus Ponens rule on the two premises linked by <a href="http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/ns1.owl#ns1" class='external free' title="http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/ns1.owl#ns1" rel="nofollow">http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/ns1.owl#ns1</a>  and 
+<a href="http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/ns2.owl#ns2" class='external free' title="http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/ns2.owl#ns2" rel="nofollow">http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/ns2.owl#ns2</a>  
+
+</p>
+</div>
+<p>The justification can be encoded in the following PML: (<a href="http://browser.inference-web.org/iwbrowser/NodeSetBrowser?url=http%3A%2F%2Finference-web.org%2Fproofs%2Fprimer%2Fexamples%2Ftonys%2Fanswer_2%2Fanswer-short.owl%23answer" class='external text' title="http://browser.inference-web.org/iwbrowser/NodeSetBrowser?url=http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/answer-short.owl#answer" rel="nofollow">browse it in IWBrowser</a>)  (<a href='answer2short.html'>sample program code using PML Java API</a>)
+</p>
+
+<table border="0" cellpadding="0" cellspacing="0">
+  <tr><td bgcolor="#cccccc">
+  <pre>
+  &lt;pmlj:NodeSet rdf:about="<a href="http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/answer.owl#answer">http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/answer.owl#answer</a>"&gt;
+    &lt;pmlj:hasConclusion&gt;
+      &lt;pmlp:Information&gt;
+        &lt;pmlp:hasRawString rdf:datatype="<a href="http://www.w3.org/2001/XMLSchema#string" class='external free' title="http://www.w3.org/2001/XMLSchema#string" rel="nofollow">http://www.w3.org/2001/XMLSchema#string</a>"
+        &gt;<font color="#ff0000">(type TonysSpecialty ?x)</font>&lt;/pmlp:hasRawString&gt;
+        &lt;pmlp:hasLanguage rdf:resource="<a href="http://inference-web.org/registry/LG/KIF.owl#KIF" class='external free' title="http://inference-web.org/registry/LG/KIF.owl#KIF" rel="nofollow">http://inference-web.org/registry/LG/KIF.owl#KIF</a>"/&gt;
+      &lt;/pmlp:Information&gt;
+    &lt;/pmlj:hasConclusion&gt;
+    &lt;pmlj:ConsequentOf&gt;
+      &lt;pmlj:InferenceStep&gt;
+        &lt;pmlj:hasIndex rdf:datatype="<a href="http://www.w3.org/2001/XMLSchema#int" class='external free' title="http://www.w3.org/2001/XMLSchema#int" rel="nofollow">http://www.w3.org/2001/XMLSchema#int</a>"&gt;<font color="#ff0000">0</font>&lt;/hasIndex&gt;
+        &lt;pmlj:hasInferenceRule rdf:resource="<a href="http://inference-web.org/registry/DPR/GMP.owl#GMP">http://inference-web.org/registry/DPR/GMP.owl#GMP</a>"/&gt;
+        &lt;pmlj:hasAntecedentList&gt;
+          &lt;pmlj:NodeSetList&gt;
+            &lt;ds:first rdf:resource="<a href="http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/ns1.owl#ns1">http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/ns1.owl#ns1</a>"/&gt;
+            &lt;ds:rest&gt;
+              &lt;pmlj:NodeSetList&gt;
+                &lt;ds:first rdf:resource="<a href="http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/ns2.owl#ns2">http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/ns2.owl#ns2</a>"/&gt;
+              &lt;/pmlj:NodeSetList&gt;
+            &lt;/ds:rest&gt;
+          &lt;/pmlj:NodeSetList&gt;
+        &lt;/pmlj:hasAntecedentList&gt;
+      &lt;/pmlj:InferenceStep&gt;
+    &lt;/pmlj:isConsequentOf&gt;
+  &lt;/pmlj:NodeSet&gt;
+  </pre>
+  </td></tr>
+</table>
+
+<p>The derived justification differs from direct assertion in that (i) it uses uses rules other than Direct Assertion and (ii) it specifies addition information including:
+</p>
+<ul><li> hasAntecedentList: a ordered list of the URI of the NodeSet which serves as premises.
+</li></ul>
+<hr />
+<p><b>A refinement of the above justification (with inference engine specified)</b>
+</p><p>The justification means:
+</p>
+<div style="border: 1pt dashed blue; background&nbsp;: grey; padding: 1em 1em;">
+
+<p>'(type TonysSpecialty SHELLFISH)' is derived by JTP from the application of General Modus Ponens rule on the two premises linked by <a href="http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/ns1.owl#ns1" class='external free' title="http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/ns1.owl#ns1" rel="nofollow">http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/ns1.owl#ns1</a>  and <a href="http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/ns2.owl#ns2" class='external free' title="http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/ns2.owl#ns2" rel="nofollow">http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/ns2.owl#ns2</a>  
+</p>
+</div>
+<p>The justification can be encoded in the following PML: (<a href="http://browser.inference-web.org/iwbrowser/NodeSetBrowser?url=http%3A%2F%2Finference-web.org%2Fproofs%2Fprimer%2Fexamples%2Ftonys%2Fanswer_2%2Fanswer-medium.owl%23answer" class='external text' title="http://browser.inference-web.org/iwbrowser/NodeSetBrowser?url=http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/answer-medium.owl#answer" rel="nofollow">browse it in IWBrowser</a>) (<a href='answer2medium.html'>sample program code using PML Java API</a>)
+</p>
+
+<table border="0" cellpadding="0" cellspacing="0">
+  <tr><td bgcolor="#cccccc">
+  <pre>
+<font color="#008000">  &lt;pmlj:NodeSet rdf:about="<a href="http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/answer.owl#answer">http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/answer.owl#answer</a>"&gt;
+    &lt;pmlj:hasConclusion&gt;
+      &lt;pmlp:Information&gt;
+        &lt;pmlp:hasRawString rdf:datatype="<a href="http://www.w3.org/2001/XMLSchema#string" class='external free' title="http://www.w3.org/2001/XMLSchema#string" rel="nofollow">http://www.w3.org/2001/XMLSchema#string</a>"
+        &gt;(type TonysSpecialty ?x)&lt;/pmlp:hasRawString&gt;
+        &lt;pmlp:hasLanguage rdf:resource="<a href="http://inference-web.org/registry/LG/KIF.owl#KIF" class='external free' title="http://inference-web.org/registry/LG/KIF.owl#KIF" rel="nofollow">http://inference-web.org/registry/LG/KIF.owl#KIF</a>"/&gt;
+      &lt;/pmlp:Information&gt;
+    &lt;/pmlj:hasConclusion&gt;
+    &lt;pmlj:ConsequentOf&gt;
+      &lt;pmlj:InferenceStep&gt;
+        &lt;pmlj:hasIndex rdf:datatype="<a href="http://www.w3.org/2001/XMLSchema#int" class='external free' title="http://www.w3.org/2001/XMLSchema#int" rel="nofollow">http://www.w3.org/2001/XMLSchema#int</a>"&gt;0&lt;/hasIndex&gt;
+        &lt;pmlj:hasInferenceRule rdf:resource="<a href="http://inference-web.org/registry/DPR/GMP.owl#GMP">http://inference-web.org/registry/DPR/GMP.owl#GMP</a>"/&gt;
+</font>        &lt;pmlj:hasInferenceEngine rdf:resource="<a href="http://inference-web.org/registry/IE/JTP.owl#JTP">http://inference-web.org/registry/IE/JTP.owl#JTP</a>"/&gt;
+<font color="#008000">        &lt;pmlj:hasAntecedentList&gt;
+          &lt;pmlj:NodeSetList&gt;
+            &lt;ds:first rdf:resource="<a href="http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/ns1.owl#ns1">http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/ns1.owl#ns1</a>"/&gt;
+            &lt;ds:rest&gt;
+              &lt;pmlj:NodeSetList&gt;
+                &lt;ds:first rdf:resource="<a href="http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/ns2.owl#ns2">http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/ns2.owl#ns2</a>"/&gt;
+              &lt;/pmlj:NodeSetList&gt;
+            &lt;/ds:rest&gt;
+          &lt;/pmlj:NodeSetList&gt;
+        &lt;/pmlj:hasAntecedentList&gt;
+      &lt;/pmlj:InferenceStep&gt;
+    &lt;/pmlj:isConsequentOf&gt;
+  &lt;/pmlj:NodeSet&gt;</font>
+  </pre>
+  </td></tr>
+</table>
+
+<ul><li> hasInferenceEngine: the URI of metadata of the inference engine used to derive this proof
+</li></ul>
+<hr />
+<p><b>A refinement of the above justification (with variable mapping specified)</b>
+</p><p>The justification means:
+</p>
+<div style="border: 1pt dashed blue; background&nbsp;: grey; padding: 1em 1em;">
+<p>'(type TonysSpecialty SHELLFISH)' is derived from the application of General Modus Ponens rule on the two premises linked by <a href="http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/ns1.owl#ns1" class='external free' title="http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/ns1.owl#ns1" rel="nofollow">http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/ns1.owl#ns1</a>  and 
+<a href="http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/ns2.owl#ns2" class='external free' title="http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/ns2.owl#ns2" rel="nofollow">http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/ns2.owl#ns2</a> , and we also record that the inference step binds the variable&nbsp;?x to SHELLFISH. 
+
+</p>
+</div>
+<p>The justification can be encoded in the following PML: (<a href="http://browser.inference-web.org/iwbrowser/NodeSetBrowser?url=http%3A%2F%2Finference-web.org%2Fproofs%2Fprimer%2Fexamples%2Ftonys%2Fanswer_2%2Fanswer.owl%23answer" class='external text' title="http://browser.inference-web.org/iwbrowser/NodeSetBrowser?url=http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/answer.owl#answer" rel="nofollow">browse it in IWBrowser</a>) (<a href='answer2answer.html'>sample program code using PML Java API</a>)
+</p>
+
+<table border="0" cellpadding="0" cellspacing="0">
+  <tr><td bgcolor="#cccccc">
+  <pre><font color="#008000">
+  &lt;pmlj:NodeSet rdf:about="<a href="http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/answer.owl#answer">http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/answer.owl#answer</a>"&gt;
+    &lt;pmlj:hasConclusion&gt;
+      &lt;pmlp:Information&gt;
+        &lt;pmlp:hasRawString rdf:datatype="<a href="http://www.w3.org/2001/XMLSchema#string" class='external free' title="http://www.w3.org/2001/XMLSchema#string" rel="nofollow">http://www.w3.org/2001/XMLSchema#string</a>"
+        &gt;(type TonysSpecialty ?x)&lt;/pmlp:hasRawString&gt;
+        &lt;pmlp:hasLanguage rdf:resource="<a href="http://inference-web.org/registry/LG/KIF.owl#KIF" class='external free' title="http://inference-web.org/registry/LG/KIF.owl#KIF" rel="nofollow">http://inference-web.org/registry/LG/KIF.owl#KIF</a>"/&gt;
+      &lt;/pmlp:Information&gt;
+    &lt;/pmlj:hasConclusion&gt;
+    &lt;pmlj:ConsequentOf&gt;
+      &lt;pmlj:InferenceStep&gt;
+        &lt;pmlj:hasIndex rdf:datatype="<a href="http://www.w3.org/2001/XMLSchema#int" class='external free' title="http://www.w3.org/2001/XMLSchema#int" rel="nofollow">http://www.w3.org/2001/XMLSchema#int</a>"&gt;0&lt;/hasIndex&gt;
+        &lt;pmlj:hasInferenceRule rdf:resource="<a href="http://inference-web.org/registry/DPR/GMP.owl#GMP">http://inference-web.org/registry/DPR/GMP.owl#GMP</a>"/&gt;
+</font>        &lt;pmlj:hasVariableMapping&gt;
+          &lt;pmlj:Mapping&gt;
+            &lt;pmlj:mapFrom rdf:datatype="<a href="http://www.w3.org/2001/XMLSchema#string" class='external free' title="http://www.w3.org/2001/XMLSchema#string" rel="nofollow">http://www.w3.org/2001/XMLSchema#string</a>"&gt;<font color="#ff0000">?x</font>&lt;/pmlj:mapFrom&gt;
+            &lt;pmlj:mapTo rdf:datatype="<a href="http://www.w3.org/2001/XMLSchema#string" class='external free' title="http://www.w3.org/2001/XMLSchema#string" rel="nofollow">http://www.w3.org/2001/XMLSchema#string</a>"&gt;<font color="#ff0000">SHELLFISH</font>&lt;/pmlj:mapTo&gt;
+          &lt;/pmlj:Mapping&gt;
+        &lt;/pmlj:hasVariableMapping&gt;
+<font color="#008000">        &lt;pmlj:hasInferenceEngine rdf:resource="<a href="http://inference-web.org/registry/IE/JTP.owl#JTP">http://inference-web.org/registry/IE/JTP.owl#JTP</a>"/&gt;
+        &lt;pmlj:hasAntecedentList&gt;
+          &lt;pmlj:NodeSetList&gt;
+            &lt;ds:first rdf:resource="<a href="http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/ns1.owl#ns1">http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/ns1.owl#ns1</a>"/&gt;
+            &lt;ds:rest&gt;
+              &lt;pmlj:NodeSetList&gt;
+                &lt;ds:first rdf:resource="<a href="http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/ns2.owl#ns2">http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/ns2.owl#ns2</a>"/&gt;
+              &lt;/pmlj:NodeSetList&gt;
+            &lt;/ds:rest&gt;
+          &lt;/pmlj:NodeSetList&gt;
+        &lt;/pmlj:hasAntecedentList&gt;
+      &lt;/pmlj:InferenceStep&gt;
+    &lt;/pmlj:isConsequentOf&gt;
+  &lt;/pmlj:NodeSet&gt;</font>
+  </pre>
+  </td></tr>
+</table>
+
+<p>PML also enable us to preserve the generic conclusion with associated Variable Mapping. An instance of Mapping records the variable bindings obtained in inference, and the conclusion does not have to be grounded. The semantics of the conclusion is in fact the one after variable mappings have been applied.
+</p>
+<a name="Encoding_Answer_with_Multiple_Justifications"></a><h3>Encoding Answer with Multiple Justifications</h3>
+<p>A NodeSet may contain two inference steps, which lead to two alternative justifications of the same conclusion. 
+</p><p>The justification means:
+</p>
+<div style="border: 1pt dashed blue; background&nbsp;: grey; padding: 1em 1em;">
+<p>'(type TonysSpecialty SHELLFISH)' is derived from the application of General Modus Ponens rule or, alternatively, from a direct assertion.
+</p>
+</div>
+
+<p>The justification can be encoded in the following PML: (<a href="http://browser.inference-web.org/iwbrowser/NodeSetBrowser?url=http%3A%2F%2Finference-web.org%2Fproofs%2Fprimer%2Fexamples%2Ftonys%2Fanswer_3%2Fanswer.owl%23answer" class='external text' title="http://browser.inference-web.org/iwbrowser/NodeSetBrowser?url=http://inference-web.org/2007/primer/examples/proofs/tonys/answer_3/answer.owl#answer" rel="nofollow">browse it in IWBrowser</a>) (<a href='answer3answer.html'>sample program code using PML Java API</a>)
+</p>
+
+<table border="0" cellpadding="0" cellspacing="0">
+  <tr><td bgcolor="#cccccc">
+  <pre>
+    &lt;pmlj:NodeSet rdf:about="<a href="http://inference-web.org/2007/primer/examples/proofs/tonys/answer_3/answer.owl#answer">http://inference-web.org/2007/primer/examples/proofs/tonys/answer_3/answer.owl#answer</a>"&gt;
+    &lt;pmlj:hasConclusion&gt;
+      &lt;pmlp:Information&gt;
+        &lt;pmlp:hasRawString rdf:datatype="<a href="http://www.w3.org/2001/XMLSchema#string" class='external free' title="http://www.w3.org/2001/XMLSchema#string" rel="nofollow">http://www.w3.org/2001/XMLSchema#string</a>"
+        &gt;(type TonysSpecialty SHELLFISH)&lt;/pmlp:hasRawString&gt;
+        &lt;pmlp:hasLanguage rdf:resource="<a href="http://inference-web.org/registry/LG/KIF.owl#KIF" class='external free' title="http://inference-web.org/registry/LG/KIF.owl#KIF" rel="nofollow">http://inference-web.org/registry/LG/KIF.owl#KIF</a>"/&gt;
+      &lt;/pmlp:Information&gt;
+    &lt;/pmlj:hasConclusion&gt;
+    &lt;pmlj:ConsequentOf&gt;
+      &lt;pmlj:InferenceStep&gt;
+        &lt;pmlj:hasIndex rdf:datatype="<a href="http://www.w3.org/2001/XMLSchema#int" class='external free' title="http://www.w3.org/2001/XMLSchema#int" rel="nofollow">http://www.w3.org/2001/XMLSchema#int</a>"&gt;0&lt;/hasIndex&gt;
+        &lt;pmlj:hasInferenceRule rdf:resource="<a href="http://inference-web.org/registry/DPR/Told.owl#Told" class='external free' title="http://inference-web.org/registry/DPR/Told.owl#Told" rel="nofollow">http://inference-web.org/registry/DPR/Told.owl#Told</a>"/&gt;
+        &lt;pmlj:hasSourceUsage&gt;
+          &lt;pmlp:SourceUsage&gt;
+            &lt;pmlp:hasSource&gt;
+              &lt;pmlp:DocumentFragmentByOffset&gt;
+                &lt;pmlp:hasFromOffset rdf:datatype="<a href="http://www.w3.org/2001/XMLSchema#int" class='external free' title="http://www.w3.org/2001/XMLSchema#int" rel="nofollow">http://www.w3.org/2001/XMLSchema#int</a>"&gt;58&lt;/pmlp:hasFromOffset&gt;
+                &lt;pmlp:hasDocument rdf:resource="<a href="http://inference-web.org/registry/PUB/STE.owl#STE">http://inference-web.org/registry/PUB/STE.owl#STE</a>"/&gt;
+                &lt;pmlp:hasToOffset rdf:datatype="<a href="http://www.w3.org/2001/XMLSchema#int" class='external free' title="http://www.w3.org/2001/XMLSchema#int" rel="nofollow">http://www.w3.org/2001/XMLSchema#int</a>"&gt;91&lt;/pmlp:hasToOffset&gt;
+              &lt;/pmlp:DocumentFragmentByOffset&gt;
+            &lt;/pmlp:hasSource&gt;
+            &lt;pmlp:hasUsageDateTime rdf:datatype="<a href='http://www.w3.org/2001/XMLSchema#dateTime'>http://www.w3.org/2001/XMLSchema#dateTime</a>"&gt;2005-10-17T10:30:00Z&lt;/pmlp:hasUsageDateTime&gt;
+          &lt;/pmlp:SourceUsage&gt;
+        &lt;/hasSourceUsage&gt;
+      &lt;/pmlj:InferenceStep&gt;      
+    &lt;/pmlj:isConsequentOf&gt;
+    &lt;pmlj:ConsequentOf&gt;
+      &lt;pmlj:InferenceStep&gt;
+        &lt;pmlj:hasIndex rdf:datatype="<a href="http://www.w3.org/2001/XMLSchema#int" class='external free' title="http://www.w3.org/2001/XMLSchema#int" rel="nofollow">http://www.w3.org/2001/XMLSchema#int</a>&gt;1&lt;/hasIndex&gt;
+        &lt;pmlj:hasInferenceRule rdf:resource="<a href="http://inference-web.org/registry/DPR/GMP.owl#GMP">http://inference-web.org/registry/DPR/GMP.owl#GMP</a>"/&gt;
+        &lt;pmlj:hasVariableMapping&gt;
+          &lt;pmlj:Mapping&gt;
+            &lt;pmlj:mapFrom rdf:datatype="<a href="http://www.w3.org/2001/XMLSchema#string" class='external free' title="http://www.w3.org/2001/XMLSchema#string" rel="nofollow">http://www.w3.org/2001/XMLSchema#string</a>"&gt;?x&lt;/pmlj:mapFrom&gt;
+            &lt;pmlj:mapTo rdf:datatype="<a href="http://www.w3.org/2001/XMLSchema#string" class='external free' title="http://www.w3.org/2001/XMLSchema#string" rel="nofollow">http://www.w3.org/2001/XMLSchema#string</a>"&gt;SHELLFISH&lt;/pmlj:mapTo&gt;
+          &lt;/pmlj:Mapping&gt;
+        &lt;/pmlj:hasVariableMapping&gt;
+        &lt;pmlj:hasInferenceEngine rdf:resource="<a href="http://inference-web.org/registry/IE/JTP.owl#JTP">http://inference-web.org/registry/IE/JTP.owl#JTP</a>"/&gt;
+        &lt;pmlj:hasAntecedentList&gt;
+          &lt;pmlj:NodeSetList&gt;
+              &lt;ds:first rdf:resource="<a href="http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/ns1.owl#ns1">http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/ns1.owl#ns1</a>"/&gt;
+            &lt;ds:rest&gt;
+              &lt;pmlj:NodeSetList&gt;
+             &lt;ds:first rdf:resource="<a href="http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/ns2.owl#ns2">http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/ns2.owl#ns2</a>"/&gt;
+              &lt;/pmlj:NodeSetList&gt;
+            &lt;/ds:rest&gt;
+          &lt;/pmlj:NodeSetList&gt;
+        &lt;/pmlj:hasAntecedentList&gt;
+      &lt;/pmlj:InferenceStep&gt;
+    &lt;/pmlj:isConsequentOf&gt;
+  &lt;/pmlj:NodeSet&gt;
+  </pre>
+  </td></tr>
+</table>
+  
+
+<a name="Encoding_Proofs"></a><h3>Encoding Proofs</h3>
+<a name="Encoding_the_Question"></a><h4>Encoding the Question</h4>
+<p>An instance of <b>question</b> records the original user's question, which is an English sentence in this scenario.
+</p>
+<div style="border: 1pt dashed blue; background&nbsp;: grey; padding: 1em 1em;">
+<p>"What type of food is Tony's specialty?"
+</p>
+</div>
+<p>The question is represented in PML as below:
+
+</p>
+  
+<table border="0" cellpadding="0" cellspacing="0">
+  <tr><td bgcolor="#cccccc">
+  <pre>
+    &lt;Question rdf:about="<a href="http://inference-web.org/2007/primer/examples/proofs/tonys/question.owl#question">http://inference-web.org/2007/primer/examples/proofs/tonys/question.owl#question</a>"&gt;
+    &lt;pmlp:hasContent&gt;
+      &lt;pmlp:Information&gt;
+        &lt;pmlp:hasRawString rdf:datatype="<a href="http://www.w3.org/2001/XMLSchema#string" class='external free' title="http://www.w3.org/2001/XMLSchema#string" rel="nofollow">http://www.w3.org/2001/XMLSchema#string</a>"
+        &gt;<font color="#FF0000">What type of food is Tony's specialty?</font>&lt;/pmlp:hasRawString&gt;
+      &lt;/pmlp:Information&gt;
+    &lt;/pmlp:hasContent&gt;
+  &lt;/Question&gt;
+  </pre>
+  </td></tr>
+</table>
+
+  <a name="Encoding_the_Query.2FAnswer"></a><h4>Encoding the Query/Answer</h4>
+<p>An instance of <b>query</b> records the translated internal representation of user's question, which is a KIF query in this scenario.
+</p>
+<div style="border: 1pt dashed blue; background&nbsp;: grey; padding: 1em 1em;">
+<p>(type TonysSpecialty&nbsp;?x)
+</p>
+</div>
+<p>The query is represented in PML as below: (<a href="http://browser.inference-web.org/iwbrowser/NodeSetBrowser?url=http%3A%2F%2Finference-web.org%2Fproofs%2Fprimer%2Fexamples%2Ftonys%2Fquery.owl%23query" class='external text' title="http://browser.inference-web.org/iwbrowser/NodeSetBrowser?url=http://inference-web.org/2007/primer/examples/proofs/tonys/query.owl#query" rel="nofollow">browse it in IWBrowser</a>)  (<a href='query.html'>sample program code using PML Java API</a>)
+</p>
+  
+<table border="0" cellpadding="0" cellspacing="0">
+  <tr><td bgcolor="#cccccc">
+  <pre>
+    &lt;pmlj:Query rdf:about="<a href="http://inference-web.org/2007/primer/examples/proofs/tonys/query.owl#query" class='external free' title="http://inference-web.org/2007/primer/examples/proofs/tonys/query.owl#query" rel="nofollow">http://inference-web.org/2007/primer/examples/proofs/tonys/query.owl#query</a>"&gt;
+    &lt;pmlp:hasContent&gt;
+      &lt;pmlp:Information&gt;
+        &lt;pmlp:hasRawString rdf:datatype="<a href="http://www.w3.org/2001/XMLSchema#string" class='external free' title="http://www.w3.org/2001/XMLSchema#string" rel="nofollow">http://www.w3.org/2001/XMLSchema#string</a>"
+        &gt;<font color="#FF0000">(type TonysSpecialty ?x)</font>&lt;/pmlp:hasRawString&gt;
+      &lt;/pmlp:Information&gt;
+    &lt;/pmlp:hasContent&gt;
+    &lt;pmlj:isFromEngine rdf:resource="<a href="http://inference-web.org/registry/IE/JTP.owl#JTP">http://inference-web.org/registry/IE/JTP.owl#JTP</a>"/&gt;
+    &lt;pmlj:isQueryFor rdf:resource="<a href="http://inference-web.org/2007/primer/examples/proofs/tonys/question.owl#question">http://inference-web.org/2007/primer/examples/proofs/tonys/question.owl#question</a>"/&gt;
+    &lt;pmlj:hasAnswer rdf:resource="<a href="http://inference-web.org/2007/primer/examples/proofs/tonys/answer_1/answer.owl#answer">http://inference-web.org/2007/primer/examples/proofs/tonys/answer_1/answer.owl#answer</a>"/&gt;
+    &lt;pmlj:hasAnswer rdf:resource="<a href="http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/answer.owl#answer">http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/answer.owl#answer</a>"/&gt;
+    &lt;pmlj:hasAnswer rdf:resource="<a href="http://inference-web.org/2007/primer/examples/proofs/tonys/answer_3/answer.owl#answer">http://inference-web.org/2007/primer/examples/proofs/tonys/answer_3/answer.owl#answe</a>"/&gt;
+  &lt;/pmlj:Query&gt;
+  </pre>
+  </td></tr>
+</table>
+
+<p>In this query, we need to specify the following information that captures how the query has been answered.
+</p>
+<ul><li> hasContent
+       <ul>
+         <li>hasRawString - encodes the internal representation of the query string
+       </ul>
+</li><li> isFromEngine links to metadata of inference engine that generates the justification
+</li><li> isQueryFor links to the original question that generates this query
+</li><li> hasAnswer links to the root nodesets of the jusification collections
+</li></ul>
+
+<a name="Linking_NodeSets_to_Query_and_Answer"></a><h4>Linking NodeSets to Query and Answer</h4>
+<ul><li> "fromQuery": PML supports links from the NodeSet encoding the final conclusion of a justification collection to an query
+</li></ul>
+ 
+<table border="0" cellpadding="0" cellspacing="0">
+  <tr><td bgcolor="#cccccc">
+  <pre>
+  &lt;pmlj:NodeSet rdf:about="<a href="http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/answer.owl#answer">http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/answer.owl#answer</a>"&gt;
+    ...    
+      &lt;pmlj:InferenceStep&gt;
+        ...
+        &lt;pmlj:fromQuery rdf:resource="<a href="http://inference-web.org/2007/primer/examples/proofs/tonys/query.owl#query" class='external free' title="http://inference-web.org/2007/primer/examples/proofs/tonys/query.owl#query" rel="nofollow">http://inference-web.org/2007/primer/examples/proofs/tonys/query.owl#query</a>"/&gt;
+        ...
+      &lt;/pmlj:InferenceStep&gt;
+      ...
+  &lt;/pmlj:NodeSet&gt;
+  </pre>
+  </td></tr>
+</table>
+
+<p><br />
+</p>
+<ul><li> "fromAnswer": PML supports links from other NodeSets in a justification collection to the NodeSet encoding the final conclusion
+</li></ul>
+ 
+<table border="0" cellpadding="0" cellspacing="0">
+  <tr><td bgcolor="#cccccc">
+  <pre>
+  &lt;pmlj:NodeSet rdf:about="<a href="http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/ns1.owl#ns1">http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/ns1.owl#ns1</a>"&gt;
+    ...
+      &lt;pmlj:InferenceStep&gt;
+        ...
+        &lt;pmlj:fromAnswer rdf:resource=<a href="http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/answer.owl#answer">http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/answer.owl#answer</a>"/&gt;
+        ...
+      &lt;/pmlj:InferenceStep&gt;
+      ...
+  &lt;/pmlj:NodeSet&gt;
+  </pre>
+  </td></tr>
+</table>
+  
+
+<a name="References"></a><h2>References</h2>
+<p>All references are available from the Inference Web publication page:  <a href="http://inference-web.org/publications.html" class='external free' title="http://inference-web.org/publications.html" rel="nofollow">http://inference-web.org/publications.html</a>
+</p><p>Best PML reference:<br />
+Paulo Pinheiro da Silva, Deborah L. McGuinness and Richard Fikes. <b>A Proof Markup Language for Semantic Web Services</b> <i>Information Systems</i>  <a href="http://www.ksl.stanford.edu/KSL_Abstracts/KSL-04-01.html" class='external free' title="http://www.ksl.stanford.edu/KSL Abstracts/KSL-04-01.html" rel="nofollow">http://www.ksl.stanford.edu/KSL_Abstracts/KSL-04-01.html</a>
+
+</p><p>Best Inference Web reference:<br />
+Deborah L. McGuinness and Paulo Pinheiro da Silva. <b>Explaining Answers from the Semantic Web: The Inference Web Approach</b> <i>Journal of Web Semantics</i> Vol.1 No.4., pages 397-413, October 2004.   <a href="http://www.ksl.stanford.edu/KSL_Abstracts/KSL-04-03.html" class='external free' title="http://www.ksl.stanford.edu/KSL Abstracts/KSL-04-03.html" rel="nofollow">http://www.ksl.stanford.edu/KSL_Abstracts/KSL-04-03.html</a>
+</p>
+
+</body>
+</html>

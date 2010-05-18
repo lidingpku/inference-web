@@ -1,0 +1,65 @@
+<html>
+<head>
+<title>
+</title>
+</head>
+<body>
+<pre>
+import org.inference_web.pml.v2.pmlp.*;
+import org.inference_web.pml.v2.util.*;
+import org.inference_web.pml.v2.vocabulary.*;
+import org.inference_web.pml.context.*;
+
+public class ProvenanceGen {
+
+  public ProvenanceGen () {
+  	try {
+  		// initializing info needed to create Document
+  		String peURI = "http://inference-web.org/registry/ONT/STOntology.owl#STOntology";
+  		String name = "Stanford Tony";
+  		String peURL = "http://iw.stanford.edu/ksl/registry/storage/documents/tonys_kb.kif";
+  		String peLanguage = "http://inference-web.org/registry/LG/KIF.owl#KIF";
+  		String descriptionStr = "A simple knowledge base for Tony's";
+  		String descriptionLanguage = "http://inference-web.org/registry/LG/English.owl#English";
+
+  		// create Ontology instance
+  		IWOntology pe = (IWOntology)PMLObjectManager.createPMLObject(PMLP.Ontology_lname);
+  		// set Ontology's identification
+  		pe.setIdentifier(PMLObjectManager.getObjectID(peURI));
+  		
+  		// set Ontology's name
+  		pe.setHasName(name);
+
+   		// create Information instance as content
+  		IWInformation content = (IWInformation)PMLObjectManager.createPMLObject(PMLP.Information_lname);
+  		// set language url as hasURL in content
+  		content.setHasURL(peURL);
+  		// set language url as hasURL in content
+  		content.setHasLanguage(peLanguage);
+  		// assign provenance element's hasContent property value
+  		pe.setHasContent(content);
+
+  		// create Information instance as description
+  		IWInformation description = (IWInformation)PMLObjectManager.createPMLObject(PMLP.Information_lname);
+  		description.setHasRawString(descriptionStr);
+  		// set language url as hasURL in content
+  		description.setHasLanguage(descriptionLanguage);
+  		// assign provenance element's hasDescription property value
+  		pe.addHasDescription(description);
+ 		
+  		// get ontology's content on screen or save it to a file
+  		System.out.println(PMLObjectManager.printPMLObjectToString(pe));
+  		//PMLObjectManager.savePMLObject(pe, "fileName");
+
+  	} catch (Exception e) {
+  		e.printStackTrace();
+  	}
+  }
+
+  public static void main(String[] args) {
+    new ProvenanceGen ();
+  }
+}
+</pre>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<html>
+<head>
+<title>
+</title>
+</head>
+<body>
+<pre>
+import org.inference_web.pml.v2.pmlp.*;
+import org.inference_web.pml.v2.util.*;
+import org.inference_web.pml.v2.vocabulary.*;
+import org.inference_web.pml.context.*;
+
+public class ProvenanceGen {
+
+  public ProvenanceGen () {
+  	try {
+  		// initializing info needed to create Person
+  		String peURI = "http://inference-web.org/registry/PER/DLM.owl#DLM";
+  		String name = "Deborah L. McGuinness";
+  		String personalURL = "http://www.ksl.stanford.edu/people/dlm/";
+
+  		// create Person instance
+  		IWPerson pe = (IWPerson)PMLObjectManager.createPMLObject(PMLP.Person_lname);
+  		// set Person's identification
+  		pe.setIdentifier(new DataObjectIdentifier(peURI));
+  		
+  		// set Person's name
+  		pe.setHasName(name);
+  		// create Information instance as description
+  		IWInformation description = (IWInformation)PMLObjectManager.createPMLObject(PMLP.Information_lname);
+  		// set personal url as hasURL in description
+  		description.setHasURL(personalURL);
+  		// assign provenance element's hasDescription property value
+  		pe.addHasDescription(description);
+
+  		
+  		// get Person's content on screen or save it to a file
+  		System.out.println(PMLObjectManager.printPMLObjectToString(pe));
+  		//PMLObjectManager.savePMLObject(pe, "fileName");
+  		
+  	} catch (Exception e) {
+  		e.printStackTrace();
+  	}
+  }
+
+  public static void main(String[] args) {
+    new ProvenanceGen ();
+  }
+}
+</pre>
+</body>
+</html>

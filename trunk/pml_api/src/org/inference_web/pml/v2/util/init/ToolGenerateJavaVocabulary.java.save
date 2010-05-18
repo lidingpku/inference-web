@@ -1,0 +1,276 @@
+/* Copyright 2007 Inference Web Group.  All Rights Reserved. */
+package org.inference_web.pml.v2.util.init;
+
+
+import static org.junit.Assert.assertTrue;
+
+import java.io.BufferedReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+
+import org.apache.log4j.Logger;
+import org.inference_web.pml.shared.Config;
+import org.inference_web.shared.IWSException;
+import org.inference_web.shared.ToolIO;
+import org.inference_web.shared.rdf.jena.ModelManager;
+import org.inference_web.shared.rdf.jena.ToolJena;
+import org.junit.Test;
+
+import com.hp.hpl.jena.rdf.model.Model;
+import com.hp.hpl.jena.rdf.model.ModelFactory;
+import com.hp.hpl.jena.rdf.model.Property;
+import com.hp.hpl.jena.rdf.model.RDFNode;
+import com.hp.hpl.jena.rdf.model.Resource;
+import com.hp.hpl.jena.rdf.model.Statement;
+import com.hp.hpl.jena.vocabulary.RDF;
+import com.hp.hpl.jena.vocabulary.RDFS;
+/**
+ * bootstrap cached PML ontology and org.inference_web.pml.v2.vocabulary
+ * @author Li
+ *
+ */
+public class ToolGenerateJavaVocabulary {
+
+	
+	@Test 
+	public void test_loadTemplateFile() {
+		String temp =loadTemplateVocabulary(true);
+		assertTrue( null!=(temp)& temp.length()>0 );
+	}
+	
+	private static String loadTemplateVocabulary(boolean bJena){
+		String filename;
+		if (bJena)
+			filename = "template-vocabulary-jena.txt";
+		else
+			filename = "template-vocabulary.txt";
+    	BufferedReader in = new BufferedReader(new InputStreamReader( new ToolGenerateJavaVocabulary().getClass().getResourceAsStream(filename)));
+    	String line =null;
+    	String content ="";
+    	try {
+			while (null!=(line=in.readLine())){
+				content +=line+"\n";
+			}
+	    	return content;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	private static String genSimpleJavaCodeOneEntry(String szURI, String szNamespace, String szType, boolean bJena){
+		if (bJena){
+			String template =//"\t public final static String __LOCALNAME___uri = \"__URI__\";\n" +
+				 "\t public final static __TYPE__  __LOCALNAME__ = ResourceFactory.create__TYPE__(\"__URI__\");\n\n";
+
+			String localname = szURI.substring(szNamespace.length());
+			return template.replaceAll("__LOCALNAME__", localname)
+							.replaceAll("__TYPE__", szType)
+							.replaceAll("__URI__", szURI);
+		}else{
+			String template =//"\t public final static String __LOCALNAME___uri = \"__URI__\";\n" +
+				 "\t public final static String __LOCALNAME___lname = \"__LOCALNAME__\";\n" +
+				 "\t public final static String __LOCALNAME___uri = \"__URI__\";\n" +
+				 "\t public final static __TYPE__  __LOCALNAME__ = ResourceFactory.create__TYPE__(__LOCALNAME___uri);\n\n";
+
+			String localname = szURI.substring(szNamespace.length());
+			return template.replaceAll("__LOCALNAME__", localname)
+							.replaceAll("__TYPE__", szType)
+							.replaceAll("__URI__", szURI);
+		}
+	}
+	
+	/**
+	 * generate a simple jena based java vocabulary file for a certain ontology
+	 * we will generate an entry for for each semantic web term (including classes and properties) defined in that ontology under the ontologies's namespace. 
+	 * 
+	 * @param szOntologyURL  the URL of the ontology
+	 * @param szFilename	the file to store the generate vocabulary java file
+	 * @throws IWSException 
+	 */
+	public static void genSimpleJavaCode(String szNamespace, String szBaseDir, String szPackageName, String szOntologyName, boolean bJena) throws IWSException{
+        try {
+        	String template_vocabulary =loadTemplateVocabulary(bJena);
+        	template_vocabulary = template_vocabulary.replaceAll("__ONTOLOGY__NAME__", szOntologyName);
+        	template_vocabulary = template_vocabulary.replaceAll("__PACKAGE__NAME__", szPackageName);
+        	template_vocabulary = template_vocabulary.replaceAll("__ONTOLOGY__NAMESPACE__", szNamespace);
+        	
+        	template_vocabulary = template_vocabulary.replaceAll("___CACHED_DATE_TIME___", ""+Calendar.getInstance().getTime());
+
+    		Model m = ModelFactory.createDefaultModel();
+            m.add(ModelManager.get().loadModel(szNamespace));
+            
+            //TODO
+            //template_vocabulary.replaceAll("__ONTOLOGY__LABEL__", szOntologyName);
+        	//template_vocabulary.replaceAll("__ONTOLOGY__COMMENT__", szOntologyName);
+        	//template_vocabulary.replaceAll("__ONTOLOGY__VERSIONINFO__", szOntologyName);
+
+    		// list ontology description
+            String tempNs = szNamespace.replaceAll("#","");
+    		Iterator iter = m.listObjectsOfProperty(m.createResource(tempNs), RDFS.label);
+    		if (iter.hasNext()){
+    			template_vocabulary = template_vocabulary.replaceAll("__ONTOLOGY__LABEL__", ""+iter.next());
+    		}else{
+    			template_vocabulary = template_vocabulary.replaceAll("__ONTOLOGY__LABEL__", "");
+    		}
+    		
+    		iter = m.listObjectsOfProperty(m.createResource(tempNs), RDFS.comment);
+    		if (iter.hasNext()){
+    			template_vocabulary = template_vocabulary.replaceAll("__ONTOLOGY__COMMENT__", ""+iter.next());
+    		}else{
+    			template_vocabulary = template_vocabulary.replaceAll("__ONTOLOGY__COMMENT__", "");
+    		}
+    		
+            
+        	// prepare class, property and instances
+            final int CAT_CLASS = 0;
+            final int CAT_PROPERTY = 1;
+            final int CAT_INSTANCE = 2;
+            
+        	HashSet [] arySetRes = new HashSet[]{ new HashSet(), new HashSet(), new HashSet()};
+        	String [][] aryCategoryType = new String [][]{
+        			{"Class","Resource"},
+        			{"Property","Property"},
+        			{"Instance","Resource"},
+        	};
+        	
+        	iter = m.listStatements(null, RDF.type, (RDFNode)null);
+        	while (iter.hasNext()){
+        		Statement stmt = (Statement) iter.next();
+        		String subject = stmt.getSubject().toString();
+        		if (!subject.startsWith(szNamespace) || subject.length()<=szNamespace.length())
+        			continue;
+        		
+        		RDFNode object = stmt.getObject();
+        		if (ToolJena.testMetaClass(object)){
+        			arySetRes[CAT_CLASS].add(subject);
+        		}else if (ToolJena.testMetaProperty(object)){
+        			arySetRes[CAT_PROPERTY].add(subject);
+        		}else {
+        			arySetRes[CAT_INSTANCE].add(subject);
+        		}
+        	}
+        	
+        	String content = "";
+        	//classes
+        	for (int i=0; i<aryCategoryType.length; i++){
+        		content += "\t// "+aryCategoryType[i][0]+" ("+arySetRes[i].size()+")\n";
+        		iter =  arySetRes[i].iterator();
+        		while (iter.hasNext()){
+            		content += genSimpleJavaCodeOneEntry((String)iter.next(), szNamespace, aryCategoryType[i][1], bJena);
+        		}
+        	}
+
+        	template_vocabulary = template_vocabulary.replaceAll("__ONTOLOGY__CONTENT__", content);
+        	
+        	//System.out.println(template_vocabulary);
+        	
+        	String filename = szBaseDir+"/"+szPackageName.replace('.', '/')+"/"+szOntologyName+".java";
+			PrintWriter out = new PrintWriter(new FileWriter(filename));
+			out.write(template_vocabulary);
+			out.close();
+			
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	
+	private static void genOntology(String[][] aryOntologyURL) throws IWSException{
+		for (int i=0; i< aryOntologyURL.length; i++){
+			String szOntologyURL = aryOntologyURL[i][0];
+			String szOntologyName = aryOntologyURL[i][1];
+			String szPackagename ="org.inference_web.pml.v2.vocabulary";
+			genSimpleJavaCode(szOntologyURL, "pml/src", szPackagename ,szOntologyName, false);
+			//szPackagename ="org.inference_web.pml.impl.v2.vocabulary";
+			//genSimpleJavaCode(szOntologyURL, "pml/src", szPackagename ,szOntologyName+"_JENA", true);
+		}
+	}
+	
+	public static void genPML2() throws IWSException{
+		String [][] aryOntologyURL = new String [][]{
+				{"http://inference-web.org/2.0/ds.owl#", "PMLDS"},
+				{"http://inference-web.org/2.0/pml-provenance.owl#","PMLP"},
+				{"http://inference-web.org/2.0/pml-justification.owl#","PMLJ"},
+				{"http://inference-web.org/2.0/pml-owl.owl#","PMLOWL"},
+		};
+		genOntology(aryOntologyURL);
+	}
+	
+	public static void genPML0403() throws IWSException{
+		String [][] aryOntologyURL = new String [][]{
+				{"http://inferenceweb.stanford.edu/2004/03/iw.owl#", "IW200403"},
+		};
+		genOntology(aryOntologyURL);
+	}
+	
+	public static void genPML0407() throws IWSException{
+		String [][] aryOntologyURL = new String [][]{
+				{"http://inferenceweb.stanford.edu/2004/07/iw.owl#", "IW200407"},
+		};
+		genOntology(aryOntologyURL);
+	}
+	
+	private static void refreshCachedOntology(){
+		String dir = "pml/files/ontologies";
+		String [][] aryUrlFilename = new String [][]{
+				{Config.PML2DS_ONTOLOGY_URI, "ds.owl"},
+				{Config.PML2P_ONTOLOGY_URI, "pml-provenance.owl"},
+				{Config.PML2J_ONTOLOGY_URI, "pml-justification.owl"},
+				{Config.PML2OWL_ONTOLOGY_URI, "pml-owl.owl"},
+				{"http://inferenceweb.stanford.edu/2004/07/iw.owl",	"iw200407.owl"},
+				{"http://inferenceweb.stanford.edu/2004/03/iw.owl",	"iw200403.owl"},
+		};
+		Model m = ModelFactory.createDefaultModel();
+		Property mapping = m.createProperty("http://jena.hpl.hp.com/2004/08/location-mapping#mapping");
+		Property name = m.createProperty("http://jena.hpl.hp.com/2004/08/location-mapping#name");
+		Property altName = m.createProperty("http://jena.hpl.hp.com/2004/08/location-mapping#altName");
+
+		List <Resource> list = new ArrayList<Resource>();
+		for (int i=0; i< aryUrlFilename.length; i++){
+			try {
+				
+				ToolIO.pipeUrlToFile(aryUrlFilename[i][0], dir+"/"+aryUrlFilename[i][1]);
+
+				Resource li = m.createResource();
+				li.addProperty(name, aryUrlFilename[i][0]);
+				li.addProperty(altName, aryUrlFilename[i][1]);
+				list.add(li);
+			} catch (IWSException e) {
+				Logger.getLogger(ToolGenerateJavaVocabulary.class).fatal(e.getMessage());
+			}
+		}
+		Resource instance = m.createResource();
+		m.add(m.createStatement(instance, mapping, m.createList(list.iterator())));
+		
+		try {
+			m.setNsPrefix( "lm", "http://jena.hpl.hp.com/2004/08/location-mapping#");
+			m.write(new FileWriter("pml/location-mapping.n3"), "N3");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static void main(String [] arg){
+		try {
+			genPML2();
+			genPML0403();
+			genPML0407();
+			refreshCachedOntology();
+		} catch (IWSException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}

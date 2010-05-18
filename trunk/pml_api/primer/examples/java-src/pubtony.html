@@ -1,0 +1,60 @@
+<html>
+<head>
+<title>
+</title>
+</head>
+<body>
+<pre>
+import java.util.*;
+import org.inference_web.pml.v2.pmlp.*;
+import org.inference_web.pml.v2.util.*;
+import org.inference_web.pml.v2.vocabulary.*;
+
+public class ProvenanceGen {
+
+  public ProvenanceGen () {
+  	try {
+  		// initializing info needed to create Publication
+  		String peURI = "http://inference-web.org/registry/PUB/STE.owl#STE";
+  		String name = "Stanford Tony";
+  		String publicationURL = "http://iw.stanford.edu/ksl/registry/storage/documents/tonys_fact.kif";
+  		String authorURI = "http://inference-web.org/registry/PER/DLM.owl#DLM";
+  		String pubTime = "2005-11-16T00:00:00+00:00";
+
+  		// create Publication instance
+  		IWPublication pe = (IWPublication)PMLObjectManager.createPMLObject(PMLP.Publication_lname);
+  		// set Publication's identification
+  		pe.setIdentifier(PMLObjectManager.getObjectID(peURI));
+  		
+  		// set Publication's name
+  		pe.setHasName(name);
+  		// create Information instance as content
+  		IWInformation content = (IWInformation)PMLObjectManager.createPMLObject(PMLP.Information_lname);
+  		// set publication url as hasURL in content
+  		content.setHasURL(publicationURL);
+  		// assign provenance element's hasContent property value
+  		pe.setHasContent(content);
+  		// set publication time
+  		pe.setHasPublicationDateTime(pubTime);
+  		// set author list
+  		List authors = new ArrayList();
+  		authors.add(authorURI);
+  		pe.setHasAuthorList(authors);
+
+  		
+  		// get Publication's content on screen or save it to a file
+  		System.out.println(PMLObjectManager.printPMLObjectToString(pe));
+  		//PMLObjectManager.savePMLObject(pe, "fileName");
+  		
+  	} catch (Exception e) {
+  		e.printStackTrace();
+  	}
+  }
+
+  public static void main(String[] args) {
+    new ProvenanceGen ();
+  }
+}
+</pre>
+</body>
+</html>
