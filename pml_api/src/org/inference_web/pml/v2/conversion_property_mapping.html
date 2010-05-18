@@ -1,0 +1,379 @@
+<html>
+<head>
+</head>
+<body>
+<h4 align=center>Mapping PML 1 Class Properties to PML 2 </h4>
+<h5 align=left><ul>
+<li>All PML 1 classes and properties are listed but not PML 2. Please refer to <a href='http://inference-web.org/documentation.html'>PML 2 Ontology
+Specification</a> for all PML 2 classes and properties.</li>
+<li>If no corresponding PML 2 property listed for a PML 1 property, it is deprecated.</li>
+<li>Some PML 1 class properties are mapped to "complex" property in PML 2. For example, property "URL" of class "Format" in PML 1 is now mapped to
+"hasURL" property of PML 2 class "Information" which is the range of property "hasDescription" of PML 2 class "Format". So for PML 2, the "URL" of
+"Format" is shown as "hasDescription->hasURL".</li>
+</ul></h5>
+<table  >
+    <tr><td>
+      <table width=800><tr><td width=50%><b>PML 1</b></td><td width=50%><b>PML 2</b></td>
+      </table>
+    </td></tr>
+    <tr><td>
+      <table width=800 border=1><tr><td width=50%>Axiom</td><td width=50%><i>Deprecated</i></td>
+      </table>
+    </td></tr>
+
+    <tr><td>
+      <table width=800 border=1><tr><td width=50%><b>Format</b></td><td width=50%><b>Format</b></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;englishDescription</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasRawString +<br>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasLanguage</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;englishExample</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;firstSubmissionDate</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasAudio</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasImage</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;lastSubmissionDate</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;name</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasName</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;submitter</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;URL</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasURL</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;version</td><td></td></tr>
+      </table>
+    </td></tr>
+    <tr><td>
+      <table width=800 border=1><tr><td width=50%><b>InferenceEngine</b></td><td width=50%><b>InferenceEngine</b></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;inferenceEngineRule</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasInferenceEngineRule</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;englishDescription</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasRawString +<br>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasLanguage</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;englishExample</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;firstSubmissionDate</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasAudio</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasImage</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;lastSubmissionDate</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;name</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasName</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;submitter</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;URL</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasURL</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;version</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasSource</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasAuthorList</td></tr>
+      </table>
+    </td></tr>
+    <tr><td>
+      <table width=800 border=1><tr><td width=50%><b>DeclarativeRule</b></td><td width=50%><b>DeclarativeRule</b></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;englishDescription</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasRawString +<br>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasLanguage</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;englishDescriptionTemplate</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasEnglishDescriptionTemplate</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;englishExample</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasRuleExample</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;firstSubmissionDate</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasAudio</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasImage</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasLanguage</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasContent->hasLanguage</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;lastSubmissionDate</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;name</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasName</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;ruleSpec</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasContent->hasRawString</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;submitter</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;URL</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasURL</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;version</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasSource</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasAuthorList</td></tr>
+      </table>
+    </td></tr>
+    <tr><td>
+      <table width=800 border=1><tr><td width=50%><b>DerivedRule</b></td><td width=50%><b>AbstractionRule</b></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;englishDescription</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasRawString +<br>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasLanguage</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;englishDescriptionTemplate</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasEnglishDescriptionTemplate</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;englishExample</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasRuleExample</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;firstSubmissionDate</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasAudio</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasAxiom</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasImage</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;lastSubmissionDate</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;name</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasName</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;ruleNodeSet</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasPatternNodeSet</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;submitter</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;URL</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasURL</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;version</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasSource</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasAuthorList</td></tr>
+      </table>
+    </td></tr>
+        <tr><td>
+      <table width=800 border=1><tr><td width=50%><b>MethodRule</b></td><td width=50%><b>MethodRule</b></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;englishDescription</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasRawString +<br>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasLanguage</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;englishDescriptionTemplate</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasEnglishDescriptionTemplate</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;englishExample</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasRuleExample</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;firstSubmissionDate</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasAudio</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasImage</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasLanguage</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasContent->hasLanguage</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;lastSubmissionDate</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;name</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasName</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;ruleSpec</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasContent->hasRawString</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;submitter</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;URL</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasURL</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;verificationMethod</td><td>&nbsp;&nbsp;&nbsp;&nbsp;verificationMethod</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;version</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasSource</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasAuthorList</td></tr>
+      </table>
+    </td></tr>
+    <tr><td>
+      <table width=800 border=1><tr><td width=50%><b>TranslationRule</b></td><td width=50%><b>TranslationRule</b></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;englishDescription</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasRawString +<br>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasLanguage</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;englishDescriptionTemplate</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasEnglishDescriptionTemplate</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;englishExample</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasRuleExample</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;firstSubmissionDate</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;fromExpression</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;fromLanguage</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasFromLanguage</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasAudio</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasImage</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;lastSubmissionDate</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;name</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasName</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;submitter</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;toExpression</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;toLanguage</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasToLanguage</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;URL</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasURL</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;version</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasSource</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasAuthorList</td></tr>
+      </table>
+    </td></tr>
+    <tr><td>
+      <table width=800 border=1><tr><td width=50%><b>Language</b></td><td width=50%><b>Language</b></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;englishDescription</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasRawString +<br>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasLanguage</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;englishExample</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;escapeCharacter</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasEscapeCharacterSequence</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;firstSubmissionDate</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasAudio</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasImage</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;lastSubmissionDate</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;name</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasName</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;submitter</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;URL</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasURL</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;version</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasSource</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasAuthorList or<br>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasReferenceSourceUsage->hasSource</td></tr>
+      </table>
+    </td></tr>
+    <tr><td>
+      <table width=800 border=1><tr><td width=50%><b>Source</b></td><td width=50%><b>Source</b></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;englishDescription</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasRawString +<br>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasLanguage</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;englishExample</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;firstSubmissionDate</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasAudio</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasImage</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;lastSubmissionDate</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;name</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasName</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;submitter</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;URL</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasURL</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;version</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasSource</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasAuthorList or<br>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasReferenceSourceUsage->hasSource</td></tr>
+      </table>
+    </td></tr>
+    <tr><td>
+      <table width=800 border=1><tr><td width=50%><b>Agent</b></td><td width=50%><b>Agent</b></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;englishDescription</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasRawString +<br>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasLanguage</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;englishExample</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;firstSubmissionDate</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasAudio</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasImage</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;lastSubmissionDate</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;name</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasName</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;submitter</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;URL</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasURL</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;usesInferenceEngine</td><td>&nbsp;&nbsp;&nbsp;&nbsp;usesInferenceEngine</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;version</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasSource</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasAuthorList or<br>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasReferenceSourceUsage->hasSource</td></tr>
+      </table>
+    </td></tr>
+    <tr><td>
+      <table width=800 border=1><tr><td width=50%><b>Organization</b></td><td width=50%><b>Organization</b></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;englishDescription</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasRawString +<br>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasLanguage</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;englishExample</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;firstSubmissionDate</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasAudio</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasImage</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;lastSubmissionDate</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;name</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasName</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;submitter</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;URL</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasURL</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;usesInferenceEngine</td><td>&nbsp;&nbsp;&nbsp;&nbsp;usesInferenceEngine</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;version</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasSource</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasMember</td></tr>
+      </table>
+    </td></tr>
+    <tr><td>
+      <table width=800 border=1><tr><td width=50%><b>Person</b></td><td width=50%><b>Person</b></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;englishDescription</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasRawString +<br>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasLanguage</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;englishExample</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;firstSubmissionDate</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasAudio</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasImage</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;lastSubmissionDate</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;name</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasName</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;submitter</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;URL</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasURL</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;usesInferenceEngine</td><td>&nbsp;&nbsp;&nbsp;&nbsp;usesInferenceEngine</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;version</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasSource</td><td>&nbsp;&nbsp;&nbsp;&nbsp;isMemberOf</td></tr>
+      </table>
+    </td></tr>
+    <tr><td>
+      <table width=800 border=1><tr><td width=50%><b>Team</b></td><td width=50%><b>Organization</b></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;englishDescription</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasRawString +<br>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasLanguage</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;englishExample</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;firstSubmissionDate</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasAudio</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasImage</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;lastSubmissionDate</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;name</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasName</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;submitter</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;URL</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasURL</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;usesInferenceEngine</td><td>&nbsp;&nbsp;&nbsp;&nbsp;usesInferenceEngine</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;version</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasSource</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasMember</td></tr>
+      </table>
+    </td></tr>
+    <tr><td>
+      <table width=800 border=1><tr><td width=50%><b>Document</b></td><td width=50%><b>Document</b></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;englishDescription</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasAbstract</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;englishExample</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;firstSubmissionDate</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasAudio</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasAuthor</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasAuthorList</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasImage</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;lastSubmissionDate</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;name</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasName</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;submitter</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;URL</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasURL</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;version</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasSource</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasPublisher  or<br>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasReferenceSourceUsage->hasSource</td></tr>
+      </table>
+    </td></tr>
+    <tr><td>
+      <table width=800 border=1><tr><td width=50%><b>Ontology</b></td><td width=50%><b>Ontology</b></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;englishDescription</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasRawString +<br>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasLanguage</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;englishExample</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;firstSubmissionDate</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasAudio</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasAuthor</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasAuthorList</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasImage</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;lastSubmissionDate</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;name</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasName</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;submitter</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;URL</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasURL</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;version</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasSource</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasPublisher  or<br>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasReferenceSourceUsage->hasSource</td></tr>
+      </table>
+    </td></tr>
+        <tr><td>
+      <table width=800 border=1><tr><td width=50%><b>LanguageAxiomSet</b></td><td width=50%><i>Deprecated</i></td>
+      </table>
+    </td></tr>
+    
+    <tr><td>
+      <table width=800 border=1><tr><td width=50%><b>Publication</b></td><td width=50%><b>Publication</b></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;day</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasPublicationDateTime</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;month</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasPublicationDateTime</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;year</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasPublicationDateTime</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;englishDescription</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasAbstract</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;englishExample</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;firstSubmissionDate</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasAudio</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasAuthor</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasAuthorList</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasImage</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;lastSubmissionDate</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;name</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasName</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;submitter</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;URL</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasURL</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;version</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasSource</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasPublisher  or<br>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasReferenceSourceUsage->hasSource</td></tr>
+      </table>
+    </td></tr>
+    <tr><td>
+      <table width=800 border=1><tr><td width=50%><b>Website</b></td><td width=50%><b>Website</b></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;englishDescription</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasRawString +<br>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasLanguage</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;englishExample</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;firstSubmissionDate</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasAudio</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasAuthor</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasAuthorList</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasImage</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;lastSubmissionDate</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;name</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasName</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;submitter</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;URL</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasURL</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;version</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasSource</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasPublisher  or<br>&nbsp;&nbsp;&nbsp;&nbsp;hasDescription->hasReferenceSourceUsage->hasSource</td></tr>
+      </table>
+    </td></tr>
+    <tr><td>
+      <table width=800 border=1><tr><td width=50%><b>Mapping</b></td><td width=50%><b>Mapping</b></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;mapFrom</td><td>&nbsp;&nbsp;&nbsp;&nbsp;mapFrom</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;mapTo</td><td>&nbsp;&nbsp;&nbsp;&nbsp;mapTo</td></tr>
+      </table>
+    </td></tr>
+    <tr><td>
+      <table width=800 border=1><tr><td width=50%><b>PrettyNameMapping</b></td><td width=50%><b>PrettyNameMapping</b></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasPrettyName</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasPrettyName</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasReplacee</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasReplacee</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasShortPrettyName</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasShortPrettyName</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasLongPrettyName</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasLongPrettyName</td></tr>
+      </table>
+    </td></tr>
+    <tr><td>
+      <table width=800 border=1><tr><td width=50%><b>SourceUsage</b></td><td width=50%><b>SourceUsage</b></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasSource</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasSource->hasDocument</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;spanFromByte</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasSource->hasFromOffset</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;spanToByte</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasSource->hasToOffset</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;usageQuery</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasUsageQueryContent->hasRawString</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;usageTime</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasUsageDateTime</td></tr>
+      </table>
+    </td></tr>
+    <tr><td>
+      <table width=800 border=1><tr><td width=50%><b>LearnedSourceUsage</b></td><td width=50%><b>LearnedSourceUsage</b></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;dataCollectionEnd</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasDataCollectionEndDateTime</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;dataCollectionStart</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasDataCollectionStartDateTime</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasOriginalContent</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasSource</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasSource->hasDocument</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;spanFromByte</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasSource->hasFromOffset</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;spanToByte</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasSource->hasToOffset</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;usageQuery</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasUsageQueryContent->hasRawString</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;usageTime</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasUsageDateTime</td></tr>
+      </table>
+    </td></tr>
+    <tr><td>
+      <table width=800 border=1><tr><td width=50%><b>NodeSet</b></td><td width=50%><b>NodeSet</b></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasConclusion</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasConclusion->hasRawString</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasLanguage</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasConclusion->hasLanguage</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasEnglishString</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasConclusion->hasPrettyString</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasFormat</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasConclusion->hasFormat</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;isConsequentOf</td><td>&nbsp;&nbsp;&nbsp;&nbsp;isConsequentOf</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;isExplanationOf</td><td>&nbsp;&nbsp;&nbsp;&nbsp;isExplanationOf</td></tr>
+      </table>
+    </td></tr>
+    <tr><td>
+      <table width=800 border=1><tr><td width=50%><b>Query</b></td><td width=50%><b>Query</b></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasAnswer</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasAnswer</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasLanguage</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasContent->hasLanguage</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;queryContent</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasContent->hasRawString</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;isFromEngine</td><td>&nbsp;&nbsp;&nbsp;&nbsp;isFromEngine</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;isQueryFor</td><td>&nbsp;&nbsp;&nbsp;&nbsp;isQueryFor</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;firstSubmissionDate</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;lastSubmissionDate</td><td></td></tr>
+      </table>
+    </td></tr>
+    <tr><td>
+      <table width=800 border=1><tr><td width=50%><b>Question</b></td><td width=50%><b>Question</b></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasAnswerPattern</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasAnswerPattern</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;questionContent</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasContent->hasRawString</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;firstSubmissionDate</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;lastSubmissionDate</td><td></td></tr>
+      </table>
+    </td></tr>
+    <tr><td>
+      <table width=800 border=1><tr><td width=50%><b>InferenceStep</b></td><td width=50%><b>InferenceStep</b></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;fromAnswerOrQuery</td><td>&nbsp;&nbsp;&nbsp;&nbsp;fromAnswerOrQuery</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasAntecedent</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasAntecedentList</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasDischarge</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasDischarge</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasIndex</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasIndex</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasInferenceEngine</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasInferenceEngine</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasRule</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasInferenceRule</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasMetaBinding</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasMetaBinding</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasSourceUsage</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasSourceUsage</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasVariableMapping</td><td>&nbsp;&nbsp;&nbsp;&nbsp;hasVariableMapping</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;hasPrettyNameMapping</td><td></td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;fromAnswer</td><td>&nbsp;&nbsp;&nbsp;&nbsp;fromAnswer</td></tr>
+         <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;fromQuery</td><td>&nbsp;&nbsp;&nbsp;&nbsp;fromQuery</td></tr>
+      </table>
+    </td></tr>
+    
+</table>
+</body>
+</html>

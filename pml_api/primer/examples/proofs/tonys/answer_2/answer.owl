@@ -1,0 +1,45 @@
+<rdf:RDF
+    xmlns:pmlp="http://inference-web.org/2.0/pml-provenance.owl#"
+    xmlns:ds="http://inference-web.org/2.0/ds.owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns="http://inference-web.org/2.0/pml-justification.owl#"
+    xmlns:daml="http://www.daml.org/2001/03/daml+oil#">
+  <NodeSet rdf:about="http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/answer.owl#answer">
+    <hasConclusion>
+      <pmlp:Information>
+        <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >(type TonysSpecialty ?x)</pmlp:hasRawString>
+        <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/KIF.owl#KIF"/>
+      </pmlp:Information>
+    </hasConclusion>
+    <isConsequentOf>
+      <InferenceStep>
+        <hasIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</hasIndex>
+        <fromQuery rdf:resource="http://inference-web.org/2007/primer/examples/proofs/tonys/query.owl#query"/>
+        <hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/GMP.owl#GMP"/>
+        <hasVariableMapping>
+          <Mapping>
+            <mapFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >?x</mapFrom>
+            <mapTo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >SHELLFISH</mapTo>
+          </Mapping>
+        </hasVariableMapping>
+        <hasInferenceEngine rdf:resource="http://inference-web.org/registry/IE/JTP.owl#JTP"/>
+        <hasAntecedentList>
+          <NodeSetList>
+            <ds:first rdf:resource="http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/ns1.owl#ns1"/>
+            <ds:rest>
+              <NodeSetList>
+                <ds:first rdf:resource="http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/ns2.owl#ns2"/>
+              </NodeSetList>
+            </ds:rest>
+          </NodeSetList>
+        </hasAntecedentList>
+      </InferenceStep>
+    </isConsequentOf>
+  </NodeSet>
+</rdf:RDF>

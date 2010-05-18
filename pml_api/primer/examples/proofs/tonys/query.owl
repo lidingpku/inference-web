@@ -1,0 +1,22 @@
+<rdf:RDF
+    xmlns:pmlp="http://inference-web.org/2.0/pml-provenance.owl#"
+    xmlns:ds="http://inference-web.org/2.0/ds.owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns="http://inference-web.org/2.0/pml-justification.owl#"
+    xmlns:daml="http://www.daml.org/2001/03/daml+oil#">
+  <Query rdf:about="http://inference-web.org/2007/primer/examples/proofs/tonys/query.owl#query">
+    <pmlp:hasContent>
+      <pmlp:Information>
+        <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >(type TonysSpecialty ?x)</pmlp:hasRawString>
+      </pmlp:Information>
+    </pmlp:hasContent>
+    <isFromEngine rdf:resource="http://inference-web.org/registry/IE/JTP.owl#JTP"/>
+    <hasAnswer rdf:resource="http://inference-web.org/2007/primer/examples/proofs/tonys/answer_1/answer.owl#answer"/>
+    <hasAnswer rdf:resource="http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/answer.owl#answer"/>
+    <hasAnswer rdf:resource="http://inference-web.org/2007/primer/examples/proofs/tonys/answer_3/answer.owl#answer"/>
+    <isQueryFor rdf:resource="http://inference-web.org/2007/primer/examples/proofs/tonys/question.owl#question"/>
+  </Query>
+</rdf:RDF>

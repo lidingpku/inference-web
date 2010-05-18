@@ -1,0 +1,70 @@
+<html>
+<head>
+<title>
+</title>
+</head>
+<body>
+<pre>
+import java.util.*;
+import org.inference_web.pml.v2.pmlj.*;
+import org.inference_web.pml.v2.pmlp.*;
+import org.inference_web.pml.v2.util.*;
+import org.inference_web.pml.v2.vocabulary.*;
+
+public class QueryGen {
+
+  public QueryGen () {
+  	try {
+  		// initializing info needed to create Query
+  		String queryURI = "http://inference-web.org/2007/primer/examples/proofs/tonys/query.owl#query";
+  		String questionURI = "http://inference-web.org/2007/primer/examples/proofs/tonys/question.owl#question";
+  		String contentString = "(type TonysSpecialty ?x)";
+  		String inferenceEngineURI = "http://inference-web.org/registry/IE/JTP.owl#JTP";
+  		String answer1URI = "http://inference-web.org/2007/primer/examples/proofs/tonys/answer_1/answer.owl#answer";
+  		String answer2URI = "http://inference-web.org/2007/primer/examples/proofs/tonys/answer_2/answer.owl#answer";
+  		String answer3URI = "http://inference-web.org/2007/primer/examples/proofs/tonys/answer_3/answer.owl#answer";
+
+  		// create Query instance
+  		IWQuery query = (IWQuery)PMLObjectManager.createPMLObject(PMLJ.Query_lname);
+  		// set Query's identification
+  		query.setIdentifier(PMLObjectManager.getObjectID(queryURI));
+  		
+  		// create Information instance as content
+  		IWInformation content = (IWInformation)PMLObjectManager.createPMLObject(PMLP.Information_lname);
+  		// set content string and its language
+  		content.setHasRawString(contentString);
+  		// assign Question's hasContent property value
+  		query.setHasContent(content);
+
+  		// set Query's isFromEngin property value
+  		query.setIsFromEngine(inferenceEngineURI);
+  		
+  		// set Query's isQueryFor property value
+  		List questions = new ArrayList();
+  		questions.add(questionURI);
+  		query.setIsQueryFor(questions);
+  		
+  		// set Query's hasAnswer property value
+  		List answers = new ArrayList();
+  		answers.add(answer1URI);
+  		answers.add(answer2URI);
+  		answers.add(answer3URI);
+  		query.setHasAnswer(answers);
+  		
+  		// get Querys content on screen or save it to a file
+  		System.out.println(PMLObjectManager.printPMLObjectToString(query));
+  		//PMLObjectManager.savePMLObject(query, "fileName");
+  		
+  	} catch (Exception e) {
+  		e.printStackTrace();
+  	}
+  }
+
+  public static void main(String[] args) {
+    new QueryGen ();
+  }
+}
+
+</pre>
+</body>
+</html>

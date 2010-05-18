@@ -1,0 +1,48 @@
+<html>
+<head>
+<title>
+</title>
+</head>
+<body>
+<pre>
+import org.inference_web.pml.v2.pmlj.*;
+import org.inference_web.pml.v2.pmlp.*;
+import org.inference_web.pml.v2.util.*;
+import org.inference_web.pml.v2.vocabulary.*;
+
+public class QuestionGen {
+
+  public QuestionGen () {
+  	try {
+  		// initializing info needed to create Question
+  		String questionURI = "http://inference-web.org/2007/primer/examples/proofs/tonys/question.owl#question";
+  		String contentString = "What type of food is Tony's specialty?";
+
+  		// create Question instance
+  		IWQuestion question = (IWQuestion)PMLObjectManager.createPMLObject(PMLJ.Question_lname);
+  		// set Question's identification
+  		question.setIdentifier(PMLObjectManager.getObjectID(questionURI));
+  		
+  		// create Information instance as content
+  		IWInformation content = (IWInformation)PMLObjectManager.createPMLObject(PMLP.Information_lname);
+  		// set content string and its language
+  		content.setHasRawString(contentString);
+  		// assign Question's hasContent property value
+  		question.setHasContent(content);
+  		
+  		// get Question's content on screen or save it to a file
+  		System.out.println(PMLObjectManager.printPMLObjectToString(question));
+  		//PMLObjectManager.savePMLObject(question, "fileName");
+  		
+  	} catch (Exception e) {
+  		e.printStackTrace();
+  	}
+  }
+
+  public static void main(String[] args) {
+    new QuestionGen ();
+  }
+}
+</pre>
+</body>
+</html>

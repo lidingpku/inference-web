@@ -1,0 +1,23 @@
+<rdf:RDF
+    xmlns:pmlp="http://inference-web.org/2.0/pml-provenance.owl#"
+    xmlns:ds="http://inference-web.org/2.0/ds.owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns="http://inference-web.org/2.0/pml-justification.owl#"
+    xmlns:daml="http://www.daml.org/2001/03/daml+oil#">
+  <NodeSet rdf:about="http://inference-web.org/2007/primer/examples/proofs/tonys/assumption.owl#assumption">
+    <hasConclusion>
+      <pmlp:Information> 
+        <pmlp:hasRawString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(type TonysSpecialty SHELLFISH)</pmlp:hasRawString> 
+        <pmlp:hasLanguage rdf:resource="http://inference-web.org/registry/LG/KIF.owl#KIF"/>
+        </pmlp:Information> 
+     </hasConclusion>
+     <isConsequentOf>
+      <InferenceStep>
+        <hasInferenceEngine rdf:resource= "http://inference-web.org/registry/IE/JTP.owl#JTP" />
+        <hasInferenceRule rdf:resource="http://inference-web.org/registry/DPR/Assumption.owl#Assumption" />
+      </InferenceStep>
+    </isConsequentOf>
+  </NodeSet>
+</rdf:RDF>
