@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE project [
+]>
+
+  <!--     TODO: set project name    -->
+  <project default="build" basedir="." name="iw3">
+
+
+  <!-- ********** properties/paths ********** -->
+    <!-- jwsdp directories -->
+    <!-- jwsdp.home is set automatically by jwsdp's ant -->
+  <property environment="env"/>
+  
+  <!-- local directories -->
+  <property name="build.dir"  value="${basedir}/bin"/>
+  <property name="src.dir"  value="${basedir}/src"/>
+
+    <!-- paths -->
+  	<path id="my.classpath">
+      <fileset dir="${basedir}/lib" includes="**/*.jar"/>
+  	</path>
+
+
+    <!-- targets -->
+	<target name="clean-bin" >
+		<delete dir="${build.dir}"/>
+		
+		<mkdir  dir="${build.dir}"/>
+    </target>  
+	
+  	<target name="build" depends="clean-bin">
+      <javac 
+      		srcdir="${src.dir}"
+            destdir="${build.dir}">
+        <classpath>
+          <path refid="my.classpath"/>
+        </classpath>
+      </javac>
+  	  <copy todir="${build.dir}">
+  	    <fileset dir="${src.dir}">
+  	    </fileset>
+  	  </copy>  		
+    </target>  
+  	
+  	<target name="tptp-improve" depends="build">
+      <java classname="org.inference_web.app.tptp.TaskIwTptpImprove"
+          maxmemory ="4g">
+        <classpath>
+          <path refid="my.classpath"/>
+          <pathelement location="${build.dir}"/>
+        </classpath>
+      </java>
+    </target>  
+  	<target name="tptp-norm" depends="build">
+      <java classname="org.inference_web.app.tptp.TaskIwTptpNormalize"
+           maxmemory ="4g">
+        <classpath>
+          <path refid="my.classpath"/>
+          <pathelement location="${build.dir}"/>
+        </classpath>
+      </java>
+    </target>  
+  	<target name="tptp-map" depends="build">
+      <java classname="org.inference_web.app.tptp.TaskIwTptpMapping"
+           maxmemory ="4g">
+        <classpath>
+          <path refid="my.classpath"/>
+          <pathelement location="${build.dir}"/>
+        </classpath>
+      </java>
+    </target>  
+  	<target name="tptp-stat" depends="build">
+      <java classname="org.inference_web.app.tptp.TaskIwTptpStat"
+           maxmemory ="4g">
+        <classpath>
+          <path refid="my.classpath"/>
+          <pathelement location="${build.dir}"/>
+        </classpath>
+      </java>
+    </target>  
+  	<target name="sameas-all" depends="build">
+      <java classname="org.inference_web.app.sameas.TestSameAs"
+           maxmemory ="4g">
+        <classpath>
+          <path refid="my.classpath"/>
+          <pathelement location="${build.dir}"/>
+        </classpath>
+      </java>
+    </target>  
+   </project>
