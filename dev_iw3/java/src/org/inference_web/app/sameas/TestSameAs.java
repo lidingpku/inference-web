@@ -26,7 +26,7 @@ import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.vocabulary.OWL;
 
 public class TestSameAs {
-	final static int  MAX_GROUPID =10;
+	final static int  MAX_GROUPID =100000;
 	static String dir_root = ".";
 	public static void main (String[] args){
 		//run_merge();
