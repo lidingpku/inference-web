@@ -27,8 +27,12 @@ import com.hp.hpl.jena.vocabulary.OWL;
 
 public class TestSameAs {
 	final static int  MAX_GROUPID =10;
+	static String dir_root = ".";
 	public static void main (String[] args){
 		//run_merge();
+		if (args.length>0){
+			dir_root = args[0];
+		}
 		run_gen();
 	}
 	
@@ -93,22 +97,22 @@ public class TestSameAs {
 		
 		
 		{
-			File f= new File(String.format("local/output/property_mapping_by_value.txt"));
+			File f= new File(String.format("%s/local/output/property_mapping_by_value.txt",dir_root));
 			ToolIO.pipeStringToFile(test.m_property_mapping_by_value.toPrettyString(), f);				
 		}
 
 		{
-			File f= new File(String.format("local/output/property_mapping_by_localname.txt"));
+			File f= new File(String.format("%s/local/output/property_mapping_by_localname.txt",dir_root));
 			ToolIO.pipeStringToFile(test.m_property_mapping_by_localname.toPrettyString(), f);				
 		}
 
 		{
-			File f= new File(String.format("local/output/property_uri.csv"));
+			File f= new File(String.format("%s/local/output/property_uri.csv",dir_root));
 			save_count(test.m_map_property_uri, f);
 		}
 		
 		{
-			File f= new File(String.format("local/output/property_group.csv"));
+			File f= new File(String.format("%s/local/output/property_group.csv",dir_root));
 			save_count(test.m_map_property_group, f);
 		}
 	}
@@ -124,8 +128,8 @@ public class TestSameAs {
 	DataObjectGroupMap<String> m_property_mapping_by_localname = new DataObjectGroupMap<String>();
 
 	public void load_data(String sz_context ){
-		File f_input = new File(String.format("files/sameas/%s.rdf",sz_context));
-		File f_output = new File(String.format("local/output/%s/", sz_context));
+		File f_input = new File(String.format("%s/files/sameas/%s.rdf",dir_root,sz_context));
+		File f_output = new File(String.format("%s/local/output/%s/", dir_root,sz_context));
 		Set<Resource> seeds;
 		
 		//m_properties_all.clear();
@@ -146,7 +150,7 @@ public class TestSameAs {
 			}
 			
 			{
-				File f= new File(f_output, "sameas.owl");
+				File f= new File(f_output, String.format("sameas.owl"));
 				ToolJena.printModelToFile(m_sameas, f);
 			}
 
@@ -159,7 +163,7 @@ public class TestSameAs {
 				ToolIO.pipeStringToFile(ToolString.printCollectionToString(m_properties_seed.getSortedDataByCount()), f);				
 			}
 */			{
-				File f= new File(f_output, "source.csv");
+				File f= new File(f_output, String.format("source.csv"));
 				ToolIO.pipeStringToFile(ToolString.printCollectionToString(m_sources.getSortedDataByCount()), f);				
 			}
 
