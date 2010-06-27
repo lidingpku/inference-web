@@ -115,6 +115,8 @@ public class TestSameAs {
 			File f= new File(String.format("%s/local/output/property_group.csv",dir_root));
 			save_count(test.m_map_property_group, f);
 		}
+		
+		System.out.println ("all done");
 	}
 
 	//DataObjectCounter<String> m_properties_all = new DataObjectCounter<String>();
@@ -173,6 +175,8 @@ public class TestSameAs {
 		} catch (Sw4jException e) {
 			e.printStackTrace();
 		}
+
+		System.out.println ("loaded .. " + sz_context);
 	}
 	
 	private Set<Resource> prepare_seeds(File f_input) throws Sw4jException{
