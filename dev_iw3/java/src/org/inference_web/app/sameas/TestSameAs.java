@@ -26,7 +26,7 @@ import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.vocabulary.OWL;
 
 public class TestSameAs {
-	final static int  MAX_GROUPID =100;
+	final static int  MAX_GROUPID =10;
 	public static void main (String[] args){
 		//run_merge();
 		run_gen();
@@ -124,7 +124,7 @@ public class TestSameAs {
 	DataObjectGroupMap<String> m_property_mapping_by_localname = new DataObjectGroupMap<String>();
 
 	public void load_data(String sz_context ){
-		File f_input = new File(String.format("local/input/%s.rdf",sz_context));
+		File f_input = new File(String.format("files/sameas/%s.rdf",sz_context));
 		File f_output = new File(String.format("local/output/%s/", sz_context));
 		Set<Resource> seeds;
 		
@@ -141,8 +141,8 @@ public class TestSameAs {
 				load_data(seed, f_output, sz_context, groupid );
 				groupid++;
 				
-			//	if (groupid>MAX_GROUPID)
-			//		break;
+				if (groupid>MAX_GROUPID)
+					break;
 			}
 			
 			{
